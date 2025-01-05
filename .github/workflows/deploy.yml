@@ -22,15 +22,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18  # 选择合适的 Node.js 版本
-          cache: yarn  # 使用 Yarn 缓存依赖
 
       # 第三步：安装依赖
       - name: Install dependencies
-        run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
+        run: npm install --frozen-lockfile  # 使用 npm 安装依赖
 
       # 第四步：构建网站
       - name: Build website
-        run: yarn build  # 使用 yarn 构建 Docusaurus 网站
+        run: npm run build  # 使用 npm 构建 Docusaurus 网站
 
       # 第五步：上传构建产物
       - name: Upload Build Artifact
@@ -65,4 +64,4 @@ jobs:
         env:
           GIT_TOKEN: ${{ secrets.GH_PAT }}  # 使用 Secret 中的 GH_PAT
         run: |
-          yarn deploy  # 使用 yarn 执行部署命令
+          npm run deploy  # 使用 npm 执行部署命令
