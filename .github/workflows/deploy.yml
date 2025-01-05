@@ -19,31 +19,39 @@ jobs:
 
       # 打印当前目录和文件列表以调试
       - name: Print current directory and list files
-        run: |
+        run: 
           echo "Current directory: $(pwd)"
           ls -al
 
       # 第二步：设置 Node.js 环境
       - name: Set up Node.js
         uses: actions/setup-node@v4
-        run: |
-          cd website  # 确保进入正确目录
-          echo "Current directory: $(pwd)"
         with:
           node-version: 18  # 选择合适的 Node.js 版本
           cache: yarn  # 使用 yarn 缓存依赖
 
-      # 第三步：安装依赖
+      # 第三步：切换到 website 目录
+      - name: Change to website directory
+        run: cd website
+
+      # 打印 website 目录中的文件列表以确认 yarn.lock 文件的位置
+      - name: Check yarn.lock file
+        run: 
+          echo "Current directory: $(pwd)"
+          ls -al
+        working-directory: ./website
+
+      # 第四步：安装依赖
       - name: Install dependencies
         run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
         working-directory: ./website  # 确保操作在 'website' 目录中
 
-      # 第四步：构建网站
+      # 第五步：构建网站
       - name: Build website
         run: yarn build  # 使用 yarn 构建 Docusaurus 网站
         working-directory: ./website  # 确保操作在 'website' 目录中
 
-      # 第五步：上传构建产物
+      # 第六步：上传构建产物
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -75,7 +83,7 @@ jobs:
         id: deployment
         env:
           GIT_TOKEN: ${{ secrets.GH_PAT }}  # 使用 Secret 中的 GH_PAT
-        run: |
+        run: 
           cd website  # 确保进入正确目录
           echo "Current directory: $(pwd)"
           yarn deploy  # 执行部署命令
