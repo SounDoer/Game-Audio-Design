@@ -9,10 +9,7 @@ jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest  # 使用 Ubuntu 环境运行
-    defaults:
-       run:
-        working-directory: ./website/
-    
+
     steps:
       # 第一步：检出代码
       - name: Checkout code
@@ -26,6 +23,7 @@ jobs:
         with:
           node-version: 18  # 选择合适的 Node.js 版本
           cache: npm  # 使用 npm 缓存依赖
+        working-directory: ./website  # 确保操作在 'website' 目录中
 
       # 第三步：安装依赖
       - name: Install dependencies
@@ -70,5 +68,5 @@ jobs:
         env:
           GIT_TOKEN: ${{ secrets.GH_PAT }}  # 使用 Secret 中的 GH_PAT
         run: |
-          cd ./website  # 确保进入正确目录
+          cd website  # 确保进入正确目录
           npm run deploy  # 执行部署命令
