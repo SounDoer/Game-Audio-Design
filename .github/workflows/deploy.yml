@@ -67,4 +67,5 @@ jobs:
         env:
           GIT_TOKEN: ${{ secrets.GH_PAT }}  # 使用 Secret 中的 GH_PAT
         run: |
-          cd ./website && npm run deploy  # 确保进入到正确的目录并执行 deploy
+          cd ./website  # 确保进入正确目录
+          npm run deploy  # 执行部署命令
