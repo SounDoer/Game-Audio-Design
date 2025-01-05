@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 当代码推送到 main 分支时触发部署
+
+jobs:
+  build:
+    name: Build Docusaurus
+    runs-on: ubuntu-latest  # 使用 Ubuntu 环境运行
+
+    steps:
+      # 第一步：检出代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整的历史记录（用于部署）
+
+      # 第二步：设置 Node.js 环境
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18  # 选择合适的 Node.js 版本
+          cache: yarn  # 使用 Yarn 缓存依赖
+
+      # 第三步：安装依赖
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
+
+      # 第四步：构建网站
+      - name: Build website
+        run: yarn build  # 使用 yarn 构建 Docusaurus 网站
+
+      # 第五步：上传构建产物
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build  # 上传构建目录作为产物
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build  # 部署步骤依赖于构建步骤
+
+    permissions:
+      pages: write  # 授予写入权限以便部署到 GitHub Pages
+      id-token: write  # 允许部署验证来源
+
+    environment:
+      name: github-pages  # 设置部署环境名称
+      url: ${{ steps.deployment.outputs.page_url }}  # 获取部署后的页面 URL
+
+    runs-on: ubuntu-latest  # 使用 Ubuntu 环境部署
+
+    steps:
+      # 第一步：检出代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整的历史记录（用于部署）
+
+      # 第二步：使用 GH_PAT 作为 GIT_TOKEN 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        env:
+          GIT_TOKEN: ${{ secrets.GH_PAT }}  # 使用 Secret 中的 GH_PAT
+        run: |
+          yarn deploy  # 使用 yarn 执行部署命令
