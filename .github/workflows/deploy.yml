@@ -39,13 +39,17 @@ jobs:
 
       # 第三步：安装依赖
       - name: Install dependencies
+        run: |
+          echo "Current directory: $(pwd)"
+          yarn install --frozen-lockfile  # 使用 yarn 安装依赖
         working-directory: ./website  # 确保操作在 'website' 目录中
-        run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
 
       # 第四步：构建网站
       - name: Build website
+        run: |
+          echo "Current directory: $(pwd)"
+          yarn build  # 使用 yarn 构建 Docusaurus 网站
         working-directory: ./website  # 确保操作在 'website' 目录中
-        run: yarn build  # 使用 yarn 构建 Docusaurus 网站
 
       # 第五步：上传构建产物
       - name: Upload Build Artifact
@@ -81,4 +85,5 @@ jobs:
           GIT_TOKEN: ${{ secrets.GH_PAT }}  # 使用 Secret 中的 GH_PAT
         run: |
           cd website  # 确保进入正确目录
+          echo "Current directory: $(pwd)"
           yarn deploy  # 执行部署命令
