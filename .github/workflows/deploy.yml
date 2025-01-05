@@ -23,6 +23,13 @@ jobs:
           echo "Current directory: $(pwd)"
           ls -al
 
+      # 切换到 website 目录并打印文件列表以确认 yarn.lock 文件的位置
+      - name: Check yarn.lock file
+        run: |
+          cd website
+          echo "Current directory: $(pwd)"
+          ls -al
+
       # 第二步：设置 Node.js 环境
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -33,18 +40,12 @@ jobs:
       # 第三步：安装依赖
       - name: Install dependencies
         working-directory: ./website  # 确保操作在 'website' 目录中
-        run: |
-          echo "Current directory: $(pwd)"
-          ls -al
-          yarn install --frozen-lockfile  # 使用 yarn 安装依赖
+        run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
 
       # 第四步：构建网站
       - name: Build website
         working-directory: ./website  # 确保操作在 'website' 目录中
-        run: |
-          echo "Current directory: $(pwd)"
-          ls -al
-          yarn build  # 使用 yarn 构建 Docusaurus 网站
+        run: yarn build  # 使用 yarn 构建 Docusaurus 网站
 
       # 第五步：上传构建产物
       - name: Upload Build Artifact
