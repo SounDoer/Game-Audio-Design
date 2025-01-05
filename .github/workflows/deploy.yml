@@ -17,6 +17,10 @@ jobs:
         with:
           fetch-depth: 0  # 获取完整的历史记录（用于部署）
 
+      # 打印环境变量
+      - name: Print environment variables
+        run: printenv
+
       # 第二步：设置 Node.js 环境
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -26,13 +30,13 @@ jobs:
 
       # 第三步：安装依赖
       - name: Install dependencies
-        working-directory: ./website  # 确保操作在 'website' 目录中
         run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
+        working-directory: ./website  # 确保操作在 'website' 目录中
 
       # 第四步：构建网站
       - name: Build website
-        working-directory: ./website  # 确保操作在 'website' 目录中
         run: yarn build  # 使用 yarn 构建 Docusaurus 网站
+        working-directory: ./website  # 确保操作在 'website' 目录中
 
       # 第五步：上传构建产物
       - name: Upload Build Artifact
