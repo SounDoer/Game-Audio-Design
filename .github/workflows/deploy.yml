@@ -27,8 +27,9 @@ jobs:
         run: ls -alh build
 
       - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
+          name: build
           path: build
 
   deploy:
@@ -49,7 +50,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download Build Artifact
-        uses: actions/download-pages-artifact@v1
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
 
       - name: List downloaded artifact contents
         run: ls -alh build
