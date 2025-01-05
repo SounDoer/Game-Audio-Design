@@ -26,7 +26,7 @@ jobs:
 
       # 第三步：安装依赖
       - name: Install dependencies
-        run: npm install --frozen-lockfile  # 使用 npm 安装依赖
+        run: npm ci  # 使用 npm 安装依赖
         working-directory: ./website  # 确保操作在 'website' 目录中
 
       # 第四步：构建网站
