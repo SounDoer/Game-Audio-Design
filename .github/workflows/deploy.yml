@@ -26,13 +26,13 @@ jobs:
 
       # 第三步：安装依赖
       - name: Install dependencies
-        run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
         working-directory: ./website  # 确保操作在 'website' 目录中
+        run: yarn install --frozen-lockfile  # 使用 yarn 安装依赖
 
       # 第四步：构建网站
       - name: Build website
-        run: yarn build  # 使用 yarn 构建 Docusaurus 网站
         working-directory: ./website  # 确保操作在 'website' 目录中
+        run: yarn build  # 使用 yarn 构建 Docusaurus 网站
 
       # 第五步：上传构建产物
       - name: Upload Build Artifact
