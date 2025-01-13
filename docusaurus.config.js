@@ -111,22 +111,26 @@ const config = {
           // },
           // // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            to: 'Course/intro',
+            type: 'docSidebar',
+            sidebarId: 'courseSidebar',
             label: 'Course',
             position: 'left'
           },
           {
-            to: 'Topic/intro',
+            type: 'docSidebar',
+            sidebarId: 'topicSidebar',
             label: 'Topic',
             position: 'left'
           },
           {
-            to: 'Resource/intro',
+            type: 'docSidebar',
+            sidebarId: 'resourceSidebar',
             label: 'Resource',
             position: 'left'
           },
           {
-            to: 'Glossary/intro',
+            type: 'docSidebar',
+            sidebarId: 'glossarySidebar',
             label: 'Glossary',
             position: 'left'
           },
