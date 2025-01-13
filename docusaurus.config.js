@@ -85,31 +85,51 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Course',
+          // },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Topic',
+          // },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Resource',
+          // },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Glossary',
+          // },
+          // // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
+            to: 'Course/intro',
             label: 'Course',
+            position: 'left'
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
+            to: 'Topic/intro',
             label: 'Topic',
+            position: 'left'
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
+            to: 'Resource/intro',
             label: 'Resource',
+            position: 'left'
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
+            to: 'Glossary/intro',
             label: 'Glossary',
+            position: 'left'
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/SounDoer/Game-Audio-Design',
             label: 'GitHub',
