@@ -1,8 +1,9 @@
 ---
-layout: default
-title: Xichen's Game Audio Design Document
-nav_exclude: true
-permalink: /
+<!--layout: default-->
+<!--title: Xichen's Game Audio Design Document-->
+<!--nav_exclude: true-->
+<!--permalink: /-->
+sidebar_position: 0
 ---
 
 # Xichen's Game Audio Design Document
