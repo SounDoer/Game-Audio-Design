@@ -111,6 +111,11 @@ const config = {
             position: 'left'
           },
           {
+            to: '/Log',
+            label: '  ',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/SounDoer/Game-Audio-Design',
             label: 'GitHub',
             position: 'right',
