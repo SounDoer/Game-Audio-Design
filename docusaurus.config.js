@@ -104,12 +104,12 @@ const config = {
             label: 'Resource',
             position: 'left'
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'glossarySidebar',
-            label: 'Glossary',
-            position: 'left'
-          },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'glossarySidebar',
+          //   label: 'Glossary',
+          //   position: 'left'
+          // },
           {
             to: '/Log',
             label: '  ',
