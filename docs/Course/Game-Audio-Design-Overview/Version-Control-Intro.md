@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 101
 ---
 
-# Version Control
+# 版本控制
 
 [Wiki](https://en.wikipedia.org/wiki/Version_control)
 
