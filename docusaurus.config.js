@@ -63,7 +63,8 @@ const config = {
         title: '', // hide title
         logo: {
           alt: 'GAD Horse Logo',
-          src: 'img/Inkscape_Logo.svg',
+          src: 'img/Inkscape_Logo_Black.png',
+          srcDark: 'img/Inkscape_Logo_White.png',
         },
         items: [
           {
