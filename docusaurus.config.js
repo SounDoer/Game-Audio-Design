@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Game Audio Design',
   tagline: 'Working in Progress',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/GAD_Logo.ico',
 
   // Set the production url of your site here
   url: 'https://soundoer.com',
@@ -63,8 +63,8 @@ const config = {
         title: '', // hide title
         logo: {
           alt: 'GAD Horse Logo',
-          src: 'img/Inkscape_Logo_Black.png',
-          srcDark: 'img/Inkscape_Logo_White.png',
+          src: 'img/GAD_Logo_Black.png',
+          srcDark: 'img/GAD_Logo_White.png',
         },
         items: [
           {
