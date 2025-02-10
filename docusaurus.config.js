@@ -62,8 +62,8 @@ const config = {
       navbar: {
         title: '', // hide title
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'GAD Horse Logo',
+          src: 'img/Inkscape_Logo.svg',
         },
         items: [
           {
