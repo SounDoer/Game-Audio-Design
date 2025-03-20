@@ -10,4 +10,11 @@ pagination_prev: null
 
 ··· 课程施工中 ···
 
+<iframe 
+  src="https://soundoer.com/Game-Audio-Design-Slidev/1"
+  width="100%"
+  height="600"
+  style={{ border: "none" }}>
+</iframe>
+
 ---
