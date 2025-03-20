@@ -1,0 +1,30 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "sidebar_position",
+          "name": "sidebar_position",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.id": "docusaurus",
+  "frontMatter.content.publicFolder": "static",
+  "frontMatter.preview.host": "http://localhost:3000",
+  "frontMatter.content.pageFolders": [
+    {
+      "path": "[[workspace]]/docs",
+      "title": "docs"
+    },
+    {
+      "path": "[[workspace]]/docs"
+    }
+  ],
+  "frontMatter.git.enabled": true
+}
