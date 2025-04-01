@@ -30,7 +30,7 @@ Updated at 2025.3
 
 - 打开 Wwise 工程中的 Project Settings 选项  
 ![Wwise Project Settings](Game-Engine-Audio-Middleware-Integration/Wwise-Project-Settings.png)
-- 在 SoundBanks 页签中，勾选 Enable Auto-Defined-SoundBanks 和 Create Sub-Folders for Generated Files 选项  
+- 在 SoundBanks 页签中，勾选 Enable Auto-Defined-SoundBanks 选项  
 ![Wwise Project Settings SoundBanks](Game-Engine-Audio-Middleware-Integration/Wwise-Project-Settings-SoundBanks.png)
 - 切换至 SoundBank 视图  
 ![Wwise SoundBank](Game-Engine-Audio-Middleware-Integration/Wwise-SoundBank.png)
