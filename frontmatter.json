@@ -14,16 +14,13 @@
       ]
     }
   ],
-  "frontMatter.framework.id": "docusaurus",
+  "frontMatter.framework.id": "astro",
   "frontMatter.content.publicFolder": "static",
-  "frontMatter.preview.host": "http://localhost:3000",
+  "frontMatter.preview.host": "http://localhost:4321",
   "frontMatter.content.pageFolders": [
     {
       "path": "[[workspace]]/docs",
       "title": "docs"
-    },
-    {
-      "path": "[[workspace]]/docs"
     }
   ],
   "frontMatter.git.enabled": true

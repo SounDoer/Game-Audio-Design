@@ -4,11 +4,11 @@ sidebar_position: 103
 
 # 游戏音频中间件
 
-:::info
-本课程目前使用 Audiokinetic Wwise 2024 版本为例  
-2024 版本与之前的版本在 UI 界面上有较大的改动  
-Updated at 2025.2
-:::
+<aside class="admonition" role="note">
+  <p>本课程目前使用 Audiokinetic Wwise 2024 版本为例</p>
+  <p>2024 版本与之前的版本在 UI 界面上有较大的改动</p>
+  <p>Updated at 2025.2</p>
+</aside>
 
 ## Wwise
 

@@ -4,10 +4,10 @@ sidebar_position: 104
 
 # 游戏引擎与游戏音频中间件的整合
 
-:::info
-本课程目前使用 Unreal Engine 5 和 Audiokinetic Wwise 2024 版本为例  
-Updated at 2025.3
-:::
+<aside class="admonition" role="note">
+  <p>本课程目前使用 Unreal Engine 5 和 Audiokinetic Wwise 2024 版本为例</p>
+  <p>Updated at 2025.3</p>
+</aside>
 
 ## Wwise Unreal Integration
 

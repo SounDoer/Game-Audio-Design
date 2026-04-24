@@ -1,6 +1,10 @@
 # 游戏音频设计 Game Audio Design
 
-基于 [Astro](https://astro.build/) 的静态站点，内容源为仓库内 `docs/` 下的 Markdown（**请勿删除**已有 `.md` 正文）。
+基于 [Astro](https://astro.build/) 的静态站点，内容源为仓库内 `docs/` 下的 Markdown（**请勿删除**已有 `.md` 正文）。静态资源与 **`CNAME`** 放在 **`static/`**，会原样进构建产物根目录。
+
+主要路由：首页目录 **`/`**，文章 **`/articles/course/...`**、**`/articles/topic/...`**，**`/resource`**（`docs/Resource` 汇总页），**`/log`**，**`/rss.xml`**。
+
+若使用 VS Code 的 [Front Matter](https://frontmatter.codes/) 插件，仓库内 `frontmatter.json` 已配置为 **Astro** 与预览 **`http://localhost:4321`**。
 
 ## 本地开发
 

@@ -4,10 +4,10 @@ sidebar_position: 102
 
 # 游戏引擎
 
-:::info
-本课程目前使用 Windows 平台 Unreal Engine 5 版本为例  
-Updated at 2025.2
-:::
+<aside class="admonition" role="note">
+  <p>本课程目前使用 Windows 平台 Unreal Engine 5 版本为例</p>
+  <p>Updated at 2025.2</p>
+</aside>
 
 ## Unreal Engine
 

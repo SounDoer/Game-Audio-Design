@@ -178,3 +178,23 @@ main {
   margin-right: 0.35rem;
   vertical-align: middle;
 }
+
+/* Docusaurus :::info 迁移：内联 HTML <aside> */
+aside.admonition {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(11, 95, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  aside.admonition {
+    background: rgba(110, 179, 255, 0.1);
+  }
+}
+
+aside.admonition p {
+  margin: 0.25rem 0;
+}

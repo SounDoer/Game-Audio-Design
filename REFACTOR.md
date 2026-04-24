@@ -15,7 +15,7 @@
 | **构建用 Node** | 目标采用 **Astro 6** 时，CI 与本机需 **Node 22+**（Astro 6 不再支持 Node 18/20），迁移落地时请将 `.github/workflows/deploy.yml` 中 `node-version` 从 **18 提升至 22**。若过渡期暂时锁定 **Astro 5**，可按该版本文档选择 Node；**默认目标仍为 Astro 6 + Node 22**。参见 [Astro 6.0 发布公告](https://astro.build/blog/astro-6/)。 |
 | **分享预览** | **无独立封面图也可**：但至少保证链接在微信等 IM 里展开时 **有清晰标题（及建议有短摘要）**。实现上依赖每页 HTML 的 **Open Graph `og:title`**（及 `og:description` 等）；详见下文「何为复制链接 + OG 卡片」。 |
 | **旧链接** | **不做兼容**：新站 URL 可与旧 Docusaurus 不一致；历史外链失效 **可接受**。 |
-| **信息架构** | **Course 与 Topic 合并**为同一套「文章」流（单一 Content Collection 或等价方案，实施时定 slug 规则）；**Resource** 内容少，**首发不做单独频道**（`docs/Resource` 文件保留、不删，导航可不接）。**`docs/Log.md` 单独成线**：不与文章流合并，站点内 **独立路由/入口**（如 `/log`），首页目录区 **单独列出**。需要 **独立首页**：展示整站结构与目录入口（可理解为站点地图 + 导航枢纽）。 |
+| **信息架构** | **Course 与 Topic 合并**为同一套「文章」流（单一 Content Collection 或等价方案，实施时定 slug 规则）；**`docs/Resource` 为独立线**，站内路由 **`/resource`** 汇总该目录下篇目，并纳入导航与 RSS（单一 RSS 项指向该页，避免多文件同 URL 重复）。**`docs/Log.md` 单独成线**：不与文章流合并，站点内 **独立路由/入口**（如 `/log`），首页目录区 **单独列出**。需要 **独立首页**：展示整站结构与目录入口（可理解为站点地图 + 导航枢纽）。 |
 | **Admonition（`:::`）** | **已定案：方案 C**——将 `:::info` 等 **手工改为 HTML**（如 `<aside class="…">`）；具体 class 与样式在 Astro 全局 CSS 统一约定。 |
 | **插图** | **迁移期已定案**：与 Markdown **同目录（colocation）**，不先整体迁到 `src/assets`；在 Content Collections 中按 Astro 要求声明资源即可。 |
 | **Canonical** | **实施默认**：`site` 使用 **`https://gad.soundoer.com`**；基类布局为每页输出 **`<link rel="canonical">`**（= `site` + 当前 pathname，不含 query）；**`og:url` 与 canonical 一致**；与全站 **HTTPS** 对齐。 |
@@ -172,7 +172,7 @@
 
 - [ ] **内容目录与 slug**：Course + Topic 合并后的 **目录物理布局**（是否仍从 `docs/` 读入或迁至 `src/content/`）、**首页目录树**如何自动生成或维护；**Log** 独立路由与导航文案。
 - [ ] **邮件（二期）**：自建形态（Serverless + Resend/SMTP 等）与 **opt-in / 退订 / 隐私文案**。
-- [ ] **Front Matter CMS**（`frontmatter.json`）是否继续对接新路径。
+- [x] **Front Matter**（`frontmatter.json`）已对接 **Astro** 与 `docs/`。
 
 ---
 
@@ -187,7 +187,16 @@
 
 ---
 
-## 七、文档维护
+## 七、当前实现备注（Astro 迁移后）
+
+- **自定义域**：`CNAME` 仅保留在 **`static/CNAME`**（随构建进 `build/`），根目录不再重复放一份。
+- **`docs/Course/Course.md`**：因 frontmatter 中 `slug: /` 会错误映射到站点根，**不参与构建、首页与 RSS**；文件保留。若要在站上展示欢迎页 / Slidev，可后续改 `slug` 或增加单独路由。
+- **Front Matter（VS Code 插件）**：`frontmatter.json` 已指向 **Astro**，本地预览 **`http://localhost:4321`**。
+- **favicon**：使用 **`static/img/GAD_Logo.svg`** 作为站点图标。
+
+---
+
+## 八、文档维护
 
 - 关键决策已记入文首「已定案决策」表；后续变更请 **改表并追加日期**。
-- 初稿：2026-04-24；已定案补充：2026-04-24（含 Astro 选型、Astro 6 / Node 22 CI 备忘）；同日第二轮：旧 URL 不兼容、Course+Topic 合并、Resource 首发不做、首页与第一版范围、canonical/`:::`/插图说明；**第三轮**：Log 单独、`:::` 方案 C、插图 colocation、canonical/HTTPS 实施约定。
+- 初稿：2026-04-24；已定案补充：2026-04-24（含 Astro 选型、Astro 6 / Node 22 CI 备忘）；同日第二轮：旧 URL 不兼容、Course+Topic 合并、Resource 首发不做、首页与第一版范围、canonical/`:::`/插图说明；**第三轮**：Log 单独、`:::` 方案 C、插图 colocation、canonical/HTTPS 实施约定；**第四轮**：资源页 `/resource`、Front Matter 与 CNAME 整理、三篇 `:::` 转 `<aside>`、favicon 与文章 `og:type`、移除未用 Docusaurus 占位图。

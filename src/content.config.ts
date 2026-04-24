@@ -17,4 +17,8 @@ export const collections = {
     loader: glob({ pattern: 'Log.md', base: './docs' }),
     schema: looseFrontmatter,
   }),
+  resourcePages: defineCollection({
+    loader: glob({ pattern: '**/*.md', base: './docs/Resource' }),
+    schema: looseFrontmatter,
+  }),
 };

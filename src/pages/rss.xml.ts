@@ -26,6 +26,15 @@ function mtime(kind: 'course' | 'topic', id: string): Date {
   }
 }
 
+function mtimeResource(id: string): Date {
+  const rel = join('docs', 'Resource', id);
+  try {
+    return statSync(rel).mtime;
+  } catch {
+    return new Date();
+  }
+}
+
 function titleOf(data: Record<string, unknown>, id: string) {
   const t = typeof data.title === 'string' ? data.title.trim() : '';
   if (t) return t;
@@ -36,6 +45,7 @@ export async function GET(context: { site: URL | undefined }) {
   const { site } = context;
   const course = await getCollection('courseArticles');
   const topic = await getCollection('topicArticles');
+  const resource = await getCollection('resourcePages');
 
   const items: {
     title: string;
@@ -66,12 +76,27 @@ export async function GET(context: { site: URL | undefined }) {
         typeof data.description === 'string' ? data.description : undefined,
     });
   }
+  if (resource.length > 0) {
+    let latestPub = new Date(0);
+    for (const e of resource) {
+      const t = mtimeResource(e.id);
+      if (t.getTime() > latestPub.getTime()) {
+        latestPub = t;
+      }
+    }
+    items.push({
+      title: 'Resource',
+      link: new URL('/resource', site).href,
+      pubDate: latestPub,
+      description: '资源与外链（含 docs/Resource 下全部篇目）',
+    });
+  }
 
   items.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
   return rss({
     title: 'Game Audio Design',
-    description: '游戏音频设计 — Course 与 Topic 文章聚合',
+    description: '游戏音频设计 — Course、Topic、Resource 与更新聚合',
     site: site ?? 'https://gad.soundoer.com',
     items,
     customData: '<language>zh-cn</language>',
