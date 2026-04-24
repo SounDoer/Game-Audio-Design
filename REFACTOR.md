@@ -15,7 +15,10 @@
 | **构建用 Node** | 目标采用 **Astro 6** 时，CI 与本机需 **Node 22+**（Astro 6 不再支持 Node 18/20），迁移落地时请将 `.github/workflows/deploy.yml` 中 `node-version` 从 **18 提升至 22**。若过渡期暂时锁定 **Astro 5**，可按该版本文档选择 Node；**默认目标仍为 Astro 6 + Node 22**。参见 [Astro 6.0 发布公告](https://astro.build/blog/astro-6/)。 |
 | **分享预览** | **无独立封面图也可**：但至少保证链接在微信等 IM 里展开时 **有清晰标题（及建议有短摘要）**。实现上依赖每页 HTML 的 **Open Graph `og:title`**（及 `og:description` 等）；详见下文「何为复制链接 + OG 卡片」。 |
 | **旧链接** | **不做兼容**：新站 URL 可与旧 Docusaurus 不一致；历史外链失效 **可接受**。 |
-| **信息架构** | **Course 与 Topic 合并**为同一套「文章」流（单一 Content Collection 或等价方案，实施时定 slug 规则）；**Resource** 内容少，**首发不做单独频道**（`docs/Resource` 文件保留、不删，导航可不接）。需要 **独立首页**：展示整站结构与目录入口（可理解为站点地图 + 导航枢纽）。 |
+| **信息架构** | **Course 与 Topic 合并**为同一套「文章」流（单一 Content Collection 或等价方案，实施时定 slug 规则）；**Resource** 内容少，**首发不做单独频道**（`docs/Resource` 文件保留、不删，导航可不接）。**`docs/Log.md` 单独成线**：不与文章流合并，站点内 **独立路由/入口**（如 `/log`），首页目录区 **单独列出**。需要 **独立首页**：展示整站结构与目录入口（可理解为站点地图 + 导航枢纽）。 |
+| **Admonition（`:::`）** | **已定案：方案 C**——将 `:::info` 等 **手工改为 HTML**（如 `<aside class="…">`）；具体 class 与样式在 Astro 全局 CSS 统一约定。 |
+| **插图** | **迁移期已定案**：与 Markdown **同目录（colocation）**，不先整体迁到 `src/assets`；在 Content Collections 中按 Astro 要求声明资源即可。 |
+| **Canonical** | **实施默认**：`site` 使用 **`https://gad.soundoer.com`**；基类布局为每页输出 **`<link rel="canonical">`**（= `site` + 当前 pathname，不含 query）；**`og:url` 与 canonical 一致**；与全站 **HTTPS** 对齐。 |
 | **迁移节奏** | **直接在主分支改**：可接受站点短时不可用；不单独保「旧站并行」工期。 |
 | **第一版范围** | **RSS + OG + 分享**（复制链接、微信扫码引导等）先上线；**邮件订阅**仅占位或 **二期**。 |
 | **内容安全线** | **`docs/` 下已有 `.md` 不得误删**；其余（Docusaurus 配置、CI、新增 Astro 目录等）可按迁移需要任意调整。 |
@@ -65,15 +68,15 @@
 :::
 ```
 
-标准 Markdown **没有**这条语法，所以换到 Astro 后必须 **显式处理**，否则要么当普通文字瞎显示，要么构建报错。常见三条路（**实施时选一种为主**，不要混太多套）：
+标准 Markdown **没有**这条语法，所以换到 Astro 后必须 **显式处理**，否则要么当普通文字瞎显示，要么构建报错。常见三条路如下；**本项目已定案：路线 C**。
 
 | 路线 | 做法 | 优点 | 缺点 |
 |------|------|------|------|
 | **A. MDX + 小组件** | 把需要告示的 md 改成 `.mdx`，在文里写 `<Aside type="info">...</Aside>` 之类 | 行为最可控、样式随你写 | 要改文件扩展名或引入组件语法 |
 | **B. remark/rehype 插件** | 在 Astro 的 markdown 管线里加插件：构建时把 `:::info ... :::` **自动转成** `<aside>` 等 HTML | 源文件可继续用 `:::`，批量迁移省力 | 要自己找或写插件、调试边界情况 |
-| **C. 手工改成纯 HTML** | 直接在 md 里写 `<aside class="note">...</aside>` | 无魔法、最直观 | 源码丑一点、以后要统一改 class 较烦 |
+| **C. 手工改成纯 HTML（已定案）** | 直接在 md 里写 `<aside class="note">...</aside>` | 无魔法、最直观 | 源码略冗长；class 名需全站统一 |
 
-**建议**：若 `:::info` 篇数不多，**C 或 A** 很快；若非常多且格式统一，**B** 更省心。你可以在试点迁 1～2 篇时试一下再定。
+迁移时逐篇把 `:::info` / `:::warning` 等替换为带语义/class 的 `<aside>`（或等价块级元素），再用站点 CSS 控制外观即可。
 
 ---
 
@@ -84,7 +87,7 @@
 | **`src/assets/`（或按文章分子目录）** | 图集中放在 `src` 下，由 Astro/Vite 当 **模块** 处理 | 可 **哈希文件名** 利于缓存；路径校验、优化（压缩、转 webp）与 bundler 集成好 | 和 md 物理分离，写相对路径要习惯 `import` 或约定别名 |
 | **与内容同目录（colocation）** | 图和 `.md` 放在同一文件夹（你现在是 `Game-Engine-Audio-Middleware-Integration/xxx.png` 这种） | **和 Docusaurus 习惯接近**，「文章 + 图」一包搬走直观 | 要符合 Astro **Content Collections 对静态资源的约定**（通常仍可 colocate，需在 `config` 里声明 `assets` 等）；大量图时仓库略散 |
 
-**结论**：两种都常见；**迁移期**为少踩坑，可优先 **继续 colocation（与 md 同目录）**，与现有 `docs/` 结构对齐；若以后要做强图片优化，再逐步收到 `src/assets`。
+**已定案（迁移期）**：**继续 colocation（与 md 同目录）**，与现有 `docs/` 结构对齐；若以后要做强图片优化，再评估迁到 `src/assets`。
 
 ---
 
@@ -100,7 +103,7 @@
 
 含义：**「这篇内容的首选地址是这一个」**。好处包括：避免 **重复内容** 稀释 SEO；分享、统计时 **统一计数**；配合 **全站 HTTPS** 时，避免微信抓到 `http` 版页面。
 
-实施时在 Astro 里按 **站点 base + 当前页 path** 生成即可。
+**实施约定（已定案）**：在 Astro 配置中设定 `site: 'https://gad.soundoer.com'`；在 **基类布局**（文章、Log、首页等）的 `<head>` 中输出 **canonical** 与 **`og:url`**，取值均为「`site` + 当前页 pathname」，**忽略 query string**；与 **OG 标签、分享二维码中的 URL** 使用同一套规则，避免微信与搜索引擎抓到「多个官方地址」。
 
 ---
 
@@ -142,7 +145,7 @@
 ### 3.1 信息架构与形态
 
 - [ ] 弱化「在线课程」产品感，强化 **文章 / 系列** 或平铺索引（具体导航随 SSG 模板确定）。
-- [ ] Markdown 为源；**插图与资源路径**、**`:::info` 等 admonition`** 在迁移时改为新栈支持的写法或组件。
+- [ ] Markdown 为源；**插图**保持 **与 md 同目录（colocation）**；**`:::info` 等** 按已定案 **手工改为 HTML `<aside>`**（或等价）。
 
 ### 3.2 订阅与触达
 
@@ -167,9 +170,8 @@
 
 ## 五、仍待实施阶段细化的事项
 
-- [ ] **内容目录与 slug**：Course + Topic 合并后的 **目录物理布局**（是否仍从 `docs/` 读入或迁至 `src/content/`）、**首页目录树**如何自动生成或维护。
+- [ ] **内容目录与 slug**：Course + Topic 合并后的 **目录物理布局**（是否仍从 `docs/` 读入或迁至 `src/content/`）、**首页目录树**如何自动生成或维护；**Log** 独立路由与导航文案。
 - [ ] **邮件（二期）**：自建形态（Serverless + Resend/SMTP 等）与 **opt-in / 退订 / 隐私文案**。
-- [ ] **`:::info` 等块**：在「MDX 组件 / remark 插件 / 手工 HTML」中 **选定一条主路径**（见上文「名词与实现选项备忘」）。
 - [ ] **Front Matter CMS**（`frontmatter.json`）是否继续对接新路径。
 
 ---
@@ -188,4 +190,4 @@
 ## 七、文档维护
 
 - 关键决策已记入文首「已定案决策」表；后续变更请 **改表并追加日期**。
-- 初稿：2026-04-24；已定案补充：2026-04-24（含 Astro 选型、Astro 6 / Node 22 CI 备忘）；同日第二轮：旧 URL 不兼容、Course+Topic 合并、Resource 首发不做、首页与第一版范围、canonical/`:::`/插图说明。
+- 初稿：2026-04-24；已定案补充：2026-04-24（含 Astro 选型、Astro 6 / Node 22 CI 备忘）；同日第二轮：旧 URL 不兼容、Course+Topic 合并、Resource 首发不做、首页与第一版范围、canonical/`:::`/插图说明；**第三轮**：Log 单独、`:::` 方案 C、插图 colocation、canonical/HTTPS 实施约定。
