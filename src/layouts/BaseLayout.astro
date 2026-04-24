@@ -8,13 +8,21 @@ interface Props {
   path: string;
   /** 文章页用 article，目录/Log 等用 website */
   ogType?: 'website' | 'article';
+  /** 可选：按页覆盖分享图（支持绝对 URL 或站内相对路径） */
+  ogImage?: string;
 }
 
-const { title, description, path, ogType = 'website' } = Astro.props;
+const { title, description, path, ogType = 'website', ogImage } = Astro.props;
 const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
 const desc =
   description?.trim() ||
   'Game Audio Design — 游戏音频设计专题与文章，持续更新。';
+const resolvedOgImage = (() => {
+  if (typeof ogImage === 'string' && ogImage.trim()) {
+    return new URL(ogImage.trim(), Astro.site).href;
+  }
+  return new URL('/img/GAD_Logo.svg', Astro.site).href;
+})();
 ---
 
 <!doctype html>
@@ -30,11 +38,13 @@ const desc =
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={resolvedOgImage} />
     <meta property="og:site_name" content="Game Audio Design" />
     <meta property="og:locale" content="zh_CN" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={resolvedOgImage} />
   </head>
   <body>
     <header class="site-header">

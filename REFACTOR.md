@@ -135,7 +135,7 @@
 | 状态 | 说明 |
 |------|------|
 | ✅ | Docusaurus 已移除；canonical / `og:url` / 文章 `og:title`；RSS（含 Resource 聚合一条）；分享区；Resource 进站；根目录冗余 **CNAME** 已删；未使用的 Docusaurus 占位 SVG 已删 |
-| 🔜 可选 | 全站或按篇 **`og:image`**；frontmatter 批量补 **`description`**（作 `og:description`）；首页从 **Course/Topic 分组** 演进为 **时间线 / 标签 / 自动生成目录树** |
+| 🔜 可选 | 按篇 **`og:image`**（frontmatter 可用 `ogImage` / `og_image` / `image` / `cover` / `thumbnail`）；首页从 **Course/Topic 分组** 演进为 **时间线 / 标签 / 自动生成目录树** |
 | ⏳ 二期 | **邮件订阅**（见已定案表） |
 
 *旧 Docusaurus 栈说明仅保留于 git 历史与本对话记录，不再维护于本节。*
@@ -146,7 +146,7 @@
 
 ### 3.1 信息架构与形态
 
-- [ ] **弱化「在线课程」产品感**：首页仍为 **Course / Topic 分组** 列表，与「一条文章流」叙事可继续迭代（例如增加 **按更新时间排序的全站列表** 或 **标签**）。
+- [x] **弱化「在线课程」产品感（第一步）**：首页已新增 **按更新时间排序的全站列表**（基于文件 mtime）；Course / Topic 分组暂保留为次级入口，后续可继续演进标签与自动目录。
 - [x] **Markdown 为源**，内容保留在 **`docs/`**。
 - [x] **插图**：与 md **同目录（colocation）**，当前构建正常。
 - [x] **`:::` 告示块**：已按方案 C 处理；**`docs` 内已无 `:::`**（首批三篇课程概览为 `<aside class="admonition">`）。
@@ -160,8 +160,8 @@
 
 - [x] 文章页 **复制链接** + **二维码**（构建期生成，见 `ArticleLayout.astro`）。
 - [x] **`og:title`** / **`og:url`** / **`canonical`**；文章 **`og:type=article`**。
-- [ ] **`og:description`**：多数篇目仍缺 frontmatter **`description`**，当前常回落为站点默认句；可按篇补写或做自动摘要。
-- [ ] **`og:image`**：尚未配置全站默认图或按篇图（已定案为可选，待需要时加）。
+- [x] **`og:description`**：`docs/` 下篇目 frontmatter **`description`** 已补齐，预览不再依赖站点默认句回落。
+- [x] **`og:image`**：已配置全站默认分享图（`/img/GAD_Logo.svg`）；按篇图可通过 frontmatter 的 `ogImage` / `og_image` / `image` / `cover` / `thumbnail` 覆盖。
 
 ---
 
@@ -177,7 +177,7 @@
 ## 五、仍待实施阶段细化的事项
 
 - [x] **内容目录与 slug**：**已定 — 保留 `docs/`**，由 `src/content.config.ts` 读入；slug 由相对路径生成；**`/log`**、**`/resource`** 已接导航与首页。
-- [ ] **首页与信息架构**：目录列表仍为 **手写 + 分组**；是否改为 **自动生成**、是否增加 **时间线 / 标签**，按需排期。
+- [ ] **首页与信息架构**：已增加全站「最新更新」列表；是否进一步改为 **自动目录树**、是否增加 **标签**，按需排期。
 - [ ] **邮件（二期）**：自建形态（Serverless + Resend/SMTP 等）或第三方 ESP，与 **opt-in / 退订 / 隐私文案**。
 - [x] **Front Matter**（`frontmatter.json`）已对接 **Astro** 与 `docs/`。
 
@@ -193,7 +193,7 @@
 | 4 | 文章 **分享区**；**`og:title` / `og:url`**；文章 **`og:type=article`**；微信扫码说明文案 | ✅ 已完成 |
 | 5 | 顶栏导航；Docusaurus **已移除** | ✅ 已完成 |
 | 6 | **邮件订阅**（二期或占位） | ⏳ 未开始 |
-| — | **可选增强**：全站/按篇 **`og:image`**；批量 **`description`**；首页弱化课程分组；**`Course.md`** 欢迎页是否恢复 | 🔜 按需 |
+| — | **可选增强**：按篇 **`og:image`**；首页从「最新更新 + 分组」继续演进（标签/自动目录树）；**`Course.md`** 欢迎页是否恢复 | 🔜 按需 |
 
 ---
 

@@ -19,6 +19,16 @@ const rawTitle = typeof data.title === 'string' ? data.title : undefined;
 const title = rawTitle?.trim() || entry.id.replace(/\.mdx?$/, '').split('/').pop() || '未命名';
 const description =
   typeof data.description === 'string' ? data.description : undefined;
+const ogImage = (() => {
+  const candidates = ['ogImage', 'og_image', 'image', 'cover', 'thumbnail'];
+  for (const key of candidates) {
+    const value = data[key];
+    if (typeof value === 'string' && value.trim()) {
+      return value.trim();
+    }
+  }
+  return undefined;
+})();
 
 const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
 let qrDataUrl = '';
@@ -34,6 +44,7 @@ try {
   description={description}
   path={path}
   ogType="article"
+  ogImage={ogImage}
 >
   <article class="prose">
     <p class="article-meta">

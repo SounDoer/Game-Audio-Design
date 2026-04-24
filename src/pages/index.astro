@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { stat } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const course = await getCollection('courseArticles');
@@ -33,6 +35,16 @@ function hrefTopic(entry: (typeof topic)[number]) {
   return `/articles/topic/${base}`;
 }
 
+async function mtimeOf(entryId: string, section: 'Course' | 'Topic') {
+  try {
+    const fullPath = resolve('docs', section, entryId);
+    const s = await stat(fullPath);
+    return s.mtime;
+  } catch {
+    return new Date(0);
+  }
+}
+
 const courseFiltered = course.filter((e) => {
   if (stripMd(e.id) === 'Course') return false;
   if ((e.data as { slug?: unknown }).slug === '/') return false;
@@ -48,6 +60,31 @@ const topicSorted = [...topic].sort(
     ((a.data as { sidebar_position?: number }).sidebar_position ?? 999) -
     ((b.data as { sidebar_position?: number }).sidebar_position ?? 999),
 );
+
+const latestArticles = (
+  await Promise.all([
+    ...courseFiltered.map(async (entry) => ({
+      kind: 'course' as const,
+      href: hrefCourse(entry),
+      title: titleOf(entry),
+      description: descriptionOf(entry),
+      updatedAt: await mtimeOf(entry.id, 'Course'),
+    })),
+    ...topic.map(async (entry) => ({
+      kind: 'topic' as const,
+      href: hrefTopic(entry),
+      title: titleOf(entry),
+      description: descriptionOf(entry),
+      updatedAt: await mtimeOf(entry.id, 'Topic'),
+    })),
+  ])
+).sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
+
+const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
 ---
 
 <BaseLayout
@@ -57,8 +94,26 @@ const topicSorted = [...topic].sort(
 >
   <h1>Game Audio Design</h1>
   <p style="color:var(--muted);">
-    Course 与 Topic 为文章主目录；Resource 为独立介绍页，见下「其他」。
+    先看「最新更新」，再按 Course / Topic 继续浏览；Resource 为独立介绍页，见下「其他」。
   </p>
+
+  <section class="index-section">
+    <h2>最新更新</h2>
+    <ul class="index-list">
+      {
+        latestArticles.map((e) => (
+          <li>
+            <span class="badge">{e.kind}</span>
+            <a href={e.href}>{e.title}</a>
+            <span style="color:var(--muted);font-size:0.85rem;">
+              {' '}
+              — {e.description}（{dateFormatter.format(e.updatedAt)}）
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
   <section class="index-section">
     <h2>Course</h2>
