@@ -4,14 +4,15 @@
 
 ---
 
-## 已定案决策（2026-04-24）
+## 已定案决策（2026-04-24；Astro / Node 于同日补充）
 
 | 主题 | 结论 |
 |------|------|
 | **托管与部署** | **维持现状**：GitHub Actions 构建静态站点 → 发布至 GitHub Pages；自定义域名 **`gad.soundoer.com`**（`CNAME`）与现有 workflow 先不改。 |
 | **邮件订阅** | **优先评估自建**：若实现与运维成本可接受则自建；若明显拖慢上线，再采用 **第三方 ESP + 表单** 作为备选。 |
 | **语言** | **收敛为单一语言**（内容与站点 UI 一致；建议默认 **中文 `zh-Hans`**，与现有正文主体一致）。 |
-| **前端框架** | **弃用 Docusaurus**，迁移到更轻的 **静态站点生成方案**（如 Astro / Eleventy 等，具体栈实施阶段再定），产出仍为由 CI 构建的静态 HTML，部署链路不变。 |
+| **SSG 与框架** | **弃用 Docusaurus**，采用 **[Astro](https://astro.build/)** 作为静态站点生成框架；产出仍为由 CI 构建的静态 HTML，部署链路不变。官方文档：<https://docs.astro.build/>。 |
+| **构建用 Node** | 目标采用 **Astro 6** 时，CI 与本机需 **Node 22+**（Astro 6 不再支持 Node 18/20），迁移落地时请将 `.github/workflows/deploy.yml` 中 `node-version` 从 **18 提升至 22**。若过渡期暂时锁定 **Astro 5**，可按该版本文档选择 Node；**默认目标仍为 Astro 6 + Node 22**。参见 [Astro 6.0 发布公告](https://astro.build/blog/astro-6/)。 |
 | **分享预览** | **无独立封面图也可**：但至少保证链接在微信等 IM 里展开时 **有清晰标题（及建议有短摘要）**。实现上依赖每页 HTML 的 **Open Graph `og:title`**（及 `og:description` 等）；详见下文「何为复制链接 + OG 卡片」。 |
 
 ---
@@ -99,9 +100,9 @@
 
 ---
 
-## 四、技术方向（已定：弃用 Docusaurus）
+## 四、技术方向（已定：Astro，弃用 Docusaurus）
 
-- **目标形态**：轻量 **SSG**（候选：Astro、Eleventy 等）+ 现有 **GitHub Actions → 静态产物 → gh-pages**。
+- **目标形态**：**Astro** + 现有 **GitHub Actions → 静态产物 → gh-pages**；构建链对齐 **Node 22+**（见上文已定案表）。
 - **不再考虑**：在 Docusaurus 上继续堆插件作为长期方案。
 
 **基础设施**：托管部署先不变；**Cloudflare** 等加速/边缘能力仍为可选、非本次定案范围。
@@ -110,7 +111,7 @@
 
 ## 五、仍待实施阶段细化的事项
 
-- [ ] **SSG 具体选型**（Astro vs Eleventy vs 其他）与目录约定（`content/` 是否仍映射原 `docs/` 结构）。
+- [ ] **内容目录约定**（例如 `src/content/` 是否映射原 `docs/Course` 等结构、slug 与旧 URL 是否兼容）。
 - [ ] **邮件自建** 的形态：例如 Serverless（Cloudflare Workers / Vercel Function）+ Resend / SMTP，与 **双重确认（opt-in）**、退订链接、隐私文案。
 - [ ] **`:::info` 等块** 迁移策略：改为 HTML aside、或 MDX 组件、或通用 remark 插件。
 - [ ] **Front Matter CMS**（`frontmatter.json`）是否继续对接新路径。
@@ -119,7 +120,7 @@
 
 ## 六、建议实施顺序（更新）
 
-1. 选定 SSG 与内容目录；搭最小可构建骨架，CI 产出仍发布到 **同一 GitHub Pages**。
+1. **Astro** 最小可构建骨架 + **Node 22** CI；内容目录约定；产出仍发布到 **同一 GitHub Pages**。
 2. 迁移内容与静态资源；统一 **HTTPS、canonical、默认 OG**。
 3. **RSS**。
 4. **邮件订阅**（自建或第三方落地其一）。
@@ -131,4 +132,4 @@
 ## 七、文档维护
 
 - 关键决策已记入文首「已定案决策」表；后续变更请 **改表并追加日期**。
-- 初稿：2026-04-24；已定案补充：2026-04-24。
+- 初稿：2026-04-24；已定案补充：2026-04-24（含 Astro 选型、Astro 6 / Node 22 CI 备忘）。
