@@ -16,6 +16,13 @@ function titleOf(entry: (typeof course)[number]) {
   return stripMd(entry.id).split('/').pop() || entry.id;
 }
 
+function descriptionOf(entry: (typeof course)[number]) {
+  const d = entry.data as Record<string, unknown>;
+  const desc = typeof d.description === 'string' ? d.description.trim() : '';
+  if (desc) return desc;
+  return entry.id;
+}
+
 function hrefCourse(entry: (typeof course)[number]) {
   const base = stripMd(entry.id);
   return `/articles/course/${base}`;
@@ -61,7 +68,7 @@ const topicSorted = [...topic].sort(
           <li>
             <span class="badge">course</span>
             <a href={hrefCourse(e)}>{titleOf(e)}</a>
-            <span style="color:var(--muted);font-size:0.85rem;"> — {e.id}</span>
+            <span style="color:var(--muted);font-size:0.85rem;"> — {descriptionOf(e)}</span>
           </li>
         ))
       }
@@ -76,7 +83,7 @@ const topicSorted = [...topic].sort(
           <li>
             <span class="badge">topic</span>
             <a href={hrefTopic(e)}>{titleOf(e)}</a>
-            <span style="color:var(--muted);font-size:0.85rem;"> — {e.id}</span>
+            <span style="color:var(--muted);font-size:0.85rem;"> — {descriptionOf(e)}</span>
           </li>
         ))
       }
