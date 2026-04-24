@@ -1,6 +1,7 @@
 ---
 layout: default
 nav_exclude: true
+description: 梳理游戏音频设计所需能力结构为入门与进阶提供技能发展参考。
 ---
 
 # 非全面的游戏音频设计技能树

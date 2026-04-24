@@ -1,6 +1,7 @@
 ---
 layout: default
 nav_exclude: true
+description: 展望游戏音频设计未来趋势并讨论程序化声学建模与空间声发展方向。
 ---
 
 # 展望游戏音频设计的发展方向

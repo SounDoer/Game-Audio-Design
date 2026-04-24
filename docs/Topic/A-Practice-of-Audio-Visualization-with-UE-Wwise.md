@@ -1,6 +1,7 @@
 ---
 layout: default
 nav_exclude: true
+description: 基于 UE 与 Wwise 的音频可视化实践案例涵盖时域频域与实现流程。
 ---
 
 # “音频可视化” UE & Wwise 实践案例

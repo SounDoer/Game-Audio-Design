@@ -1,6 +1,7 @@
 ---
 layout: default
 nav_exclude: true
+description: 以对象音频案例解析声音设计与混音流程并说明端到端实现要点。
 ---
 
 # Object-Based Audio 音频设计与混音案例

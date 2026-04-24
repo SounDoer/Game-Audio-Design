@@ -1,6 +1,7 @@
 ---
 layout: default
 nav_exclude: true
+description: 记录 Microsoft Project Acoustics 声波物理模拟测试流程结果与应用观察。
 ---
 
 # Microsoft Project Acoustics 声波物理模拟测试

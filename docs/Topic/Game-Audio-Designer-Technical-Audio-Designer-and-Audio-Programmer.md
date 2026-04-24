@@ -1,6 +1,7 @@
 ---
 layout: default
 nav_exclude: true
+description: 对比音频设计师技术音频与音频程序员的职责边界与协作模式。
 ---
 
 # 游戏音频设计师、技术音频设计师和音频程序员

@@ -4,6 +4,7 @@
 <!--nav_exclude: true-->
 <!--permalink: /-->
 sidebar_position: 0
+description: 文档索引页汇总专题文章入口用于快速浏览游戏音频设计内容全貌。
 ---
 
 # Xichen's Game Audio Design Document

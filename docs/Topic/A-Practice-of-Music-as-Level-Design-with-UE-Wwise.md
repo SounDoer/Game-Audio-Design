@@ -1,6 +1,7 @@
 ---
 layout: default
 nav_exclude: true
+description: 通过 UE 与 Wwise 实战展示音乐作为关卡设计的思路方法与落地实现。
 ---
 
 # “音乐作为关卡设计” UE & Wwise 实践案例
