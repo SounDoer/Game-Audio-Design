@@ -1,0 +1,30 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const topic = await getCollection('topicArticles');
+
+  function stripMd(id: string) {
+    return id.replace(/\.mdx?$/, '');
+  }
+
+  return topic.map((entry) => ({
+    params: { rest: stripMd(entry.id) },
+    props: { entryId: entry.id },
+  }));
+}
+
+const { entryId } = Astro.props;
+const entry = await getEntry('topicArticles', entryId);
+if (!entry) {
+  return Astro.redirect('/404');
+}
+const { Content } = await render(entry);
+const rest = Astro.params.rest ?? '';
+const path = `/articles/topic/${rest}`;
+---
+
+<ArticleLayout entry={entry} path={path} sectionLabel="topic">
+  <Content />
+</ArticleLayout>

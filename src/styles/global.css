@@ -1,0 +1,180 @@
+:root {
+  color-scheme: light dark;
+  --fg: #1a1a1a;
+  --muted: #5c5c5c;
+  --bg: #fafafa;
+  --card: #fff;
+  --border: #e5e5e5;
+  --link: #0b5fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #f0f0f0;
+    --muted: #a3a3a3;
+    --bg: #121212;
+    --card: #1a1a1a;
+    --border: #333;
+    --link: #6eb3ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: system-ui, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei',
+    sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--link);
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+.site-header strong a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.site-header nav a {
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.prose {
+  max-width: 65ch;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose pre {
+  overflow-x: auto;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: rgba(127, 127, 127, 0.08);
+  font-size: 0.9em;
+}
+
+.prose blockquote {
+  margin: 0.75rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+
+.article-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.share-box {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.share-box h2 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.share-row button {
+  cursor: pointer;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+  font: inherit;
+}
+
+.share-row button:hover {
+  border-color: var(--link);
+}
+
+.share-qr {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.share-qr img {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.index-section {
+  margin-top: 2rem;
+}
+
+.index-section h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.index-list li {
+  margin: 0.35rem 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(127, 127, 127, 0.15);
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}

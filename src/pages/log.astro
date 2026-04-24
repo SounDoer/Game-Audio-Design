@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const entries = await getCollection('logPage');
+const entry = entries[0];
+if (!entry) {
+  throw new Error('Missing docs/Log.md');
+}
+const { Content } = await render(entry);
+const data = entry.data as Record<string, unknown>;
+const title =
+  typeof data.title === 'string' && data.title.trim()
+    ? data.title.trim()
+    : 'Log';
+---
+
+<BaseLayout title={`${title} | Game Audio Design`} path="/log">
+  <article class="prose">
+    <h1>{title}</h1>
+    <Content />
+  </article>
+</BaseLayout>

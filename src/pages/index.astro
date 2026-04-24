@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const course = await getCollection('courseArticles');
+const topic = await getCollection('topicArticles');
+
+function stripMd(id: string) {
+  return id.replace(/\.mdx?$/, '');
+}
+
+function titleOf(entry: (typeof course)[number]) {
+  const d = entry.data as Record<string, unknown>;
+  const t = typeof d.title === 'string' ? d.title.trim() : '';
+  if (t) return t;
+  return stripMd(entry.id).split('/').pop() || entry.id;
+}
+
+function hrefCourse(entry: (typeof course)[number]) {
+  const base = stripMd(entry.id);
+  return `/articles/course/${base}`;
+}
+
+function hrefTopic(entry: (typeof topic)[number]) {
+  const base = stripMd(entry.id);
+  return `/articles/topic/${base}`;
+}
+
+const courseFiltered = course.filter((e) => {
+  if (stripMd(e.id) === 'Course') return false;
+  if ((e.data as { slug?: unknown }).slug === '/') return false;
+  return true;
+});
+const courseSorted = [...courseFiltered].sort(
+  (a, b) =>
+    ((a.data as { sidebar_position?: number }).sidebar_position ?? 999) -
+    ((b.data as { sidebar_position?: number }).sidebar_position ?? 999),
+);
+const topicSorted = [...topic].sort(
+  (a, b) =>
+    ((a.data as { sidebar_position?: number }).sidebar_position ?? 999) -
+    ((b.data as { sidebar_position?: number }).sidebar_position ?? 999),
+);
+---
+
+<BaseLayout
+  title="Game Audio Design | 目录"
+  description="游戏音频设计专题与文章索引。"
+  path="/"
+>
+  <h1>Game Audio Design</h1>
+  <p style="color:var(--muted);">
+    Course 与 Topic 已合并为同一文章流；以下为按来源分组的目录（Resource 首发未接）。
+  </p>
+
+  <section class="index-section">
+    <h2>Course</h2>
+    <ul class="index-list">
+      {
+        courseSorted.map((e) => (
+          <li>
+            <span class="badge">course</span>
+            <a href={hrefCourse(e)}>{titleOf(e)}</a>
+            <span style="color:var(--muted);font-size:0.85rem;"> — {e.id}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="index-section">
+    <h2>Topic</h2>
+    <ul class="index-list">
+      {
+        topicSorted.map((e) => (
+          <li>
+            <span class="badge">topic</span>
+            <a href={hrefTopic(e)}>{titleOf(e)}</a>
+            <span style="color:var(--muted);font-size:0.85rem;"> — {e.id}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="index-section">
+    <h2>其他</h2>
+    <ul class="index-list">
+      <li>
+        <a href="/log">Log</a>
+        <span style="color:var(--muted);font-size:0.85rem;"> — 更新与说明</span>
+      </li>
+      <li>
+        <a href="/rss.xml">RSS</a>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>

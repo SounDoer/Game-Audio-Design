@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** pathname，以 / 开头，无尾部斜杠 */
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
+const desc =
+  description?.trim() ||
+  'Game Audio Design — 游戏音频设计专题与文章，持续更新。';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Game Audio Design" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+  </head>
+  <body>
+    <header class="site-header">
+      <strong><a href="/">Game Audio Design</a></strong>
+      <nav>
+        <a href="/">目录</a>
+        <a href="/log">Log</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

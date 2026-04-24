@@ -1,0 +1,78 @@
+---
+import QRCode from 'qrcode';
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+type ArticleCollection = 'courseArticles' | 'topicArticles';
+
+interface Props {
+  entry: CollectionEntry<ArticleCollection>;
+  path: string;
+  /** 用于展示，如 course / topic */
+  sectionLabel: string;
+}
+
+const { entry, path, sectionLabel } = Astro.props;
+
+const data = entry.data as Record<string, unknown>;
+const rawTitle = typeof data.title === 'string' ? data.title : undefined;
+const title = rawTitle?.trim() || entry.id.replace(/\.mdx?$/, '').split('/').pop() || '未命名';
+const description =
+  typeof data.description === 'string' ? data.description : undefined;
+
+const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
+let qrDataUrl = '';
+try {
+  qrDataUrl = await QRCode.toDataURL(canonical, { margin: 1, width: 180 });
+} catch {
+  qrDataUrl = '';
+}
+---
+
+<BaseLayout title={`${title} | Game Audio Design`} description={description} path={path}>
+  <article class="prose">
+    <p class="article-meta">
+      <span class="badge">{sectionLabel}</span>
+      <span>{entry.id}</span>
+    </p>
+    <slot />
+  </article>
+
+  <section class="share-box" aria-labelledby="share-heading">
+    <h2 id="share-heading">分享</h2>
+    <div class="share-row">
+      <button type="button" id="copy-link-btn">复制链接</button>
+      {
+        qrDataUrl ? (
+          <div class="share-qr">
+            <img src={qrDataUrl} width="180" height="180" alt="当前页链接二维码" />
+            <span>微信扫一扫打开</span>
+          </div>
+        ) : null
+      }
+    </div>
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:0.75rem;">
+      在微信内打开后，可使用右上角「···」转发或分享到朋友圈。
+    </p>
+  </section>
+
+  <script is:inline define:vars={{ canonical }}>
+    (function () {
+      var btn = document.getElementById('copy-link-btn');
+      if (!btn || !canonical) return;
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(canonical).then(
+          function () {
+            btn.textContent = '已复制';
+            setTimeout(function () {
+              btn.textContent = '复制链接';
+            }, 2000);
+          },
+          function () {
+            prompt('请手动复制链接：', canonical);
+          },
+        );
+      });
+    })();
+  </script>
+</BaseLayout>
