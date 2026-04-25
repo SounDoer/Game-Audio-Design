@@ -1,0 +1,41 @@
+---
+interface Leaf {
+  title: string;
+  href: string;
+  description: string;
+}
+
+interface TreeNodeData {
+  label: string;
+  children: TreeNodeData[];
+  leaves: Leaf[];
+}
+
+interface Props {
+  node: TreeNodeData;
+  open?: boolean;
+}
+
+const { node, open = false } = Astro.props;
+---
+
+<li>
+  <details open={open}>
+    <summary>{node.label}</summary>
+    <ul class="tree-list">
+      {
+        node.children.map((child) => (
+          <Astro.self node={child} />
+        ))
+      }
+      {
+        node.leaves.map((leaf) => (
+          <li>
+            <a href={leaf.href}>{leaf.title}</a>
+            <span style="color:var(--muted);font-size:0.85rem;"> — {leaf.description}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+</li>

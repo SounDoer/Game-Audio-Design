@@ -169,6 +169,35 @@ main {
   margin: 0.35rem 0;
 }
 
+.tree-root,
+.tree-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.tree-list {
+  margin-top: 0.35rem;
+  padding-left: 1rem;
+  border-left: 1px dashed var(--border);
+}
+
+.tree-root li,
+.tree-list li {
+  margin: 0.35rem 0;
+}
+
+.tree-root summary,
+.tree-list summary {
+  cursor: pointer;
+  user-select: none;
+}
+
+.tree-root details[open] > summary,
+.tree-list details[open] > summary {
+  color: var(--fg);
+}
+
 .badge {
   display: inline-block;
   font-size: 0.7rem;
