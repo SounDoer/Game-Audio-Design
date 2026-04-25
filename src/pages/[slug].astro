@@ -1,0 +1,42 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import { articleSlugFromTitle, isArticleEntry, titleFromEntry } from '../lib/article-slug';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('articles');
+  const articleEntries = entries.filter((entry) => isArticleEntry(entry.id));
+  const slugSet = new Set<string>();
+
+  return articleEntries.map((entry) => {
+    const data = entry.data as Record<string, unknown>;
+    const title = titleFromEntry(entry.id, data);
+    const slug = articleSlugFromTitle(title);
+
+    if (!slug) {
+      throw new Error(`Invalid empty slug for article: ${entry.id}`);
+    }
+    if (slugSet.has(slug)) {
+      throw new Error(`Duplicated article slug "${slug}". Please adjust titles.`);
+    }
+    slugSet.add(slug);
+
+    return {
+      params: { slug },
+      props: { entryId: entry.id, slug },
+    };
+  });
+}
+
+const { entryId, slug } = Astro.props;
+const entry = await getEntry('articles', entryId);
+if (!entry) {
+  return Astro.redirect('/404');
+}
+const { Content } = await render(entry);
+const path = `/${slug}`;
+---
+
+<ArticleLayout entry={entry} path={path} sectionLabel="article">
+  <Content />
+</ArticleLayout>

@@ -1,151 +1,23 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TreeNode from '../components/TreeNode.astro';
+import { render } from 'astro:content';
 
-const course = await getCollection('courseArticles');
-const topic = await getCollection('topicArticles');
-type Entry = (typeof course)[number];
-
-function stripMd(id: string) {
-  return id.replace(/\.mdx?$/, '');
+const pages = await getCollection('homePage');
+const homeEntry = pages[0];
+if (!homeEntry) {
+  throw new Error('Missing docs/Home.md');
 }
-
-function titleOf(entry: Entry) {
-  const d = entry.data as Record<string, unknown>;
-  const t = typeof d.title === 'string' ? d.title.trim() : '';
-  if (t) return t;
-  return stripMd(entry.id).split('/').pop() || entry.id;
-}
-
-function descriptionOf(entry: Entry) {
-  const d = entry.data as Record<string, unknown>;
-  const desc = typeof d.description === 'string' ? d.description.trim() : '';
-  if (desc) return desc;
-  return entry.id;
-}
-
-function hrefCourse(entry: Entry) {
-  const base = stripMd(entry.id);
-  return `/articles/course/${base}`;
-}
-
-function hrefTopic(entry: Entry) {
-  const base = stripMd(entry.id);
-  return `/articles/topic/${base}`;
-}
-
-interface Leaf {
-  title: string;
-  href: string;
-  description: string;
-}
-
-interface TreeNode {
-  label: string;
-  children: TreeNode[];
-  leaves: Leaf[];
-}
-
-type TreeNodeMap = Omit<TreeNode, 'children'> & { children: Map<string, TreeNodeMap> };
-
-function createNode(label: string): TreeNodeMap {
-  return { label, children: new Map(), leaves: [] };
-}
-
-function normalizeLabel(segment: string) {
-  return segment
-    .replace(/[-_]+/g, ' ')
-    .replace(/\b\w/g, (char) => char.toUpperCase());
-}
-
-function buildTree(entries: Entry[], section: 'course' | 'topic') {
-  const root = createNode(section === 'course' ? 'Course' : 'Topic');
-  const sorted = [...entries].sort((a, b) => stripMd(a.id).localeCompare(stripMd(b.id)));
-
-  for (const entry of sorted) {
-    const segments = stripMd(entry.id).split('/').filter(Boolean);
-    const filename = segments.pop();
-    if (!filename) continue;
-
-    let node = root;
-    for (const segment of segments) {
-      let child = node.children.get(segment);
-      if (!child) {
-        child = createNode(normalizeLabel(segment));
-        node.children.set(segment, child);
-      }
-      node = child;
-    }
-
-    node.leaves.push({
-      title: titleOf(entry),
-      href: section === 'course' ? hrefCourse(entry) : hrefTopic(entry),
-      description: descriptionOf(entry),
-    });
-  }
-
-  return root;
-}
-
-function finalizeTree(node: TreeNodeMap): TreeNode {
-  const children = Array.from(node.children.entries())
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([, child]) => finalizeTree(child));
-  return {
-    label: node.label,
-    children,
-    leaves: node.leaves,
-  };
-}
-
-const courseFiltered = course.filter((e) => {
-  if (stripMd(e.id) === 'Course') return false;
-  if ((e.data as { slug?: unknown }).slug === '/') return false;
-  return true;
-});
-const courseTree = finalizeTree(buildTree(courseFiltered, 'course'));
-const topicTree = finalizeTree(buildTree(topic, 'topic'));
+const { Content } = await render(homeEntry);
 ---
 
 <BaseLayout
   title="Game Audio Design | 目录"
-  description="游戏音频设计专题与文章索引。"
+  description="手动维护的文章目录与站点索引。"
   path="/"
 >
   <h1>Game Audio Design</h1>
-  <p style="color:var(--muted);">
-    Course 与 Topic 为文章主目录；Resource 为独立介绍页，见下「其他」。
-  </p>
-
-  <section class="index-section">
-    <h2>Course</h2>
-    <ul class="tree-root">
-      <TreeNode node={courseTree} open={true} />
-    </ul>
-  </section>
-
-  <section class="index-section">
-    <h2>Topic</h2>
-    <ul class="tree-root">
-      <TreeNode node={topicTree} open={true} />
-    </ul>
-  </section>
-
-  <section class="index-section">
-    <h2>其他</h2>
-    <ul class="index-list">
-      <li>
-        <a href="/resource">Resource</a>
-        <span style="color:var(--muted);font-size:0.85rem;"> — 资源与外链（施工中）</span>
-      </li>
-      <li>
-        <a href="/log">Log</a>
-        <span style="color:var(--muted);font-size:0.85rem;"> — 更新与说明</span>
-      </li>
-      <li>
-        <a href="/rss.xml">RSS</a>
-      </li>
-    </ul>
-  </section>
+  <article class="prose">
+    <Content />
+  </article>
 </BaseLayout>

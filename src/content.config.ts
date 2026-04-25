@@ -5,12 +5,12 @@ import { glob } from 'astro/loaders';
 const looseFrontmatter = z.record(z.string(), z.unknown());
 
 export const collections = {
-  courseArticles: defineCollection({
-    loader: glob({ pattern: '**/*.md', base: './docs/Course' }),
+  articles: defineCollection({
+    loader: glob({ pattern: '**/*.md', base: './docs' }),
     schema: looseFrontmatter,
   }),
-  topicArticles: defineCollection({
-    loader: glob({ pattern: '**/*.md', base: './docs/Topic' }),
+  homePage: defineCollection({
+    loader: glob({ pattern: 'Home.md', base: './docs' }),
     schema: looseFrontmatter,
   }),
   logPage: defineCollection({

@@ -2,23 +2,15 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
+import { articleSlugFromTitle, isArticleEntry, titleFromEntry } from '../lib/article-slug';
 
-function stripMd(id: string) {
-  return id.replace(/\.mdx?$/, '');
-}
-
-function articleLink(
-  kind: 'course' | 'topic',
-  id: string,
-  site: URL | string | undefined,
-) {
-  const base = stripMd(id);
-  const path = `/articles/${kind}/${base}`;
+function articleLink(title: string, site: URL | string | undefined) {
+  const path = `/${articleSlugFromTitle(title)}`;
   return new URL(path, site).href;
 }
 
-function mtime(kind: 'course' | 'topic', id: string): Date {
-  const rel = join('docs', kind === 'course' ? 'Course' : 'Topic', id);
+function mtimeArticle(id: string): Date {
+  const rel = join('docs', id);
   try {
     return statSync(rel).mtime;
   } catch {
@@ -36,15 +28,12 @@ function mtimeResource(id: string): Date {
 }
 
 function titleOf(data: Record<string, unknown>, id: string) {
-  const t = typeof data.title === 'string' ? data.title.trim() : '';
-  if (t) return t;
-  return stripMd(id).split('/').pop() || id;
+  return titleFromEntry(id, data);
 }
 
 export async function GET(context: { site: URL | undefined }) {
   const { site } = context;
-  const course = await getCollection('courseArticles');
-  const topic = await getCollection('topicArticles');
+  const articles = await getCollection('articles');
   const resource = await getCollection('resourcePages');
 
   const items: {
@@ -54,24 +43,14 @@ export async function GET(context: { site: URL | undefined }) {
     description?: string;
   }[] = [];
 
-  for (const e of course) {
-    if (stripMd(e.id) === 'Course') continue;
-    if ((e.data as { slug?: unknown }).slug === '/') continue;
+  for (const e of articles) {
+    if (!isArticleEntry(e.id)) continue;
     const data = e.data as Record<string, unknown>;
+    const title = titleOf(data, e.id);
     items.push({
-      title: titleOf(data, e.id),
-      link: articleLink('course', e.id, site),
-      pubDate: mtime('course', e.id),
-      description:
-        typeof data.description === 'string' ? data.description : undefined,
-    });
-  }
-  for (const e of topic) {
-    const data = e.data as Record<string, unknown>;
-    items.push({
-      title: titleOf(data, e.id),
-      link: articleLink('topic', e.id, site),
-      pubDate: mtime('topic', e.id),
+      title,
+      link: articleLink(title, site),
+      pubDate: mtimeArticle(e.id),
       description:
         typeof data.description === 'string' ? data.description : undefined,
     });
@@ -96,7 +75,7 @@ export async function GET(context: { site: URL | undefined }) {
 
   return rss({
     title: 'Game Audio Design',
-    description: '游戏音频设计 — Course、Topic、Resource 与更新聚合',
+    description: '游戏音频设计 — 文章、Resource 与更新聚合',
     site: site ?? 'https://gad.soundoer.com',
     items,
     customData: '<language>zh-cn</language>',
