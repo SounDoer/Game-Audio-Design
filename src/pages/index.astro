@@ -17,7 +17,25 @@ const { Content } = await render(homeEntry);
   path="/"
 >
   <h1>Game Audio Design</h1>
-  <article class="prose">
+  <article class="prose home-index-content">
     <Content />
   </article>
+  <script is:inline>
+    (function () {
+      var root = document.querySelector('.home-index-content');
+      if (!root) return;
+
+      var excluded = new Set(['/resource', '/log', '/rss.xml', '/']);
+      var links = root.querySelectorAll('a[href]');
+      links.forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (!href) return;
+        if (!href.startsWith('/')) return;
+        if (href.startsWith('/#')) return;
+        if (excluded.has(href)) return;
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      });
+    })();
+  </script>
 </BaseLayout>
