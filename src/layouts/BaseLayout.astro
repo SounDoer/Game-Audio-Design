@@ -3,6 +3,8 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  /** 可选：社交分享标题（不传则与 title 相同） */
+  ogTitle?: string;
   description?: string;
   /** pathname，以 / 开头，无尾部斜杠 */
   path: string;
@@ -12,11 +14,12 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, path, ogType = 'website', ogImage } = Astro.props;
+const { title, ogTitle, description, path, ogType = 'website', ogImage } = Astro.props;
 const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
 const desc =
   description?.trim() ||
   'Game Audio Design — 游戏音频设计专题与文章，持续更新。';
+const resolvedOgTitle = typeof ogTitle === 'string' && ogTitle.trim() ? ogTitle.trim() : title;
 const defaultOgImagePath = '/img/GAD_Logo_Black.png';
 const resolvedOgImage = (() => {
   if (typeof ogImage === 'string' && ogImage.trim()) {
@@ -43,7 +46,7 @@ const resolvedOgImageType = (() => {
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/img/GAD_Logo.svg" type="image/svg+xml" />
     <meta property="og:type" content={ogType} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={resolvedOgTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={resolvedOgImage} />
@@ -54,7 +57,7 @@ const resolvedOgImageType = (() => {
     <meta property="og:site_name" content="Game Audio Design" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={resolvedOgTitle} />
     <meta name="twitter:description" content={desc} />
     <meta name="twitter:image" content={resolvedOgImage} />
   </head>
