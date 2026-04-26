@@ -17,11 +17,19 @@ const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
 const desc =
   description?.trim() ||
   'Game Audio Design — 游戏音频设计专题与文章，持续更新。';
+const defaultOgImagePath = '/img/GAD_Logo_Black.png';
 const resolvedOgImage = (() => {
   if (typeof ogImage === 'string' && ogImage.trim()) {
     return new URL(ogImage.trim(), Astro.site).href;
   }
-  return new URL('/img/GAD_Logo.svg', Astro.site).href;
+  return new URL(defaultOgImagePath, Astro.site).href;
+})();
+const resolvedOgImageType = (() => {
+  const lower = resolvedOgImage.toLowerCase();
+  if (lower.endsWith('.png')) return 'image/png';
+  if (lower.endsWith('.webp')) return 'image/webp';
+  if (lower.endsWith('.gif')) return 'image/gif';
+  return 'image/jpeg';
 })();
 ---
 
@@ -39,6 +47,10 @@ const resolvedOgImage = (() => {
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:secure_url" content={resolvedOgImage} />
+    <meta property="og:image:type" content={resolvedOgImageType} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Game Audio Design" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary_large_image" />
