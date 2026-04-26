@@ -1,13 +1,7 @@
 ---
 title: Home
-description: 首页手动目录
+description: Content
 ---
-
-# 文章目录
-
-> 本页为手动维护目录。文章链接统一为 `gad.soundoer.com/文章标题`。
-
-## 课程与主题（手动维护）
 
 - [前言](/preface)
 - [Xichen's Game Audio Design Document](/intro)
@@ -41,8 +35,6 @@ description: 首页手动目录
 - [游戏音频设计的工作流](/the-workflow-of-game-audio-design)
 - [展望游戏音频设计的发展方向](/what-will-the-next-gen-of-game-audio-design-be-like)
 - [游戏音频设计 Game Audio Design](/welcome-onboard)
-
-## 其他
 
 - [Resource](/resource)
 - [Log](/log)
