@@ -101,7 +101,7 @@ const orderedItems = [...pinnedItems, ...regularItems];
     <p id="empty-result" hidden>没有匹配文章。<button id="empty-clear" type="button">清空</button></p>
   </article>
 
-  <SubscribeForm heading="邮件订阅更新" />
+  <SubscribeForm compact={true} heading="订阅更新" />
   <script is:inline>
     (function () {
       var input = document.getElementById('article-search');

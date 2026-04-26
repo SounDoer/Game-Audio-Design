@@ -235,6 +235,113 @@ main {
   margin: 0 0 0.5rem;
 }
 
+.home-index-controls {
+  margin: 0 0 1.25rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.35rem 0.55rem;
+  background: var(--card);
+}
+
+.search-icon {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.search-box input[type='search'] {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+}
+
+.search-box button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1;
+}
+
+.article-count {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.article-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article-item {
+  margin: 0 0 1rem;
+  padding: 0 0 1rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.article-item:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.article-link {
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.article-link:hover {
+  text-decoration: underline;
+}
+
+.article-item p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.pin-mark {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+#empty-result {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+#empty-result button {
+  margin-left: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--fg);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.2rem 0.5rem;
+}
+
+.subscribe-box.is-compact {
+  margin-top: 2.5rem;
+  border-style: dashed;
+  background: transparent;
+}
+
 .index-list {
   list-style: none;
   padding: 0;
