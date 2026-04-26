@@ -33,6 +33,7 @@ const ogImage = (() => {
 
 const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
 let qrDataUrl = '';
+const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '').length > 0;
 try {
   qrDataUrl = await QRCode.toDataURL(canonical, { margin: 1, width: 180 });
 } catch {
@@ -54,39 +55,15 @@ try {
   <section class="share-box" aria-labelledby="share-heading">
     <h2 id="share-heading">分享</h2>
     <div class="share-row">
-      <button type="button" id="copy-link-btn">复制链接</button>
       {
         qrDataUrl ? (
           <div class="share-qr">
             <img src={qrDataUrl} width="180" height="180" alt="当前页链接二维码" />
-            <span>微信扫一扫打开</span>
+            <span>微信扫码分享</span>
           </div>
         ) : null
       }
     </div>
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:0.75rem;">
-      在微信内打开后，可使用右上角「···」转发或分享到朋友圈。
-    </p>
   </section>
-  <SubscribeForm compact={true} heading="订阅最新文章" />
-
-  <script is:inline define:vars={{ canonical }}>
-    (function () {
-      var btn = document.getElementById('copy-link-btn');
-      if (!btn || !canonical) return;
-      btn.addEventListener('click', function () {
-        navigator.clipboard.writeText(canonical).then(
-          function () {
-            btn.textContent = '已复制';
-            setTimeout(function () {
-              btn.textContent = '复制链接';
-            }, 2000);
-          },
-          function () {
-            prompt('请手动复制链接：', canonical);
-          },
-        );
-      });
-    })();
-  </script>
+  {hasNewsletter ? <SubscribeForm compact={true} heading="订阅最新文章" /> : null}
 </BaseLayout>

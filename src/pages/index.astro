@@ -59,6 +59,7 @@ const regularItems = allItems
   .sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const orderedItems = [...pinnedItems, ...regularItems];
+const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '').length > 0;
 ---
 
 <BaseLayout
@@ -107,7 +108,7 @@ const orderedItems = [...pinnedItems, ...regularItems];
     <p id="empty-result" hidden>没有匹配文章。<button id="empty-clear" type="button">清空</button></p>
   </article>
 
-  <SubscribeForm compact={true} heading="订阅更新" />
+  {hasNewsletter ? <SubscribeForm compact={true} heading="订阅更新" /> : null}
   <script is:inline>
     (function () {
       var input = document.getElementById('article-search');
