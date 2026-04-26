@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { title, ogTitle, description, path, ogType = 'website', ogImage } = Astro.props;
-const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
+const canonical = new URL(path, Astro.site).href;
 const desc =
   description?.trim() ||
   'Game Audio Design — 游戏音频设计专题与文章，持续更新。';

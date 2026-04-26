@@ -40,7 +40,7 @@ if (!entry) {
   return Astro.redirect('/404');
 }
 const { Content } = await render(entry);
-const path = `/${slug}`;
+const path = `/${slug}/`;
 ---
 
 <ArticleLayout entry={entry} path={path} sectionLabel="article">

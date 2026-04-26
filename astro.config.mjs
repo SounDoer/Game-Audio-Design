@@ -7,6 +7,6 @@ export default defineConfig({
   site: 'https://gad.soundoer.com',
   outDir: 'build',
   publicDir: 'static',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   integrations: [sitemap()],
 });

@@ -30,7 +30,7 @@ export async function GET(context: { site: URL | undefined }) {
     const title = displayTitleFromEntry(e.id, e.body ?? '', data);
     items.push({
       title,
-      link: new URL(`/${slug}`, baseSite).href,
+      link: new URL(`/${slug}/`, baseSite).href,
       pubDate,
       description:
         typeof data.description === 'string' ? data.description : undefined,

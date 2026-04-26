@@ -96,7 +96,7 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
             data-title-original={item.title}
             data-description={item.description.toLowerCase()}
           >
-            <a href={`/${item.slug}`} class="article-link">
+            <a href={`/${item.slug}/`} class="article-link">
               {item.pinned ? <span class="pin-mark">[置顶] </span> : null}
               <span class="article-title">{item.title}</span>
             </a>

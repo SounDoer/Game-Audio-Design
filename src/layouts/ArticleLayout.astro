@@ -31,7 +31,7 @@ const ogImage = (() => {
   return undefined;
 })();
 
-const canonical = new URL(path, Astro.site).href.replace(/\/$/, '');
+const canonical = new URL(path, Astro.site).href;
 let qrDataUrl = '';
 const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '').length > 0;
 try {
