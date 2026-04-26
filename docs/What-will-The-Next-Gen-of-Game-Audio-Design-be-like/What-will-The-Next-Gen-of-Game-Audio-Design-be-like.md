@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 展望游戏音频设计未来趋势并讨论程序化声学建模与空间声发展方向。
+slug: what-will-the-next-gen-of-game-audio-design-be-like
+date: 2020-12-13
 ---
 
 # 展望游戏音频设计的发展方向

@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 通过 UE 与 Wwise 实战展示音乐作为关卡设计的思路方法与落地实现。
+slug: a-practice-of-music-as-level-design-with-ue-wwise
+date: 2021-03-20
 ---
 
 # “音乐作为关卡设计” UE & Wwise 实践案例

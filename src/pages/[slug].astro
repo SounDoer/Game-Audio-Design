@@ -1,17 +1,23 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
 import ArticleLayout from '../layouts/ArticleLayout.astro';
-import { articleSlugFromTitle, isArticleEntry, titleFromEntry } from '../lib/article-slug';
+import { isArticleEntry, isPublishedByDate, slugFromEntry } from '../lib/article-slug';
 
 export async function getStaticPaths() {
   const entries = await getCollection('articles');
   const articleEntries = entries.filter((entry) => isArticleEntry(entry.id));
   const slugSet = new Set<string>();
+  const isProd = import.meta.env.PROD;
 
-  return articleEntries.map((entry) => {
+  return articleEntries
+    .filter((entry) => {
+      if (!isProd) return true;
+      const data = entry.data as Record<string, unknown>;
+      return isPublishedByDate(data.date);
+    })
+    .map((entry) => {
     const data = entry.data as Record<string, unknown>;
-    const title = titleFromEntry(entry.id, data);
-    const slug = articleSlugFromTitle(title);
+    const slug = slugFromEntry(entry.id, data);
 
     if (!slug) {
       throw new Error(`Invalid empty slug for article: ${entry.id}`);

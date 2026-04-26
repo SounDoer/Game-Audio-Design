@@ -1,6 +1,7 @@
 ---
 title: Home
 description: Content
+slug: home
 ---
 
 - [Object-Based Audio 音频设计与混音案例](/a-project-case-of-object-based-audio-design-and-mixing)

@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 记录 Microsoft Project Acoustics 声波物理模拟测试流程结果与应用观察。
+slug: microsoft-project-acoustics-wave-physics-simulation-playtest
+date: 2022-05-26
 ---
 
 # Microsoft Project Acoustics 声波物理模拟测试

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 104
 description: 讲解 Unreal Engine 与 Wwise 的整合步骤以及关键配置要点。
+slug: game-engine-audio-middleware-integration
 ---
 
 # 游戏引擎与游戏音频中间件的整合

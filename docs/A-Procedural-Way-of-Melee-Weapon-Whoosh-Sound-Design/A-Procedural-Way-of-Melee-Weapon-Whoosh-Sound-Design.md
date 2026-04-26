@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 以冷兵器 whoosh 为例讲解程序化音频设计中的参数建模与控制策略。
+slug: a-procedural-way-of-melee-weapon-whoosh-sound-design
+date: 2021-08-26
 ---
 
 # 冷兵器 Procedural Whoosh 音频设计案例

@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 通过图例梳理游戏音频设计工作流解析需求数据与实现协作关系。
+slug: the-workflow-of-game-audio-design
+date: 2020-09-01
 ---
 
 # 游戏音频设计的工作流

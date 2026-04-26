@@ -1,43 +1,192 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { render } from 'astro:content';
 import SubscribeForm from '../components/SubscribeForm.astro';
+import {
+  displayTitleFromEntry,
+  isArticleEntry,
+  parseDateOrNull,
+  slugFromEntry,
+} from '../lib/article-slug';
 
-const pages = await getCollection('homePage');
-const homeEntry = pages[0];
-if (!homeEntry) {
-  throw new Error('Missing docs/Home.md');
-}
-const { Content } = await render(homeEntry);
+type HomeItem = {
+  slug: string;
+  title: string;
+  description: string;
+  pinned: boolean;
+  pinnedOrder: number | null;
+  date: Date;
+};
+
+const entries = await getCollection('articles');
+const allItems: HomeItem[] = entries
+  .filter((entry) => isArticleEntry(entry.id))
+  .map((entry) => {
+    const data = entry.data as Record<string, unknown>;
+    const date = parseDateOrNull(data.date);
+    if (!date) return null;
+
+    const description = typeof data.description === 'string' ? data.description.trim() : '';
+    if (!description) return null;
+
+    const pinned = data.pinned === true;
+    const pinnedOrder = typeof data.pinnedOrder === 'number' ? data.pinnedOrder : null;
+
+    return {
+      slug: slugFromEntry(entry.id, data),
+      title: displayTitleFromEntry(entry.id, entry.body, data),
+      description,
+      pinned,
+      pinnedOrder,
+      date,
+    };
+  })
+  .filter((item): item is HomeItem => item !== null);
+
+const pinnedItems = allItems
+  .filter((item) => item.pinned)
+  .sort((a, b) => {
+    if (a.pinnedOrder !== null && b.pinnedOrder !== null && a.pinnedOrder !== b.pinnedOrder) {
+      return a.pinnedOrder - b.pinnedOrder;
+    }
+    return b.date.getTime() - a.date.getTime();
+  })
+  .slice(0, 3);
+
+const pinnedSlugSet = new Set(pinnedItems.map((item) => item.slug));
+const regularItems = allItems
+  .filter((item) => !pinnedSlugSet.has(item.slug))
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+const orderedItems = [...pinnedItems, ...regularItems];
 ---
 
 <BaseLayout
-  title="Game Audio Design | 目录"
-  description="手动维护的文章目录与站点索引。"
+  title="Game Audio Design"
+  description="Game Audio Design articles"
   path="/"
 >
-  <h1>Game Audio Design</h1>
-  <article class="prose home-index-content">
-    <Content />
+  <section class="home-index-controls">
+    <label class="search-box">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input
+        id="article-search"
+        type="search"
+        aria-label="Search title or description"
+        autocomplete="off"
+      />
+      <button id="clear-search" type="button" aria-label="Clear search" hidden>×</button>
+    </label>
+    <p id="article-count" class="article-count">{`共 ${orderedItems.length} 篇 / 当前匹配 ${orderedItems.length} 篇`}</p>
+  </section>
+
+  <article class="prose">
+    <ul id="article-list" class="article-list">
+      {
+        orderedItems.map((item) => (
+          <li
+            class="article-item"
+            data-title={item.title.toLowerCase()}
+            data-description={item.description.toLowerCase()}
+          >
+            <a href={`/${item.slug}`} class="article-link">
+              {item.pinned ? <span class="pin-mark">[置顶] </span> : null}
+              <span>{item.title}</span>
+            </a>
+            <p>{item.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <p id="empty-result" hidden>没有匹配文章。<button id="empty-clear" type="button">清空</button></p>
   </article>
+
   <SubscribeForm heading="邮件订阅更新" />
   <script is:inline>
     (function () {
-      var root = document.querySelector('.home-index-content');
-      if (!root) return;
+      var input = document.getElementById('article-search');
+      var clearBtn = document.getElementById('clear-search');
+      var emptyClear = document.getElementById('empty-clear');
+      var list = document.getElementById('article-list');
+      var items = list ? Array.prototype.slice.call(list.querySelectorAll('.article-item')) : [];
+      var count = document.getElementById('article-count');
+      var empty = document.getElementById('empty-result');
 
-      var excluded = new Set(['/resource', '/log', '/rss.xml', '/']);
-      var links = root.querySelectorAll('a[href]');
-      links.forEach(function (link) {
-        var href = link.getAttribute('href');
-        if (!href) return;
-        if (!href.startsWith('/')) return;
-        if (href.startsWith('/#')) return;
-        if (excluded.has(href)) return;
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
+      if (!input || !list || !count || !empty) return;
+
+      var desktopLike = window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches;
+
+      function updateOpenMode() {
+        var links = list.querySelectorAll('a[href]');
+        links.forEach(function (link) {
+          if (desktopLike) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          } else {
+            link.removeAttribute('target');
+            link.removeAttribute('rel');
+          }
+        });
+      }
+
+      function normalize(value) {
+        return String(value || '').toLowerCase();
+      }
+
+      function applyFilter() {
+        var query = normalize(input.value).trim();
+        var matched = 0;
+        items.forEach(function (item) {
+          var title = item.getAttribute('data-title') || '';
+          var description = item.getAttribute('data-description') || '';
+          var visible = !query || title.indexOf(query) >= 0 || description.indexOf(query) >= 0;
+          item.hidden = !visible;
+          if (visible) matched += 1;
+        });
+
+        count.textContent = '共 ' + items.length + ' 篇 / 当前匹配 ' + matched + ' 篇';
+        empty.hidden = matched !== 0;
+        if (clearBtn) {
+          clearBtn.hidden = !query;
+        }
+      }
+
+      function clearSearch() {
+        input.value = '';
+        applyFilter();
+        input.focus();
+      }
+
+      input.addEventListener('input', applyFilter);
+      input.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          if (input.value.trim()) {
+            clearSearch();
+          } else {
+            input.blur();
+          }
+        }
       });
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', clearSearch);
+      }
+      if (emptyClear) {
+        emptyClear.addEventListener('click', clearSearch);
+      }
+
+      document.addEventListener('keydown', function (event) {
+        var active = document.activeElement;
+        var tag = active && active.tagName ? active.tagName.toLowerCase() : '';
+        if (event.key === '/' && tag !== 'input' && tag !== 'textarea') {
+          event.preventDefault();
+          input.focus();
+        }
+      });
+
+      updateOpenMode();
+      applyFilter();
     })();
   </script>
 </BaseLayout>

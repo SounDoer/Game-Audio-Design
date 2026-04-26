@@ -1,6 +1,7 @@
 ---
 sidebar_position: 103
 description: 介绍游戏音频中间件基础能力与 Wwise 入门安装配置流程。
+slug: game-audio-middleware-intro
 ---
 
 # 游戏音频中间件

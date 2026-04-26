@@ -1,6 +1,8 @@
 ---
 title: Log
 description: 站点日志页用于记录阶段性更新背景说明与长期内容维护脉络。
+slug: log
+date: 2020-01-08
 ---
 
 ……

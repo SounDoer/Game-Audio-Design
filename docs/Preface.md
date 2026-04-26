@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 前言说明写作初衷目标受众与文档定位为后续内容阅读建立背景。
+slug: preface
+date: 2020-01-08
 ---
 
 # 前言

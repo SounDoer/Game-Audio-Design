@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 从解构与建模的方法论出发讨论游戏声音设计的分析框架与实践思考。
+slug: a-thought-of-designing-sound-in-game-deconstruction-and-modeling
+date: 2020-07-18
 ---
 
 # 游戏音频设计的一种思路：解构与建模

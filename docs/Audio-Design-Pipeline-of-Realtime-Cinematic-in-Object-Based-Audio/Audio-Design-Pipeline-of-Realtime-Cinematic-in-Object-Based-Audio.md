@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 解析基于对象音频的实时动画音频设计流程与 Wwise 管线实践。
+slug: audio-design-pipeline-of-realtime-cinematic-in-object-based-audio
+date: 2022-03-29
 ---
 
 # 基于对象音频的游戏实时动画音频设计流程

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 101
 description: 版本控制基础与常见工具概览用于支持音频团队协作与迭代管理。
+slug: version-control-intro
 ---
 
 # 版本控制

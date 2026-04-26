@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 分享检索音频设计资讯的方法渠道与实践经验帮助建立高效信息流。
+slug: how-to-search-audio-design-information
+date: 2020-05-05
 ---
 
 # 如何搜索有关音频设计的资讯

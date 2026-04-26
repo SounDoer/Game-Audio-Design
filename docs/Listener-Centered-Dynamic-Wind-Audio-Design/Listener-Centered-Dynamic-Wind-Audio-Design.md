@@ -2,6 +2,8 @@
 layout: default
 nav_exclude: true
 description: 从听者中心视角拆解动态风声系统并展示参数计算与触发控制方法。
+slug: listener-centered-dynamic-wind-audio-design
+date: 2021-12-03
 ---
 
 # 基于听者的动态风声设计

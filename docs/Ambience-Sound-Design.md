@@ -1,6 +1,7 @@
 ---
 sidebar_position: 42
 description: 围绕环境声设计讲解场景氛围构建与动态变化控制的常用方法。
+slug: ambience-sound-design
 ---
 
 # 环境声设计

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 102
 description: 介绍游戏引擎基础与 Unreal Engine 的安装使用入门流程。
+slug: game-engine-intro
 ---
 
 # 游戏引擎
