@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>a-practice-of-audio-visualization-with-ue-wwise | Game Audio Design</title><meta name="description" content="基于 UE 与 Wwise 的音频可视化实践案例涵盖时域频域与实现流程。"><link rel="canonical" href="https://gad.soundoer.com/a-practice-of-audio-visualization-with-ue-wwise"><link rel="icon" href="/img/GAD_Logo.svg" type="image/svg+xml"><meta property="og:type" content="article"><meta property="og:title" content="a-practice-of-audio-visualization-with-ue-wwise | Game Audio Design"><meta property="og:description" content="基于 UE 与 Wwise 的音频可视化实践案例涵盖时域频域与实现流程。"><meta property="og:url" content="https://gad.soundoer.com/a-practice-of-audio-visualization-with-ue-wwise"><meta property="og:image" content="https://gad.soundoer.com/img/GAD_Logo.svg"><meta property="og:site_name" content="Game Audio Design"><meta property="og:locale" content="zh_CN"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="a-practice-of-audio-visualization-with-ue-wwise | Game Audio Design"><meta name="twitter:description" content="基于 UE 与 Wwise 的音频可视化实践案例涵盖时域频域与实现流程。"><meta name="twitter:image" content="https://gad.soundoer.com/img/GAD_Logo.svg"><link rel="stylesheet" href="/_astro/BaseLayout.BFTYdhYa.css"></head> <body> <main>  <article class="prose">  <h1 id="音频可视化-ue--wwise-实践案例">“音频可视化” UE &#x26; Wwise 实践案例</h1>
+<hr>
+<!-- Start Document Outline -->
+<ul>
+<li><a href="#%E9%9F%B3%E9%A2%91%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E5%85%83%E7%B4%A0">音频可视化的元素</a></li>
+<li><a href="#%E7%BB%93%E5%90%88%E7%8E%B0%E6%9C%89%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF">结合现有工具的实现思路</a></li>
+<li><a href="#%E6%97%B6%E5%9F%9F%E5%A3%B0%E9%9F%B3%E5%8C%85%E7%BB%9Cenvelope">时域：声音包络（Envelope）</a></li>
+<li><a href="#%E9%A2%91%E5%9F%9F%E5%A3%B0%E9%9F%B3%E9%A2%91%E8%B0%B1spectrum">频域：声音频谱（Spectrum）</a></li>
+<li><a href="#%E6%97%B6%E5%9F%9F%E4%B8%8E%E9%A2%91%E5%9F%9F%E5%A3%B0%E9%9F%B3%E6%97%B6%E9%A2%91%E8%B0%B1spectrogram">时域与频域：声音时频谱（Spectrogram）</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+<!-- End Document Outline -->
+<hr>
+<p>继上一篇文章<a href="A-Practice-of-Music-as-Level-Design-with-UE-Wwise.md">《“音乐作为关卡设计” UE &#x26; Wwise 实践案例》</a>中运用音乐中的标记信息来触发游戏事件之后，我想在个人练习项目里想实现的下一个功能是用音乐中的信息来驱动视觉效果的表现，也就是通常说的音频可视化（Audio Visualization）。<br>
+音频可视化本身是一个大课题，在数字艺术和现场表演等领域已经有了成熟的工具和艺术表达。本文不讨论艺术方面的表现效果，也不深究音频信号的数理定义，仅从基本概念入手，结合引擎工具 Unreal Engine 和音频中间件 Wwise 已有的功能，来实现一些基本的音频可视化效果。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>开发环境与工具：</span></span>
+<span class="line"><span>Unreal Engine 4.26 C++ &#x26; Blueprint</span></span>
+<span class="line"><span>Audiokinetic Wwise 2021.1.0</span></span></code></pre>
+<h2 id="音频可视化的元素">音频可视化的元素</h2>
+<p>对于数字音频信号的分析，通常可以从<strong>时域</strong>（Time Domain）和<strong>频域</strong>（Frequency Domain）两个方面入手，相关的分析工具和表现形式在各类播放器和音频工具中其实都很常见。</p>
+<p>简单来说，从时域上分析可以得知音频信号的能量大小随时间变化的情况，根据不同的计算与加权方式可以表示各种与能量相关的数值情况。比如，峰值（Peak）表现在声音波形（Waveform）上就是波形最外层的包络曲线（Envelope），响度（Loudness）表现在表头上就是实时变化的数值指示。</p>
+<p><img alt="Waveform &amp;#x26; Meter" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/WaveformAndMeter.DoAUQdSr_Z27x1qM.webp" ></p>
+<p>从频域上分析可以得知某一时刻音频信号的能量在频率上的分布情况，即常见的频谱图（Spectrum）所表示的各个频段在人耳可闻频谱范围内的能量大小。</p>
+<p><img alt="Spectrum" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrum.Bcf_spLm_2ciSCC.webp" ></p>
+<p>除此之外，还有一种将时域和频域信息整合在一起的可视化方式，即时频谱（Spectrogram），3D 形式的时频谱也因其立体形象而被叫做“瀑布图”。</p>
+<p><img alt="Spectrogram" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrogram.cEgKbjBr_rEwRI.webp" ></p>
+<p>下文将以实现上述三种可视化效果来展开。</p>
+<h2 id="结合现有工具的实现思路">结合现有工具的实现思路</h2>
+<p>由于项目已有的音频功能都是基于中间件 Wwise 的，音频可视化的实现也需要统一在同一框架下，因此具体的实现方式也多了一些限制和要求：</p>
+<ol>
+<li>由于编程水平有限，尽量不考虑自己修改或重写代码的方式来实现；</li>
+<li>据我了解，除了 Wwise Meter 插件之外，目前 Wwise 并没有直接与音频分析相关的功能，无法从 Wwise 中便捷地获取频谱相关的声音信息；</li>
+<li>UE 引擎确实有不少与音频分析相关的功能，但需要在其自身的音频系统框架下使用，这样一来，声音资源的管理和控制都将与 Wwise 脱节，因此也不适用。</li>
+</ol>
+<p><img alt="UE Blueprint Audio Visualization" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/UE_Blueprint_Overview.CthGU30Z_ZMJhjy.webp" ></p>
+<p>所以，一种可行的实现思路是，利用 UE 引擎中的功能对声音文件进行分析并存储相应的数据，然后通过 Wwise 控制声音的播放并调用对应时刻的信息。</p>
+<h2 id="时域声音包络envelope">时域：声音包络（Envelope）</h2>
+<p>首先从相对简单的 Envelope 入手。从数据类型来看，音频信号在时域上的瞬时值可以理解为是一个随时间快速变化的浮点数变量，可以直接用来驱动视觉元素的各种参数；更进一步，可以将一段时间内的变量数值先存储进数组，然后用数组来驱动视觉元素的变化，这样就能表现出音频信号在一段时间内的 Envelope 形态。</p>
+<p>如上一节实现思路中所提到的，想尽可能在 Wwise 框架下实现功能，而 Wwise Meter 插件正好可以满足这一要求。在中间件内 Audio Bus 上使用 Wwise Meter 插件来获取音频信号的时域瞬时值，然后映射到创建的 Game Parameter 上，最后在引擎中通过 GetRTPCValue 节点来获取该数值。</p>
+<p><img alt="Wwise Meter RTPC" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Envelope_Wwise_Meter_RTPC.Clwuo6KK_Z2ufFla.webp" ></p>
+<p>在引擎中获取到该数值后，首先通过 MapRangeClamped 和 FInterpTo 节点对数据进行标准化和平滑处理。然后，将数据存入一个定长的浮点数数组中，数组长度可以根据需要展示的 Envelope 长度来决定。更新数组内数据的思路是，在每一次 Tick 时，最新的数值永远存储在数组的最开头位置，数组之后的位置依次复制前一位的数值，这样就能将一段时间内的数值变化存储下来并且持续进行更新。如果以每秒 60 帧的 Tick 速率来计算，长度为 60 的数组可以记录 1 秒内的数值变化。最后，就可以用该数组内的数据来同步驱动视觉元素的表现了。</p>
+<p><img alt="UE Update Envelope Line" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Envelope_UE_UpdateEnvelopeLine.D6kg-1TL_Z1X5CgB.webp" ></p>
+<p>Envelope 效果如下动图。</p>
+<p><img alt="Audio Visualization Envelope Demo" loading="lazy" decoding="async"  width="800" height="450" src="/_astro/Envelope_Demo.wP0w4xT7_Z1hlpsK.webp" ></p>
+<h2 id="频域声音频谱spectrum">频域：声音频谱（Spectrum）</h2>
+<p>从数据类型来看，音频信号在某一时刻的频谱信息可以理解为是一个浮点数数组，数组长度代表了频率范围，而其中各个位置上的数值可以看作是时域瞬时值在频域上的展开。用该数组驱动视觉元素的变化并不断更新，就可以表现音频信号的 Spectrum 形态。</p>
+<p>目前 UE Audio Synesthesia 组件提供了三种音频分析工具 LoudnessNRT、ConstantQNRT 和 OnsetNRT，分别可以提取音频信号的响度、频谱和瞬态变化的信息。其中 NRT 的意思是非实时（Non Real Time），工作原理是将 Wav 音频文件导入引擎中并配置分析工具，分析得到的数据会被保存在相应的 NRT 对象中，获取当前音频信号的播放位置即可从 NRT 对象中读取对应时刻的信息。<br>
+因此，可以使用 ConstantQNRT 分析工具来获取并保存音频信号的频谱信息。其中 ConstantQ 指的是信号处理中的<a href="https://en.wikipedia.org/wiki/Constant-Q_transform">常数Q变换</a>，与常见的傅里叶变化有关。具体有何区别我也讲不清，反正可以用来获取声音的频域信息就对了。</p>
+<p>如下图，首先在引擎中创建 ConstantQNRT 对象，并在其中配置需要分析的音频文件。有需要的话，还可以创建 ConstantQNRT Setting 对象，进一步设置与频谱分析相关的各种参数。</p>
+<p><img alt="UE Audio Synesthesia" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrum_Synesthesia_ConstantQNRT_Object.Cxa_A5LB_2bQ8I5.webp" ></p>
+<p>接下来，使用引擎原生的 Audio Component 来设置播放的音频文件并获取其时长，然后通过 OnAudioPlaybackPercent 事件来获取 Playback Percent，该数值与音频文件时长相乘即可得到以秒为单位的 Current Play Position，最后使用 GetNormalizedChannelConstantQAtTime 节点来读取 ConstantQNRT 中相应时刻的信息。</p>
+<p><img alt="UE Audio Synesthesia Native Audio Component" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrum_Synesthesia_NativeAudioComp.DJrCjEJ0_2mTyxE.webp" ></p>
+<p>以上，就是使用 UE 引擎原生组件来获取声音频谱信息的方式。如果要引入中间件 Wwise 来控制，只要能获取音频文件的当前播放位置就可以了。在<a href="A-Practice-of-Music-as-Level-Design-with-UE-Wwise.md">《“音乐作为关卡设计” UE &#x26; Wwise 实践案例》</a>的“获取当前播放位置信息”章节中，讲解了创建 GetSourcePlayPosition 函数从 PostAkEvent 节点的 Callback 信息中获取当前播放位置的方法，在这里直接使用这一函数节点就能从 Wwise 控制的音频文件中获取当前播放位置，然后仍旧可以使用 GetNormalizedChannelConstantQAtTime 节点来读取 ConstantQNRT 中相应时刻的数组信息了，最后用此数据来同步驱动视觉元素的表现。</p>
+<p><img alt="UE Audio Synesthesia Wwise Control" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrum_Synesthesia_WwiseControl.CQehQh0k_1KPm4p.webp" ></p>
+<p>Spectrum 效果如下动图。</p>
+<p><img alt="Audio Visualization Spectrum Demo" loading="lazy" decoding="async"  width="800" height="450" src="/_astro/Spectrum_Demo.DKCivRqF_Z1W494G.webp" ></p>
+<h2 id="时域与频域声音时频谱spectrogram">时域与频域：声音时频谱（Spectrogram）</h2>
+<p>在实现了 Envelope 和 Spectrum 之后，再来理解 Spectrogram 就简单多了。Spectrogram 可以看作是由 Envelope 和 Spectrum 两者构成的一个二维数组，或者形象地来看就是一个二维矩阵，其中 Envelope 一轴表示的是时域，Spectrum 表示的则是频域。</p>
+<p>获取当前播放位置和对应时刻频谱数据的方法与上一节 Spectrum 类似，主要区别在于如何用 Spectrum 数组信息来生成和驱动视觉元素二维矩阵的变化。如下图，通过 SpawnSpectrogramMatrix 和 UpdateSpectrogram 两个函数节点来实现。</p>
+<p><img alt="UE BP Spectrogram Overview" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrogram_UE_Overview.B5XlgD3O_133MxH.webp" ></p>
+<p>在 SpawnSpectrogramMatrix 函数节点中，首先以 SpectrumBandNumber 为行长、SpectrogramLength 为列长来生成二维矩阵。其中 SpectrumBandNumber 对应的是从 ConstantQNRT 对象中获取到的单个 Spectrum 数据的数组长度，可以在 ConstantQNRT Setting 对象中设置；SpectrogramLength 表示的是同时展示的 Spectrum 数组的个数，数值越大则表现内容的时长越长。<br>
+另外，在将生成的视觉元素存入数组的同时，需要将每一列最开始元素的索引值存入到 ColumnStartIndexArray 数组中，之后用来指示每一个 Spectrum 数组在矩阵中更新数据的起始位置。</p>
+<p><img alt="UE Spectrogram Matrix Initial" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrogram_SpectrogramMatrixInitial.D4HUYSdB_Z10s2AJ.webp" ></p>
+<p><img alt="UE BP Spawn Spectrogram Matrix" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrogram_UE_SpawnSpectrogramMatrix.vqAlW35x_Z1uv2Th.webp" ></p>
+<p>在 UpdateSpectrogram 函数节点中，遍历 ColumnStartIndexArray 数组并结合 SpectrumBandNumber 数值来找到每一列的起止范围；同时，以 CurrentPlayPosition 为基准、根据 ColumnStartIndexArray 中的索引值来对送入 GetNormalizedChannelConstantQAtTime 节点的 InSeconds 数值做偏差调整，这样就能从 ConstantQNRT 对象中获取一段时间内连续多个 Spectrum 数组的数据了。</p>
+<p><img alt="UE BP Update Spectrogram" loading="lazy" decoding="async"  width="1920" height="1080" src="/_astro/Spectrogram_UE_UpdateSpectrogram.j3I_vU8P_Z28nViK.webp" ></p>
+<p>Spectrogram 效果如下动图。</p>
+<p><img alt="Audio Visualization Spectrogram Demo" loading="lazy" decoding="async"  width="800" height="450" src="/_astro/Spectrogram_Demo.D5xdtVvH_1C0A6g.webp" ></p>
+<h2 id="总结">总结</h2>
+<p>上述方法只是在文章开头提出的要求与限制下取巧地实现了音频可视化的功能，从各个方面来评判都算不上是最优解。一个显而易见的问题就是，同一个音频文件需要在引擎和中间件中分别导入，一份用于数据分析，一份用于播放控制，如果文件数量很多的话，就会造成存储资源的浪费。<br>
+所以，如果没有需要配合中间件的要求，大可以直接使用 UE 引擎的原生功能来实现简单的音频可视化功能；当然理想情况是，Wwise 自身能有更多音频分析相关的功能和与引擎进行数据通信的方式。</p>
+<h2 id="reference">Reference</h2>
+<p><a href="https://docs.unrealengine.com/en-US/BlueprintAPI/Audio/Components/Audio/index.html">Unreal Engine Blueprint API Reference - Audio Component</a><br>
+<a href="https://docs.unrealengine.com/en-US/BlueprintAPI/Audio/Analysis/index.html">Unreal Engine Blueprint API Reference - Audio Analysis</a><br>
+<a href="https://docs.unrealengine.com/en-US/BlueprintAPI/AudioAnalyzer/index.html">Unreal Engine Blueprint API Reference - Audio Analyzer</a><br>
+<a href="https://docs.unrealengine.com/en-US/BlueprintAPI/SoundVisualization/index.html">Unreal Engine Blueprint API Reference - Sound Visualization</a><br>
+<a href="https://docs.unrealengine.com/en-US/BlueprintAPI/TimeSynth/index.html">Unreal Engine Blueprint API Reference - Time Synth</a><br>
+<a href="https://docs.unrealengine.com/en-US/WorkingWithMedia/Audio/Synesthesia/index.html">Unreal Engine 4 Documentation - Audio Synesthesia</a><br>
+<a href="https://www.audiokinetic.com/library/edge/?source=Help&#x26;id=wwise_meter_plug_in_effect">Wwise Help - Wwise Meter</a></p>
+<p>希辰<br>
+2021.4.3</p>
+<hr>  </article> <section class="share-box" aria-labelledby="share-heading"> <h2 id="share-heading">分享</h2> <div class="share-row"> <button type="button" id="copy-link-btn">复制链接</button> <div class="share-qr"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALMAAACzCAYAAADCFC3zAAAAAklEQVR4AewaftIAAAd6SURBVO3BUW4cOxIAwUxC979yrj8bhOEetWfkt0RF2C+McYDFGIdYjHGIxRiHWIxxiC9+Q+VfqniFylXFEyq7iv8alTsVVyq7indR+VcqrhZjHGIxxiEWYxxiMcYhvnhRxaeoPFFxpbKruFLZVexUPqXiSmVXcafiCZU7FU9UfIrKnyzGOMRijEMsxjjEFw+pPFHxhMqu4qpip3JH5YmKd6jYqbxDxRMqu4onVJ6o+I7FGIdYjHGIxRiHWIxxiC/+j6lcVewqrlSeqNip3Kl4omKncqXyLhVXFf9vFmMcYjHGIRZjHGIxxiG+OIjKu1RcqTyh8i4VVypPVNxR2VX8ly3GOMRijEMsxjjEFw9V/NdUPKGyU7mqeIXKVcUdlV3FTuWq4gmVn1TxExZjHGIxxiEWYxxiMcYhvniRyn9NxZXKruJKZVexU7mjsqu4UtlVfIrKVcUrKq5UnlD5VxZjHGIxxiEWYxzii9+oOIXKVcVO5Y7KK1S+q2Kn8kTFEypPVPxXLMY4xGKMQyzGOMRijEPYL2xUdhVXKp9S8QqVOxWforKruKNyVfEKlZ9S8QqVT6n4jsUYh1iMcYjFGIdYjHGIL16k8kTFlcqu4o7KruJK5QmVXcWVyq7ijsqu4krlUyp2KruKK5Vdxa7iSmVXcUdlp3JV8SeLMQ6xGOMQizEOYb/wApWrindR+SkVr1B5ouKOylXFTmVX8Q4qn1LxLip/UnG1GOMQizEOsRjjEIsxDmG/sFG5U/EKlauKd1H5roonVHYVT6i8Q8WnqLyi4krlTsUTKlcVV4sxDrEY4xCLMQ7xxUMq76JyVfEpKp+k8l0V76LyRMUTKlcVO5U7Kn9rMcYhFmMcYjHGIRZjHMJ+4QGVV1Rcqewq3kHlXSruqOwqrlTepeJKZVfxDiq7ijsqu4qfsBjjEIsxDrEY4xCLMQ7xxYtUrireReWqYqeyq7iq2KlcVbxC5VMqnlC5qrij8q+p3Km4o3JVcbUY4xCLMQ6xGOMQ9gsPqLxLxaeoXFXsVN6l4rtU3qXijsqu4krlUypeoXJV8SeLMQ6xGOMQizEOsRjjEF/8hspPUnmi4krljsqu4o7KruKOyq7iTsVO5Y7KO1TsVO5U7FTuqPytxRiHWIxxiMUYh1iMcQj7hY3KruKOyq7iSmVXcaXyLhVPqLxDxaeo7CquVHYVd1ReUXGlsqt4QuWq4k8WYxxiMcYhFmMc4ouHVHYVdyp2Ku9QcUdlV3Gn4lNUnqh4QuWJip3Kd6k8oXJVcbUY4xCLMQ6xGOMQizEO8cWLVK4qnlDZVdxR2VXcUfkUlV3Fd1XsVN6hYqdyp2KncqfiTsUTKn+yGOMQizEOsRjjEF/8RsUdlV3FnYqdyjuo7CquVF5R8YTKVcUdlV3FTuWOyhMVn6LyRMVVxZ8sxjjEYoxDLMY4xGKMQ9gvvEDliYorlV3FlcoTFT9J5VMqdip3Kq5UdhV3VHYV76Cyq/hbizEOsRjjEIsxDrEY4xBfvKjiCZWrip3KnYqfpPIOFXdUdiq7iu+qeIXKO6i8i8qfVFwtxjjEYoxDLMY4xBe/oXKn4hUVVyq7iiuVncpPqrhS2VXsVK5U7lTsVHYq31WxU9lV/JSKT1iMcYjFGIdYjHGIxRiHsF94gcpVxRMqdyp2Kncq7qh8UsWnqFxV3FF5omKncqdip3JVsVPZVXzHYoxDLMY4xGKMQ3zxGyq7iiuVXcUTFVcqu4qfVHGlsqvYqdypuFJ5QmVXcVWxU9lVXKnsKu6o7CquVD5hMcYhFmMcYjHGIRZjHOKLH1axU7mjsqu4UtlV3Kl4QuVOxU7lqmKnsqv4FJWrip3KO1S8QuVPKq4WYxxiMcYhFmMcYjHGIb54qOJdKq5U3kXlquIVKncq3kHlv0ZlV7FT+ZSKK5U/WYxxiMUYh1iMcYgvPkzlqmKnclXxCpXvUtlVvIvKVcWdileo/EsqT6hcVexUdhVXFX+yGOMQizEOsRjjEIsxDmG/8H9A5VMqdipXFTuVXcWVyk+quKOyq7hS2VU8oXKn4m8txjjEYoxDLMY4xGKMQ3zxGyr/UsWu4o7KruJKZaeyq7hSeZeKK5VdxRMqVxWfpHJVcadip/JdFVeLMQ6xGOMQizEO8cWLKj5F5Y7KruKq4k7FK1TeoeJOxU7liYo7Fe9S8V0qu4o7Kn+yGOMQizEOsRjjEIsxDvHFQypPVLyLyp2Kd6h4QmVXcadip3JH5VNU3qFip/K3FmMcYjHGIRZjHOKL/2MVd1SuKp5QeUXFVcUTKruKK5U7Fa9QuVOxU7mq2Klcqewq7qj8yWKMQyzGOMRijEMsxjjEF//HVO5UPFHxhMpVxR2VXcWdip3KlcquYldxpfKKijsVd1T+1mKMQyzGOMRijEMsxjjEFw9V/KSKJ1SeqLijsqu4UtlV3FHZVXxXxSepXFXsVK4qdhV3VP5kMcYhFmMcYjHGIb54kcq/pLKr+K6KncoTFTuV76p4hcp3qewq7lTsVD5F5W8txjjEYoxDLMY4hP3CGAdYjHGIxRiHWIxxiP8B9IGimBQbcg0AAAAASUVORK5CYII=" width="180" height="180" alt="当前页链接二维码"> <span>微信扫一扫打开</span> </div> </div> <p style="font-size:0.85rem;color:var(--muted);margin-top:0.75rem;">
+在微信内打开后，可使用右上角「···」转发或分享到朋友圈。
+</p> </section> <section class="subscribe-box is-compact" aria-labelledby="subscribe-heading"> <h2 id="subscribe-heading">订阅最新文章</h2> <p class="subscribe-hint"> 邮件订阅尚未启用。你可以先通过 RSS 跟进更新。 </p> <form class="subscribe-form" action method="post" target="popupwindow" onsubmit="window.open('', 'popupwindow')"> <label for="subscribe-email-compact">邮箱</label> <div class="subscribe-row"> <input id="subscribe-email-compact" name="email" type="email" required autocomplete="email" placeholder="you@example.com"> <input type="text" name="metadata__company" class="subscribe-hp" tabindex="-1" autocomplete="off" aria-hidden="true"> <input type="hidden" name="tag" value="article"> <button type="submit" disabled> 待配置 </button> </div> <p class="subscribe-status"> 完成 Buttondown 配置后，此功能将自动启用。 </p> <p class="subscribe-provider" aria-label="订阅服务提供方">服务提供方：Buttondown</p> </form> </section> <script>(function(){const canonical = "https://gad.soundoer.com/a-practice-of-audio-visualization-with-ue-wwise";
+
+    (function () {
+      var btn = document.getElementById('copy-link-btn');
+      if (!btn || !canonical) return;
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(canonical).then(
+          function () {
+            btn.textContent = '已复制';
+            setTimeout(function () {
+              btn.textContent = '复制链接';
+            }, 2000);
+          },
+          function () {
+            prompt('请手动复制链接：', canonical);
+          },
+        );
+      });
+    })();
+  })();</script>  </main> </body></html>
