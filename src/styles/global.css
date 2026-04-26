@@ -315,6 +315,13 @@ main {
   font-size: 0.94rem;
 }
 
+.article-title mark {
+  background: rgba(11, 95, 255, 0.18);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 0.08em;
+}
+
 .pin-mark {
   color: var(--muted);
   font-weight: 500;

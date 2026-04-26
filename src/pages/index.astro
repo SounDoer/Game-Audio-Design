@@ -73,11 +73,16 @@ const orderedItems = [...pinnedItems, ...regularItems];
         id="article-search"
         type="search"
         aria-label="Search title or description"
+        aria-controls="article-list"
         autocomplete="off"
       />
-      <button id="clear-search" type="button" aria-label="Clear search" hidden>×</button>
+      <button id="clear-search" type="button" aria-label="Clear search" aria-controls="article-list" hidden>
+        ×
+      </button>
     </label>
-    <p id="article-count" class="article-count">{`共 ${orderedItems.length} 篇 / 当前匹配 ${orderedItems.length} 篇`}</p>
+    <p id="article-count" class="article-count" role="status" aria-live="polite" aria-atomic="true">
+      {`共 ${orderedItems.length} 篇 / 当前匹配 ${orderedItems.length} 篇`}
+    </p>
   </section>
 
   <article class="prose">
@@ -87,11 +92,12 @@ const orderedItems = [...pinnedItems, ...regularItems];
           <li
             class="article-item"
             data-title={item.title.toLowerCase()}
+            data-title-original={item.title}
             data-description={item.description.toLowerCase()}
           >
             <a href={`/${item.slug}`} class="article-link">
               {item.pinned ? <span class="pin-mark">[置顶] </span> : null}
-              <span>{item.title}</span>
+              <span class="article-title">{item.title}</span>
             </a>
             <p>{item.description}</p>
           </li>
@@ -129,6 +135,40 @@ const orderedItems = [...pinnedItems, ...regularItems];
         });
       }
 
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function highlightText(raw, query) {
+        if (!query) return escapeHtml(raw);
+        var lowerRaw = raw.toLowerCase();
+        var lowerQuery = query.toLowerCase();
+        var start = lowerRaw.indexOf(lowerQuery);
+        if (start < 0) return escapeHtml(raw);
+        var end = start + lowerQuery.length;
+        return (
+          escapeHtml(raw.slice(0, start)) +
+          '<mark>' +
+          escapeHtml(raw.slice(start, end)) +
+          '</mark>' +
+          escapeHtml(raw.slice(end))
+        );
+      }
+
+      function updateHighlight(query) {
+        items.forEach(function (item) {
+          var titleNode = item.querySelector('.article-title');
+          if (!titleNode) return;
+          var rawTitle = item.getAttribute('data-title-original') || titleNode.textContent || '';
+          titleNode.innerHTML = highlightText(rawTitle, query);
+        });
+      }
+
       function normalize(value) {
         return String(value || '').toLowerCase();
       }
@@ -145,6 +185,7 @@ const orderedItems = [...pinnedItems, ...regularItems];
         });
 
         count.textContent = '共 ' + items.length + ' 篇 / 当前匹配 ' + matched + ' 篇';
+        updateHighlight(query);
         empty.hidden = matched !== 0;
         if (clearBtn) {
           clearBtn.hidden = !query;
@@ -157,7 +198,15 @@ const orderedItems = [...pinnedItems, ...regularItems];
         input.focus();
       }
 
-      input.addEventListener('input', applyFilter);
+      var debounceTimer = null;
+      input.addEventListener('input', function () {
+        if (debounceTimer) {
+          clearTimeout(debounceTimer);
+        }
+        debounceTimer = setTimeout(function () {
+          applyFilter();
+        }, 80);
+      });
       input.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
           event.preventDefault();
@@ -184,6 +233,17 @@ const orderedItems = [...pinnedItems, ...regularItems];
           input.focus();
         }
       });
+
+      var mediaQuery = window.matchMedia('(min-width: 1024px) and (pointer: fine)');
+      function onMediaChange() {
+        desktopLike = mediaQuery.matches;
+        updateOpenMode();
+      }
+      if (typeof mediaQuery.addEventListener === 'function') {
+        mediaQuery.addEventListener('change', onMediaChange);
+      } else if (typeof mediaQuery.addListener === 'function') {
+        mediaQuery.addListener(onMediaChange);
+      }
 
       updateOpenMode();
       applyFilter();
