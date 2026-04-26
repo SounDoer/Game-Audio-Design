@@ -1,0 +1,66 @@
+---
+interface Props {
+  heading?: string;
+  compact?: boolean;
+}
+
+const { compact = false, heading } = Astro.props;
+const resolvedHeading = heading ?? (compact ? '订阅文章更新' : '邮件订阅');
+const buttondownUsername = import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '';
+const isConfigured = buttondownUsername.length > 0;
+const buttondownEndpoint = isConfigured
+  ? `https://buttondown.email/api/emails/embed-subscribe/${buttondownUsername}`
+  : '';
+const newsletterUrl = isConfigured ? `https://buttondown.email/${buttondownUsername}` : '';
+const formId = `subscribe-email-${compact ? 'compact' : 'full'}`;
+---
+
+<section
+  class={`subscribe-box ${compact ? 'is-compact' : ''}`}
+  aria-labelledby="subscribe-heading"
+>
+  <h2 id="subscribe-heading">{resolvedHeading}</h2>
+  <p class="subscribe-hint">
+    {isConfigured
+      ? '输入邮箱后，请在收件箱完成确认；确认后将接收新文章发布通知。'
+      : '邮件订阅尚未启用。你可以先通过 RSS 跟进更新。'}
+  </p>
+
+  <form
+    class="subscribe-form"
+    action={buttondownEndpoint}
+    method="post"
+    target="popupwindow"
+    onsubmit={`window.open('${newsletterUrl}', 'popupwindow')`}
+  >
+    <label for={formId}>邮箱</label>
+    <div class="subscribe-row">
+      <input
+        id={formId}
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        placeholder="you@example.com"
+      />
+      <input
+        type="text"
+        name="metadata__company"
+        class="subscribe-hp"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+      <input type="hidden" name="tag" value={compact ? 'article' : 'home'} />
+      <button type="submit" disabled={!isConfigured}>
+        {isConfigured ? '订阅' : '待配置'}
+      </button>
+    </div>
+    <p class="subscribe-status">
+      {isConfigured
+        ? '仅在有新内容发布时发送通知，默认低频；可随时退订。'
+        : '完成 Buttondown 配置后，此功能将自动启用。'}
+    </p>
+    <p class="subscribe-provider" aria-label="订阅服务提供方">服务提供方：Buttondown</p>
+  </form>
+</section>

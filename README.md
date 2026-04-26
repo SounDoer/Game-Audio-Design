@@ -27,4 +27,16 @@ yarn build
 
 推送到 `main` 后由 `.github/workflows/deploy.yml` 构建并发布至 GitHub Pages（自定义域见 `static/CNAME`）。
 
+## 邮件订阅（Buttondown）
+
+站点内置了首页与文章页订阅表单，使用 Buttondown 托管订阅流程（默认双重确认）。
+
+在本地或 CI 环境设置：
+
+```bash
+PUBLIC_BUTTONDOWN_USERNAME=your_buttondown_username
+```
+
+未配置时，订阅按钮会自动置灰并提示改用 RSS。
+
 更多规划见根目录 **`REFACTOR.md`**。

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { render } from 'astro:content';
+import SubscribeForm from '../components/SubscribeForm.astro';
 
 const pages = await getCollection('homePage');
 const homeEntry = pages[0];
@@ -20,6 +21,7 @@ const { Content } = await render(homeEntry);
   <article class="prose home-index-content">
     <Content />
   </article>
+  <SubscribeForm heading="邮件订阅更新" />
   <script is:inline>
     (function () {
       var root = document.querySelector('.home-index-content');

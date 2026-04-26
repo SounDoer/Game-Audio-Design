@@ -150,6 +150,82 @@ main {
   margin-bottom: 0.35rem;
 }
 
+.subscribe-box {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+.subscribe-box h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.subscribe-box.is-compact h2 {
+  font-size: 1rem;
+}
+
+.subscribe-hint {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.subscribe-form label {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+
+.subscribe-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.subscribe-row input[type='email'] {
+  flex: 1 1 18rem;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.45rem 0.65rem;
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+.subscribe-row button {
+  cursor: pointer;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+  font: inherit;
+}
+
+.subscribe-row button:hover {
+  border-color: var(--link);
+}
+
+.subscribe-row button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.subscribe-hp {
+  position: absolute;
+  left: -9999px;
+}
+
+.subscribe-status,
+.subscribe-provider {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
 .index-section {
   margin-top: 2rem;
 }

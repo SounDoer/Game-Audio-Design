@@ -2,6 +2,7 @@
 import QRCode from 'qrcode';
 import BaseLayout from './BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
+import SubscribeForm from '../components/SubscribeForm.astro';
 
 type ArticleCollection = 'articles';
 
@@ -67,6 +68,7 @@ try {
       在微信内打开后，可使用右上角「···」转发或分享到朋友圈。
     </p>
   </section>
+  <SubscribeForm compact={true} heading="订阅最新文章" />
 
   <script is:inline define:vars={{ canonical }}>
     (function () {
