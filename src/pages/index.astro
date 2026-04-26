@@ -34,7 +34,7 @@ const allItems: HomeItem[] = entries
 
     return {
       slug: slugFromEntry(entry.id, data),
-      title: displayTitleFromEntry(entry.id, entry.body, data),
+      title: displayTitleFromEntry(entry.id, entry.body ?? '', data),
       description,
       pinned,
       pinnedOrder,

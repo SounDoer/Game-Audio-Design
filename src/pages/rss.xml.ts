@@ -27,7 +27,7 @@ export async function GET(context: { site: URL | undefined }) {
     const pubDate = parseDateOrNull(data.date);
     if (!pubDate) continue;
     const slug = slugFromEntry(e.id, data);
-    const title = displayTitleFromEntry(e.id, e.body, data);
+    const title = displayTitleFromEntry(e.id, e.body ?? '', data);
     items.push({
       title,
       link: new URL(`/${slug}`, baseSite).href,
