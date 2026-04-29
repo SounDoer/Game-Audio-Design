@@ -11,6 +11,7 @@
 
 # Misc
 .DS_Store
+.claude/
 .cursor/
 .env.local
 .env.development.local
