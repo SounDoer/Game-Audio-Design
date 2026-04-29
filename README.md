@@ -11,17 +11,17 @@
 需要 **Node 22+**。
 
 ```bash
-yarn install
-yarn dev
+npm install
+npm run dev
 ```
 
 ## 构建
 
 ```bash
-yarn build
+npm run build
 ```
 
-静态产物输出到 **`build/`**（与 GitHub Actions 中 `peaceiris/actions-gh-pages` 的 `publish_dir` 一致）。
+静态产物输出到 **`build/`**（与 GitHub Actions 中 `peaceiris/actions-gh-pages` 的 `publish_dir` 一致）。CI 使用 **`npm ci`** 按 `package-lock.json` 安装依赖。
 
 ## 部署
 

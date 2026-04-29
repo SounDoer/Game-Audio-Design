@@ -14,7 +14,7 @@ interface Props {
   sectionLabel: string;
 }
 
-const { entry, path, sectionLabel } = Astro.props;
+const { entry, path } = Astro.props;
 
 const data = entry.data as Record<string, unknown>;
 const title = displayTitleFromEntry(entry.id, entry.body ?? '', data).trim() || '未命名';

@@ -240,11 +240,7 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
         desktopLike = mediaQuery.matches;
         updateOpenMode();
       }
-      if (typeof mediaQuery.addEventListener === 'function') {
-        mediaQuery.addEventListener('change', onMediaChange);
-      } else if (typeof mediaQuery.addListener === 'function') {
-        mediaQuery.addListener(onMediaChange);
-      }
+      mediaQuery.addEventListener('change', onMediaChange);
 
       updateOpenMode();
       applyFilter();
