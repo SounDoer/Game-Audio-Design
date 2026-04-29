@@ -3,6 +3,7 @@ import QRCode from 'qrcode';
 import BaseLayout from './BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import SubscribeForm from '../components/SubscribeForm.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import { displayTitleFromEntry } from '../lib/article-slug';
 
 type ArticleCollection = 'articles';
@@ -12,9 +13,10 @@ interface Props {
   path: string;
   /** 用于展示，如 course / topic */
   sectionLabel: string;
+  headings?: { depth: number; slug: string; text: string }[];
 }
 
-const { entry, path } = Astro.props;
+const { entry, path, headings = [] } = Astro.props;
 
 const data = entry.data as Record<string, unknown>;
 const title = displayTitleFromEntry(entry.id, entry.body ?? '', data).trim() || '未命名';
@@ -52,6 +54,7 @@ try {
   <article class="prose">
     <slot />
   </article>
+  <TableOfContents headings={headings} />
 
   <section class="share-box" aria-labelledby="share-heading">
     <h2 id="share-heading">分享</h2>

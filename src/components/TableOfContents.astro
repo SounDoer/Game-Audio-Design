@@ -1,0 +1,62 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  tocHeadings.length > 1 && (
+    <nav class="article-toc" aria-label="目录">
+      <p class="toc-title">目录</p>
+      <ol class="toc-list">
+        {tocHeadings.map((h) => (
+          <li class:list={['toc-item', `toc-h${h.depth}`]}>
+            <a class="toc-link" href={`#${h.slug}`}>
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+  if (links.length > 0) {
+    const ids = Array.from(links)
+      .map((a) => a.getAttribute('href')?.slice(1))
+      .filter(Boolean) as string[];
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    let activeLink: HTMLAnchorElement | null = null;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            activeLink?.classList.remove('is-active');
+            activeLink = document.querySelector<HTMLAnchorElement>(
+              `.toc-link[href="#${entry.target.id}"]`
+            );
+            activeLink?.classList.add('is-active');
+          }
+        }
+      },
+      { rootMargin: '-10% 0% -70% 0%', threshold: 0 }
+    );
+
+    els.forEach((el) => observer.observe(el));
+  }
+</script>

@@ -412,6 +412,66 @@ main {
   vertical-align: middle;
 }
 
+/* Article TOC sidebar — fixed in right margin, prose layout unchanged.
+   Right edge of prose from page center = 42ch (derived from main 92ch / prose 84ch / padding 1.25rem). */
+.article-toc {
+  display: none;
+}
+
+@media (min-width: 72rem) {
+  .article-toc {
+    display: block;
+    position: fixed;
+    top: 2rem;
+    left: calc(50% + 42ch + 2rem);
+    width: 14rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+  }
+}
+
+.toc-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-item {
+  margin: 0.2rem 0;
+}
+
+.toc-h3 {
+  padding-left: 0.85rem;
+}
+
+.toc-link {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.15rem 0;
+  transition: color 0.15s;
+}
+
+.toc-link:hover,
+.toc-link.is-active {
+  color: var(--fg);
+}
+
+.toc-link.is-active {
+  font-weight: 500;
+}
+
 /* Docusaurus :::info 迁移：内联 HTML <aside> */
 aside.admonition {
   margin: 1rem 0;
