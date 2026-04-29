@@ -92,5 +92,3 @@ PUBLIC_BUTTONDOWN_USERNAME=your_buttondown_username
 ```
 
 未配置时，订阅按钮会自动置灰并提示改用 RSS。
-
-更多规划见根目录 **`REFACTOR.md`**。
