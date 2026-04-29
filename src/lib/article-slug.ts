@@ -4,6 +4,7 @@ export function isArticleEntry(entryId: string): boolean {
   if (normalized === 'home') return false;
   if (normalized === 'resource') return false;
   if (normalized.startsWith('resource/')) return false;
+  if (normalized.startsWith('draft/')) return false;
   return true;
 }
 

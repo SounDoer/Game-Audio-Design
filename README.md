@@ -47,6 +47,7 @@ npm run build
 ### 发布与可见性规则
 
 - 无 `date` 视为未发布，不应进入首页流、RSS、sitemap。
+- **`docs/draft/`**：仅作草稿区；`articles` 内容集合的 glob **已排除 `draft/**`**，其下 Markdown **不参与**首页、文章详情路由与 RSS；`isArticleEntry` 亦忽略 `draft/` 路径。正式发布前请移回 `docs/` 下合适位置并补齐 `date` 等字段。
 - 首页排序基于单一 `date` 字段。
 - `date` 应与正文末尾署名日期保持一致。
 

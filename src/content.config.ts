@@ -7,7 +7,10 @@ const looseFrontmatter = z.record(z.string(), z.unknown());
 
 export const collections = {
   articles: defineCollection({
-    loader: glob({ pattern: '**/*.md', base: './docs' }),
+    loader: glob({
+      pattern: ['**/*.md', '!draft/**'],
+      base: './docs',
+    }),
     schema: looseFrontmatter,
   }),
   homePage: defineCollection({

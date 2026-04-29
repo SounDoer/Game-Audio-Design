@@ -8,16 +8,18 @@ import {
 } from './article-slug';
 
 describe('isArticleEntry', () => {
-  it('排除 Log / Home / Resource 根路径与 Resource 子路径', () => {
+  it('排除 Log / Home / Resource / draft 路径', () => {
     expect(isArticleEntry('Log.md')).toBe(false);
     expect(isArticleEntry('log.md')).toBe(false);
     expect(isArticleEntry('Home.md')).toBe(false);
     expect(isArticleEntry('Resource.md')).toBe(false);
     expect(isArticleEntry('resource/foo.md')).toBe(false);
+    expect(isArticleEntry('draft/intro.md')).toBe(false);
+    expect(isArticleEntry('draft/Game-Engine-Intro/Game-Engine-Intro.md')).toBe(false);
   });
 
   it('普通文章路径视为文章', () => {
-    expect(isArticleEntry('intro.md')).toBe(true);
+    expect(isArticleEntry('Preface.md')).toBe(true);
     expect(isArticleEntry('Some-Topic/post.md')).toBe(true);
   });
 });
