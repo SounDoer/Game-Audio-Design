@@ -101,6 +101,12 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
               <span class="article-title">{item.title}</span>
             </a>
             <p>{item.description}</p>
+            <time
+              class="article-date"
+              datetime={item.date.toISOString().slice(0, 10)}
+            >
+              {item.date.toISOString().slice(0, 10)}
+            </time>
           </li>
         ))
       }

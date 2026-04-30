@@ -364,6 +364,13 @@ main {
   font-size: 0.94rem;
 }
 
+.article-date {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
 .article-title mark {
   background: rgba(11, 95, 255, 0.18);
   color: inherit;
