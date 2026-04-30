@@ -121,6 +121,31 @@ main {
   margin-bottom: 1.25rem;
 }
 
+.back-home-nav {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+@media (min-width: 72rem) {
+  .back-home-nav {
+    right: auto;
+    left: calc(50% + 42ch + 2rem);
+    bottom: 2rem;
+  }
+}
+
+.back-home-link {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back-home-link:hover {
+  color: var(--fg);
+}
+
 .share-box {
   margin-top: 2.5rem;
   padding-top: 1.5rem;

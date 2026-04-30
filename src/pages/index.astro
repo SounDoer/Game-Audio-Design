@@ -121,21 +121,6 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
 
       if (!input || !list || !count || !empty) return;
 
-      var desktopLike = window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches;
-
-      function updateOpenMode() {
-        var links = list.querySelectorAll('a[href]');
-        links.forEach(function (link) {
-          if (desktopLike) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
-          } else {
-            link.removeAttribute('target');
-            link.removeAttribute('rel');
-          }
-        });
-      }
-
       function escapeHtml(value) {
         return String(value)
           .replace(/&/g, '&amp;')
@@ -235,14 +220,6 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
         }
       });
 
-      var mediaQuery = window.matchMedia('(min-width: 1024px) and (pointer: fine)');
-      function onMediaChange() {
-        desktopLike = mediaQuery.matches;
-        updateOpenMode();
-      }
-      mediaQuery.addEventListener('change', onMediaChange);
-
-      updateOpenMode();
       applyFilter();
     })();
   </script>
