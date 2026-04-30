@@ -13,16 +13,8 @@ export const collections = {
     }),
     schema: looseFrontmatter,
   }),
-  homePage: defineCollection({
-    loader: glob({ pattern: 'Home.md', base: './docs' }),
-    schema: looseFrontmatter,
-  }),
   logPage: defineCollection({
     loader: glob({ pattern: 'Log.md', base: './docs' }),
-    schema: looseFrontmatter,
-  }),
-  resourcePages: defineCollection({
-    loader: glob({ pattern: '**/*.md', base: './docs/Resource' }),
     schema: looseFrontmatter,
   }),
 };
