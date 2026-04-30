@@ -11,7 +11,7 @@ type ArticleCollection = 'articles';
 interface Props {
   entry: CollectionEntry<ArticleCollection>;
   path: string;
-  /** 用于展示，如 course / topic */
+  /** display label, e.g. course / topic */
   sectionLabel: string;
   headings?: { depth: number; slug: string; text: string }[];
 }
@@ -19,7 +19,7 @@ interface Props {
 const { entry, path, headings = [] } = Astro.props;
 
 const data = entry.data as Record<string, unknown>;
-const title = displayTitleFromEntry(entry.id, entry.body ?? '', data).trim() || '未命名';
+const title = displayTitleFromEntry(entry.id, entry.body ?? '', data).trim() || 'Untitled';
 const description =
   typeof data.description === 'string' ? data.description : undefined;
 const ogImage = (() => {
@@ -56,21 +56,33 @@ try {
   </article>
   <TableOfContents headings={headings} />
 
-  <section class="share-box" aria-labelledby="share-heading">
-    <h2 id="share-heading">分享</h2>
-    <div class="share-row">
-      {
-        qrDataUrl ? (
-          <div class="share-qr">
-            <img src={qrDataUrl} width="180" height="180" alt="当前页链接二维码" />
-            <span>微信扫码分享</span>
-          </div>
-        ) : null
-      }
-    </div>
-  </section>
-  {hasNewsletter ? <SubscribeForm compact={true} heading="订阅最新文章" /> : null}
-  <nav class="back-home-nav" aria-label="返回首页">
-    <a href="/" class="back-home-link">← 首页</a>
-  </nav>
+  {hasNewsletter ? <SubscribeForm compact={true} heading="Subscribe for new articles" /> : null}
+  <div class="fixed-actions">
+    <a href="/" class="back-home-link">--> Home</a>
+    {qrDataUrl ? (
+      <div class="share-wrap">
+        <div class="share-popover" id="share-popover" hidden>
+          <img src={qrDataUrl} width="140" height="140" alt="QR code for this page" />
+          <p class="share-popover-label">Scan to share on WeChat</p>
+        </div>
+        <button class="share-btn" aria-expanded="false" aria-controls="share-popover">--> Share</button>
+      </div>
+    ) : null}
+  </div>
+  <script>
+    const btn = document.querySelector<HTMLButtonElement>('.share-btn');
+    const popover = document.getElementById('share-popover');
+    if (btn && popover) {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        popover.hidden = expanded;
+      });
+      document.addEventListener('click', () => {
+        btn.setAttribute('aria-expanded', 'false');
+        popover.hidden = true;
+      });
+    }
+  </script>
 </BaseLayout>

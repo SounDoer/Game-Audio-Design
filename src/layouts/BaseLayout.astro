@@ -3,14 +3,14 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
-  /** 可选：社交分享标题（不传则与 title 相同） */
+  /** optional: social share title (defaults to title) */
   ogTitle?: string;
   description?: string;
-  /** pathname，以 / 开头，无尾部斜杠 */
+  /** pathname starting with /, no trailing slash */
   path: string;
-  /** 文章页用 article，目录/Log 等用 website */
+  /** article pages use 'article', index/log pages use 'website' */
   ogType?: 'website' | 'article';
-  /** 可选：按页覆盖分享图（支持绝对 URL 或站内相对路径） */
+  /** optional: per-page OG image (absolute URL or site-relative path) */
   ogImage?: string;
 }
 
@@ -18,7 +18,7 @@ const { title, ogTitle, description, path, ogType = 'website', ogImage } = Astro
 const canonical = new URL(path, Astro.site).href;
 const desc =
   description?.trim() ||
-  'Game Audio Design — 游戏音频设计专题与文章，持续更新。';
+  'Game Audio Design — In-depth articles on game audio design.';
 const resolvedOgTitle = typeof ogTitle === 'string' && ogTitle.trim() ? ogTitle.trim() : title;
 const defaultOgImagePath = '/img/GAD_Logo_Black.png';
 const resolvedOgImage = (() => {

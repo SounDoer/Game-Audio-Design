@@ -121,23 +121,28 @@ main {
   margin-bottom: 1.25rem;
 }
 
-.back-home-nav {
+.fixed-actions {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
 }
 
 @media (min-width: 72rem) {
-  .back-home-nav {
+  .fixed-actions {
     right: auto;
     left: calc(50% + 42ch + 2rem);
     bottom: 2rem;
+    align-items: flex-start;
   }
 }
 
 .back-home-link {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--muted);
   text-decoration: none;
 }
@@ -146,47 +151,51 @@ main {
   color: var(--fg);
 }
 
-.share-box {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
+.share-wrap {
+  position: relative;
 }
 
-.share-box h2 {
-  font-size: 1rem;
-  margin: 0 0 0.75rem;
-}
-
-.share-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.share-row button {
-  cursor: pointer;
-  padding: 0.45rem 0.85rem;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--fg);
+.share-btn {
   font: inherit;
-}
-
-.share-row button:hover {
-  border-color: var(--link);
-}
-
-.share-qr {
-  text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.share-qr img {
+.share-btn:hover {
+  color: var(--fg);
+}
+
+.share-popover {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (min-width: 72rem) {
+  .share-popover {
+    right: auto;
+    left: 0;
+  }
+}
+
+.share-popover img {
   display: block;
-  margin-bottom: 0.35rem;
+}
+
+.share-popover-label {
+  margin: 0.4rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
 .subscribe-box {
@@ -498,7 +507,7 @@ main {
   font-weight: 500;
 }
 
-/* Docusaurus :::info 迁移：内联 HTML <aside> */
+/* Migrated from Docusaurus :::info — inline HTML <aside> */
 aside.admonition {
   margin: 1rem 0;
   padding: 0.75rem 1rem;

@@ -15,8 +15,8 @@ const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 {
   tocHeadings.length > 1 && (
-    <nav class="article-toc" aria-label="目录">
-      <p class="toc-title">目录</p>
+    <nav class="article-toc" aria-label="Table of contents">
+      <p class="toc-title">··· TOC ···</p>
       <ol class="toc-list">
         {tocHeadings.map((h) => (
           <li class:list={['toc-item', `toc-h${h.depth}`]}>

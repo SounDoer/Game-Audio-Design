@@ -82,7 +82,7 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
       </button>
     </label>
     <p id="article-count" class="article-count" role="status" aria-live="polite" aria-atomic="true">
-      {`共 ${orderedItems.length} 篇 / 当前匹配 ${orderedItems.length} 篇`}
+      {`${orderedItems.length} articles / ${orderedItems.length} matching`}
     </p>
   </section>
 
@@ -97,7 +97,7 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
             data-description={item.description.toLowerCase()}
           >
             <a href={`/${item.slug}/`} class="article-link">
-              {item.pinned ? <span class="pin-mark">[置顶] </span> : null}
+              {item.pinned ? <span class="pin-mark">[Pinned] </span> : null}
               <span class="article-title">{item.title}</span>
             </a>
             <p>{item.description}</p>
@@ -105,10 +105,10 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
         ))
       }
     </ul>
-    <p id="empty-result" hidden>没有匹配文章。<button id="empty-clear" type="button">清空</button></p>
+    <p id="empty-result" hidden>No results. <button id="empty-clear" type="button">Clear</button></p>
   </article>
 
-  {hasNewsletter ? <SubscribeForm compact={true} heading="订阅更新" /> : null}
+  {hasNewsletter ? <SubscribeForm compact={true} heading="Subscribe" /> : null}
   <script is:inline>
     (function () {
       var input = document.getElementById('article-search');
@@ -170,7 +170,7 @@ const hasNewsletter = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME?.trim() ?? '')
           if (visible) matched += 1;
         });
 
-        count.textContent = '共 ' + items.length + ' 篇 / 当前匹配 ' + matched + ' 篇';
+        count.textContent = items.length + ' articles / ' + matched + ' matching';
         updateHighlight(query);
         empty.hidden = matched !== 0;
         if (clearBtn) {

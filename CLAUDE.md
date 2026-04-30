@@ -101,6 +101,19 @@ date: YYYY-MM-DD
 
 ---
 
+## 代码语言
+
+`src/` 目录下所有代码内部一律使用英文，包括：
+
+- UI 文案（按钮、标签、提示文字、空态文案）
+- HTML 属性（`aria-label`、`alt`、`placeholder` 等）
+- 代码注释
+- 测试描述（`it()`、`describe()` 等）
+
+`docs/` 下的文章内容不受此限制，仍使用中文写作。
+
+---
+
 ## Git Commits
 
 Always write commit messages in English.
