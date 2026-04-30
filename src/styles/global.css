@@ -283,6 +283,24 @@ main {
   margin: 0 0 0.5rem;
 }
 
+.site-identity {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-identity a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-identity a:hover {
+  color: var(--fg);
+}
+
 .home-index-controls {
   margin: 0 0 1.25rem;
 }
