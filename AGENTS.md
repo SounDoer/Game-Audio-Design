@@ -1,6 +1,8 @@
 # Project Instructions
 
-所有 agent 启动时必须先读此文件，再执行任何任务。
+本文件为本仓库 **AI 协作与文章写作的单一信息源**（single source of truth）。在 Cursor、Claude Code 等环境中，启动任务前请先阅读。
+
+根目录 `CLAUDE.md` 仅指向本文件，供只自动索引 `CLAUDE.md` 的环境使用；**新增或修改规范时只维护本文件。**
 
 ---
 
@@ -82,9 +84,10 @@ Game-Audio-Design/
   docs/          ← Astro 文章（.md 文件）
   slidev/        ← Slidev（`slides.md` 入口 + `pages/*.md` 分章；线上路径 `/slidev/`）
   static/        ← 静态资源
-  AGENTS.md      ← 本文件
-  .Codex/
-    commands/    ← 各 agent spec 文件
+  src/           ← 站点前端代码
+  AGENTS.md      ← 本文件（规范主文档）
+  CLAUDE.md      ← 指向本文件的兼容入口
+  （若使用各工具的 agent 扩展，可能另有 `.claude/commands/` 等目录，以本地为准）
 ```
 
 ---
