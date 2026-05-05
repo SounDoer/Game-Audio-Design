@@ -8,9 +8,6 @@
 /static/slidev
 /slidev/static
 
-# Slidev runtime assets (synced before build; see scripts/sync-slidev-public.mjs)
-/slidev/public
-
 # Generated files
 .astro
 

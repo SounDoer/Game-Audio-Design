@@ -4,28 +4,22 @@ Entry: `slides.md` (global frontmatter and slide order). Chapters live in `pages
 
 ## Public assets (`slidev/public/`)
 
-Static files (images, video, `src/…` paths used in markdown) are **not committed** in this repository. They are copied from the historical repo [Game-Audio-Design-Slidev](https://github.com/SounDoer/Game-Audio-Design-Slidev) before each Slidev build:
+Place images, video, and other static files here. Paths in markdown such as `/src/...` resolve under `slidev/public/` (e.g. `slidev/public/src/...`). **Commit this directory with the repo** when you add or change assets alongside slide edits.
+
+Optional one-time bulk import from the historical repo [Game-Audio-Design-Slidev](https://github.com/SounDoer/Game-Audio-Design-Slidev):
 
 ```bash
 npm run slidev:sync-public
 ```
 
-Options (see `scripts/sync-slidev-public.mjs`):
-
-- `--resume` — skip files that already exist with non-zero size (default for `slidev:sync-public` npm script).
-- `--skip-mp4` / `--mp4-only` — split phases if your network is unstable.
-
-`npm run slidev:build` and `npm run build` run `slidev:sync-public` first, then emit to `../static/slidev/`.
-
-### Optional: vendor `slidev/public/` into git
-
-If you want binaries inside this repo (large clone), remove the `/slidev/public` line from the root `.gitignore`, run `npm run slidev:sync-public` until it completes, then `git add slidev/public` in a dedicated commit.
+See `scripts/sync-slidev-public.mjs` for flags (`--resume`, `--skip-mp4`, `--mp4-only`).
 
 ## Local preview
 
 ```bash
-npm run slidev:sync-public
 npm run slidev:dev
 ```
 
-Open `http://localhost:3030/slidev/` (port may vary).
+Open `http://localhost:3030/slidev/` (port may vary). If slides reference missing files under `slidev/public/`, add those assets or adjust the markdown first.
+
+`npm run slidev:build` writes to `../static/slidev/` and runs automatically before `astro build`.
