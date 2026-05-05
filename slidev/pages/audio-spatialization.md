@@ -22,7 +22,7 @@ layout: header-body
 <!--  -->
 
 ---
-layout: header-body-two-cols
+layout: header-body-grid
 ---
 
 ### 声像定位 Sound Positioning

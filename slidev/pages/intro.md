@@ -61,7 +61,7 @@ The last comment block of each slide will be treated as slide notes.
 -->
 
 ---
-layout: header-body-two-cols
+layout: header-body-grid
 ---
 
 ### 沈希辰
@@ -129,7 +129,8 @@ layout: header-body
 -->
 
 ---
-layout: header-body-three-cols
+layout: header-body-grid
+cols: 3
 ---
 
 ### 内容大纲

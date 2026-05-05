@@ -24,7 +24,7 @@ layout: default
 
 ---
 routeAlias: gad-overview-game
-layout: header-body-bg
+layout: header-body
 background: game-poster.png
 ---
 
@@ -69,7 +69,7 @@ background: game-poster.png
 
 ---
 routeAlias: gad-overview-audio
-layout: header-body-bg
+layout: header-body
 background: bg-image-for-audio.png
 ---
 
@@ -134,7 +134,7 @@ background: bg-image-for-audio.png
 
 ---
 routeAlias: gad-overview-design
-layout: header-body-bg
+layout: header-body
 background: bg-image-for-design.png
 ---
 
@@ -180,7 +180,7 @@ background: bg-image-for-design.png
 -->
 
 ---
-layout: header-body-two-cols
+layout: header-body-grid
 ---
 
 ### 听声辨位

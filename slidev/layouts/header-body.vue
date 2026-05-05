@@ -1,13 +1,33 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const props = defineProps({
   class: {
     type: String,
+    default: '',
+  },
+  background: {
+    type: String,
+    default: '',
   },
 })
+
+const bgStyle = computed(() => ({
+  backgroundImage: props.background ? `url(${props.background})` : '',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+}))
 </script>
 
 <template>
-  <div class="slidev-layout header-body w-full h-full">
+  <div class="slidev-layout header-body w-full h-full relative">
+    <div
+      v-if="background"
+      class="absolute inset-0"
+      :style="bgStyle"
+      style="opacity: 0.08; z-index: -1;"
+    />
     <header>
       <slot />
     </header>

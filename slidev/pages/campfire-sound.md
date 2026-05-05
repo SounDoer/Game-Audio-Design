@@ -6,7 +6,7 @@ layout: section
 **Campfire Sound**
 
 ---
-layout: header-body-two-cols
+layout: header-body-grid
 ---
 
 ### 如何拆解篝火的声音

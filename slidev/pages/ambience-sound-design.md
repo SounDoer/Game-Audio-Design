@@ -15,7 +15,7 @@ image: aigc-forest-cabin.png
 <!--  -->
 
 ---
-layout: header-body-bg
+layout: header-body
 background: aigc-forest-cabin.png
 ---
 
@@ -36,7 +36,7 @@ background: aigc-forest-cabin.png
 <!--  -->
 
 ---
-layout: header-body-bg
+layout: header-body
 background: aigc-forest-cabin.png
 ---
 
@@ -103,7 +103,7 @@ background: aigc-forest-cabin.png
 -->
 
 ---
-layout: header-body-bg
+layout: header-body
 background: aigc-forest-cabin.png
 ---
 
