@@ -36,7 +36,7 @@ src: ./pages/intro.md
 ---
 
 ---
-src: ./pages/game-audio-design-overview.md
+src: ./pages/what-is-game-audio-design.md
 ---
 
 ---

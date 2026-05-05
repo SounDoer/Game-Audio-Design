@@ -30,7 +30,7 @@ Entry: `slides.md` (global frontmatter and slide order). Chapters live in `pages
 ```yaml
 ---
 layout: header-body
-background: game-poster.png
+background: what-is-game-audio-design/game-poster.png
 ---
 
 ### 小节标题
@@ -108,7 +108,7 @@ Slidev 默认用 **UnoCSS**，类名风格与 **Tailwind CSS** 兼容（如 `fle
 
 ## Public assets (`slidev/public/`)
 
-Place images, video, and other static files here. Paths in markdown such as `/src/...` resolve under `slidev/public/` (e.g. `slidev/public/src/...`). **Commit this directory with the repo** when you add or change assets alongside slide edits.
+Place images, video, and other static files here. Paths in markdown such as `/src/...` resolve under `slidev/public/` (e.g. `slidev/public/src/...`). Chapter-specific assets can live in a subfolder named after the page file, e.g. `slidev/public/what-is-game-audio-design/` for `pages/what-is-game-audio-design.md`. **Commit this directory with the repo** when you add or change assets alongside slide edits.
 
 Optional one-time bulk import from the historical repo [Game-Audio-Design-Slidev](https://github.com/SounDoer/Game-Audio-Design-Slidev):
 

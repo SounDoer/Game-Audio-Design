@@ -108,7 +108,7 @@ cols: 3
 <div style="background-color:rgb(72, 72, 72); padding: 1rem; border-radius: 0.5rem;">
 
 #### 理论
-- Game Audio Design Overview
+- What is Game Audio Design
 - Dev Workflow & Tool
 - Audio Spatialization
 - Ambience Sound Design
