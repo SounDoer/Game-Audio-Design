@@ -3,58 +3,13 @@ layout: cover
 class: text-center
 ---
 
-<!-- 
-<style>
-@keyframes color-change-red {
-  0% { color: #ffffff; } /* 白色 */
-  50% { color: #ff0000; } /* 较亮的红色 */
-  100% { color: #ffffff; } /* 白色 */
-}
-
-@keyframes color-change-green {
-  0% { color: #ffffff; } /* 白色 */
-  50% { color: #00ff00; } /* 较亮的绿色 */
-  100% { color: #ffffff; } /* 白色 */
-}
-
-@keyframes color-change-blue {
-  0% { color: #ffffff; } /* 白色 */
-  50% { color: #0000ff; } /* 较亮的蓝色 */
-  100% { color: #ffffff; } /* 白色 */
-}
-
-.color-change-red {
-  animation: color-change-red 15s infinite;
-}
-
-.color-change-green {
-  animation: color-change-green 15s infinite;
-}
-
-.color-change-blue {
-  animation: color-change-blue 15s infinite;
-}
-</style>
-
-<div class="flex items-center justify-center text-center">
-  <div class="grid grid-cols-3 gap-4 opacity-80">
-    <span class="font-bold text-6xl tracking-widest color-change-red">游戏</span>
-    <span class="font-bold text-6xl tracking-widest color-change-green">音频</span>
-    <span class="font-bold text-6xl tracking-widest color-change-blue">设计</span>
-    <span class="font-bold text-3xl tracking-wide color-change-red">Game</span>
-    <span class="font-bold text-3xl tracking-wide color-change-green">Audio</span>
-    <span class="font-bold text-3xl tracking-wide color-change-blue">Design</span>
-  </div>
-</div>
--->
-
 <span class="font-bold text-6xl tracking-widest">游戏音频设计</span>
 <br>
 <br>
 <span class="font-bold text-3xl tracking-wide">Game Audio Design</span>
 <br>
 <br>
-<!-- <span class="text-sm opacity-50">2025 SHU Shanghai Film Academy</span> -->
+<!-- <span class="text-sm opacity-50">2026 SHU Shanghai Film Academy</span> -->
 
 <!--
 The last comment block of each slide will be treated as slide notes.
@@ -64,34 +19,51 @@ The last comment block of each slide will be treated as slide notes.
 layout: header-body-grid
 ---
 
-### 沈希辰
-Xichen Shen
+### 课程讲师
 
 ::left::
 
+沈希辰 Xichen Shen
+
+[SounDoer.com](https://soundoer.com/)  
+[xichen@soundoer.com](mailto:xichen@soundoer.com)
+
 - Lead Audio Designer at Hypergryph  
 Aug 2023 - Present  
-Unannounced project working in progress...
+[Arknights: Endfield](https://endfield.gryphline.com/)
 
 - Senior Audio Designer at Tencent NExT Studios  
-Apr 2019 – Aug 2023  
+Apr 2019 - Aug 2023  
 [SYNCED](https://www.syncedthegame.com)  
 
 - Audio Designer at Ubisoft Shanghai  
-Aug 2015 – Apr 2019  
+Aug 2015 - Apr 2019  
 [Far Cry New Dawn](https://www.ubisoft.com/en-us/game/far-cry/new-dawn)  
 [Far Cry 5](https://www.ubisoft.com/en-us/game/far-cry/far-cry-5)  
-[Far Cry 5 DLC: Hours of Darkness](https://www.ubisoft.com/en-us/game/far-cry/far-cry-5#58nAYWr7wA8hcfzLZs0mne)  
-[Far Cry 5 DLC: Lost On Mars](https://www.ubisoft.com/en-us/game/far-cry/far-cry-5#58nAYWr7wA8hcfzLZs0mne)  
 [Far Cry Primal](https://www.ubisoft.com/en-us/game/far-cry/far-cry-primal)  
 
 ::right::
 
-<div class="flex flex-wrap justify-center gap-1 mt-5">
-  <img src="/SYNCED_FIN_PNG_1280.png" alt="SYNCED" style="width: 45%; height: auto;">
-  <img src="/FarCryNewDawn_FIN_PNG_1280.png" alt="FarCry New Dawn" style="width: 45%; height: auto;">
-  <img src="/FarCry5_FIN_PNG_1280.png" alt="FarCry 5" style="width: 45%; height: auto;">
-  <img src="/FarCryPrimal_FIN_PNG_1280.png" alt="FarCry Primal" style="width: 45%; height: auto;">
+<div class="flex h-full min-h-0 w-full flex-col items-center justify-center gap-y-3 py-1">
+  <div class="flex shrink-0 flex-wrap justify-center gap-x-2">
+    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+      <img class="h-full w-full object-cover object-center" src="/intro/Arknights_Endfield_Title.jpg" alt="Arknights Endfield title card">
+    </div>
+    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+      <img class="h-full w-full object-cover object-center" src="/intro/SYNCED_Title.jpg" alt="SYNCED title card">
+    </div>
+  </div>
+  <div class="flex shrink-0 flex-wrap justify-center gap-x-2">
+    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+      <img class="h-full w-full object-cover object-top" src="/intro/FarCryNewDawn_Title.jpg" alt="Far Cry New Dawn title card">
+    </div>
+    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+      <img class="h-full w-full object-cover object-center" src="/intro/FarCry5_Title.jpg" alt="Far Cry 5 title card">
+    </div>
+    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+      <img class="h-full w-full object-cover object-center" src="/intro/FarCryPrimal_Title.jpg" alt="Far Cry Primal title card">
+    </div>
+  </div>
 </div>
 
 <!--

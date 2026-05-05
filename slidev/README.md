@@ -78,6 +78,34 @@ cols: 3
 右
 ```
 
+## 样式写法（规范）
+
+Slidev 默认用 **UnoCSS**，类名风格与 **Tailwind CSS** 兼容（如 `flex`、`gap-4`、`text-center`、`w-[45%]`）。本仓库幻灯内容建议统一如下。
+
+### 优先：`class="..."`（Uno / Tailwind 风格原子类）
+
+- **布局与对齐**：`flex`、`grid`、`justify-center`、`items-center` 等。
+- **间距与尺寸**：`p-4`、`mt-5`、`w-full`、`max-h-[70vh]`、`w-[45%]` 等。
+- **文字**：`text-sm`、`font-bold`、`opacity-70` 等。
+
+在 `pages/*.md` 里写 HTML 片段时，**尽量用 `class`，少用 `style`**，便于全文一致调整、也和 `layouts/*.vue` 里已有写法一致。
+
+### 例外：允许 `style="..."` 的情况
+
+仅在下列情况使用行内样式即可：
+
+- 需要 **任意数值** 且不便用原子类表达（较少见；可优先试 `w-[420px]` 这类任意值写法）。
+- 从设计稿 **临时对照**、确认后再改成 class（避免长期留在稿子里）。
+
+### 全局与单页
+
+- **跨多页、且与主题冲突的排版**（例如标题字号）：放在 **`styles/base.css`**，并优先把选择器写在 **`.slidev-layout`** 下，减少对演讲者界面的影响（见 [Slidev 目录说明 · Style](https://sli.dev/custom/directory-structure#style)）。
+- **单页一次性微调**：可在该页 markdown 底部使用 `<style scoped>`（慎用，避免复制粘贴扩散）。
+
+### 参考
+
+- [UnoCSS](https://unocss.dev/) · [Tailwind 文档](https://tailwindcss.com/docs)（查类名语义时二者可对照）
+
 ## Public assets (`slidev/public/`)
 
 Place images, video, and other static files here. Paths in markdown such as `/src/...` resolve under `slidev/public/` (e.g. `slidev/public/src/...`). **Commit this directory with the repo** when you add or change assets alongside slide edits.
