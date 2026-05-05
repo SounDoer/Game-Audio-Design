@@ -4,6 +4,10 @@
 # Production
 /build
 
+# Slidev build output (copied into Astro static dir)
+/static/slidev
+/slidev/static
+
 # Generated files
 .astro
 

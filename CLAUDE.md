@@ -80,7 +80,7 @@
 ```
 Game-Audio-Design/
   docs/          ← Astro 文章（.md 文件）
-  slidev/        ← 配图 Slidev 文件（每篇文章对应一个 .md）
+  slidev/        ← Slidev（`slides.md` 入口 + `pages/*.md` 分章；线上路径 `/slidev/`）
   static/        ← 静态资源
   CLAUDE.md      ← 本文件
   .claude/
