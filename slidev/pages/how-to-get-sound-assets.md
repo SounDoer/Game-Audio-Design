@@ -2,7 +2,12 @@
 layout: section
 ---
 
+::title::
+
 ## 如何获取声音素材
+
+::subtitle::
+
 **How to Get Sound Assets**
 
 <!--  -->

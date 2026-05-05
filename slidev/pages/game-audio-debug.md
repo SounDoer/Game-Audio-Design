@@ -2,7 +2,12 @@
 layout: section
 ---
 
+::title::
+
 ## Game Audio Debug
+
+::subtitle::
+
 **Game Audio Debug**
 
 <!--

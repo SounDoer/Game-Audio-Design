@@ -2,7 +2,12 @@
 layout: section
 ---
 
+::title::
+
 ## 游戏音频混音
+
+::subtitle::
+
 **Game Audio Mixing**
 
 <!--

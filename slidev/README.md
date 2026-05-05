@@ -10,7 +10,7 @@ Entry: `slides.md` (global frontmatter and slide order). Chapters live in `pages
 
 | `layout:` | 说明 |
 |-----------|------|
-| `section` | 分章大标题（通常一页只有标题行） |
+| `section` | 分章大标题：`::title::`（`##`）+ `::subtitle::`（如 `**English**`）；字号与间距在 **`layouts/section.vue`**（用 `!important` 压过 `styles/base.css` 里全局 `h*`） |
 | `cover` | 封面 |
 | `statement` | 一句话 / 提问，正文纵向居中 |
 | `default` | 无标题栏，整页一个默认槽（适合自定义居中块） |
@@ -99,7 +99,7 @@ Slidev 默认用 **UnoCSS**，类名风格与 **Tailwind CSS** 兼容（如 `fle
 
 ### 全局与单页
 
-- **跨多页、且与主题冲突的排版**（例如标题字号）：放在 **`styles/base.css`**，并优先把选择器写在 **`.slidev-layout`** 下，减少对演讲者界面的影响（见 [Slidev 目录说明 · Style](https://sli.dev/custom/directory-structure#style)）。
+- **跨多页、且与主题冲突的排版**（例如标题字号）：放在 **`styles/base.css`**，并优先把选择器写在 **`.slidev-layout`** 下，减少对演讲者界面的影响（见 [Slidev 目录说明 · Style](https://sli.dev/custom/directory-structure#style)）。`layout: section` 的标题在 **`layouts/section.vue`** 单独覆盖全局 `h*`。
 - **单页一次性微调**：可在该页 markdown 底部使用 `<style scoped>`（慎用，避免复制粘贴扩散）。
 
 ### 参考

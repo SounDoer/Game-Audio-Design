@@ -2,7 +2,12 @@
 layout: section
 ---
 
+::title::
+
 ## 如何听声音
+
+::subtitle::
+
 **How to Listen Sound**
 
 ---

@@ -16,6 +16,18 @@ The last comment block of each slide will be treated as slide notes.
 -->
 
 ---
+layout: section
+---
+
+::title::
+
+## 课程简介
+
+::subtitle::
+
+**Introduction**
+
+---
 layout: header-body-grid
 ---
 

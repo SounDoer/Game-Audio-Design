@@ -2,7 +2,12 @@
 layout: section
 ---
 
+::title::
+
 ## 游戏音频设计概述
+
+::subtitle::
+
 **Game Audio Design Overview**
 
 ---

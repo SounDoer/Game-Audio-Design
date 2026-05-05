@@ -2,7 +2,12 @@
 layout: section
 ---
 
+::title::
+
 ## 游戏音频中的 AI 应用
+
+::subtitle::
+
 **AI in Game Audio**
 
 <!--  -->
