@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "slidev:dev": "slidev ./slidev/slides.md --base /slidev/",
-    "slidev:build": "rm -rf static/slidev && slidev build ./slidev/slides.md --base /slidev/ --out ../static/slidev --router-mode hash",
+    "slidev:sync-public": "node scripts/sync-slidev-public.mjs --resume",
+    "slidev:build": "npm run slidev:sync-public && rm -rf static/slidev && slidev build ./slidev/slides.md --base /slidev/ --out ../static/slidev --router-mode hash",
     "build": "npm run slidev:build && astro build",
     "preview": "astro preview",
     "check": "astro check",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
+    "mermaid": "^11.4.1",
     "@slidev/cli": "^52.15.1",
     "@slidev/theme-default": "^0.25.0",
     "@types/qrcode": "^1.5.5",

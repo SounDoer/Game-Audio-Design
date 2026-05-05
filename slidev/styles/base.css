@@ -1,0 +1,47 @@
+/* styles/base.css */
+
+h1 {
+    font-size: 3.75rem !important; /* text-6xl */
+    font-weight: bold !important;
+    letter-spacing: 0.4rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+  
+h2 {
+    font-size: 3rem !important; /* text-5xl */
+    font-weight: bold !important;
+    letter-spacing: 0.3rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+h3 {
+    font-size: 2.1rem !important; /* text-4xl 2.25rem */
+    font-weight: bold !important;
+    letter-spacing: 0.15rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+h4 {
+    font-size: 1.75rem !important; /* text-3xl */
+    font-weight: bold !important;
+    letter-spacing: 0.1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+h5 {
+    font-size: 1.5rem !important; /* text-2xl */
+    font-weight: bold !important;
+    letter-spacing: 0.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+h6 {
+    font-size: 1.25rem !important; /* text-xl */
+    font-weight: bold !important;
+    letter-spacing: 0.05rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+p {
+    font-size: 1rem; /* text-base */
+  }
