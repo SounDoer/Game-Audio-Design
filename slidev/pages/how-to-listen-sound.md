@@ -4,17 +4,56 @@ layout: section
 
 ::title::
 
-## 如何听声音
+## 如何听声音？
 
 ::subtitle::
 
-**How to Listen Sound**
+**How to Listen Sound?**
+
+---
+layout: header-body
+---
+
+### 为什么同一个声音听起来会不一样？
+
+::body::
+
+<v-clicks>
+
+- 为什么同一首歌，用手机外放、耳机或车载音响听起来不一样？
+- 为什么同一段声音，在安静房间里很清楚，在地铁里却听不见细节？
+- 为什么晚上小音量听刚好的声音，第二天正常音量听会觉得刺耳？
+- 为什么换了一副耳机之后，低频、空间感和人声位置都会发生变化？
+- 为什么坐在音箱正中间和站在房间角落，听到的低频完全不同？
+- 为什么连续工作一两个小时之后，对高频、响度和动态的判断会变得不稳定？
+- 为什么我觉得合适的声音，你听起来会觉得响了或者轻了？
+
+</v-clicks>
+
+---
+layout: header-body
+---
+
+### 我们是在描述同一个声音吗？
+
+::body::
+
+<v-clicks>
+
+- 太小了
+- 有点闷
+- 不够重
+- 太刺耳
+- 离我太远
+- 打击感不够
+
+</v-clicks>
 
 ---
 layout: header-body-center
 ---
 
-### 数字音频制品 --> 最终听感效果
+### 数字音频制品 --> 听感效果与评价
 
 ::body::
 
@@ -24,6 +63,61 @@ layout: header-body-center
 从数字音频制品到最终听感效果
 有哪些因素会影响听到的声音？
 -->
+
+---
+layout: header-body
+---
+
+### 为什么需要描述和测量声音？
+
+::body::
+
+<div class="grid grid-cols-2 gap-8 text-lg">
+
+<div>
+
+#### 听音条件的差异
+
+- 播放设备不同
+- 监听环境不同
+- 监听响度不同
+- 声学空间不同
+- 听觉状态不同
+
+</div>
+
+<div>
+
+#### 感受描述的差异
+
+- 太小
+- 太闷
+- 不够重
+- 太刺耳
+- 太远
+- 没有冲击力
+
+</div>
+
+</div>
+
+> 我们需要把不稳定的听感经验，转化为更稳定的分析维度。
+- 电平 / 响度
+- 频谱分布
+- 低频结构 / 瞬态
+- 中高频峰值 / 共振
+- 直达声 / 反射声 / 混响比例
+- 峰值 / 动态范围 / 包络
+
+---
+layout: header-body
+---
+
+### 如何客观地测量和描述声音？
+
+::body::
+
+202501_HyperGryphSharing_v01.key
 
 ---
 layout: header-body
@@ -40,7 +134,7 @@ layout: header-body
 ![](/how-to-listen-sound/digital-audio-signal-loudness.png){style="height: 350px"}
 
 <!--
-互动提问：0dBFS 代表什么意思
+互动提问：0dBFS 代表什么意思？类比 RGB
 -->
 
 ---
@@ -100,6 +194,23 @@ layout: header-body-center
 <img src="/how-to-listen-sound/digital-audio-signal-dynamic-range.png" alt="Digital Audio Signal Dynamic Range" style="width: 68%; height: auto;" />
 
 <!--  -->
+
+---
+layout: header-body
+---
+
+### 回到游戏音频：我们应该怎么听？
+
+- TODO: Solo 听
+- TODO: In-game 听
+- TODO: 和参考一起听
+- TODO: 在不同设备上听
+- TODO: 在不同监听响度下听
+- TODO: 结合 Meter 和主观判断听
+
+::body::
+
+> TODO: 游戏声音不是孤立素材，而是在系统、场景和交互中被听到的结果。
 
 ---
 layout: statement
