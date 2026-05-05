@@ -1,0 +1,1 @@
+var e=`/slidev/sound-attenuation.svg`;export{e as t};

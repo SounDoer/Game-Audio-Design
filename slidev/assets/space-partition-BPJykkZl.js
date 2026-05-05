@@ -1,0 +1,1 @@
+var e=`/slidev/space-partition.svg`;export{e as t};

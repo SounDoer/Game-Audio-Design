@@ -1,0 +1,72 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.11">
+  <diagram name="Page-1" id="lq0GwR5uF42vUFGPrrZK">
+    <mxGraphModel dx="2074" dy="1121" grid="1" gridSize="10" guides="0" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lffYPvys2TkUN1hD1_hh-1" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=3;dashed=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="360" as="sourcePoint" />
+            <mxPoint x="920" y="1000" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="240" />
+              <mxPoint x="1000" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-2" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=3;dashed=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1600" y="200" as="sourcePoint" />
+            <mxPoint x="1000" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1400" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-3" value="Region A" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=36;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="530" y="320" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-5" value="Region B" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=36;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1160" y="320" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-6" value="Region C" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=36;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1070" y="570" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-7" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=3;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="810" as="sourcePoint" />
+            <mxPoint x="480" y="820" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="480" y="720" />
+              <mxPoint x="480" y="440" />
+              <mxPoint x="800" y="440" />
+              <mxPoint x="800" y="920" />
+              <mxPoint x="480" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-8" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=3;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="680" as="sourcePoint" />
+            <mxPoint x="780" y="650" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-9" value="Room A" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=30;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="500" y="459" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-10" value="Room B" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=30;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="500" y="870" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-11" value="Portal A" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=30;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="640" y="610" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lffYPvys2TkUN1hD1_hh-12" value="Portal B" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=30;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="520" y="750" width="160" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

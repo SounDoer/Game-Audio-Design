@@ -4,17 +4,197 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Game Audio Design - Slidev</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600&family=Fira+Code:wght@200;400;600&display=swap" type="text/css">
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/slidevjs/slidev/assets/favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;600&family=Robot+Slab:wght@200;400;600&family=Fira+Code:wght@200;400;600&display=swap" type="text/css">
+<link rel="preload" as="image" href="/slidev/SYNCED_FIN_PNG_1280.png">
+<link rel="preload" as="image" href="/slidev/FarCryNewDawn_FIN_PNG_1280.png">
+<link rel="preload" as="image" href="/slidev/FarCry5_FIN_PNG_1280.png">
+<link rel="preload" as="image" href="/slidev/FarCryPrimal_FIN_PNG_1280.png">
+<link rel="preload" as="image" href="/slidev/game-poster.png">
+<link rel="preload" as="image" href="/slidev/bg-image-for-audio.png">
+<link rel="preload" as="image" href="/slidev/bg-image-for-design.png">
+<link rel="preload" as="image" href="/slidev/locating-with-sound.png">
+<link rel="preload" as="image" href="/slidev/the-core-audio-data.svg">
+<link rel="preload" as="image" href="/slidev/design-workflow.svg">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-perforce-helixcore.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-git.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-github-mark.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-svn.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-unrealengine.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-unity.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-godot.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-cocos.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-construct3.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-wwise.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-fmod.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-criware.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-reaper.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-protools.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-cubase.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-nuendo.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-feishu.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-tapd.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-jira.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-visualstudio.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-visualstudiocode.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-rider.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-notion.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-obsidian.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-siyuan.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-greenshot.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-flameshot.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-obs.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-drawio.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-inkscape.svg">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-gimp.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-davinci-resolve.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-pureref.svg">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-mpv.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-vlc.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-foobar2000.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-markdown.png">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-mermaid.svg">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-docusaurus.svg">
+<link rel="preload" as="image" href="/slidev/src/dev-tool-logo/logo-slidev.png">
+<link rel="preload" as="image" href="/slidev/ue-campfire.png">
+<link rel="preload" as="image" href="/slidev/campfire-burn-sizzle-crack.png">
+<link rel="preload" as="image" href="/slidev/soundbank-generation.png">
+<link rel="preload" as="image" href="/slidev/channel-based-positioning.svg">
+<link rel="preload" as="image" href="/slidev/object-based-positioning.svg">
+<link rel="preload" as="image" href="/slidev/space-partition.svg">
+<link rel="preload" as="image" href="/slidev/reflect-reverb.svg">
+<link rel="preload" as="image" href="/slidev/diffraction-transmission.svg">
+<link rel="preload" as="image" href="/slidev/sound-attenuation.svg">
+<link rel="preload" as="image" href="/slidev/what-is-wwise-spatial-audio.png">
+<link rel="preload" as="image" href="/slidev/spatial-audio-signal-flow.png">
+<link rel="preload" as="image" href="/slidev/src/audio-spatialization/Wwise_Room_Portal_Texture_02.png">
+<link rel="preload" as="image" href="/slidev/src/audio-spatialization/SOP_Wwise_3D_Viewer.png">
+<link rel="preload" as="image" href="/slidev/src/audio-spatialization/triton.gif">
+<link rel="preload" as="image" href="/slidev/src/audio-spatialization/ProjectAcoustics-GDC2019-01.png">
+<link rel="preload" as="image" href="/slidev/src/audio-spatialization/ProjectAcoustics-GDC2019-02.png">
+<link rel="preload" as="image" href="/slidev/aigc-forest-cabin.png">
+<link rel="preload" as="image" href="/slidev/char-anim-struct.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_Walk_F.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_Run_B.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_CrouchIdleToAds.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_Walk_B.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_Crouch_F.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_Turn_RT150.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_Run_F.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_Crouch_B.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Anim_FS_SuperHit_L.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/SOP_Material.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/ue-material-m.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/ue-material-mi.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/ue-physical-material.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/ue-phymat-detail.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/ue-surface-type.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/ue-switch-material.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/wwise-switch-material.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/footstep-raycast.png">
+<link rel="preload" as="image" href="/slidev/src/char-foley/ue-raycast-line-trace.png">
+<link rel="preload" as="image" href="/slidev/src/naming-convention/wwise-amb-forest-struct.png">
+<link rel="preload" as="image" href="/slidev/src/naming-convention/wwise-player-foley-struct.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-Pistol-DesertEagle.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-Revolver-ColtPython.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-AssaultRifle-AK47.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-SubmachineGun-MP5.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-LightMachineGun-M249.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-SniperRifle-BarrettM82.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-Shotgun-SPAS12.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Gun-Launcher-RPG.png">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/the-parts-of-a-semiautoamtic-handgun-and-their-function.webp">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/the-stationary-and-moving-parts-of-a-revolver.webp">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/bolt-action-rifle-parts.webp">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/Rifle_cartridge_comparison.jpg">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/SYNCED_GunRec_Location_Hill.jpg">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/SYNCED_GunRec_Location_Bunker.jpg">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/SYNCED_GunRec_Location_Plain.jpg">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/SYNCED_GunRec_Location_Hall.jpg">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/SYNCED_GunRec_Location_Valley.jpg">
+<link rel="preload" as="image" href="/slidev/src/gun-sound-design/SYNCED_GunRec_Location_Warehouse.jpg">
+<link rel="preload" as="image" href="/slidev/gun-sound-1p.png">
+<link rel="preload" as="image" href="/slidev/gun-sound-3p.png">
+<link rel="preload" as="image" href="/slidev/gun-sound-1p-layer.png">
+<link rel="preload" as="image" href="/slidev/gun-sound-3p-layer.png">
+<link rel="preload" as="image" href="/slidev/Gun_Rec_Session_PT.png">
+<link rel="preload" as="image" href="/slidev/src/how-to-get-sound-assets/Robert-Moog-with-Moog-Synthesizers.jpg">
+<link rel="preload" as="image" href="/slidev/src/how-to-get-sound-assets/Moog-One-Front.jpg">
+<link rel="preload" as="image" href="/slidev/src/how-to-get-sound-assets/massive-x.jpg">
+<link rel="preload" as="image" href="/slidev/src/how-to-get-sound-assets/reaktor-6.jpg">
+<link rel="preload" as="image" href="/slidev/src/how-to-get-sound-assets/website-boomlibrary-crop.png">
+<link rel="preload" as="image" href="/slidev/src/how-to-get-sound-assets/website-asoundeffect-crop.png">
+<link rel="preload" as="image" href="/slidev/src/how-to-get-sound-assets/website-soundly-crop.png">
+<link rel="preload" as="image" href="/slidev/boss-fight-music-flow-01.png">
+<link rel="preload" as="image" href="/slidev/boss-fight-music-flow-02.png">
+<link rel="preload" as="image" href="/slidev/boss-fight-music-waveform-01.png">
+<link rel="preload" as="image" href="/slidev/boss-fight-music-waveform-02.png">
+<link rel="preload" as="image" href="/slidev/src/music-design/music-score-amazing-grace.png">
+<link rel="preload" as="image" href="/slidev/src/music-design/music-style-01.png">
+<link rel="preload" as="image" href="/slidev/src/music-design/music-style-02.png">
+<link rel="preload" as="image" href="/slidev/src/music-design/music-style-03.png">
+<link rel="preload" as="image" href="/slidev/src/music-design/music-style-04.png">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_Character_Voice_Casting_Sheet_01.jpg">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_Character_Voice_Casting_Sheet_03.jpg">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_Character_Voice_Casting_Sheet_02.jpg">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_Character_Voice_Casting_Sheet_04.jpg">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_VO_DT_01.png">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_VO_DT_02.png">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_VO_RecList_01.png">
+<link rel="preload" as="image" href="/slidev/src/voice-design/SOP_VO_RecList_02.png">
+<link rel="preload" as="image" href="/slidev/src/voice-design/The Last of Us Part 2 2020.jpg">
+<link rel="preload" as="image" href="/slidev/src/voice-design/Senuas Saga Hellblade II Binaural Recording.webp">
+<link rel="preload" as="image" href="/slidev/src/voice-design/Senuas Saga Hellblade II 2024.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Animal Crossing New Horizons 2020.jpg">
+<link rel="preload" as="image" href="/slidev/src/voice-design/Far Cry Primal 2016.jpg">
+<link rel="preload" as="image" href="/slidev/src/cinematic-sound-design/synced_offplanet_logo_W.png">
+<link rel="preload" as="image" href="/slidev/src/cinematic-sound-design/SOP_Opener_Demo_01.png">
+<link rel="preload" as="image" href="/slidev/src/cinematic-sound-design/SOP_Opener_Demo_02.png">
+<link rel="preload" as="image" href="/slidev/src/cinematic-sound-design/SOP_Opener_Demo_03.png">
+<link rel="preload" as="image" href="/slidev/src/cinematic-sound-design/SOP_Opener_Demo_04.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-trending.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-explore.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-psilocybin-vibes.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-truth-tastes-bitter.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-hurts-like-hell.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-fever-dream.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-nothing-even-matters.png">
+<link rel="preload" as="image" href="/slidev/src/ai-in-game-audio/suno-ai-music-arabian-nights.png">
+<link rel="preload" as="image" href="/slidev/listen-digital-audio.png">
+<link rel="preload" as="image" href="/slidev/digital-audio-signal-loudness.png">
+<link rel="preload" as="image" href="/slidev/src/how-to-listen-sound/TC-CLARITY-M-STEREO.png">
+<link rel="preload" as="image" href="/slidev/src/how-to-listen-sound/iZotope-Insight.png">
+<link rel="preload" as="image" href="/slidev/src/how-to-listen-sound/BlueCat-FreqAnalyst.png">
+<link rel="preload" as="image" href="/slidev/src/how-to-listen-sound/Youlean-Loudness-Meter.png">
+<link rel="preload" as="image" href="/slidev/audio-meter.png">
+<link rel="preload" as="image" href="/slidev/digital-audio-signal-dynamic-range.png">
+<link rel="preload" as="image" href="/slidev/src/game-audio-mixing/mixing-frequency-loudness.png">
+<link rel="preload" as="image" href="/slidev/src/game-audio-mixing/mixing-frequency-loudness-time.png">
+<link rel="preload" as="image" href="/slidev/src/game-poster/DOOM-2016.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Battlefield-V-2018.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Call-of-Duty-Modern-Warfare-III-2023.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Counter-Strike-2-2023.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Rainbow-Six-Siege-2015.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Escape-of-Tarkov-2017.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Valorant-2020.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Apex-Legends-2019.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-poster/Fortnite-2017.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-audio-mixing/Channel-Based-Mix-Output.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-audio-mixing/Realtime-Positioning-Mix-Output.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-audio-mixing/pro-tools-automation-curve.jpg">
+<link rel="preload" as="image" href="/slidev/src/game-audio-mixing/wwise-bus-ducking.webp">
+<link rel="icon" href="/slidev/GAD_Logo.ico">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta property="slidev:version" content="52.15.1">
-<meta name="author" content="&quot;SounDoer&quot;">
-<meta property="og:title" content="Game Audio Design - Slidev">  <script type="module" crossorigin src="/slidev/assets/index-BecCdBfX.js"></script>
+<meta name="author" content="&quot;xichen@soundoer.com&quot;">
+<meta property="og:title" content="Game Audio Design - Slidev">  <script type="module" crossorigin src="/slidev/assets/index-BqonJze3.js"></script>
+  <link rel="modulepreload" crossorigin href="/slidev/assets/_plugin-vue_export-helper-BOai-rQB.js">
   <link rel="modulepreload" crossorigin href="/slidev/assets/rolldown-runtime-S-ySWqyJ.js">
-  <link rel="modulepreload" crossorigin href="/slidev/assets/modules/shiki-jlERZf0E.js">
-  <link rel="modulepreload" crossorigin href="/slidev/assets/modules/vue-6WAdDYR9.js">
+  <link rel="modulepreload" crossorigin href="/slidev/assets/preload-helper-DVvTTCVp.js">
+  <link rel="modulepreload" crossorigin href="/slidev/assets/utils-CmVawvVO-DO5lTB8G.js">
+  <link rel="modulepreload" crossorigin href="/slidev/assets/modules/shiki-CKKjaqEk.js">
+  <link rel="modulepreload" crossorigin href="/slidev/assets/modules/vue-CPQiAHmZ.js">
   <link rel="stylesheet" crossorigin href="/slidev/assets/modules/shiki-BhczoDnk.css">
-  <link rel="stylesheet" crossorigin href="/slidev/assets/index-Q9VLf6jy.css">
+  <link rel="stylesheet" crossorigin href="/slidev/assets/index-Ddj27QAO.css">
 </head>
 <body>
   <div id="app"></div>
