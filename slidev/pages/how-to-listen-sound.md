@@ -18,7 +18,7 @@ layout: header-body-center
 
 ::body::
 
-<img src="/listen-digital-audio.png" alt="Listen Digital Audio" style="width: 85%; height: auto;" />
+<img src="/how-to-listen-sound/listen-digital-audio.png" alt="Listen Digital Audio" style="width: 85%; height: auto;" />
 
 <!--
 从数字音频制品到最终听感效果
@@ -37,7 +37,7 @@ layout: header-body
 
 ::body::
 
-![](/digital-audio-signal-loudness.png){style="height: 350px"}
+![](/how-to-listen-sound/digital-audio-signal-loudness.png){style="height: 350px"}
 
 <!--
 互动提问：0dBFS 代表什么意思
@@ -59,13 +59,13 @@ layout: header-body
   
   #### 频谱仪与响度表
   - [TC Electronic CLARITY M STEREO](https://www.tcelectronic.com/product.html?modelCode=0842-AAD)
-    ![](/src/how-to-listen-sound/TC-CLARITY-M-STEREO.png){style="height: 65px"}
+    ![](/how-to-listen-sound/TC-CLARITY-M-STEREO.png){style="height: 65px"}
   - [iZotope Insight](https://www.izotope.com/en/products/insight.html)
-    ![](/src/how-to-listen-sound/iZotope-Insight.png){style="height: 70px"}
+    ![](/how-to-listen-sound/iZotope-Insight.png){style="height: 70px"}
   - [Blue Cat Audio FreqAnalyst](https://www.bluecataudio.com/Products/Product_FreqAnalyst/)
-    ![](/src/how-to-listen-sound/BlueCat-FreqAnalyst.png){style="height: 65px"}
+    ![](/how-to-listen-sound/BlueCat-FreqAnalyst.png){style="height: 65px"}
   - [Youlean Loudness Meter](https://youlean.co/youlean-loudness-meter/)
-    ![](/src/how-to-listen-sound/Youlean-Loudness-Meter.png){style="height: 70px"}
+    ![](/how-to-listen-sound/Youlean-Loudness-Meter.png){style="height: 70px"}
   </div>
 
   <div>
@@ -97,7 +97,7 @@ layout: header-body-center
 
 ::body::
 
-<img src="/digital-audio-signal-dynamic-range.png" alt="Digital Audio Signal Dynamic Range" style="width: 68%; height: auto;" />
+<img src="/how-to-listen-sound/digital-audio-signal-dynamic-range.png" alt="Digital Audio Signal Dynamic Range" style="width: 68%; height: auto;" />
 
 <!--  -->
 

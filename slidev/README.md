@@ -108,7 +108,13 @@ Slidev 默认用 **UnoCSS**，类名风格与 **Tailwind CSS** 兼容（如 `fle
 
 ## Public assets (`slidev/public/`)
 
-Place images, video, and other static files here. Paths in markdown such as `/src/...` resolve under `slidev/public/` (e.g. `slidev/public/src/...`). Chapter-specific assets can live in a subfolder named after the page file, e.g. `slidev/public/what-is-game-audio-design/` for `pages/what-is-game-audio-design.md`. **Commit this directory with the repo** when you add or change assets alongside slide edits.
+**约定：**`pages/<章节>.md` 与 **`public/<章节>/`** 一一对应（与 md 文件**同名**目录），该章用到的图片、视频等静态文件放在该目录下。在正文里用站点根路径引用，例如 `/how-to-listen-sound/listen-digital-audio.png` 对应磁盘上的 `slidev/public/how-to-listen-sound/listen-digital-audio.png`；`frontmatter` 里的 `background:` 等可写相对 `public/` 的路径（如 `what-is-game-audio-design/game-poster.png`），不加前导 `/`。
+
+**整理中：**历史资源可能仍在 `public/` 根目录或 `public/src/<主题>/` 下。开始改某篇 `pages/*.md` 时，若尚无同名 `public/<章节>/`，应**新建目录**，把该页实际引用的资产**迁入**并更新 md 中的路径。
+
+**遗留路径：**形如 `/src/...` 的链接仍解析到 `slidev/public/src/...`，待各章按上条迁完后再逐步淘汰。
+
+与幻灯改动一起增删资源时，请**随仓库提交** `slidev/public/` 下的相应文件。
 
 Optional one-time bulk import from the historical repo [Game-Audio-Design-Slidev](https://github.com/SounDoer/Game-Audio-Design-Slidev):
 

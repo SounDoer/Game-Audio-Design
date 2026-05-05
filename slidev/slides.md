@@ -40,6 +40,10 @@ src: ./pages/what-is-game-audio-design.md
 ---
 
 ---
+src: ./pages/how-to-listen-sound.md
+---
+
+---
 src: ./pages/dev-workflow.md
 ---
 
@@ -97,10 +101,6 @@ src: ./pages/cinematic-sound-design.md
 
 ---
 src: ./pages/ai-in-game-audio.md
----
-
----
-src: ./pages/how-to-listen-sound.md
 ---
 
 ---
