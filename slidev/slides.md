@@ -28,6 +28,10 @@ colorSchema: dark
 aspectRatio: 16/9
 canvasWidth: 1080
 
+src: ./pages/cover.md
+---
+
+---
 src: ./pages/intro.md
 ---
 
