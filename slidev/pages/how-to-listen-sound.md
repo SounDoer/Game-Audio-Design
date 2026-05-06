@@ -103,6 +103,66 @@ layout: header-body
 
 #### 硬件设备中的声音控制
 
+<div class="grid grid-cols-2 gap-8 w-full">
+  <div v-click>
+    <img src="/how-to-listen-sound/System_Volume_Mixer.png" alt="Windows 11 volume mixer settings" style="width: 100%; height: auto;" />
+  </div v-click>
+  <div v-click>
+    <img src="/how-to-listen-sound/iPhone_Volume.jpg" alt="iPhone system volume indicator" style="width: 100%; height: auto;" />
+  </div v-click>
+</div>
+
+---
+layout: header-body
+---
+
+### 音频信号经过了多少环节才到达你的耳朵？
+
+::body::
+
+#### 听音设备与环境
+
+<div class="grid grid-cols-3 gap-8 text-lg w-full items-start">
+
+<div v-click>
+
+##### 常用耳麦
+
+<div class="flex flex-col gap-3">
+  <img src="/how-to-listen-sound/GameHeadset_03.png" alt="Gaming headset companion app: virtual 7.1, EQ, mic" style="width: 80%; height: auto;" />
+</div>
+
+</div v-click>
+
+<div v-click>
+
+##### 音频编辑室
+
+<div class="flex flex-col gap-3">
+  <div class="grid grid-cols-2 gap-3 w-full">
+    <img src="/how-to-listen-sound/AudioInterface.png" alt="Desktop audio interface" style="width: 100%; height: auto;" />
+    <img src="/how-to-listen-sound/ProHeadphones.png" alt="Professional over-ear headphones" style="width: 100%; height: auto;" />
+  </div>
+  <div class="grid grid-cols-2 gap-3 w-full">
+    <img src="/how-to-listen-sound/Amplifier.png" alt="AV pre-amplifier" style="width: 100%; height: auto;" />
+    <img src="/how-to-listen-sound/SoundRoom.png" alt="Professional sound room" style="width: 100%; height: auto;" />
+  </div>
+</div>
+
+</div v-click>
+
+<div v-click>
+
+##### 混音棚
+
+<div class="flex flex-col gap-3">
+  <img src="/how-to-listen-sound/MixingStage.JPG" alt="Professional mixing stage" style="width: 100%; height: auto;" />
+</div>
+
+</div v-click>
+
+</div>
+
 ---
 layout: header-body-center
 ---
