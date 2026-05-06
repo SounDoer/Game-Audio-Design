@@ -4,7 +4,7 @@ title: Game Audio Design
 favicon: /GAD_Logo.ico
 author: xichen@soundoer.com
 
-# Production build uses `--router-mode hash` (CLI); keep history for local `slidev` without flags.
+# Client router: history URLs (no `#`). See `routerMode` in Slidev docs if you need hash for static hosts without SPA fallback.
 routerMode: history
 
 contextMenu: dev

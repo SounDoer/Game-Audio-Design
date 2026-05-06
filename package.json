@@ -8,7 +8,7 @@
     "start": "astro dev",
     "slidev:dev": "slidev ./slidev/slides.md --base /slidev/",
     "slidev:sync-public": "node scripts/sync-slidev-public.mjs --resume",
-    "slidev:build": "rm -rf static/slidev && slidev build ./slidev/slides.md --base /slidev/ --out ../static/slidev --router-mode hash",
+    "slidev:build": "rm -rf static/slidev && slidev build ./slidev/slides.md --base /slidev/ --out ../static/slidev",
     "build": "npm run slidev:build && astro build",
     "preview": "astro preview",
     "check": "astro check",
