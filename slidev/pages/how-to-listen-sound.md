@@ -294,20 +294,6 @@ How to evaluate sound as objectively and accurately as possible?
 layout: header-body
 ---
 
-### 如何客观地测量和描述声音？
-
-::body::
-
-本节结构复刻分享材料 `202501_HyperGryphSharing_v01.pdf` **第 6–13 页**（图示与表格为占位，数值以正式规范与项目交付为准）。
-
-<!--
-来源：.temp/202501_HyperGryphSharing_v01.pdf p.6–13（文本经 pypdf 抽取，版式按原页顺序整理）
--->
-
----
-layout: header-body
----
-
 ### 人耳听阈范围 Human Hearing Range
 频率范围 20 Hz – 20 kHz；低于 20 Hz 为次声波（Infrasound），高于 20 kHz 为超声波（Ultrasound）
 
@@ -434,21 +420,24 @@ layout: header-body
 -->
 
 ---
-layout: header-body
+layout: statement
 ---
 
-### 回到游戏音频：我们应该怎么听？
+### 有了参考标准，大家会遵守吗？
+Reference standards exist — but does everyone follow them?
 
-- TODO: Solo 听
-- TODO: In-game 听
-- TODO: 和参考一起听
-- TODO: 在不同设备上听
-- TODO: 在不同监听响度下听
-- TODO: 结合 Meter 和主观判断听
+---
+layout: statement
+---
 
-::body::
+### 响度战争：越响越好听？
+Loudness war: louder = better?
 
-> TODO: 游戏声音不是孤立素材，而是在系统、场景和交互中被听到的结果。
+<!--
+- 制作方在做什么？
+- 平台方在做什么？
+- 受众在做什么？
+-->
 
 ---
 layout: statement
@@ -459,11 +448,8 @@ Adjust daily listening environment and cultivate good listening habit.
 
 <!--
 - 主流耳机和声卡品牌
-- 找到合适的 Mixing Reference
 - 确定合适的监听响度
-- 是否需要校准？
-  - 耳机音箱校准
-    Sonarworks SoundID Reference
-    dSONIQ Realphone
-    Toneboosters Morphit
+- 找到合适的 Mixing Reference
+- 使用响度表辅助
+- 了解不同终端设备的特性
 -->
