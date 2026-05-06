@@ -338,48 +338,30 @@ layout: header-body
 layout: header-body
 ---
 
-### 粉噪与听阈频率（材料 p.7）
+### 声压级 Sound Pressure Level
+属于物理声学范畴，用于度量声音大小的物理量，单位 dB SPL
 
 ::body::
 
-- **Pink Noise**
-- **人耳听阈范围（Human Hearing Range）**（与 p.6 文字一致）
-- 频率范围 **20 Hz – 20 kHz**；低于 20 Hz 为**次声波（Infrasound）**，高于 20 kHz 为**超声波（Ultrasound）**
-
-粉噪 SPAN 与试听见上一页「人耳听阈范围」第四步；本节其余图示仍以 PDF 第 7 页为准占位。
+<SPLDiagram />
 
 ---
 layout: header-body
 ---
 
-### 声压级（SPL）（材料 p.8）
+### 响度 Loudness
+属于心理声学范畴，用于度量声音大小的感知量，单位 phon
 
 ::body::
 
-- **声压级（Sound Pressure Level）**：物理声学范畴，用于度量声音大小的物理量，单位 **dB SPL**
-- **0 dB SPL** / **120 dB SPL**（刻度与示例图见原稿）
-- **&gt; 100 dB SPL** 的典型场景（原稿列举）：
-  - 夜店或演唱会前排
-  - 近距离烟花爆竹
-  - 地铁车厢部分时刻峰值
-  - 冲击钻
-  - 烟雾报警器
-- **音频后期制作环境校准响度**：约 **79–83 dB SPL**
+<div class="mx-auto mt-4 grid w-full max-w-6xl grid-cols-1 gap-6 items-start lg:grid-cols-2">
+  <img src="/how-to-listen-sound/Equal_Loudness_Contour.png" alt="Equal-loudness contours (ISO 226: revision), SPL versus frequency with phon labels" style="width: 100%; height: auto;" />
+  <img src="/how-to-listen-sound/SXC_Hearing_Test.png" alt="Pure tone audiometry audiogram, air and bone conduction thresholds" style="width: 100%; height: auto;" />
+</div>
 
-`[图占位：SPL 刻度与场景示意，对应 PDF 第 8 页]`
 
----
-layout: header-body
----
 
-### 响度与等响曲线（材料 p.9–10）
-
-::body::
-
-- **响度（Loudness）**：心理声学范畴，用于度量声音大小的**感知量**，单位 **phon**
-- 延伸阅读：[Equal-loudness contour](https://en.wikipedia.org/wiki/Equal-loudness_contour)
-
-`[图占位：等响曲线 / Fowler–Fletcher 类示意，对应 PDF 第 9–10 页]`
+<!-- - 延伸阅读：[Equal-loudness contour](https://en.wikipedia.org/wiki/Equal-loudness_contour) -->
 
 ---
 layout: header-body
