@@ -313,12 +313,12 @@ layout: header-body
 
 ::body::
 
-<!-- - 示例：**Sine 40 Hz** → **Sine 440 Hz** → **Sine 8000 Hz**（Voxengo SPAN，同一监听位置依次覆盖） -->
+<!-- - 示例：**Sine 40 Hz** → **Sine 440 Hz** → **Sine 8000 Hz** → **Pink Noise**（Voxengo SPAN，同一监听位置依次覆盖） -->
 
 <!-- 与下列 v-click 逐步对应：sources[] 每项对应一次揭示；若对齐错位可设 clicks-offset -->
-<PlayAudioOnClick :sources="['/how-to-listen-sound/Sine_40Hz_-19LUFS.wav','/how-to-listen-sound/Sine_440Hz_-22LUFS.wav','/how-to-listen-sound/Sine_8000Hz_-20LUFS.wav']" />
+<PlayAudioOnClick :sources="['/how-to-listen-sound/Sine_40Hz_-19LUFS.wav','/how-to-listen-sound/Sine_440Hz_-22LUFS.wav','/how-to-listen-sound/Sine_8000Hz_-20LUFS.wav','/how-to-listen-sound/PinkNoise_-26LUFS.wav']" />
 
-<!-- SPAN 三张叠图：宽度改外层 max-w-*；占位高度改 min-h-*；单张最大尺寸可改 img 上 max-h-* / max-w-* -->
+<!-- SPAN 四张叠图：宽度改外层 max-w-*；占位高度改 min-h-*；单张最大尺寸可改 img 上 max-h-* / max-w-* -->
 <div class="relative mx-auto mt-4 min-h-[min(40vh,420px)] w-full max-w-5xl">
   <div v-click class="absolute inset-0 z-[1] flex items-center justify-center">
     <img src="/how-to-listen-sound/SPAN-40Hz.png" alt="Spectrum: sine 40 Hz" class="max-h-[min(52vh,420px)] w-auto max-w-full object-contain" />
@@ -328,6 +328,9 @@ layout: header-body
   </div v-click>
   <div v-click class="absolute inset-0 z-[3] flex items-center justify-center">
     <img src="/how-to-listen-sound/SPAN-8000Hz.png" alt="Spectrum: sine 8000 Hz" class="max-h-[min(52vh,420px)] w-auto max-w-full object-contain" />
+  </div v-click>
+  <div v-click class="absolute inset-0 z-[4] flex items-center justify-center">
+    <img src="/how-to-listen-sound/SPAN-PinkNoise.png" alt="Spectrum: pink noise" class="max-h-[min(52vh,420px)] w-auto max-w-full object-contain" />
   </div v-click>
 </div>
 
@@ -343,7 +346,7 @@ layout: header-body
 - **人耳听阈范围（Human Hearing Range）**（与 p.6 文字一致）
 - 频率范围 **20 Hz – 20 kHz**；低于 20 Hz 为**次声波（Infrasound）**，高于 20 kHz 为**超声波（Ultrasound）**
 
-`[图占位：粉噪频谱 / 与正弦对比，对应 PDF 第 7 页]`
+粉噪 SPAN 与试听见上一页「人耳听阈范围」第四步；本节其余图示仍以 PDF 第 7 页为准占位。
 
 ---
 layout: header-body
