@@ -73,55 +73,55 @@ layout: header-body-center
 
 <div>
 
-![](/src/game-poster/DOOM-2016.jpg){style="height: 120px"}
+![](/game-poster/DOOM-2016.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Battlefield-V-2018.jpg){style="height: 120px"}
+![](/game-poster/Battlefield-V-2018.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Call-of-Duty-Modern-Warfare-III-2023.jpg){style="height: 120px"}
+![](/game-poster/Call-of-Duty-Modern-Warfare-III-2023.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Counter-Strike-2-2023.jpg){style="height: 120px"}
+![](/game-poster/Counter-Strike-2-2023.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Rainbow-Six-Siege-2015.jpg){style="height: 120px"}
+![](/game-poster/Rainbow-Six-Siege-2015.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Escape-of-Tarkov-2017.jpg){style="height: 120px"}
+![](/game-poster/Escape-of-Tarkov-2017.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Valorant-2020.jpg){style="height: 120px"}
+![](/game-poster/Valorant-2020.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Apex-Legends-2019.jpg){style="height: 120px"}
+![](/game-poster/Apex-Legends-2019.jpg){style="height: 120px"}
 
 </div>
 
 <div>
 
-![](/src/game-poster/Fortnite-2017.jpg){style="height: 120px"}
+![](/game-poster/Fortnite-2017.jpg){style="height: 120px"}
 
 </div>
 

@@ -244,7 +244,7 @@ layout: header-body
 
 <div>
 
-<img src="/src/game-poster/Animal Crossing New Horizons 2020.jpg" alt="Animal Crossing New Horizons" style="height: 450px;">
+<img src="/game-poster/Animal Crossing New Horizons 2020.jpg" alt="Animal Crossing New Horizons" style="height: 450px;">
 
 </div>
 

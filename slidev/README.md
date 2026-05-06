@@ -112,7 +112,7 @@ Slidev 默认用 **UnoCSS**，类名风格与 **Tailwind CSS** 兼容（如 `fle
 
 **整理中：**历史资源可能仍在 `public/` 根目录或 `public/src/<主题>/` 下。开始改某篇 `pages/*.md` 时，若尚无同名 `public/<章节>/`，应**新建目录**，把该页实际引用的资产**迁入**并更新 md 中的路径。
 
-**遗留路径：**形如 `/src/...` 的链接仍解析到 `slidev/public/src/...`，待各章按上条迁完后再逐步淘汰。
+**遗留路径：**部分历史资源仍在 `slidev/public/src/<主题>/`，对应链接形如 `/src/...`。共用游戏封面位于 **`slidev/public/game-poster/`**，正文中请使用 `/game-poster/...`。
 
 与幻灯改动一起增删资源时，请**随仓库提交** `slidev/public/` 下的相应文件。
 
