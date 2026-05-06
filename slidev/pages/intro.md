@@ -41,21 +41,21 @@ Aug 2015 - Apr 2019
 
 <div class="flex h-full min-h-0 w-full flex-col items-center justify-center gap-y-3 py-1">
   <div class="flex shrink-0 flex-wrap justify-center gap-x-2">
-    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+    <div class="aspect-[3/4] h-[18vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
       <img class="h-full w-full object-cover object-center" src="/intro/Arknights_Endfield_Title.jpg" alt="Arknights Endfield title card">
     </div>
-    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+    <div class="aspect-[3/4] h-[18vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
       <img class="h-full w-full object-cover object-center" src="/intro/SYNCED_Title.jpg" alt="SYNCED title card">
     </div>
   </div>
   <div class="flex shrink-0 flex-wrap justify-center gap-x-2">
-    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+    <div class="aspect-[3/4] h-[18vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
       <img class="h-full w-full object-cover object-top" src="/intro/FarCryNewDawn_Title.jpg" alt="Far Cry New Dawn title card">
     </div>
-    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+    <div class="aspect-[3/4] h-[18vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
       <img class="h-full w-full object-cover object-center" src="/intro/FarCry5_Title.jpg" alt="Far Cry 5 title card">
     </div>
-    <div class="aspect-[3/4] h-[32vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
+    <div class="aspect-[3/4] h-[18vh] w-auto max-w-full shrink-0 overflow-hidden rounded-sm">
       <img class="h-full w-full object-cover object-center" src="/intro/FarCryPrimal_Title.jpg" alt="Far Cry Primal title card">
     </div>
   </div>
