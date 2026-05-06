@@ -7,6 +7,7 @@
 # Slidev build output (copied into Astro static dir)
 /static/slidev
 /slidev/static
+/slidev/dist
 
 # Generated files
 .astro

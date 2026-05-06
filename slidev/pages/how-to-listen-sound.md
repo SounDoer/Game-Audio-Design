@@ -32,7 +32,7 @@ layout: header-body
 layout: header-body
 ---
 
-### 我们是在描述同一个声音吗？
+### 我们是如何描述声音的？
 
 ::body::
 
@@ -45,6 +45,63 @@ layout: header-body
 - 打击感不够
 
 </v-clicks>
+
+---
+layout: header-body
+---
+
+### 音频信号经过了多少环节才到达你的耳朵？
+
+::body::
+
+#### 软件应用中的声音控制
+
+<div class="grid grid-cols-3 gap-8 text-lg w-full items-start">
+
+<div v-click>
+
+##### 视频
+
+<div class="flex flex-col gap-3">
+  <img src="/how-to-listen-sound/YouTube_Volume.png" alt="YouTube volume control" style="width: 100%; height: auto;" />
+  <img src="/how-to-listen-sound/Bilibili_Volume.png" alt="Bilibili volume control" style="width: 100%; height: auto;" />
+</div>
+
+</div v-click>
+
+<div v-click>
+
+##### 音乐
+
+<div class="flex flex-col gap-3">
+  <img src="/how-to-listen-sound/QQMusic_Effect_01.png" alt="QQ Music Galaxy sound effects presets" style="width: 80%; height: auto;" />
+  <img src="/how-to-listen-sound/QQMusic_Effect_03.png" alt="QQ Music equalizer" style="width: 80%; height: auto;" />
+</div>
+
+</div v-click>
+
+<div v-click>
+
+##### 游戏
+
+<div class="flex flex-col gap-3">
+  <img src="/how-to-listen-sound/DeathStranding_AudioSetting.png" alt="Death Stranding audio settings" style="width: 100%; height: auto;" />
+  <img src="/how-to-listen-sound/BG3_AudioSetting.png" alt="Baldur's Gate 3 audio settings" style="width: 100%; height: auto;" />
+</div>
+
+</div v-click>
+
+</div>
+
+---
+layout: header-body
+---
+
+### 音频信号经过了多少环节才到达你的耳朵？
+
+::body::
+
+#### 硬件设备中的声音控制
 
 ---
 layout: header-body-center
