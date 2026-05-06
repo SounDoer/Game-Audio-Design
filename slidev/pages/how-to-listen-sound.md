@@ -40,7 +40,7 @@ layout: header-body
 
 - 有点轻，太小了
 - 有点闷，不够亮
-- 太刺耳，不够重
+- 有点窄，不够宽
 - 太远了，不够近
 - 打击感不够
 
@@ -182,7 +182,7 @@ layout: header-body
 layout: header-body-center
 ---
 
-### 音频制品 --> 听感效果
+### 从音频制品到听感效果
 
 ::body::
 
@@ -244,24 +244,17 @@ layout: header-body-center
 
 </div>
 
-<!-- <img src="/how-to-listen-sound/listen-digital-audio.png" alt="Listen Digital Audio" style="width: 85%; height: auto;" /> -->
-
-<!--
-从数字音频制品到最终听感效果
-有哪些因素会影响听到的声音？
--->
-
 ---
 layout: header-body
 ---
 
-### 为什么需要描述和测量声音？
+### 差异来源于哪儿？
 
 ::body::
 
 <div class="grid grid-cols-2 gap-8 text-lg">
 
-<div>
+<div v-click>
 
 #### 听音条件的差异
 
@@ -269,32 +262,33 @@ layout: header-body
 - 监听环境
 - 声学空间
 - 监听响度
-- 听觉状态
+- 听觉习惯
 
-</div>
+</div v-click>
 
-<div>
+<div v-click>
 
 #### 感受描述的差异
 
-- 太小
-- 太闷
-- 不够重
-- 太刺耳
-- 太远
-- 没有冲击力
-
-</div>
-
-</div>
-
-> 我们需要把不稳定的听感经验，转化为更稳定的分析维度。
-- 电平 / 响度
+- 电平响度
 - 频谱分布
-- 低频结构 / 瞬态
-- 中高频峰值 / 共振
-- 直达声 / 反射声 / 混响比例
-- 峰值 / 动态范围 / 包络
+- 声像宽度
+- 混响比例
+- 动态与包络
+
+</div v-click>
+
+</div>
+
+<!-- 我们要把不稳定的听觉经验，转化为更稳定的分析维度。 -->
+
+
+---
+layout: statement
+---
+
+### 如何尽可能客观和准确地评价声音？
+How to evaluate sound as objectively and accurately as possible?
 
 ---
 layout: header-body
@@ -304,7 +298,135 @@ layout: header-body
 
 ::body::
 
-202501_HyperGryphSharing_v01.key
+本节结构复刻分享材料 `202501_HyperGryphSharing_v01.pdf` **第 6–13 页**（图示与表格为占位，数值以正式规范与项目交付为准）。
+
+<!--
+来源：.temp/202501_HyperGryphSharing_v01.pdf p.6–13（文本经 pypdf 抽取，版式按原页顺序整理）
+-->
+
+---
+layout: header-body
+---
+
+### 正弦信号与听阈频率（材料 p.6）
+
+::body::
+
+- 示例：**Sine 40 Hz**、**Sine 440 Hz**、**Sine 8000 Hz**
+- **人耳听阈范围（Human Hearing Range）**
+- 频率范围 **20 Hz – 20 kHz**；低于 20 Hz 为**次声波（Infrasound）**，高于 20 kHz 为**超声波（Ultrasound）**
+
+`[图占位：三条正弦波形 / 频点示意，对应 PDF 第 6 页]`
+
+---
+layout: header-body
+---
+
+### 粉噪与听阈频率（材料 p.7）
+
+::body::
+
+- **Pink Noise**
+- **人耳听阈范围（Human Hearing Range）**（与 p.6 文字一致）
+- 频率范围 **20 Hz – 20 kHz**；低于 20 Hz 为**次声波（Infrasound）**，高于 20 kHz 为**超声波（Ultrasound）**
+
+`[图占位：粉噪频谱 / 与正弦对比，对应 PDF 第 7 页]`
+
+---
+layout: header-body
+---
+
+### 声压级（SPL）（材料 p.8）
+
+::body::
+
+- **声压级（Sound Pressure Level）**：物理声学范畴，用于度量声音大小的物理量，单位 **dB SPL**
+- **0 dB SPL** / **120 dB SPL**（刻度与示例图见原稿）
+- **&gt; 100 dB SPL** 的典型场景（原稿列举）：
+  - 夜店或演唱会前排
+  - 近距离烟花爆竹
+  - 地铁车厢部分时刻峰值
+  - 冲击钻
+  - 烟雾报警器
+- **音频后期制作环境校准响度**：约 **79–83 dB SPL**
+
+`[图占位：SPL 刻度与场景示意，对应 PDF 第 8 页]`
+
+---
+layout: header-body
+---
+
+### 响度与等响曲线（材料 p.9–10）
+
+::body::
+
+- **响度（Loudness）**：心理声学范畴，用于度量声音大小的**感知量**，单位 **phon**
+- 延伸阅读：[Equal-loudness contour](https://en.wikipedia.org/wiki/Equal-loudness_contour)
+
+`[图占位：等响曲线 / Fowler–Fletcher 类示意，对应 PDF 第 9–10 页]`
+
+---
+layout: header-body
+---
+
+### 数字音频信号中的响度（材料 p.11）
+
+::body::
+
+- 在数字音频信号领域中，使用 **dBFS（dB Full Scale）** 度量**某一时刻**的信号电平大小
+- 结合心理声学相关理论，使用 **LUFS（Loudness Units Full Scale）** 度量**一段时间内**的感知响度
+- **dBFS**：描述某一时刻的电平大小，类比**声压级**的「瞬时」侧写
+- **LUFS**：描述一段时间内的感知响度
+- **类比（原稿）**：White / `#FFFFFF` / `RGB(255, 255, 255)` → **0 dBFS 表示什么？** 与 **-80 dBFS** 的对照（完整图示占位）
+
+`[图占位：dBFS 与 RGB / 白场类比示意，对应 PDF 第 11 页]`
+
+<!--
+互动提问：0 dBFS 代表什么意思？类比 RGB（与现有讲义一致）
+-->
+
+---
+layout: header-body
+---
+
+### 数字音频信号响度标准（材料 p.12）
+
+::body::
+
+有关广播、电视、电影、音乐、游戏等内容与流媒体平台的响度规范（**原稿为简化示意**；下表自 PDF 文本抽取，版式请以 PDF 为准）。
+
+| 场景 / 平台 | 原稿中出现的数值（LUFS，多条为区间示意） |
+|-------------|------------------------------------------|
+| 影院电影 | -23；约 -50 |
+| YouTube | -14；约 -9；约 -30 |
+| Netflix | -27；约 -15；约 -45 |
+| Spotify | -14；约 -9；约 -40 |
+| Apple Music | -16；约 -9；约 -40 |
+
+`[图占位：横向对比条 / 平台响度区间总图，对应 PDF 第 12 页]`
+
+---
+layout: header-body
+---
+
+### 游戏音频响度参考（材料 p.13）
+
+::body::
+
+**如何保证玩家在各种环境和设备上都能听清楚？**（原稿标题）
+
+| 场景 / 终端 | 原稿中出现的数值（LUFS） |
+|-------------|-------------------------|
+| 多平台游戏 | -18；约 -45；约 -9 |
+| Home Cinema | 约 -40；约 -9 |
+| Headphones | 约 -35；约 -12 |
+| Mobile | -16；-21 |
+
+`[图占位：游戏多终端响度区间总图，对应 PDF 第 13 页]`
+
+<!--
+以下三页为并入 PDF p.6–13 之前已有的讲义内容，现按你的要求保留在本节末尾，便于与材料对照、逐页微调。
+-->
 
 ---
 layout: header-body
@@ -312,8 +434,8 @@ layout: header-body
 
 ### 数字音频信号的响度与动态范围
 
-- 在数字⾳频信号领域中，使⽤ dBFS (dB Full Scale) 来度量某一时刻的信号电平⼤⼩
-- 结合⼼理声学相关理论，使⽤ LUFS (Loudness Units Full Scale) 来度量某一段时间内的信号感知响度
+- 在数字音频信号领域中，使用 dBFS (dB Full Scale) 来度量某一时刻的信号电平大小
+- 结合心理声学相关理论，使用 LUFS (Loudness Units Full Scale) 来度量某一段时间内的信号感知响度
 - 短时内的最大和最小响度差异称为 Loudness Range (Loudness Range)
 
 ::body::
@@ -321,7 +443,7 @@ layout: header-body
 ![](/how-to-listen-sound/digital-audio-signal-loudness.png){style="height: 350px"}
 
 <!--
-互动提问：0dBFS 代表什么意思？类比 RGB
+互动提问：0 dBFS 代表什么意思？类比 RGB
 -->
 
 ---
@@ -337,7 +459,7 @@ layout: header-body
 <div class="grid grid-cols-2 gap-4">
 
   <div>
-  
+
   #### 频谱仪与响度表
   - [TC Electronic CLARITY M STEREO](https://www.tcelectronic.com/product.html?modelCode=0842-AAD)
     ![](/how-to-listen-sound/TC-CLARITY-M-STEREO.png){style="height: 65px"}
@@ -350,7 +472,7 @@ layout: header-body
   </div>
 
   <div>
-  
+
   #### 参考标准
   - [ITU-R BS.1770-3](https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.1770-3-201208-S!!PDF-E.pdf)
   - [EBU R128](https://tech.ebu.ch/docs/r/r128.pdf)
@@ -374,7 +496,8 @@ layout: header-body-center
 ---
 
 ### 常见媒介的响度规范
-⼴播、电视、电影、⾳乐和游戏等内容和流媒体平台的响度和动态范围
+
+广播、电视、电影、音乐和游戏等内容和流媒体平台的响度和动态范围
 
 ::body::
 
