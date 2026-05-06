@@ -103,13 +103,28 @@ layout: header-body
 
 #### 硬件设备中的声音控制
 
-<div class="grid grid-cols-2 gap-8 w-full">
-  <div v-click>
-    <img src="/how-to-listen-sound/System_Volume_Mixer.png" alt="Windows 11 volume mixer settings" style="width: 100%; height: auto;" />
-  </div v-click>
-  <div v-click>
-    <img src="/how-to-listen-sound/iPhone_Volume.jpg" alt="iPhone system volume indicator" style="width: 100%; height: auto;" />
-  </div v-click>
+<div class="grid grid-cols-2 gap-8 text-lg w-full items-start">
+
+<div v-click>
+
+##### 电脑
+
+<div class="flex flex-col gap-3">
+  <img src="/how-to-listen-sound/System_Volume_Mixer.png" alt="Windows 11 volume mixer settings" style="width: 74%; height: auto;" />
+</div>
+
+</div v-click>
+
+<div v-click>
+
+##### 手机
+
+<div class="flex flex-col gap-3">
+  <img src="/how-to-listen-sound/iPhone_Volume.jpg" alt="iPhone system volume indicator" style="width: 38%; height: auto;" />
+</div>
+
+</div v-click>
+
 </div>
 
 ---
@@ -126,7 +141,7 @@ layout: header-body
 
 <div v-click>
 
-##### 常用耳麦
+##### 游戏耳麦
 
 <div class="flex flex-col gap-3">
   <img src="/how-to-listen-sound/GameHeadset_03.png" alt="Gaming headset companion app: virtual 7.1, EQ, mic" style="width: 80%; height: auto;" />
@@ -167,11 +182,69 @@ layout: header-body
 layout: header-body-center
 ---
 
-### 数字音频制品 --> 听感效果与评价
+### 音频制品 --> 听感效果
 
 ::body::
 
-<img src="/how-to-listen-sound/listen-digital-audio.png" alt="Listen Digital Audio" style="width: 85%; height: auto;" />
+<div class="mx-auto grid w-full max-w-[95%] grid-cols-[minmax(0,0.88fr)_minmax(0,1.18fr)_minmax(0,1.18fr)_minmax(0,1fr)_minmax(0,0.88fr)] gap-x-1 gap-y-2 text-center text-stone-100 md:gap-x-2">
+
+<!-- 主标题 + 箭头 同行；子节点仅占据主标题列宽 -->
+<div class="min-w-0">
+  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
+    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">数字音频制品</div>
+    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
+    <div class="col-start-1 row-start-2 min-h-[1rem]" aria-hidden="true"></div>
+  </div>
+</div>
+
+<div class="min-w-0">
+  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
+    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">软件应用中的声音控制</div>
+    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
+    <div class="col-start-1 row-start-2 flex w-full min-w-0 flex-col gap-1.5">
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">视频</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">音乐</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">游戏</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-500 md:text-base">……</div>
+    </div>
+  </div>
+</div>
+
+<div class="min-w-0">
+  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
+    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">硬件设备中的声音控制</div>
+    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
+    <div class="col-start-1 row-start-2 flex w-full min-w-0 flex-col gap-1.5">
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">电脑</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">手机</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-500 md:text-base">……</div>
+    </div>
+  </div>
+</div>
+
+<div class="min-w-0">
+  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
+    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">听音设备与环境</div>
+    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
+    <div class="col-start-1 row-start-2 flex w-full min-w-0 flex-col gap-1.5">
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">游戏耳麦</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">音频编辑室</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">混音棚</div>
+      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-500 md:text-base">……</div>
+    </div>
+  </div>
+</div>
+
+<div class="min-w-0">
+  <div class="flex min-w-0 flex-col gap-2">
+    <div class="w-full min-w-0 whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">听感效果与评价</div>
+    <div class="min-h-[1rem]" aria-hidden="true"></div>
+  </div>
+</div>
+
+</div>
+
+<!-- <img src="/how-to-listen-sound/listen-digital-audio.png" alt="Listen Digital Audio" style="width: 85%; height: auto;" /> -->
 
 <!--
 从数字音频制品到最终听感效果
