@@ -355,94 +355,38 @@ layout: header-body
 ::body::
 
 <div class="mx-auto mt-4 grid w-full max-w-6xl grid-cols-1 gap-6 items-start lg:grid-cols-2">
-  <img src="/how-to-listen-sound/Equal_Loudness_Contour.png" alt="Equal-loudness contours (ISO 226: revision), SPL versus frequency with phon labels" style="width: 100%; height: auto;" />
+  <a href="https://en.wikipedia.org/wiki/Equal-loudness_contour" target="_blank" rel="noopener noreferrer" class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
+    <img src="/how-to-listen-sound/Equal_Loudness_Contour.png" alt="Equal-loudness contours (ISO 226: revision), SPL versus frequency with phon labels" style="width: 100%; height: auto;" />
+  </a>
   <img src="/how-to-listen-sound/SXC_Hearing_Test.png" alt="Pure tone audiometry audiogram, air and bone conduction thresholds" style="width: 100%; height: auto;" />
 </div>
 
-
-
-<!-- - 延伸阅读：[Equal-loudness contour](https://en.wikipedia.org/wiki/Equal-loudness_contour) -->
-
 ---
 layout: header-body
 ---
 
-### 数字音频信号中的响度（材料 p.11）
+### 数字音频信号中的响度
+在数字音频信号领域中，使用 dBFS（dB Full Scale）度量某一时刻的信号电平大小  
+结合心理声学相关理论，使用 LUFS（Loudness Units Full Scale）度量一段时间内的声音感知响度
 
 ::body::
 
-- 在数字音频信号领域中，使用 **dBFS（dB Full Scale）** 度量**某一时刻**的信号电平大小
-- 结合心理声学相关理论，使用 **LUFS（Loudness Units Full Scale）** 度量**一段时间内**的感知响度
-- **dBFS**：描述某一时刻的电平大小，类比**声压级**的「瞬时」侧写
-- **LUFS**：描述一段时间内的感知响度
-- **类比（原稿）**：White / `#FFFFFF` / `RGB(255, 255, 255)` → **0 dBFS 表示什么？** 与 **-80 dBFS** 的对照（完整图示占位）
-
-`[图占位：dBFS 与 RGB / 白场类比示意，对应 PDF 第 11 页]`
-
-<!--
-互动提问：0 dBFS 代表什么意思？类比 RGB（与现有讲义一致）
--->
-
----
-layout: header-body
----
-
-### 数字音频信号响度标准（材料 p.12）
-
-::body::
-
-有关广播、电视、电影、音乐、游戏等内容与流媒体平台的响度规范（**原稿为简化示意**；下表自 PDF 文本抽取，版式请以 PDF 为准）。
-
-| 场景 / 平台 | 原稿中出现的数值（LUFS，多条为区间示意） |
-|-------------|------------------------------------------|
-| 影院电影 | -23；约 -50 |
-| YouTube | -14；约 -9；约 -30 |
-| Netflix | -27；约 -15；约 -45 |
-| Spotify | -14；约 -9；约 -40 |
-| Apple Music | -16；约 -9；约 -40 |
-
-`[图占位：横向对比条 / 平台响度区间总图，对应 PDF 第 12 页]`
-
----
-layout: header-body
----
-
-### 游戏音频响度参考（材料 p.13）
-
-::body::
-
-**如何保证玩家在各种环境和设备上都能听清楚？**（原稿标题）
-
-| 场景 / 终端 | 原稿中出现的数值（LUFS） |
-|-------------|-------------------------|
-| 多平台游戏 | -18；约 -45；约 -9 |
-| Home Cinema | 约 -40；约 -9 |
-| Headphones | 约 -35；约 -12 |
-| Mobile | -16；-21 |
-
-`[图占位：游戏多终端响度区间总图，对应 PDF 第 13 页]`
-
-<!--
-以下三页为并入 PDF p.6–13 之前已有的讲义内容，现按你的要求保留在本节末尾，便于与材料对照、逐页微调。
--->
-
----
-layout: header-body
----
-
-### 数字音频信号的响度与动态范围
-
-- 在数字音频信号领域中，使用 dBFS (dB Full Scale) 来度量某一时刻的信号电平大小
-- 结合心理声学相关理论，使用 LUFS (Loudness Units Full Scale) 来度量某一段时间内的信号感知响度
-- 短时内的最大和最小响度差异称为 Loudness Range (Loudness Range)
-
-::body::
-
-![](/how-to-listen-sound/digital-audio-signal-loudness.png){style="height: 350px"}
+<img src="/how-to-listen-sound/digital-audio-signal-loudness.png" alt="Wwise Master Audio Bus: Peak meter and Loudness Meter (momentary, short-term, integrated, LRA)" class="mt-4 block" style="width: 70%; height: auto;" />
 
 <!--
 互动提问：0 dBFS 代表什么意思？类比 RGB
 -->
+
+---
+layout: header-body
+---
+
+### 常见媒介的响度规范
+广播、电视、电影、音乐和游戏等内容和流媒体平台的响度和动态范围
+
+::body::
+
+<img src="/how-to-listen-sound/digital-audio-signal-dynamic-range.png" alt="LUFS targets and typical dynamic range by platform: movie, YouTube, Apple Music, games (home cinema, headphones, mobile)" class="mt-4 block" style="width: 64%; height: auto;" />
 
 ---
 layout: header-body
@@ -490,20 +434,6 @@ layout: header-body
 -->
 
 ---
-layout: header-body-center
----
-
-### 常见媒介的响度规范
-
-广播、电视、电影、音乐和游戏等内容和流媒体平台的响度和动态范围
-
-::body::
-
-<img src="/how-to-listen-sound/digital-audio-signal-dynamic-range.png" alt="Digital Audio Signal Dynamic Range" style="width: 68%; height: auto;" />
-
-<!--  -->
-
----
 layout: header-body
 ---
 
@@ -524,7 +454,7 @@ layout: header-body
 layout: statement
 ---
 
-#### 校准日常的听声环境，养成良好的听声习惯。
+### 校准日常的听声环境，养成良好的听声习惯。
 Adjust daily listening environment and cultivate good listening habit.
 
 <!--
