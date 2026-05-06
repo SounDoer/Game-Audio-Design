@@ -1,1 +1,0 @@
-var e=`/slidev/diffraction-transmission.svg`;export{e as t};

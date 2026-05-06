@@ -1,0 +1,1 @@
+var e=`/slidev/object-based-positioning.svg`;export{e as t};
