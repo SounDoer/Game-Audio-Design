@@ -10,6 +10,8 @@
 /slidev/static
 /slidev/dist
 /slidev/.deck-build-auto-*.md
+/slidev/.deck-public-staging
+/slidev/public.__full__
 
 # Generated files
 .astro

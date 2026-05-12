@@ -13,7 +13,7 @@ import {
   extractFirstH2,
   humanizeStem,
 } from '../slidev/deck-pages-shared.mjs';
-import { dedupeSlideDeckPublicCopies } from './dedupe-slide-decks-public.mjs';
+import { withPublicSubset } from './prepare-slidev-public-subset.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -70,19 +70,21 @@ for (const row of rows) {
   const base = `/slides/${slug}/`;
   const relEntry = path.join('slidev', entryName).split(path.sep).join('/');
 
-  const r = spawnSync('npx', ['slidev', 'build', relEntry, '--base', base, '--out', outDir], {
-    cwd: repoRoot,
-    stdio: 'inherit',
-    shell: true,
+  let status = 0;
+  withPublicSubset(repoRoot, stem, () => {
+    const r = spawnSync('npx', ['slidev', 'build', relEntry, '--base', base, '--out', outDir], {
+      cwd: repoRoot,
+      stdio: 'inherit',
+      shell: true,
+    });
+    status = r.status ?? 1;
   });
 
   fs.rmSync(entryPath, { force: true });
 
-  if (r.status !== 0) {
-    process.exit(r.status ?? 1);
+  if (status !== 0) {
+    process.exit(status);
   }
 }
-
-dedupeSlideDeckPublicCopies(repoRoot);
 
 console.log(`Built ${rows.length} Slidev decks into static/slides/`);
