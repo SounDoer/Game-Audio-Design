@@ -100,7 +100,7 @@ export function readFirstFrontmatterBlock(filePath) {
 export function extractFirstH2(bodyAfterFirstFm) {
   const m = bodyAfterFirstFm.match(/\n##\s+([^\n]+)/);
   if (!m) return null;
-  return m[1].replace(/\*+/g, '').trim();
+  return m[1].replace(/<[^>]+>/g, '').replace(/\*+/g, '').trim();
 }
 
 /**
