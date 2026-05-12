@@ -21,7 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Shallow clone: full history + vidTemp binaries made checkout exceed ~1h in practice.
+          fetch-depth: 1
 
       # Default ubuntu-latest image leaves little free space; Slidev + large media fills the rest during Pages artifact pack.
       - name: Remove preinstalled SDKs to free disk
