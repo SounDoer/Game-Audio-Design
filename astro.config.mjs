@@ -9,4 +9,19 @@ export default defineConfig({
   publicDir: 'static',
   trailingSlash: 'always',
   integrations: [sitemap()],
+  vite: {
+    plugins: [
+      {
+        name: 'slidev-dev-index',
+        configureServer(server) {
+          server.middlewares.use((req, _res, next) => {
+            if (req.url && /^\/slides\/[^/]+\/$/.test(req.url)) {
+              req.url = req.url + 'index.html';
+            }
+            next();
+          });
+        },
+      },
+    ],
+  },
 });
