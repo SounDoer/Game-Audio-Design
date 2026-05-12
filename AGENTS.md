@@ -82,7 +82,7 @@
 ```
 Game-Audio-Design/
   docs/          ← Astro 文章（.md 文件）
-  slidev/        ← Slidev（`slides.md` 入口 + `pages/*.md` 分章；线上路径 `/slidev/`）
+  slidev/        ← Slidev：`pages/*.md` 每文件独立讲稿；构建见 `npm run slidev:build`；线上 `/slides/<slug>/`；目录页 `/slides/`（Astro）
   static/        ← 静态资源
   src/           ← 站点前端代码
   AGENTS.md      ← 本文件（规范主文档）

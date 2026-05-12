@@ -1,0 +1,60 @@
+---
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { listDeckPages } from '../../../slidev/deck-pages-shared.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(__dirname, '../../..');
+const decks = listDeckPages(repoRoot);
+---
+
+<BaseLayout
+  title="Slides"
+  description="Game Audio Design slide decks."
+  path="/slides/"
+>
+  <h1 class="slides-index-title">Slides</h1>
+  <p class="slides-index-lead">Standalone Slidev decks. Open a link below.</p>
+  <ul class="slides-index-list">
+    {
+      decks.map((d) => (
+        <li>
+          <a href={`/slides/${d.slug}/`}>{d.listTitle}</a>
+          <span class="slides-index-meta">{d.slug}</span>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .slides-index-title {
+    margin-bottom: 0.5rem;
+  }
+  .slides-index-lead {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+  }
+  .slides-index-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .slides-index-list li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+  }
+  .slides-index-list a {
+    font-weight: 600;
+  }
+  .slides-index-meta {
+    font-size: 0.85rem;
+    opacity: 0.65;
+    font-family: ui-monospace, monospace;
+  }
+</style>

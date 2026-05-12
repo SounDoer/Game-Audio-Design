@@ -1,6 +1,8 @@
 # Slidev decks
 
-Entry: `slides.md` (global frontmatter and slide order). Chapters live in `pages/*.md` and are included with `src: ./pages/your-file.md` blocks.
+Each file under **`pages/*.md`** is one standalone deck (built with a generated entry + shared head in **`deck-entry-header.in.yaml`**). Default URL slug is the file name without `.md`; override with frontmatter **`slug:`**. Sort order for the Astro index and default build order comes from **`deck-order.txt`** (one stem per line); optional per-file **`slidesOrder:`** in the first slide frontmatter overrides. Optional **`deckListTitle:`** sets the label on `/slides/`; otherwise the first `##` heading (or stem) is used.
+
+The legacy **`slides.md`** file is no longer a Slidev entry; see its header comment.
 
 ## Layouts (`slidev/layouts/`)
 
@@ -127,9 +129,15 @@ See `scripts/sync-slidev-public.mjs` for flags (`--resume`, `--skip-mp4`, `--mp4
 ## Local preview
 
 ```bash
-npm run slidev:dev
+npm run slidev:dev -- <stem>
 ```
 
-Open `http://localhost:3030/slidev/` (port may vary). If slides reference missing files under `slidev/public/`, add those assets or adjust the markdown first.
+Example: `npm run slidev:dev -- game-audio-debug` (passes through to `scripts/slidev-dev-deck.mjs`). Open the printed local URL under `/slides/<slug>/`.
 
-`npm run slidev:build` writes to `../static/slidev/` and runs automatically before `astro build`.
+```bash
+npm run slidev:build
+```
+
+Writes each deck to `../static/slides/<slug>/` and runs automatically before `astro build`.
+
+Open `https://gad.soundoer.com/slides/` for the deck index. If slides reference missing files under `slidev/public/`, add those assets or adjust the markdown first.

@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "slidev:dev": "slidev ./slidev/slides.md --base /slidev/",
+    "slidev:dev": "node scripts/slidev-dev-deck.mjs",
     "slidev:sync-public": "node scripts/sync-slidev-public.mjs --resume",
-    "slidev:build": "rm -rf static/slidev && slidev build ./slidev/slides.md --base /slidev/ --out ../static/slidev",
+    "slidev:build": "node scripts/build-slidev-decks.mjs",
     "build": "npm run slidev:build && astro build",
     "preview": "astro preview",
     "check": "astro check",
