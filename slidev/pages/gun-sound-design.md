@@ -18,10 +18,7 @@ layout: header-body-center
 
 ::body::
 
-<video controls width="85%">
-  <source src="/Thailand_ChiangMai_ShootingRange.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
 
 <!--  -->
 
@@ -37,29 +34,13 @@ layout: header-body
 
 <div>
 
-<video controls width="85%">
-  <source src="/CODMW2022_Pistol.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-<br>
-<video controls width="85%">
-  <source src="/CODMW2022_LightMachineGun.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
 
 </div>
 
 <div>
 
-<video controls width="85%">
-  <source src="/CODMW2022_AssaultRifle.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-<br>
-<video controls width="85%">
-  <source src="/CODMW2022_SniperRifle.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
 
 </div>
 

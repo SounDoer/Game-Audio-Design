@@ -158,10 +158,7 @@ layout: header-body-center
 
 ::body::
 
-<video controls width="85%">
-  <source src="/wwise_spatial_audio_simple_demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
 
 <!--  -->
 
@@ -173,10 +170,7 @@ layout: header-body-center
 
 ::body::
 
-<video controls width="85%">
-  <source src="/wwise_spatial_audio_profile_3p.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
 
 <!--  -->
 
