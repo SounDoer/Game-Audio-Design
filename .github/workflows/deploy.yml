@@ -37,6 +37,10 @@ jobs:
       - name: List build directory contents
         run: ls -alh build
 
+      # upload-pages-artifact tars `build/`; large site + node_modules can exhaust the ~14GB runner disk.
+      - name: Free disk space before Pages artifact
+        run: rm -rf node_modules && df -h
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
