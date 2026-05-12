@@ -69,7 +69,7 @@ for (const row of rows) {
   const base = `/slides/${slug}/`;
   const relEntry = path.join('slidev', entryName).split(path.sep).join('/');
 
-  const r = spawnSync('npx', ['slidev', 'build', relEntry, '--base', base, '--out', outDir, '--emptyOutDir'], {
+  const r = spawnSync('npx', ['slidev', 'build', relEntry, '--base', base, '--out', outDir], {
     cwd: repoRoot,
     stdio: 'inherit',
     shell: true,
