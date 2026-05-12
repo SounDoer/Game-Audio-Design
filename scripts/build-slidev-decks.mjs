@@ -13,6 +13,7 @@ import {
   extractFirstH2,
   humanizeStem,
 } from '../slidev/deck-pages-shared.mjs';
+import { dedupeSlideDeckPublicCopies } from './dedupe-slide-decks-public.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -81,5 +82,7 @@ for (const row of rows) {
     process.exit(r.status ?? 1);
   }
 }
+
+dedupeSlideDeckPublicCopies(repoRoot);
 
 console.log(`Built ${rows.length} Slidev decks into static/slides/`);
