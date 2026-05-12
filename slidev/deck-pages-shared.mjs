@@ -94,11 +94,12 @@ export function readFirstFrontmatterBlock(filePath) {
 }
 
 /**
+ * First Markdown H1 (`# `, not `##`) after the first slide frontmatter.
  * @param {string} bodyAfterFirstFm
  * @returns {string | null}
  */
-export function extractFirstH2(bodyAfterFirstFm) {
-  const m = bodyAfterFirstFm.match(/\n##\s+([^\n]+)/);
+export function extractFirstH1(bodyAfterFirstFm) {
+  const m = bodyAfterFirstFm.match(/(?:^|\n)#\s+([^\n]+)/);
   if (!m) return null;
   return m[1].replace(/<[^>]+>/g, '').replace(/\*+/g, '').trim();
 }
@@ -129,11 +130,11 @@ export function listDeckPages(repoRoot) {
       const n = Number(kv.slidesOrder);
       if (!Number.isNaN(n)) slidesOrder = n;
     }
-    const h2 = extractFirstH2(bodyAfter);
+    const h1 = extractFirstH1(bodyAfter);
     const listTitle =
       (kv.deckListTitle && kv.deckListTitle.trim()) ||
       (kv.title && kv.title.trim()) ||
-      h2 ||
+      h1 ||
       humanizeStem(stem);
 
     rows.push({ stem, slug, slidesOrder, listTitle });

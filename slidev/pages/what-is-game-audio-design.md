@@ -8,6 +8,9 @@ What is Game Audio Design?
 ::title::
 # 游戏音频设计是什么？
 
+::info::
+Xichen
+
 ---
 layout: section
 ---

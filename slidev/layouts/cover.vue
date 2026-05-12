@@ -8,7 +8,8 @@
       </template>
       <slot name="title" />
     </div>
-    <div v-if="$slots.info" class="info-area">
+    <!-- Keep a stable footnote region; optional ::info:: content is easy to miss at 0.65rem in the corner. -->
+    <div class="info-area">
       <slot name="info" />
     </div>
   </div>
@@ -53,11 +54,13 @@
   position: absolute;
   bottom: 1.5rem;
   right: 2rem;
+  z-index: 2;
   text-align: right;
+  max-width: min(42rem, 55vw);
 }
 
 .info-area :deep(p) {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   margin: 0;
   line-height: 1.6;

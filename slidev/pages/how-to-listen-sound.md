@@ -4,7 +4,7 @@ layout: section
 
 ::title::
 
-## 如何<span style="color:rgb(238, 228, 34)">听</span>声音？
+# 如何<span style="color:rgb(238, 228, 34)">听</span>声音？
 
 ::subtitle::
 

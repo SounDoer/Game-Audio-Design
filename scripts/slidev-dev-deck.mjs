@@ -11,7 +11,7 @@ import {
   buildDeckEntryMarkdown,
   listDeckPages,
   readFirstFrontmatterBlock,
-  extractFirstH2,
+  extractFirstH1,
   humanizeStem,
 } from '../slidev/deck-pages-shared.mjs';
 
@@ -51,11 +51,11 @@ for (const line of raw.split(/\r?\n/)) {
   pairs.push([k, v]);
 }
 const kv = Object.fromEntries(pairs);
-const h2 = extractFirstH2(bodyAfter);
+const h1 = extractFirstH1(bodyAfter);
 const deckTitle =
   (kv.deckListTitle && kv.deckListTitle.trim()) ||
   (kv.title && kv.title.trim()) ||
-  h2 ||
+  h1 ||
   humanizeStem(stem);
 
 const entryName = `.deck-build-auto-${stem}.md`;

@@ -10,7 +10,7 @@ import {
   buildDeckEntryMarkdown,
   listDeckPages,
   readFirstFrontmatterBlock,
-  extractFirstH2,
+  extractFirstH1,
   humanizeStem,
 } from '../slidev/deck-pages-shared.mjs';
 import { withPublicSubset } from './prepare-slidev-public-subset.mjs';
@@ -43,11 +43,11 @@ function deckListTitleForStem(repoRoot, stem) {
     pairs.push([k, v]);
   }
   const kv = Object.fromEntries(pairs);
-  const h2 = extractFirstH2(bodyAfter);
+  const h1 = extractFirstH1(bodyAfter);
   return (
     (kv.deckListTitle && kv.deckListTitle.trim()) ||
     (kv.title && kv.title.trim()) ||
-    h2 ||
+    h1 ||
     humanizeStem(stem)
   );
 }

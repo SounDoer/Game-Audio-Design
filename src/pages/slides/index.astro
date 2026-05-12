@@ -20,7 +20,9 @@ const decks = listDeckPages(repoRoot);
     {
       decks.map((d) => (
         <li>
-          <a href={`/slides/${d.slug}/`}>{d.listTitle}</a>
+          <a href={`/slides/${d.slug}/`} target="_blank" rel="noopener noreferrer">
+            {d.listTitle}
+          </a>
           <span class="slides-index-meta">{d.slug}</span>
         </li>
       ))

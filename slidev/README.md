@@ -1,6 +1,6 @@
 # Slidev decks
 
-Each file under **`pages/*.md`** is one standalone deck (built with a generated entry + shared head in **`deck-entry-header.in.yaml`**). Default URL slug is the file name without `.md`; override with frontmatter **`slug:`**. Sort order for the Astro index and default build order comes from **`deck-order.txt`** (one stem per line); optional per-file **`slidesOrder:`** in the first slide frontmatter overrides. Optional **`deckListTitle:`** sets the label on `/slides/`; otherwise the first `##` heading (or stem) is used.
+Each file under **`pages/*.md`** is one standalone deck (built with a generated entry + shared head in **`deck-entry-header.in.yaml`**). Default URL slug is the file name without `.md`; override with frontmatter **`slug:`**. Sort order for the Astro index and default build order comes from **`deck-order.txt`** (one stem per line); optional per-file **`slidesOrder:`** in the first slide frontmatter overrides. Optional **`deckListTitle:`** sets the label on `/slides/`; otherwise the first `#` (H1) heading (or stem) is used.
 
 The legacy **`slides.md`** file is no longer a Slidev entry; see its header comment.
 
