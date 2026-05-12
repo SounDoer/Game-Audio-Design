@@ -20,8 +20,8 @@ drawings:
 
 transition: slide-left
 fonts:
-  sans: Noto Sans
-  serif: Robot Slab
+  sans: Noto Sans SC
+  serif: Cormorant Garamond
   mono: Fira Code
 colorSchema: dark
 aspectRatio: 16/9

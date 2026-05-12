@@ -1,50 +1,46 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
-const props = defineProps({
-  class: {
-    type: String,
-    default: '',
-  },
-  background: {
-    type: String,
-    default: '',
-  },
-})
-
-const bgStyle = computed(() => ({
-  backgroundImage: props.background ? `url(${props.background})` : '',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-}))
+import { useNav } from '@slidev/client'
+const { currentPage } = useNav()
 </script>
 
 <template>
-  <div class="slidev-layout header-body w-full h-full relative">
-    <div
-      v-if="background"
-      class="absolute inset-0"
-      :style="bgStyle"
-      style="opacity: 0.08; z-index: -1;"
-    />
-    <header>
-      <slot />
+  <div class="slidev-layout header-body relative flex h-full w-full flex-col">
+    <header class="header-area px-6 pt-2 pb-4">
+      <template v-if="$slots.eyebrow">
+        <div class="eyebrow-slot">
+          <slot name="eyebrow" />
+        </div>
+      </template>
+      <slot name="title" />
     </header>
-    <main :class="props.class">
+    <main class="flex-1 overflow-hidden px-6 pb-6 pt-3">
       <slot name="body" />
     </main>
+    <span class="page-number">{{ currentPage }}</span>
   </div>
 </template>
 
 <style scoped>
-.header-body {
+.header-area {
   display: flex;
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-  padding: 1rem;
+.eyebrow-slot {
+  width: fit-content;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow-slot :deep(p) {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.4;
 }
 </style>

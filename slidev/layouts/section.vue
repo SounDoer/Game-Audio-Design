@@ -1,19 +1,37 @@
-<!--
-  Title slot: use ## in markdown → h2.
-  Subtitle slot: one line, e.g. **English**.
-  Typography: same as other slides — slidev/styles/base.css (.slidev-layout h*, p).
--->
 <template>
-  <div
-    class="slidev-layout section flex h-full min-h-0 w-full flex-col items-center justify-center px-8 py-12 text-center"
-  >
-    <div class="flex max-w-[90vw] flex-col items-center gap-2">
-      <div>
-        <slot name="title" />
-      </div>
-      <div>
-        <slot name="subtitle" />
-      </div>
+  <div class="slidev-layout section flex h-full w-full flex-col items-center justify-center px-20">
+    <div class="section-content">
+      <template v-if="$slots.eyebrow">
+        <div class="eyebrow-slot">
+          <slot name="eyebrow" />
+        </div>
+      </template>
+      <slot name="title" />
     </div>
   </div>
 </template>
+
+<style scoped>
+.section-content {
+  width: 100%;
+  text-align: center;
+}
+
+.eyebrow-slot {
+  width: fit-content;
+  margin: 0 auto 1.25rem;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.5rem;
+}
+
+.eyebrow-slot :deep(p) {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.4;
+}
+</style>

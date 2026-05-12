@@ -1,21 +1,31 @@
 ---
+layout: cover
+---
+
+::eyebrow::
+What is Game Audio Design?
+
+::title::
+# 游戏音频设计是什么？
+
+---
 layout: section
 ---
 
+::eyebrow::
+Game
+
 ::title::
-
-## <span class="text-red-500">游戏</span><span class="text-green-500">音频</span><span class="text-blue-500">设计</span>是什么？
-
-::subtitle::
-
-**What is Game Audio Design?**
+## 游戏·音频·设计
 
 ---
-routeAlias: gad-overview-game
 layout: header-body
-background: what-is-game-audio-design/game-poster.png
 ---
 
+::eyebrow::
+Game
+
+::title::
 ### <span class="text-red-500">游戏</span>
 
 ::body::
@@ -65,11 +75,13 @@ background: what-is-game-audio-design/game-poster.png
 -->
 
 ---
-routeAlias: gad-overview-audio-01
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-audio.png
 ---
 
+::eyebrow::
+Audio
+
+::title::
 ### <span class="text-green-500">音频</span>
 
 ::body::
@@ -108,11 +120,13 @@ background: what-is-game-audio-design/bg-image-for-audio.png
 -->
 
 ---
-routeAlias: gad-overview-audio-02
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-audio.png
 ---
 
+::eyebrow::
+Audio
+
+::title::
 ### <span class="text-green-500">音频</span>
 
 ::body::
@@ -137,11 +151,13 @@ background: what-is-game-audio-design/bg-image-for-audio.png
 -->
 
 ---
-routeAlias: gad-overview-audio-03
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-audio.png
 ---
 
+::eyebrow::
+Audio
+
+::title::
 ### <span class="text-green-500">音频</span>
 
 ::body::
@@ -156,11 +172,13 @@ background: what-is-game-audio-design/bg-image-for-audio.png
 -->
 
 ---
-routeAlias: gad-overview-audio-bts
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-audio.png
 ---
 
+::eyebrow::
+Audio
+
+::title::
 ### <span class="text-green-500">音频</span>
 
 ::body::
@@ -176,11 +194,13 @@ background: what-is-game-audio-design/bg-image-for-audio.png
 -->
 
 ---
-routeAlias: gad-overview-audio-emitter
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-audio.png
 ---
 
+::eyebrow::
+Audio
+
+::title::
 ### <span class="text-green-500">音频</span>
 
 ::body::
@@ -216,11 +236,13 @@ background: what-is-game-audio-design/bg-image-for-audio.png
 -->
 
 ---
-routeAlias: gad-overview-audio-music-sync
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-audio.png
 ---
 
+::eyebrow::
+Audio
+
+::title::
 ### <span class="text-green-500">音频</span>
 
 ::body::
@@ -245,11 +267,13 @@ background: what-is-game-audio-design/bg-image-for-audio.png
 -->
 
 ---
-routeAlias: gad-overview-audio-voice
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-audio.png
 ---
 
+::eyebrow::
+Audio
+
+::title::
 ### <span class="text-green-500">音频</span>
 
 ::body::
@@ -273,11 +297,13 @@ background: what-is-game-audio-design/bg-image-for-audio.png
 -->
 
 ---
-routeAlias: gad-overview-design-01
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-design.png
 ---
 
+::eyebrow::
+Design
+
+::title::
 ### <span class="text-blue-500">设计</span>
 
 ::body::
@@ -322,11 +348,13 @@ background: what-is-game-audio-design/bg-image-for-design.png
 -->
 
 ---
-routeAlias: gad-overview-design-style
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-design.png
 ---
 
+::eyebrow::
+Design
+
+::title::
 ### <span class="text-blue-500">设计</span>
 
 ::body::
@@ -359,11 +387,13 @@ layout: statement
 -->
 
 ---
-routeAlias: gad-overview-design-doom
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-design.png
 ---
 
+::eyebrow::
+Design
+
+::title::
 ### 设计 · 功能性：“玩家想听到什么”
 
 ::body::
@@ -379,11 +409,13 @@ DOOM · 2016
 -->
 
 ---
-routeAlias: gad-overview-design-tarkov
 layout: header-body
-background: what-is-game-audio-design/bg-image-for-design.png
 ---
 
+::eyebrow::
+Design
+
+::title::
 ### 设计 · 功能性：“玩家想听到什么”
 
 ::body::
@@ -397,3 +429,10 @@ Escape From Tarkov · 2017
 <!--
 配图：全屏案例图可改为 layout: image，frontmatter 设 image: /你的路径（放在 slidev/public/what-is-game-audio-design/ 下时与 background 写法一致）
 -->
+
+---
+layout: statement
+---
+
+### 游戏音频设计是什么？
+**What is game audio design？**

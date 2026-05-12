@@ -1,55 +1,65 @@
-<script setup lang="ts">
-import type { CSSProperties } from 'vue'
-import { computed } from 'vue'
-
-const props = defineProps({
-  background: {
-    type: String,
-    default: '',
-  },
-})
-
-function resolveAssetUrl(url: string) {
-  if (url.startsWith('/'))
-    return import.meta.env.BASE_URL + url.slice(1)
-  return url
-}
-
-function handleBackground(background?: string, dim = false): CSSProperties {
-  const isColor = background && ['#', 'rgb', 'hsl'].some(prefix => background.indexOf(prefix) === 0)
-
-  const style: CSSProperties = {
-    background: isColor
-      ? background
-      : undefined,
-    color: (background && !isColor)
-      ? 'white'
-      : undefined,
-    backgroundImage: isColor
-      ? undefined
-      : background
-        ? dim
-          ? `linear-gradient(#0005, #0008), url(${resolveAssetUrl(background)})`
-          : `url("${resolveAssetUrl(background)}")`
-        : undefined,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-  }
-
-  if (!style.background)
-    delete style.background
-
-  return style
-}
-
-const style = computed(() => handleBackground(props.background, true))
-</script>
-
 <template>
-  <div class="slidev-layout cover" :style="style">
-    <div class="my-auto w-full">
-      <slot />
+  <div class="slidev-layout cover relative h-full w-full px-20">
+    <div class="cover-content">
+      <template v-if="$slots.eyebrow">
+        <div class="eyebrow-slot">
+          <slot name="eyebrow" />
+        </div>
+      </template>
+      <slot name="title" />
+    </div>
+    <div v-if="$slots.info" class="info-area">
+      <slot name="info" />
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Override default theme's display:grid on .slidev-layout.cover */
+.slidev-layout.cover {
+  display: flex;
+  align-items: center;
+}
+
+.cover-content {
+  width: 100%;
+}
+
+.cover-content :deep(h1) {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.eyebrow-slot {
+  width: fit-content;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow-slot :deep(p) {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.info-area {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  text-align: right;
+}
+
+.info-area :deep(p) {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+</style>
