@@ -4,7 +4,12 @@ const { currentPage } = useNav()
 </script>
 
 <template>
-  <div class="slidev-layout header-body relative flex h-full w-full flex-col">
+  <div class="slidev-layout header-body relative flex h-full w-full flex-col overflow-hidden">
+    <template v-if="$slots.backdrop">
+      <div class="layout-backdrop" aria-hidden="true">
+        <slot name="backdrop" />
+      </div>
+    </template>
     <header class="header-area px-6 pt-2 pb-4">
       <template v-if="$slots.eyebrow">
         <div class="eyebrow-slot">
@@ -22,8 +27,15 @@ const { currentPage } = useNav()
 
 <style scoped>
 .header-area {
+  position: relative;
   display: flex;
   flex-direction: column;
+  z-index: 1;
+}
+
+.header-body main {
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow-slot {

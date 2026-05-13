@@ -1,5 +1,11 @@
 <template>
-  <div class="slidev-layout cover relative h-full w-full px-20">
+  <div class="slidev-layout cover relative h-full w-full overflow-hidden px-20">
+    <template v-if="$slots.backdrop">
+      <div class="layout-backdrop" aria-hidden="true">
+        <slot name="backdrop" />
+      </div>
+    </template>
+    <span class="cover-accent-rail" aria-hidden="true" />
     <div class="cover-content">
       <template v-if="$slots.eyebrow">
         <div class="eyebrow-slot">
@@ -23,6 +29,8 @@
 }
 
 .cover-content {
+  position: relative;
+  z-index: 1;
   width: 100%;
 }
 
@@ -30,6 +38,16 @@
   font-size: 4.5rem;
   line-height: 1.1;
   margin: 0;
+}
+
+.cover-accent-rail {
+  position: absolute;
+  top: 4rem;
+  bottom: 4rem;
+  left: 2rem;
+  width: 1px;
+  background: var(--color-accent);
+  z-index: 1;
 }
 
 .eyebrow-slot {
@@ -57,6 +75,14 @@
   z-index: 2;
   text-align: right;
   max-width: min(42rem, 55vw);
+}
+
+.info-area:not(:empty)::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  border-top: 1px solid var(--color-accent);
+  margin: 0 0 0.65rem auto;
 }
 
 .info-area :deep(p) {

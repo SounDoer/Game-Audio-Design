@@ -94,6 +94,7 @@ slidev/
 | 角色 | 实现 |
 |------|------|
 | 中文标题 / 正文无衬线 | `deck-entry-header.in.yaml` → `fonts.sans: Noto Sans SC`，`base.css` 中 `--font-sans` |
+| 英文副标题 / 译文（`::subtitle::`） | `--font-sans`；用于 `section` 与 `statement` 的可选副标题槽 |
 | 英文眉标（全大写、细字重） | `fonts.serif: Cormorant Garamond`，`--font-serif`；各 layout 的 `.eyebrow-slot` 内 `font-weight: 300`，`letter-spacing: 0.15em`，`text-transform: uppercase` |
 | 代码 | `fonts.mono: Fira Code`，`--font-mono`；页码亦使用 mono |
 
@@ -120,7 +121,12 @@ slidev/
 
 在 **`cover`**、**`section`**、**`header-body`** 中，可选 **`::eyebrow::`**：渲染为眉标槽，下侧 **1px** `--color-accent` 横线，再接 **`::title::`** 主标题槽（封面多为单个 `#`，章节多为 `##`，内容页多为 `###`，均以对应 `h1`–`h3` 全局样式呈现）。
 
-设计意图：先以英文短标签定位语境，再读中文大字标题。
+设计意图：先以英文短标签定位语境，再读中文大字标题。眉标是 **阅读定位标签**，不固定等同于中文标题的英文翻译：
+
+- **`cover`**：可写整套 deck 的英文副标题 / 英文译名，例如 `What is Game Audio Design?`。
+- **`section`**：优先写结构标签，例如 `PART 01`、`FRAMEWORK`、`CASE STUDY`。若需要英文副标题，写在 **`::title::`** 内主标题下方的弱一层文字，不占用眉标。
+- **`header-body`**：优先写本页论证类型或当前视角，例如 `CONTEXT`、`PRINCIPLE`、`EXAMPLE`、`IMPLEMENTATION`、`LISTENING`、`PRACTICE`，不逐页翻译中文标题。
+- **`statement` / `custom`**：默认不复制标题区。需要弱标签时放在正文结构内。
 
 ### 3.6 装饰与工具类
 
@@ -130,6 +136,15 @@ slidev/
 | 列表标记色 | `base.css` `ul/ol li::marker` | `--color-accent` |
 | 行内强调 | `base.css` `.accent` | 文字颜色 `--color-accent` |
 | 眉标纯 HTML 场景 | `base.css` `.eyebrow`、`.accent-rule` | 不用 layout 槽时的退路 |
+| 背景装饰槽 | `layouts/*.vue` `::backdrop::` + `base.css` `.layout-backdrop` | 各 layout 可选弱背景层；放 `01`、`FIELD`、`?` 等章节编号、关键词或符号；若后面要回到默认槽，使用 `::default::` |
+| 信息卡片 | `base.css` `.callout`、`.callout-title` | 深灰 surface + 细边框 + 赤陶左线；承载定义、原则、案例提示等需要从 bullet 中抬出来的信息 |
+| 小标签 | `base.css` `.badge`、`.caption-label` | 细描边短标签；标注 `Wwise`、`RTPC`、`CASE`、`DEMO`、媒体类型，不做大面积色块 |
+| 数字与步骤 | `base.css` `.metric`、`.metric-label`、`.step-index` | 大号轻字重数字、mono 步骤号；用于关键数值、阶段序号、操作顺序 |
+| 引用与媒体 | `base.css` `.quote-accent`、`.figure-frame` | 左侧赤陶引线、图片 / 视频细框、图注；用于 statement、频谱图、流程图、案例截图 |
+| 全屏图标注 | `base.css` `.caption-plate`、`.corner-label`、`.hotspot-label` | `image` / `custom` 页的半透明说明牌、角标、热点标签，用于指出画面中的观察点 |
+| 分隔与当前项 | `base.css` `.accent-rail`、`.hairline`、`.active-panel` | 分栏边界、当前步骤、当前列；灰线为主，赤陶只标当前重点 |
+
+强调色继续保持单色：不新增第二强调色，不把主标题整段染成赤陶。赤陶用于定位、分组、数值、引用、图注、当前步骤等结构性信息。
 
 ### 3.7 画布与主题
 
@@ -146,37 +161,37 @@ slidev/
 ### 4.1 `cover` — Deck 封面
 
 - **文件**：`layouts/cover.vue`
-- **结构**：可选 `::eyebrow::` → 赤陶下划线 → `::title::`（一般为单个 `#` 主标题）；可选 **`::info::`**，固定在右下脚注区（`0.8rem` muted），避免小字被误当作留白。
-- **版式**：整页 `flex` 垂直居中；内容区全宽，主标题 `h1` **4.5rem**（与 `base.css` 一致）。
+- **结构**：可选 `::backdrop::`（弱背景装饰）；可选 `::eyebrow::` → 赤陶下划线 → `::title::`（一般为单个 `#` 主标题）；可选 **`::info::`**，固定在右下脚注区（`0.8rem` muted），避免小字被误当作留白。
+- **版式**：整页 `flex` 垂直居中；内容区全宽，主标题 `h1` **4.5rem**（与 `base.css` 一致）；左侧有极细赤陶竖线，`::info::` 非空时上方有短赤陶线。
 
 ### 4.2 `section` — 章节分隔页
 
 - **文件**：`layouts/section.vue`
-- **槽位**：可选 `::eyebrow::`；**`::title::`**（章节主标题与任何副文均写在此槽内；推荐 **`##`** 作主标题，英文副标降级为槽内普通一行，如主标题下空一行再写 `**English**`）。**无** `::subtitle::` 槽位实现。
-- **版式**：全页居中，`section-content` `text-align: center`。
+- **槽位**：可选 `::backdrop::`（弱化背景章节编号或关键词，如 `01`、`FRAMEWORK`）；可选 `::eyebrow::`；**`::title::`**（章节主标题，推荐 **`##`**）；可选 **`::subtitle::`**（章节英文副标题 / 译名，不写则不渲染）。
+- **版式**：全页居中，`section-content` `text-align: center`；`::backdrop::` 居中铺在背景层，使用极弱 surface 色。
 - **注意**：若主标题使用 **`#`**，则套用全局 **`h1`（4.5rem）**（与封面同级），与 **`##`（`h2`，3.5rem）** 视觉不同；见 `base.css` 中 `.slidev-layout h1` / `h2`。
 
 ### 4.3 `header-body` — 标准内容页（主力）
 
 - **文件**：`layouts/header-body.vue`
-- **结构**：Header 区（`px-6 pt-2 pb-4`）→ 可选 `::eyebrow::` + 赤陶线 + **`::title::`**（通常 `###`）→ Main（`flex-1 overflow-hidden px-6 pb-6 pt-3`）→ **`::body::`**；右下页码。
+- **结构**：可选 `::backdrop::`（弱背景装饰）→ Header 区（`px-6 pt-2 pb-4`）→ 可选 `::eyebrow::` + 赤陶线 + **`::title::`**（通常 `###`）→ Main（`flex-1 overflow-hidden px-6 pb-6 pt-3`）→ **`::body::`**；右下页码。
 - **Body**：为自由画布。**单栏、两栏、三栏、主区垂直居中、大图 `contain`** 等一律在 **`::body::` 内**用 UnoCSS / Tailwind 风格类（`grid`、`flex`、`min-h-0` 等）完成，**不**增加 layout 级 props。
 - **背景图**：可在该页 frontmatter 使用 Slidev 的 **`background:`**（相对 `public/` 的路径），与 `ambience-sound-design.md` 等现稿一致；需要全屏底图且自带 `image` frontmatter 时，可使用 **Slidev 内置** `layout: image`（本仓库不提供同名覆盖）。
 
 ### 4.4 `statement` — 居中陈述
 
 - **文件**：`layouts/statement.vue`
-- **行为**：单默认槽，全屏水平 + 垂直居中；无 header、**无页码**。
+- **行为**：可选 `::backdrop::`（弱背景装饰）；可用默认槽写自由陈述，也可用 **`::title::`** + 可选 **`::subtitle::`** 写固定的中文陈述 + 英文译文。使用 `::title::` 时，layout 会自动把 title 与 subtitle 包进左侧赤陶 quote rail；无 header、**无页码**。
 
 ### 4.5 `end` — 结束页
 
 - **文件**：`layouts/end.vue`
-- **用法**：默认槽内按顺序两个段落：第一段为感谢 / 收束标题（**3rem**、粗体、primary，下划赤陶线）；第二段为小字联系方式（**0.75rem** muted）。
+- **用法**：可选 `::backdrop::`（弱背景装饰）；默认槽内按顺序两个段落：第一段为感谢 / 收束标题（**3rem**、粗体、primary，下划赤陶线）；第二段为小字联系方式（**0.75rem** muted）。
 
 ### 4.6 `custom` — 空白画布
 
 - **文件**：`layouts/custom.vue`
-- **行为**：仅一层全屏容器，**无**预设眉标或标题区；适合特殊构图或整页自定义 HTML。需要与全局令牌一致时，仍应使用 `base.css` 中的变量与 `.slidev-layout` 下规则。
+- **行为**：可选 `::backdrop::`（弱背景装饰）；默认槽提供一层全屏内容容器，**无**预设眉标或标题区；适合特殊构图或整页自定义 HTML。需要与全局令牌一致时，仍应使用 `base.css` 中的变量与 `.slidev-layout` 下规则。
 
 ### 4.7 Slidev 内置 layout（无本地文件时）
 

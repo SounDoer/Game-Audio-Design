@@ -147,6 +147,10 @@ DECISION FLOW
 layout: section
 ---
 
+::backdrop::
+
+Ambience
+
 ::eyebrow::
 
 FIELD RECORDING
@@ -155,7 +159,9 @@ FIELD RECORDING
 
 ## 环境声
 
-**Ambience as a Place**
+::subtitle::
+
+Ambience as a Place
 
 <!--
 重点章节之一：环境声用于讲 field recording。
