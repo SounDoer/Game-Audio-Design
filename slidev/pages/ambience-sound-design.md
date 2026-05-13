@@ -6,8 +6,6 @@ layout: section
 
 ## 环境声设计
 
-::subtitle::
-
 **Ambience Sound Design**
 
 <!--  -->

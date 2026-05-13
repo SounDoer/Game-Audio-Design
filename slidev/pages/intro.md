@@ -6,8 +6,6 @@ layout: section
 
 ## 课程简介
 
-::subtitle::
-
 **Introduction**
 
 ---

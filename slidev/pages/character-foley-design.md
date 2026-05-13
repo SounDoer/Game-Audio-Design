@@ -6,8 +6,6 @@ layout: section
 
 ## 角色拟音设计
 
-::subtitle::
-
 **Character Foley Design**
 
 <!--

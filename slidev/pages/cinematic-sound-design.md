@@ -6,8 +6,6 @@ layout: section
 
 ## 影视化内容的声音设计
 
-::subtitle::
-
 **Cinematic Sound Design**
 
 <!--

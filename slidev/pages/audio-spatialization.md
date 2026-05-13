@@ -6,8 +6,6 @@ layout: section
 
 ## 音频空间化
 
-::subtitle::
-
 **Audio Spatialization**
 
 ---

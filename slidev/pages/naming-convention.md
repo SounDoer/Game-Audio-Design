@@ -6,8 +6,6 @@ layout: section
 
 ## 命名规范
 
-::subtitle::
-
 **Naming Convention**
 
 <!--

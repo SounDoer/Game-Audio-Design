@@ -6,8 +6,6 @@ layout: section
 
 ## Game Audio Debug
 
-::subtitle::
-
 **Game Audio Debug**
 
 <!--

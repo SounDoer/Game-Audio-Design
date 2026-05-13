@@ -6,8 +6,6 @@ layout: section
 
 ## 语音设计
 
-::subtitle::
-
 **Voice Design**
 
 ---

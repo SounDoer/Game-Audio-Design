@@ -6,8 +6,6 @@ layout: section
 
 ## 音乐设计
 
-::subtitle::
-
 **Music Design**
 
 <!--  -->

@@ -6,8 +6,6 @@ layout: section
 
 ## 生成声音资产
 
-::subtitle::
-
 **SoundBank Generation**
 
 ---
