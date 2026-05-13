@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/slides/:deck/*"
+  to = "/slides/:deck/index.html"
+  status = 200
