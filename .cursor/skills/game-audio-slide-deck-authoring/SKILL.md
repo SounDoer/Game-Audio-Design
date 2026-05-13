@@ -31,7 +31,7 @@ description: Co-develops Slidev course decks for game audio teaching and gad.sou
 
 1. 在已锁定文件或 stem 的前提下，按 **Session entry §2** 完成「有无想法」首题与后续单题访谈；其间自然覆盖 **audience**、**时长**、**学习目标**与先修假设（见 [REFERENCE.md](REFERENCE.md) 开场清单）；若用户未说明，先按 REFERENCE **「本仓库默认语境」** 假设，并用**单题**方式确认是否覆盖。
 2. 访谈与对齐完成后，再产出结构化大纲；确认后再写 Slidev。
-3. 在 `slidev/pages/<stem>.md` 中实现；遵守 **[`slidev/README.md`](../../../slidev/README.md)**（设计系统、layout、资源与构建命令的单一真源）；收尾验证见 **Phase D**（默认 `npm run slidev:build`）。
+3. 在 `slidev/pages/<stem>.md` 中实现；设计规范以 **[`slidev/README.md`](../../../slidev/README.md)** 为单一真源，实际写法以 **[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)** 为标准样张；收尾验证见 **Phase D**（默认 `npm run slidev:build`）。
 
 ## Workflows
 
@@ -39,12 +39,12 @@ description: Co-develops Slidev course decks for game audio teaching and gad.sou
 
 - 先定 **一个核心问题** 或 **一条方法论主线**，避免知识点堆砌；通过**单题访谈**推进，而非一次性抛整份草案。
 - 追问：学生课后能 **做出什么** 或 **解释什么**（可观察产出）。
-- 仅在双方对齐后输出：树状大纲 + 每章 **预估页数** + 建议 **layout**（本地 6 个：`cover` / `section` / `header-body` / `statement` / `end` / `custom`；全屏底图可用 Slidev 内置 `image`；多栏与居中一律在 `header-body` 的 `::body::` 内用 `grid` / `flex`，见 README §4.3、§5.1）。
+- 仅在双方对齐后输出：树状大纲 + 每章 **预估页数** + 建议 **layout**；layout、slot、class 与视觉规则一律查 **[`slidev/README.md`](../../../slidev/README.md)**，具体 Markdown 写法参照 **[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)**。
 
 ### Phase B — 逐页内容表（不写 Slidev 之前）
 
 - **何时必须先产出页表**（对话里 Markdown 表格即可，见 [REFERENCE.md](REFERENCE.md) 示例）：**新建** `slidev/pages/<stem>.md`；或本轮改动预计 **新增 / 重写合计超过约 10 页**；或 **大段重排**（章节顺序调整、批量改 layout、整段替换结构）。**可跳过页表**：单页文案微调、错字、个别路径 / frontmatter、纯样式小改。
-- 为每一页填：**标题（中文）**、可选 **英文眉标**（对应 `::eyebrow::`）、**要点 bullets**、**媒体需求**（图/音/视频路径占位）；`section` 的英文副标写在 **`::title::` 内主标题下**一行，**无** `::subtitle::` 槽（README §4.2）。
+- 为每一页填：**标题（中文）**、可选 **英文眉标 / 副标题**、**要点 bullets**、**媒体需求**（图/音/视频路径占位）；具体 slot 写法以 **[`slidev/README.md`](../../../slidev/README.md)** 与 **[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)** 为准。
 - 标 **演讲者备注**（`<!-- ... -->`）里要写什么（案例、时间、演示步骤）。
 - 与用户对齐 **信息密度**：课堂可更口语、线上版宜更自洽。
 
@@ -52,7 +52,7 @@ description: Co-develops Slidev course decks for game audio teaching and gad.sou
 
 - **新建 deck**：在 `slidev/pages/<stem>.md` 建文件；静态资源放 `slidev/public/<stem>/`（与 md **同名目录**）；若需目录排序，把 stem 加入 `slidev/deck-order.txt`；需要可改首张 frontmatter 的 `slug:`、`deckListTitle:`、`slidesOrder:`（见 README §1）。**默认不参与构建的 stem**（`cover`、`intro`、`fin`）见 `slidev/deck-pages-shared.mjs` 的 `EXCLUDED_STEMS`；若要上线该套，需从常量中移除并视情况写入 `deck-order.txt`。
 - **系统级配置**不复制进每页：字体、过渡等以 `slidev/deck-entry-header.in.yaml` 为准。
-- **版式**：优先 `class`（UnoCSS），少用行内 `style`；跨页版式进 `slidev/styles/base.css` 且选择器挂在 `.slidev-layout` 下。
+- **版式**：不要在 skill 内复述设计规范；class、行内样式、跨页样式与局部组件的取舍以 **[`slidev/README.md`](../../../slidev/README.md)** 为准。
 - **长文站点**：正文写作规范见仓库根目录 `AGENTS.md`；幻灯口播/备注可与文章语气区分，但术语表仍建议一致。
 
 ### Phase D — 收尾
@@ -65,8 +65,8 @@ description: Co-develops Slidev course decks for game audio teaching and gad.sou
 ## Advanced / deep reference
 
 - 流程与路径摘要、Phase B 门槛、**反模式 / 易踩坑**、**完成前验证**：[REFERENCE.md](REFERENCE.md)
-- **可复制版式片段**（本地 layout、`h1`–`h6`、token 表）：[EXAMPLES.md](EXAMPLES.md)
-- **唯一真源**（目录、设计系统、layout、正文写法、`public`、构建与产物）：[`slidev/README.md`](../../../slidev/README.md)；实现与文档有出入时以 **`slidev/styles/base.css`** 与 **`slidev/layouts/*.vue`** 为准（README §3 起）。
+- **设计规范唯一真源**（目录、设计系统、layout、class、字体字号颜色、资源、构建与产物）：[`slidev/README.md`](../../../slidev/README.md)
+- **标准实现参考**（可复制的 Markdown 写法与页面组织）：[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)
 
 ## Collaboration notes
 

@@ -1,6 +1,6 @@
 # Reference — Slide deck authoring (Game-Audio-Design)
 
-**单一真源**：[`slidev/README.md`](../../../slidev/README.md)。视觉与槽位以 **`slidev/styles/base.css`**、**`slidev/layouts/*.vue`** 的实现为准（README §3 已说明「文档 vs 代码」优先级）。
+**设计规范单一真源**：[`slidev/README.md`](../../../slidev/README.md)。**标准实现参考**：[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)。视觉与槽位以 README 指向的实现文件为准。
 
 ## 开场澄清清单（Phase A 前）
 
@@ -43,10 +43,10 @@
 - **`EXCLUDED_STEMS`**（`slidev/deck-pages-shared.mjs`，当前 **`cover`**、**`intro`**、**`fin`**）：对应 `pages/*.md` **不参与**构建与 `/slides/` 索引；要发布须从常量移除并视情况写入 `deck-order.txt`。
 - **构建期 `public` 子集**：每套 deck 构建前脚本会临时收窄 `slidev/public`，避免整库打进单套输出；详见 README §1「构建期 public 子集」。
 
-## Layout 与正文片段（避免与 EXAMPLES 重复）
+## Layout 与正文片段
 
-- **槽位、标题 `h1`–`h6`、配色 token、可复制 Markdown 块**：**[EXAMPLES.md](EXAMPLES.md)** §1–§3。
-- **权威叙述、边界情况、`background:` / `image:`、`grid` 等**：**[`slidev/README.md`](../../../slidev/README.md)** §4–§5。
+- **槽位、标题层级、class、字体字号颜色、资源路径与边界情况**：**[`slidev/README.md`](../../../slidev/README.md)**。
+- **可复制 Markdown 写法与页面组织**：**[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)**。
 
 **本地 layout 名速记**：`cover` · `section` · `header-body` · `statement` · `end` · `custom`；全屏底图优先 Slidev 内置 **`layout: image`**（无本地同名 `layouts/*.vue` 时）。
 
