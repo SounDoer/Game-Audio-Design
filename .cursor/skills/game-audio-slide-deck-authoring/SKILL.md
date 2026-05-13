@@ -1,6 +1,6 @@
 ---
 name: game-audio-slide-deck-authoring
-description: Co-develops Slidev course decks for game audio teaching and gad.soundoer.com online slides—locks target `slidev/pages/*.md` when missing, then grill-me style single-question interview (first asks if user already has ideas; if not, agent-led opening questions) until shared understanding, then per-slide plans and Markdown per slidev/README.md. Use when the user is preparing classroom slides, teaching decks, Slidev files under slidev/pages, or asks to turn a topic into slides for this repo. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slidev/pages、gad 在线展示幻灯。
+description: Use when preparing, rewriting, or maintaining Game-Audio-Design Slidev teaching decks, `slidev/pages/*.md` files, online `/slides/` pages, or adapting game-audio articles into course slides. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slidev/pages、gad 在线展示幻灯。
 ---
 
 # Game-Audio Slide Deck Authoring

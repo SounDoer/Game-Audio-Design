@@ -21,10 +21,9 @@
 - **用途**：同一套 deck 面向 **课堂讲授**，并可在 **gad.soundoer.com** 在线展示；页表阶段兼顾「口播可略」与「自读能懂」。
 - **文件与资产**：正文 `slidev/pages/<stem>.md`；该套用到的静态文件放入 **`slidev/public/<stem>/`**（与 stem 同名目录，见 `slidev/README.md` §6）。
 
-## Phase B：页表何时必须（与 SKILL 一致）
+## Phase B：页表补充说明
 
-- **必须先给出页表**（再改 md）：新建 `pages/<stem>.md`；或本轮 **新增 / 重写幻灯合计超过约 10 页**；或 **大段重排**（章节顺序、批量改 layout、整结构替换）。
-- **可跳过页表**：单页文案微调、错字、个别 `public` 路径或 frontmatter、纯样式小改。
+页表门槛以 `SKILL.md` 的 Phase B 为准；本文件只补充判断方式：当改动会影响整套 deck 的叙事顺序、章节结构或多页信息密度时，先用页表对齐；局部文案、路径、frontmatter 或小样式修正通常可直接改。
 
 ## 主题 → 实现文件（摘自 README §1 表格）
 
@@ -94,7 +93,7 @@ npm run slidev:dev -- <stem>
 
 ## 反模式 / 易踩坑（检查用）
 
-- **Layout**：不使用 `slidev/README.md` §4 未列出的本地 layout 名；不假设已删除的历史 layout；`section` **不要**使用不存在的 `::subtitle::` 槽。
+- **Layout**：不使用 `slidev/README.md` §4 未列出的本地 layout 名；不假设已删除的历史 layout 或槽位；使用 slot 前先核对 **`slidev/README.md`** 与 **`slidev/pages/EXAMPLE.md`**。
 - **资产路径**：某 stem 的专用素材优先进 **`slidev/public/<stem>/`**，避免为该套新建的文件长期散落在 `public/` 根目录（历史路径除外，见 README §6）。
 - **构建与索引**：不擅自修改 **`EXCLUDED_STEMS`**（`slidev/deck-pages-shared.mjs`）或从 `deck-order.txt` 增删 stem，除非用户明确要求「纳入构建 / 上 `/slides/` 索引」或「排除」。
 - **全局配置**：不把 `deck-entry-header.in.yaml` 里已统一的系统级键（字体、画布、过渡等）复制到每一页 frontmatter「以防万一」。
