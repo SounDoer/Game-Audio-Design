@@ -16,14 +16,18 @@ layout: section
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### Character Locomotion Foley
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
+
 <p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
+
+</div>
 
 <!--  -->
 
@@ -46,14 +50,18 @@ layout: header-body
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 角色动画结构
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/char-anim-struct.png)
+
+</div>
 
 <!--  -->
 

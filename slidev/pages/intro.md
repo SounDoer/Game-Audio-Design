@@ -11,12 +11,15 @@ layout: section
 **Introduction**
 
 ---
-layout: header-body-grid
+layout: header-body
 ---
 
 ### 课程讲师
 
-::left::
+::body::
+
+<div class="grid min-h-0 grid-cols-2 gap-4">
+<div class="min-h-0 min-w-0 overflow-auto">
 
 沈希辰 Xichen Shen
 
@@ -37,7 +40,8 @@ Aug 2015 - Apr 2019
 [Far Cry 5](https://www.ubisoft.com/en-us/game/far-cry/far-cry-5)  
 [Far Cry Primal](https://www.ubisoft.com/en-us/game/far-cry/far-cry-primal)  
 
-::right::
+</div>
+<div class="min-h-0 min-w-0 overflow-auto">
 
 <div class="flex h-full min-h-0 w-full flex-col items-center justify-center gap-y-3 py-1">
   <div class="flex shrink-0 flex-wrap justify-center gap-x-2">
@@ -59,6 +63,9 @@ Aug 2015 - Apr 2019
       <img class="h-full w-full object-cover object-center" src="/intro/FarCryPrimal_Title.jpg" alt="Far Cry Primal title card">
     </div>
   </div>
+</div>
+
+</div>
 </div>
 
 <!--
@@ -96,13 +103,15 @@ layout: header-body
 -->
 
 ---
-layout: header-body-grid
-cols: 3
+layout: header-body
 ---
 
 ### 内容大纲
 
-::left::
+::body::
+
+<div class="grid min-h-0 grid-cols-3 gap-4">
+<div class="min-h-0 min-w-0 overflow-auto">
 
 <v-click>
 <div style="background-color:rgb(72, 72, 72); padding: 1rem; border-radius: 0.5rem;">
@@ -124,7 +133,8 @@ cols: 3
 </div>
 </v-click>
 
-::mid::
+</div>
+<div class="min-h-0 min-w-0 overflow-auto">
 
 <v-click>
 <div style="background-color:rgb(72, 72, 72); padding: 1rem; border-radius: 0.5rem;">
@@ -138,7 +148,8 @@ cols: 3
 </div>
 </v-click>
 
-::right::
+</div>
+<div class="min-h-0 min-w-0 overflow-auto">
 
 <v-click>
 <div style="background-color:rgb(72, 72, 72); padding: 1rem; border-radius: 0.5rem;">
@@ -150,6 +161,9 @@ cols: 3
 </div>
 </v-click>
 
+</div>
+</div>
+
 <!--
 - Course Structure: Theory, Practice, Mixture of both
 -->
@@ -159,6 +173,8 @@ layout: header-body
 ---
 
 ### 课程评分
+
+::body::
 
 - 考勤与课堂互动：10%
 - 实践与作业：20%

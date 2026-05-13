@@ -11,12 +11,14 @@ layout: section
 **Dev Workflow**
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 开发阶段 Dev Stage
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
 
 ```mermaid {theme: 'base', scale: '0.5', themeVariables:{fontSize: '24px', primaryTextColor: '#fff',primaryColor: '#a6a6a6'}}
 timeline
@@ -34,6 +36,8 @@ timeline
     Release : The official launch of the game to the public.
     Long-term operation : Ongoing content updates, bug fixes, and community engagement to sustain the game.
 ```
+
+</div>
 
 <!--
 https://www.ubisoft.com/en-us/company/how-we-make-games/creative-process
@@ -98,7 +102,7 @@ style root fill:#173d03, stroke:#fff, stroke-width:1px
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 音频数据 Audio Data
@@ -106,7 +110,11 @@ layout: header-body-center
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <img src="/the-core-audio-data.svg" alt="The Core Audio Data" style="width: 100%; height: auto;">
+
+</div>
 
 <!--
 - 在做出好听的声音之外，还有考虑其他的问题
@@ -114,7 +122,7 @@ layout: header-body-center
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 设计流程 Design Workflow
@@ -122,7 +130,11 @@ layout: header-body-center
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <img src="/design-workflow.svg" alt="Design Flow" style="width: 100%; height: auto;">
+
+</div>
 
 <!--
 - 游戏音频设计工作流，包含前期设计、功能开发、资源制作、数据整合与测试优化等环节的迭代式开发流程

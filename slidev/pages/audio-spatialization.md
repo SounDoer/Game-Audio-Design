@@ -27,23 +27,30 @@ layout: header-body
 <!--  -->
 
 ---
-layout: header-body-grid
+layout: header-body
 ---
 
 ### 声像定位 Sound Positioning
 
-::left::
+::body::
+
+<div class="grid min-h-0 grid-cols-2 gap-4">
+<div class="min-h-0 min-w-0 overflow-auto">
 
 <div v-click>
     Channel-Based
     <img src="/channel-based-positioning.svg" alt="Channel Based Positioning" style="width: auto; height: 420px;">
 </div>
 
-::right::
+</div>
+<div class="min-h-0 min-w-0 overflow-auto">
 
 <div v-click>
     Object-Based
     <img src="/object-based-positioning.svg" alt="Object Based Positioning" style="width: auto; height: 420px;">
+</div>
+
+</div>
 </div>
 
 <!--
@@ -51,59 +58,75 @@ layout: header-body-grid
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 空间划分 Space Partition
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <img src="/space-partition.svg" alt="Space Partition" style="width: auto; height: 450px;">
+
+</div>
 
 <!--
 - 使用 Volume 来界定 Region、Room 和 Portal 等
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 反射与混响 Reflect & Reverb
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <img src="/reflect-reverb.svg" alt="Reflect-Reverb" style="width: auto; height: 450px;">
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 衍射与透射 Diffraction & Transmission
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <img src="/diffraction-transmission.svg" alt="Diffraction Transmission" style="width: auto; height: 450px;">
+
+</div>
 
 <!--
 - Diffraction & Transmission
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 声音衰减 Sound Attenuation
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <img src="/sound-attenuation.svg" alt="Sound Attenuation" style="width: auto; height: 450px;">
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 音频空间化
@@ -151,38 +174,50 @@ layout: header-body
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### Wwise Spatial Audio Demo
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### Wwise Spatial Audio Demo
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 <p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### Spatial Audio Signal Flow
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/spatial-audio-signal-flow.png){style="height: 450px"}
+
+</div>
 
 <!--
 - https://www.audiokinetic.com/en/library/edge/?source=SDK&id=soundengine_obsocc.html
@@ -251,14 +286,18 @@ Similar to static lighting bake detailed physics offline to provide a physical b
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### Wave Physics Simulation Demo
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_iframe]:max-h-[min(78vh,100%)] [&_iframe]:w-full">
+
 <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=727071638&bvid=BV1fS4y1q7ty&cid=734954302&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 450px;"></iframe>
+
+</div>
 
 <!--  -->
 

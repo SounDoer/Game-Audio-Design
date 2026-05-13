@@ -11,14 +11,18 @@ layout: section
 **Gun Sound Design**
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 真实环境中的枪声
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
+
 <p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
+
+</div>
 
 <!--  -->
 
@@ -259,7 +263,7 @@ layout: header-body
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 玩家听到自己的射击声音
@@ -267,12 +271,16 @@ layout: header-body-center
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/gun-sound-1p-layer.png){style="height: 360px"}
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 玩家听到别人的射击声音
@@ -280,43 +288,59 @@ layout: header-body-center
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/gun-sound-3p-layer.png){style="height: 360px"}
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 枪械声音录制
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_iframe]:max-h-[min(78vh,100%)] [&_iframe]:w-full">
+
 <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=93662654&bvid=BV1XE411s7QN&cid=159918305&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 450px;"></iframe>
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### Recording Session Editing
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/Gun_Rec_Session_PT.png){style="height: 420px"}
+
+</div>
 
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### Wwise Data Structure
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
+
 <!-- ![](/Gun_Rec_Session_PT.png){style="height: 420px"} -->
+
+</div>
 
 <!--  -->
 

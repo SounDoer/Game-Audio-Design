@@ -179,12 +179,14 @@ layout: header-body
 </div>
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 从音频制品到听感效果
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 items-center justify-center">
 
 <div class="mx-auto grid w-full max-w-[95%] grid-cols-[minmax(0,0.88fr)_minmax(0,1.18fr)_minmax(0,1.18fr)_minmax(0,1fr)_minmax(0,0.88fr)] gap-x-1 gap-y-2 text-center text-stone-100 md:gap-x-2">
 
@@ -240,6 +242,8 @@ layout: header-body-center
     <div class="w-full min-w-0 whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">听感效果与评价</div>
     <div class="min-h-[1rem]" aria-hidden="true"></div>
   </div>
+</div>
+
 </div>
 
 </div>

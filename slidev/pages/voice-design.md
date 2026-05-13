@@ -16,6 +16,8 @@ layout: header-body
 
 ### 语音设计的复杂性
 
+::body::
+
 - 涉及到的资产
   - 台词、口型和动作、音频文件……
 - 涉及到的环节
@@ -32,13 +34,15 @@ layout: header-body
 -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 语音设计管线
 Character One-Page
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
 
 <div class="grid grid-cols-2 gap-4">
 
@@ -55,6 +59,8 @@ Character One-Page
 ![](/src/voice-design/SOP_Character_Voice_Casting_Sheet_02.jpg){style="height: 200px"}
 
 ![](/src/voice-design/SOP_Character_Voice_Casting_Sheet_04.jpg){style="height: 200px"}
+
+</div>
 
 </div>
 
@@ -117,7 +123,7 @@ Recording List
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 语音设计管线
@@ -125,11 +131,16 @@ Pipeline Overview Graph
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
 
 <!--
 - Voice Line Property
 - The Whole Pipeline Graph
 -->
+
+</div>
+
+---
 
 ---
 layout: header-body

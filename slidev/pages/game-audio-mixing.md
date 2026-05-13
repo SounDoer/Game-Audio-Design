@@ -62,12 +62,14 @@ layout: header-body
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 游戏类型和玩法决定的听觉体验
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
 
 <div class="grid grid-cols-9 gap-4">
 
@@ -127,29 +129,39 @@ layout: header-body-center
 
 </div>
 
+</div>
+
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 各类终端设备的适配和调优
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
 
 ![](/src/game-audio-mixing/Channel-Based-Mix-Output.jpg){style="height: 420px"}
 
+</div>
+
 <!--  -->
 
 ---
-layout: header-body-center
+layout: header-body
 ---
 
 ### 各类终端设备的适配和调优
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/src/game-audio-mixing/Realtime-Positioning-Mix-Output.jpg){style="height: 420px"}
+
+</div>
 
 <!--  -->
 
@@ -160,6 +172,8 @@ layout: header-body
 ### 交互式和系统性的混音手段
 
 A High-Level Difference between Game Audio and Film Sound: The Control of Sound
+
+::body::
 
 <div class="grid grid-cols-2 gap-4">
 

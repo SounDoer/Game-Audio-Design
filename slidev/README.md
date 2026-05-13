@@ -6,7 +6,7 @@ The legacy **`slides.md`** file is no longer a Slidev entry; see its header comm
 
 ## Layouts (`slidev/layouts/`)
 
-幻灯里 `layout: xxx` 会加载 **`slidev/layouts/xxx.vue`**（与 Slidev 内置或主题同名时，以本仓库文件为准）。下面按用途分组；槽位语法为 [Slidev MDC](https://sli.dev/features/slot-syntax)。
+幻灯里 `layout: xxx` 优先加载 **`slidev/layouts/xxx.vue`**；若本地无该文件，则回退 **Slidev 内置**（`@slidev/client/layouts` 等）。下面按用途分组；槽位语法为 [Slidev MDC](https://sli.dev/features/slot-syntax)。
 
 ### 章节与过渡页
 
@@ -15,17 +15,15 @@ The legacy **`slides.md`** file is no longer a Slidev entry; see its header comm
 | `section` | 分章大标题：`::title::`（`##`）+ `::subtitle::`（如 `**English**`）；仅居中排版，字号与其它页一致（**`styles/base.css`** 中 `.slidev-layout` 下的 `h*` / `p`） |
 | `cover` | 封面 |
 | `statement` | 一句话 / 提问，正文纵向居中 |
-| `default` | 无标题栏，整页一个默认槽（适合自定义居中块） |
-| `image` | 全屏背景图；frontmatter 需 `image: 相对 public 的路径或 URL`，可选 `backgroundSize`（默认 `cover`） |
+| `default` | 无标题栏，整页一个默认槽；使用 **Slidev 内置**（`@slidev/client`），本仓库不再提供同名覆盖 |
+| `image` | 全屏背景图；frontmatter 需 `image:`；使用 **Slidev 内置**，本仓库不再提供同名覆盖 |
 | `end` | 结束页 |
 
 ### 标题 + 正文区（`header` + 主区）
 
 | `layout:` | 主区槽位 | 说明 |
 |-----------|----------|------|
-| `header-body` | `::body::` | 常规单栏；可选 **`background:`**（淡色全屏底图，透明度与原先 `header-body-bg` 一致） |
-| `header-body-center` | `::body::` | 主区水平 + 垂直居中，适合单图或少字；`main` 内 `img` 限制在可视区内 `contain` |
-| `header-body-grid` | `::left::` `::right::`；三列时加 **`cols: 3`** 并增加 `::mid::` | 两列栅格（默认）或三列；`cols` 省略时为 2 |
+| `header-body` | `::title::`（或标题行）+ `::body::` | 单栏主区。多栏、主区垂直居中、大图 `contain` 等均在 **`::body::` 内**用 `grid` / `flex` 与 Uno 类实现，不通过 layout 的额外 props。可选 **`background:`**（淡色全屏底图） |
 
 **示例（单栏 + 淡底图）：**
 
@@ -42,42 +40,57 @@ background: what-is-game-audio-design/game-poster.png
 正文 Markdown……
 ```
 
-**示例（两列）：**
+**示例（主区垂直居中 + 大图 contain，写在 `::body::` 内）：**
 
 ```yaml
 ---
-layout: header-body-grid
+layout: header-body
 ---
 
 ### 标题
 
-::left::
+::body::
 
-左列内容
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
 
-::right::
+![](/diagram.svg)
 
-右列内容
+</div>
 ```
 
-**示例（三列）：**
+**示例（两列栅格，写在 `::body::` 内）：**
 
 ```yaml
 ---
-layout: header-body-grid
-cols: 3
+layout: header-body
 ---
 
 ### 标题
 
-::left::
-左
+::body::
 
-::mid::
-中
+<div class="grid min-h-0 grid-cols-2 gap-4">
+  <div class="min-h-0 min-w-0 overflow-auto">左列</div>
+  <div class="min-h-0 min-w-0 overflow-auto">右列</div>
+</div>
+```
 
-::right::
-右
+**示例（三列，写在 `::body::` 内）：**
+
+```yaml
+---
+layout: header-body
+---
+
+### 标题
+
+::body::
+
+<div class="grid min-h-0 grid-cols-3 gap-4">
+  <div class="min-h-0 min-w-0 overflow-auto">左</div>
+  <div class="min-h-0 min-w-0 overflow-auto">中</div>
+  <div class="min-h-0 min-w-0 overflow-auto">右</div>
+</div>
 ```
 
 ## 样式写法（规范）

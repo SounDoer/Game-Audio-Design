@@ -13,6 +13,8 @@ layout: section
 <!--  -->
 
 ---
+
+---
 layout: header-body
 ---
 
@@ -31,6 +33,8 @@ layout: header-body
 </v-clicks>
 
 <!--  -->
+
+---
 
 ---
 layout: header-body
@@ -65,6 +69,8 @@ layout: header-body
 <!--  -->
 
 ---
+
+---
 layout: header-body
 ---
 
@@ -87,28 +93,38 @@ layout: header-body
 -->
 
 ---
-layout: header-body-center
+
+---
+layout: header-body
 ---
 
 ### A Case of Boss Fight Music
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/boss-fight-music-flow-01.png){style="width: 100%"}
+
+</div>
 
 <!-- pic 01 -->
 
 ---
-layout: header-body-center
+
+---
+layout: header-body
 ---
 
 ### A Case of Boss Fight Music
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/boss-fight-music-flow-02.png){style="width: 100%"}
 
-<!-- pic 02 -->
+</div>
 
 ---
 layout: header-body
@@ -121,6 +137,8 @@ layout: header-body
 ![](/boss-fight-music-waveform-01.png){style="height: 420px"}
 
 <!--  -->
+
+---
 
 ---
 layout: header-body
@@ -137,6 +155,8 @@ layout: header-body
 - 然后进 Wwise 演示
 - [Wwise Tour 2016 - CD Projekt Red Witcher (6 of 6) - Music: Action Sync](https://www.youtube.com/watch?v=aLq0NKs3H-k)
 -->
+
+---
 
 ---
 layout: header-body
@@ -170,6 +190,8 @@ layout: header-body
 </div>
 
 <!--  -->
+
+---
 
 ---
 layout: header-body
@@ -229,52 +251,76 @@ layout: header-body
 -->
 
 ---
-layout: header-body-center
+
+---
+layout: header-body
 ---
 
 ### 音乐风格
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
 
 ![](/src/music-design/music-style-01.png){style="height: 450px"}
 
+</div>
+
 <!-- from keynote -->
 
 ---
-layout: header-body-center
+
+---
+layout: header-body
 ---
 
 ### 音乐风格
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
 
 ![](/src/music-design/music-style-02.png){style="height: 450px"}
 
+</div>
+
 <!-- from keynote -->
 
 ---
-layout: header-body-center
+
+---
+layout: header-body
 ---
 
 ### 音乐风格
 
 ::body::
+
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
 
 ![](/src/music-design/music-style-03.png){style="height: 450px"}
 
+</div>
+
 <!-- from keynote -->
 
 ---
-layout: header-body-center
+
+---
+layout: header-body
 ---
 
 ### 音乐风格
 
 ::body::
 
+<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
+
 ![](/src/music-design/music-style-04.png){style="height: 450px"}
 
-<!-- from keynote -->
+</div>
+
+---
 
 ---
 layout: header-body

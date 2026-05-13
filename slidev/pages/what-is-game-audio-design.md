@@ -193,7 +193,7 @@ Audio
 </div>
 
 <!--
-配图：Field recording / Foley 幕后或现场素材（放入 slidev/public/what-is-game-audio-design/ 后可用 header-body-center + img 或 layout: image）
+配图：Field recording / Foley 幕后或现场素材（放入 slidev/public/what-is-game-audio-design/ 后可用 `layout: header-body` 的 `::body::` 内 `flex` + 居中 + `img` 约束，或 Slidev 内置 `layout: image`）
 -->
 
 ---
@@ -377,7 +377,7 @@ Design
 </div>
 
 <!--
-配图：三作案例海报或截图；若需横排分栏可改回 header-body-grid（cols: 3）并在 ::mid:: / ::right:: 接入素材路径
+配图：三作案例海报或截图；若需横排分栏可在 `layout: header-body` 的 `::body::` 内用 `grid grid-cols-3` 等接入素材路径
 -->
 
 ---
