@@ -19,7 +19,9 @@
 # Misc
 .DS_Store
 .claude/
-.cursor/
+.cursor/*
+!.cursor/skills/
+!.cursor/skills/**
 .frontmatter/
 .env
 .env.local
