@@ -1,9 +1,9 @@
 ---
-name: game-audio-slide-deck-authoring
+name: gad-slides-authoring
 description: Use when preparing, rewriting, or maintaining Game-Audio-Design Slidev teaching decks, `slidev/pages/*.md` files, online `/slides/` pages, or adapting game-audio articles into course slides. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slidev/pages、gad 在线展示幻灯。
 ---
 
-# Game-Audio Slide Deck Authoring
+# GAD Slides Authoring
 
 ## Session entry（必须先做）
 
