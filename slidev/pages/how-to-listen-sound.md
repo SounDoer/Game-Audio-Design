@@ -1,16 +1,36 @@
 ---
-layout: section
+layout: cover
 ---
+
+::backdrop::
+
+LISTEN
+
+::eyebrow::
+
+Listening Method
 
 ::title::
 
-# 如何<span style="color:rgb(238, 228, 34)">听</span>声音？
+# 如何听声音？
 
-**How to Listen Sound?**
+::subtitle::
+
+How to Listen Sound?
 
 ---
 layout: header-body
 ---
+
+::backdrop::
+
+WHY
+
+::eyebrow::
+
+Context
+
+::title::
 
 ### 为什么同一个声音听起来会不一样？
 
@@ -30,336 +50,422 @@ layout: header-body
 layout: header-body
 ---
 
+::backdrop::
+
+WORDS
+
+::eyebrow::
+
+Description
+
+::title::
+
 ### 我们是如何描述声音的？
 
 ::body::
 
-<v-clicks>
-
-- 有点轻，太小了
-- 有点闷，不够亮
-- 有点窄，不够宽
-- 太远了，不够近
-- 打击感不够
-
-</v-clicks>
-
----
-layout: header-body
----
-
-### 音频信号经过了多少环节才到达你的耳朵？
-
-::body::
-
-#### 软件应用中的声音控制
-
-<div class="grid grid-cols-3 gap-8 text-lg w-full items-start">
-
-<div v-click>
-
-##### 视频
-
-<div class="flex flex-col gap-3">
-  <img src="/how-to-listen-sound/YouTube_Volume.png" alt="YouTube volume control" style="width: 100%; height: auto;" />
-  <img src="/how-to-listen-sound/Bilibili_Volume.png" alt="Bilibili volume control" style="width: 100%; height: auto;" />
-</div>
-
-</div v-click>
-
-<div v-click>
-
-##### 音乐
-
-<div class="flex flex-col gap-3">
-  <img src="/how-to-listen-sound/QQMusic_Effect_01.png" alt="QQ Music Galaxy sound effects presets" style="width: 80%; height: auto;" />
-  <img src="/how-to-listen-sound/QQMusic_Effect_03.png" alt="QQ Music equalizer" style="width: 80%; height: auto;" />
-</div>
-
-</div v-click>
-
-<div v-click>
-
-##### 游戏
-
-<div class="flex flex-col gap-3">
-  <img src="/how-to-listen-sound/DeathStranding_AudioSetting.png" alt="Death Stranding audio settings" style="width: 100%; height: auto;" />
-  <img src="/how-to-listen-sound/BG3_AudioSetting.png" alt="Baldur's Gate 3 audio settings" style="width: 100%; height: auto;" />
-</div>
-
-</div v-click>
-
-</div>
-
----
-layout: header-body
----
-
-### 音频信号经过了多少环节才到达你的耳朵？
-
-::body::
-
-#### 硬件设备中的声音控制
-
-<div class="grid grid-cols-2 gap-8 text-lg w-full items-start">
-
-<div v-click>
-
-##### 电脑
-
-<div class="flex flex-col gap-3">
-  <img src="/how-to-listen-sound/System_Volume_Mixer.png" alt="Windows 11 volume mixer settings" style="width: 74%; height: auto;" />
-</div>
-
-</div v-click>
-
-<div v-click>
-
-##### 手机
-
-<div class="flex flex-col gap-3">
-  <img src="/how-to-listen-sound/iPhone_Volume.jpg" alt="iPhone system volume indicator" style="width: 38%; height: auto;" />
-</div>
-
-</div v-click>
-
-</div>
-
----
-layout: header-body
----
-
-### 音频信号经过了多少环节才到达你的耳朵？
-
-::body::
-
-#### 听音设备与环境
-
-<div class="grid grid-cols-3 gap-8 text-lg w-full items-start">
-
-<div v-click>
-
-##### 游戏耳麦
-
-<div class="flex flex-col gap-3">
-  <img src="/how-to-listen-sound/GameHeadset_03.png" alt="Gaming headset companion app: virtual 7.1, EQ, mic" style="width: 80%; height: auto;" />
-</div>
-
-</div v-click>
-
-<div v-click>
-
-##### 音频编辑室
-
-<div class="flex flex-col gap-3">
-  <div class="grid grid-cols-2 gap-3 w-full">
-    <img src="/how-to-listen-sound/AudioInterface.png" alt="Desktop audio interface" style="width: 100%; height: auto;" />
-    <img src="/how-to-listen-sound/ProHeadphones.png" alt="Professional over-ear headphones" style="width: 100%; height: auto;" />
-  </div>
-  <div class="grid grid-cols-2 gap-3 w-full">
-    <img src="/how-to-listen-sound/Amplifier.png" alt="AV pre-amplifier" style="width: 100%; height: auto;" />
-    <img src="/how-to-listen-sound/SoundRoom.png" alt="Professional sound room" style="width: 100%; height: auto;" />
+<div class="flex h-full min-h-0 items-center justify-center">
+  <div class="callout w-full max-w-[34rem]">
+    <span class="callout-title">Listening Vocabulary</span>
+    <ul>
+      <li v-click>有点轻，太小了</li>
+      <li v-click>有点闷，不够亮</li>
+      <li v-click>有点窄，不够宽</li>
+      <li v-click>太远了，不够近</li>
+      <li v-click>打击感不够</li>
+    </ul>
   </div>
 </div>
 
-</div v-click>
+---
+layout: header-body
+---
 
-<div v-click>
+::backdrop::
 
-##### 混音棚
+APP
 
-<div class="flex flex-col gap-3">
-  <img src="/how-to-listen-sound/MixingStage.JPG" alt="Professional mixing stage" style="width: 100%; height: auto;" />
-</div>
+::eyebrow::
 
-</div v-click>
+Signal Path
 
+::title::
+
+### 音频信号经过了多少环节才到达你的耳朵？
+
+::body::
+
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="quote-accent shrink-0">
+    <h4>软件应用中的声音控制</h4>
+  </div>
+  <div class="grid min-h-0 flex-1 grid-cols-3 gap-4">
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">VIDEO</span>
+      <h5>视频</h5>
+      <img src="/how-to-listen-sound/YouTube_Volume.png" alt="YouTube volume control" class="w-full object-contain" />
+      <img src="/how-to-listen-sound/Bilibili_Volume.png" alt="Bilibili volume control" class="w-full object-contain" />
+    </div>
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">MUSIC</span>
+      <h5>音乐</h5>
+      <img src="/how-to-listen-sound/QQMusic_Effect_01.png" alt="QQ Music Galaxy sound effects presets" class="mx-auto w-[80%] object-contain" />
+      <img src="/how-to-listen-sound/QQMusic_Effect_03.png" alt="QQ Music equalizer" class="mx-auto w-[80%] object-contain" />
+    </div>
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">GAME</span>
+      <h5>游戏</h5>
+      <img src="/how-to-listen-sound/DeathStranding_AudioSetting.png" alt="Death Stranding audio settings" class="w-full object-contain" />
+      <img src="/how-to-listen-sound/BG3_AudioSetting.png" alt="Baldur's Gate 3 audio settings" class="w-full object-contain" />
+    </div>
+  </div>
 </div>
 
 ---
 layout: header-body
 ---
+
+::backdrop::
+
+DEVICE
+
+::eyebrow::
+
+Signal Path
+
+::title::
+
+### 音频信号经过了多少环节才到达你的耳朵？
+
+::body::
+
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="quote-accent shrink-0">
+    <h4>硬件设备中的声音控制</h4>
+  </div>
+  <div class="grid min-h-0 flex-1 grid-cols-2 gap-5">
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">COMPUTER</span>
+      <h5>电脑</h5>
+      <img src="/how-to-listen-sound/System_Volume_Mixer.png" alt="Windows 11 volume mixer settings" class="mx-auto max-h-full w-[74%] object-contain" />
+    </div>
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">PHONE</span>
+      <h5>手机</h5>
+      <img src="/how-to-listen-sound/iPhone_Volume.jpg" alt="iPhone system volume indicator" class="mx-auto max-h-full w-[38%] object-contain" />
+    </div>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+ROOM
+
+::eyebrow::
+
+Signal Path
+
+::title::
+
+### 音频信号经过了多少环节才到达你的耳朵？
+
+::body::
+
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="quote-accent shrink-0">
+    <h4>听音设备与环境</h4>
+  </div>
+  <div class="grid min-h-0 flex-1 grid-cols-3 gap-4">
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">HEADSET</span>
+      <h5>游戏耳麦</h5>
+      <img src="/how-to-listen-sound/GameHeadset_03.png" alt="Gaming headset companion app: virtual 7.1, EQ, mic" class="mx-auto w-[80%] object-contain" />
+    </div>
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">EDITING ROOM</span>
+      <h5>音频编辑室</h5>
+      <div class="grid min-h-0 grid-cols-2 gap-3">
+        <img src="/how-to-listen-sound/AudioInterface.png" alt="Desktop audio interface" class="w-full object-contain" />
+        <img src="/how-to-listen-sound/ProHeadphones.png" alt="Professional over-ear headphones" class="w-full object-contain" />
+        <img src="/how-to-listen-sound/Amplifier.png" alt="AV pre-amplifier" class="w-full object-contain" />
+        <img src="/how-to-listen-sound/SoundRoom.png" alt="Professional sound room" class="w-full object-contain" />
+      </div>
+    </div>
+    <div v-click class="figure-frame flex min-h-0 flex-col gap-3">
+      <span class="step-index">MIXING STAGE</span>
+      <h5>混音棚</h5>
+      <img src="/how-to-listen-sound/MixingStage.JPG" alt="Professional mixing stage" class="w-full object-contain" />
+    </div>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+CHAIN
+
+::eyebrow::
+
+Framework
+
+::title::
 
 ### 从音频制品到听感效果
 
 ::body::
 
-<div class="flex h-full min-h-0 w-full flex-1 items-center justify-center">
-
-<div class="mx-auto grid w-full max-w-[95%] grid-cols-[minmax(0,0.88fr)_minmax(0,1.18fr)_minmax(0,1.18fr)_minmax(0,1fr)_minmax(0,0.88fr)] gap-x-1 gap-y-2 text-center text-stone-100 md:gap-x-2">
-
-<!-- 主标题 + 箭头 同行；子节点仅占据主标题列宽 -->
-<div class="min-w-0">
-  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
-    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">数字音频制品</div>
-    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
-    <div class="col-start-1 row-start-2 min-h-[1rem]" aria-hidden="true"></div>
-  </div>
-</div>
-
-<div class="min-w-0">
-  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
-    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">软件应用中的声音控制</div>
-    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
-    <div class="col-start-1 row-start-2 flex w-full min-w-0 flex-col gap-1.5">
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">视频</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">音乐</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">游戏</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-500 md:text-base">……</div>
+<div class="flex h-full min-h-0 w-full items-center justify-center">
+  <div class="grid w-full grid-cols-[0.88fr_1.18fr_1.18fr_1fr_0.88fr] gap-x-2 text-center">
+    <div class="min-w-0">
+      <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1.5 gap-y-2">
+        <div class="active-panel min-w-0 px-2 py-2 text-sm font-semibold leading-tight text-[var(--color-text-primary)]">数字音频制品</div>
+        <span class="self-center text-xl leading-none text-[var(--color-text-muted)]" aria-hidden="true">→</span>
+        <div class="min-h-[1rem]" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="min-w-0">
+      <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1.5 gap-y-2">
+        <div class="active-panel min-w-0 px-2 py-2 text-sm font-semibold leading-tight text-[var(--color-text-primary)]">软件应用中的声音控制</div>
+        <span class="self-center text-xl leading-none text-[var(--color-text-muted)]" aria-hidden="true">→</span>
+        <div class="flex w-full min-w-0 flex-col gap-1.5">
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">视频</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">音乐</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">游戏</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm text-[var(--color-text-muted)]">……</div>
+        </div>
+      </div>
+    </div>
+    <div class="min-w-0">
+      <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1.5 gap-y-2">
+        <div class="active-panel min-w-0 px-2 py-2 text-sm font-semibold leading-tight text-[var(--color-text-primary)]">硬件设备中的声音控制</div>
+        <span class="self-center text-xl leading-none text-[var(--color-text-muted)]" aria-hidden="true">→</span>
+        <div class="flex w-full min-w-0 flex-col gap-1.5">
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">电脑</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">手机</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm text-[var(--color-text-muted)]">……</div>
+        </div>
+      </div>
+    </div>
+    <div class="min-w-0">
+      <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1.5 gap-y-2">
+        <div class="active-panel min-w-0 px-2 py-2 text-sm font-semibold leading-tight text-[var(--color-text-primary)]">听音设备与环境</div>
+        <span class="self-center text-xl leading-none text-[var(--color-text-muted)]" aria-hidden="true">→</span>
+        <div class="flex w-full min-w-0 flex-col gap-1.5">
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">游戏耳麦</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">音频编辑室</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm">混音棚</div>
+          <div class="border hairline bg-[var(--color-bg)] py-2 text-sm text-[var(--color-text-muted)]">……</div>
+        </div>
+      </div>
+    </div>
+    <div class="min-w-0">
+      <div class="active-panel min-w-0 px-2 py-2 text-sm font-semibold leading-tight text-[var(--color-text-primary)]">听感效果与评价</div>
     </div>
   </div>
-</div>
-
-<div class="min-w-0">
-  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
-    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">硬件设备中的声音控制</div>
-    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
-    <div class="col-start-1 row-start-2 flex w-full min-w-0 flex-col gap-1.5">
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">电脑</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">手机</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-500 md:text-base">……</div>
-    </div>
-  </div>
-</div>
-
-<div class="min-w-0">
-  <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] grid-rows-[auto_auto] gap-x-1 gap-y-2 md:gap-x-1.5">
-    <div class="col-start-1 row-start-1 min-w-0 w-full whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">听音设备与环境</div>
-    <span class="col-start-2 row-start-1 select-none self-center text-lg leading-none text-slate-500 md:text-xl" aria-hidden="true">→</span>
-    <div class="col-start-1 row-start-2 flex w-full min-w-0 flex-col gap-1.5">
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">游戏耳麦</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">音频编辑室</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-300 md:text-base">混音棚</div>
-      <div class="w-full rounded border border-stone-800 bg-stone-950 py-2 text-sm text-stone-500 md:text-base">……</div>
-    </div>
-  </div>
-</div>
-
-<div class="min-w-0">
-  <div class="flex min-w-0 flex-col gap-2">
-    <div class="w-full min-w-0 whitespace-normal break-words rounded-lg border border-slate-400/80 bg-slate-700/95 px-1 py-1.5 text-xs font-semibold leading-tight text-white shadow-md line-clamp-2 md:px-1.5 md:py-2 md:text-sm lg:text-base">听感效果与评价</div>
-    <div class="min-h-[1rem]" aria-hidden="true"></div>
-  </div>
-</div>
-
-</div>
-
 </div>
 
 ---
 layout: header-body
 ---
 
+::backdrop::
+
+DIFF
+
+::eyebrow::
+
+Analysis
+
+::title::
+
 ### 差异来源于哪儿？
 
 ::body::
 
-<div class="grid grid-cols-2 gap-8 text-lg">
-
-<div v-click>
-
-#### 听音条件的差异
-
-- 播放设备
-- 监听环境
-- 声学空间
-- 监听响度
-- 听觉习惯
-
-</div v-click>
-
-<div v-click>
-
-#### 感受描述的差异
-
-- 电平响度
-- 频谱分布
-- 声像宽度
-- 混响比例
-- 动态与包络
-
-</div v-click>
-
+<div class="grid h-full min-h-0 grid-cols-2 gap-5 text-left">
+  <div v-click class="active-panel min-h-0 p-4">
+    <span class="step-index">CONDITION</span>
+    <h4>听音条件的差异</h4>
+    <ul>
+      <li>播放设备</li>
+      <li>监听环境</li>
+      <li>声学空间</li>
+      <li>监听响度</li>
+      <li>听觉习惯</li>
+    </ul>
+  </div>
+  <div v-click class="callout min-h-0">
+    <span class="callout-title">Perception</span>
+    <h4>感受描述的差异</h4>
+    <ul>
+      <li>电平响度</li>
+      <li>频谱分布</li>
+      <li>声像宽度</li>
+      <li>混响比例</li>
+      <li>动态与包络</li>
+    </ul>
+  </div>
 </div>
 
 <!-- 我们要把不稳定的听觉经验，转化为更稳定的分析维度。 -->
-
 
 ---
 layout: statement
 ---
 
+::backdrop::
+
+?
+
+::title::
+
 ### 如何尽可能客观和准确地评价声音？
+
+::subtitle::
+
 How to evaluate sound as objectively and accurately as possible?
 
 ---
 layout: header-body
 ---
 
+::backdrop::
+
+20K
+
+::eyebrow::
+
+Psychoacoustics
+
+::title::
+
 ### 人耳听阈范围 Human Hearing Range
-频率范围 20 Hz – 20 kHz；低于 20 Hz 为次声波（Infrasound），高于 20 kHz 为超声波（Ultrasound）
 
 ::body::
 
-<!-- - 示例：**Sine 40 Hz** → **Sine 440 Hz** → **Sine 8000 Hz** → **Pink Noise**（Voxengo SPAN，同一监听位置依次覆盖） -->
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="callout shrink-0">
+    <span class="callout-title">Human Hearing Range</span>
+    <p>频率范围 20 Hz – 20 kHz；低于 20 Hz 为次声波（Infrasound），高于 20 kHz 为超声波（Ultrasound）</p>
+  </div>
 
-<!-- 与下列 v-click 逐步对应：sources[] 每项对应一次揭示；若对齐错位可设 clicks-offset -->
-<PlayAudioOnClick :sources="['/how-to-listen-sound/Sine_40Hz_-19LUFS.wav','/how-to-listen-sound/Sine_440Hz_-22LUFS.wav','/how-to-listen-sound/Sine_8000Hz_-20LUFS.wav','/how-to-listen-sound/PinkNoise_-26LUFS.wav']" />
+  <!-- - 示例：**Sine 40 Hz** → **Sine 440 Hz** → **Sine 8000 Hz** → **Pink Noise**（Voxengo SPAN，同一监听位置依次覆盖） -->
+  <!-- 与下列 v-click 逐步对应：sources[] 每项对应一次揭示；若对齐错位可设 clicks-offset -->
+  <PlayAudioOnClick :sources="['/how-to-listen-sound/Sine_40Hz_-19LUFS.wav','/how-to-listen-sound/Sine_440Hz_-22LUFS.wav','/how-to-listen-sound/Sine_8000Hz_-20LUFS.wav','/how-to-listen-sound/PinkNoise_-26LUFS.wav']" />
 
-<!-- SPAN 四张叠图：宽度改外层 max-w-*；占位高度改 min-h-*；单张最大尺寸可改 img 上 max-h-* / max-w-* -->
-<div class="relative mx-auto mt-4 min-h-[min(40vh,420px)] w-full max-w-5xl">
-  <div v-click class="absolute inset-0 z-[1] flex items-center justify-center">
-    <img src="/how-to-listen-sound/SPAN-40Hz.png" alt="Spectrum: sine 40 Hz" class="max-h-[min(52vh,420px)] w-auto max-w-full object-contain" />
-  </div v-click>
-  <div v-click class="absolute inset-0 z-[2] flex items-center justify-center">
-    <img src="/how-to-listen-sound/SPAN-440Hz.png" alt="Spectrum: sine 440 Hz" class="max-h-[min(52vh,420px)] w-auto max-w-full object-contain" />
-  </div v-click>
-  <div v-click class="absolute inset-0 z-[3] flex items-center justify-center">
-    <img src="/how-to-listen-sound/SPAN-8000Hz.png" alt="Spectrum: sine 8000 Hz" class="max-h-[min(52vh,420px)] w-auto max-w-full object-contain" />
-  </div v-click>
-  <div v-click class="absolute inset-0 z-[4] flex items-center justify-center">
-    <img src="/how-to-listen-sound/SPAN-PinkNoise.png" alt="Spectrum: pink noise" class="max-h-[min(52vh,420px)] w-auto max-w-full object-contain" />
-  </div v-click>
+  <!-- SPAN 四张叠图：宽度改外层 max-w-*；占位高度改 min-h-*；单张最大尺寸可改 img 上 max-h-* / max-w-* -->
+  <div class="figure-frame relative mx-auto min-h-[min(36vh,360px)] w-full max-w-5xl flex-1">
+    <div v-click class="absolute inset-0 z-[1] flex items-center justify-center">
+      <img src="/how-to-listen-sound/SPAN-40Hz.png" alt="Spectrum: sine 40 Hz" class="max-h-[min(46vh,360px)] w-auto max-w-full object-contain" />
+    </div>
+    <div v-click class="absolute inset-0 z-[2] flex items-center justify-center">
+      <img src="/how-to-listen-sound/SPAN-440Hz.png" alt="Spectrum: sine 440 Hz" class="max-h-[min(46vh,360px)] w-auto max-w-full object-contain" />
+    </div>
+    <div v-click class="absolute inset-0 z-[3] flex items-center justify-center">
+      <img src="/how-to-listen-sound/SPAN-8000Hz.png" alt="Spectrum: sine 8000 Hz" class="max-h-[min(46vh,360px)] w-auto max-w-full object-contain" />
+    </div>
+    <div v-click class="absolute inset-0 z-[4] flex items-center justify-center">
+      <img src="/how-to-listen-sound/SPAN-PinkNoise.png" alt="Spectrum: pink noise" class="max-h-[min(46vh,360px)] w-auto max-w-full object-contain" />
+    </div>
+  </div>
 </div>
 
 ---
 layout: header-body
 ---
+
+::backdrop::
+
+SPL
+
+::eyebrow::
+
+Acoustics
+
+::title::
 
 ### 声压级 Sound Pressure Level
-属于物理声学范畴，用于度量声音大小的物理量，单位 dB SPL
 
 ::body::
 
-<SPLDiagram />
-
----
-layout: header-body
----
-
-### 响度 Loudness
-属于心理声学范畴，用于度量声音大小的感知量，单位 phon
-
-::body::
-
-<div class="mx-auto mt-4 grid w-full max-w-6xl grid-cols-1 gap-6 items-start lg:grid-cols-2">
-  <a href="https://en.wikipedia.org/wiki/Equal-loudness_contour" target="_blank" rel="noopener noreferrer" class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
-    <img src="/how-to-listen-sound/Equal_Loudness_Contour.png" alt="Equal-loudness contours (ISO 226: revision), SPL versus frequency with phon labels" style="width: 100%; height: auto;" />
-  </a>
-  <img src="/how-to-listen-sound/SXC_Hearing_Test.png" alt="Pure tone audiometry audiogram, air and bone conduction thresholds" style="width: 100%; height: auto;" />
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="callout shrink-0">
+    <span class="callout-title">Sound Pressure Level</span>
+    <p>属于物理声学范畴，用于度量声音大小的物理量，单位 dB SPL</p>
+  </div>
+  <div class="figure-frame flex min-h-0 flex-1 items-center justify-center">
+    <SPLDiagram />
+  </div>
 </div>
 
 ---
 layout: header-body
 ---
 
-### 数字音频信号中的响度
-在数字音频信号领域中，使用 dBFS（dB Full Scale）度量某一时刻的信号电平大小  
-结合心理声学相关理论，使用 LUFS（Loudness Units Full Scale）度量一段时间内的声音感知响度
+::backdrop::
+
+PHON
+
+::eyebrow::
+
+Psychoacoustics
+
+::title::
+
+### 响度 Loudness
 
 ::body::
 
-<img src="/how-to-listen-sound/digital-audio-signal-loudness.png" alt="Wwise Master Audio Bus: Peak meter and Loudness Meter (momentary, short-term, integrated, LRA)" class="mt-4 block" style="width: 70%; height: auto;" />
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="callout shrink-0">
+    <span class="callout-title">Loudness</span>
+    <p>属于心理声学范畴，用于度量声音大小的感知量，单位 phon</p>
+  </div>
+  <div class="grid min-h-0 flex-1 grid-cols-2 gap-5">
+    <a href="https://en.wikipedia.org/wiki/Equal-loudness_contour" target="_blank" rel="noreferrer" class="figure-frame flex min-h-0 items-center justify-center">
+      <img src="/how-to-listen-sound/Equal_Loudness_Contour.png" alt="Equal-loudness contours (ISO 226: revision), SPL versus frequency with phon labels" class="max-h-full max-w-full object-contain" />
+    </a>
+    <div class="figure-frame flex min-h-0 items-center justify-center">
+      <img src="/how-to-listen-sound/SXC_Hearing_Test.png" alt="Pure tone audiometry audiogram, air and bone conduction thresholds" class="max-h-full max-w-full object-contain" />
+    </div>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+LUFS
+
+::eyebrow::
+
+Digital Audio
+
+::title::
+
+### 数字音频信号中的响度
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[0.95fr_1.15fr] gap-5">
+  <div class="callout self-start">
+    <span class="callout-title">Digital Loudness</span>
+    <p>在数字音频信号领域中，使用 dBFS（dB Full Scale）度量某一时刻的信号电平大小</p>
+    <p>结合心理声学相关理论，使用 LUFS（Loudness Units Full Scale）度量一段时间内的声音感知响度</p>
+  </div>
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <img src="/how-to-listen-sound/digital-audio-signal-loudness.png" alt="Wwise Master Audio Bus: Peak meter and Loudness Meter (momentary, short-term, integrated, LRA)" class="max-h-full max-w-full object-contain" />
+  </div>
+</div>
 
 <!--
 互动提问：0 dBFS 代表什么意思？类比 RGB
@@ -369,16 +475,43 @@ layout: header-body
 layout: header-body
 ---
 
+::backdrop::
+
+RANGE
+
+::eyebrow::
+
+Standard
+
+::title::
+
 ### 常见媒介的响度规范
-广播、电视、电影、音乐和游戏等内容和流媒体平台的响度和动态范围
 
 ::body::
 
-<img src="/how-to-listen-sound/digital-audio-signal-dynamic-range.png" alt="LUFS targets and typical dynamic range by platform: movie, YouTube, Apple Music, games (home cinema, headphones, mobile)" class="mt-4 block" style="width: 64%; height: auto;" />
+<div class="grid h-full min-h-0 grid-cols-[0.85fr_1.15fr] gap-5">
+  <div class="callout self-start">
+    <span class="callout-title">Loudness Standard</span>
+    <p>广播、电视、电影、音乐和游戏等内容和流媒体平台的响度和动态范围</p>
+  </div>
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <img src="/how-to-listen-sound/digital-audio-signal-dynamic-range.png" alt="LUFS targets and typical dynamic range by platform: movie, YouTube, Apple Music, games (home cinema, headphones, mobile)" class="max-h-full max-w-full object-contain" />
+  </div>
+</div>
 
 ---
 layout: header-body
 ---
+
+::backdrop::
+
+METER
+
+::eyebrow::
+
+Measurement
+
+::title::
 
 ### 数字音频信号测量
 
@@ -386,35 +519,31 @@ layout: header-body
 
 <!-- <img src="/audio-meter.png" alt="Audio Meter" style="width: 75%; height: auto;" /> -->
 
-<div class="grid grid-cols-2 gap-4">
-
-  <div>
-
-  #### 频谱仪与响度表
-  - [TC Electronic CLARITY M STEREO](https://www.tcelectronic.com/product.html?modelCode=0842-AAD)
-    ![](/how-to-listen-sound/TC-CLARITY-M-STEREO.png){style="height: 65px"}
-  - [iZotope Insight](https://www.izotope.com/en/products/insight.html)
-    ![](/how-to-listen-sound/iZotope-Insight.png){style="height: 70px"}
-  - [Blue Cat Audio FreqAnalyst](https://www.bluecataudio.com/Products/Product_FreqAnalyst/)
-    ![](/how-to-listen-sound/BlueCat-FreqAnalyst.png){style="height: 65px"}
-  - [Youlean Loudness Meter](https://youlean.co/youlean-loudness-meter/)
-    ![](/how-to-listen-sound/Youlean-Loudness-Meter.png){style="height: 70px"}
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <div class="min-h-0 min-w-0">
+    <span class="step-index">TOOLS</span>
+    <h4>频谱仪与响度表</h4>
+    <ul>
+      <li><a href="https://www.tcelectronic.com/product.html?modelCode=0842-AAD" target="_blank" rel="noreferrer">TC Electronic CLARITY M STEREO</a><br><img src="/how-to-listen-sound/TC-CLARITY-M-STEREO.png" alt="TC Electronic CLARITY M STEREO" class="mt-1 h-[65px] object-contain" /></li>
+      <li><a href="https://www.izotope.com/en/products/insight.html" target="_blank" rel="noreferrer">iZotope Insight</a><br><img src="/how-to-listen-sound/iZotope-Insight.png" alt="iZotope Insight" class="mt-1 h-[70px] object-contain" /></li>
+      <li><a href="https://www.bluecataudio.com/Products/Product_FreqAnalyst/" target="_blank" rel="noreferrer">Blue Cat Audio FreqAnalyst</a><br><img src="/how-to-listen-sound/BlueCat-FreqAnalyst.png" alt="Blue Cat Audio FreqAnalyst" class="mt-1 h-[65px] object-contain" /></li>
+      <li><a href="https://youlean.co/youlean-loudness-meter/" target="_blank" rel="noreferrer">Youlean Loudness Meter</a><br><img src="/how-to-listen-sound/Youlean-Loudness-Meter.png" alt="Youlean Loudness Meter" class="mt-1 h-[70px] object-contain" /></li>
+    </ul>
   </div>
-
-  <div>
-
-  #### 参考标准
-  - [ITU-R BS.1770-3](https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.1770-3-201208-S!!PDF-E.pdf)
-  - [EBU R128](https://tech.ebu.ch/docs/r/r128.pdf)
-  - [ATSC A/85](https://www.atsc.org/wp-content/uploads/2015/03/Techniques-for-establishing-and-maintaining-audio-loudness.pdf)
-  - [AES Streaming](https://www.aes.org/technical/documents/AESTD1004_1_15_10.pdf)
-  - [ASWG-R001](https://gameaudiopodcast.com/ASWG-R001.pdf)
-  - [Netflix](https://partnerhelp.netflixstudios.com/hc/en-us/articles/360001794307-Netflix-Sound-Mix-Specifications-Best-Practices-v1-6)
-  - [Apple Music](https://www.apple.com/apple-music/apple-digital-masters/docs/apple-digital-masters.pdf)
-  - ……
-
+  <div class="callout min-h-0">
+    <span class="callout-title">Reference Standards</span>
+    <h4>参考标准</h4>
+    <ul>
+      <li><a href="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.1770-3-201208-S!!PDF-E.pdf" target="_blank" rel="noreferrer">ITU-R BS.1770-3</a></li>
+      <li><a href="https://tech.ebu.ch/docs/r/r128.pdf" target="_blank" rel="noreferrer">EBU R128</a></li>
+      <li><a href="https://www.atsc.org/wp-content/uploads/2015/03/Techniques-for-establishing-and-maintaining-audio-loudness.pdf" target="_blank" rel="noreferrer">ATSC A/85</a></li>
+      <li><a href="https://www.aes.org/technical/documents/AESTD1004_1_15_10.pdf" target="_blank" rel="noreferrer">AES Streaming</a></li>
+      <li><a href="https://gameaudiopodcast.com/ASWG-R001.pdf" target="_blank" rel="noreferrer">ASWG-R001</a></li>
+      <li><a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/360001794307-Netflix-Sound-Mix-Specifications-Best-Practices-v1-6" target="_blank" rel="noreferrer">Netflix</a></li>
+      <li><a href="https://www.apple.com/apple-music/apple-digital-masters/docs/apple-digital-masters.pdf" target="_blank" rel="noreferrer">Apple Music</a></li>
+      <li>……</li>
+    </ul>
   </div>
-
 </div>
 
 <!--
@@ -425,14 +554,32 @@ layout: header-body
 layout: statement
 ---
 
+::backdrop::
+
+STANDARD
+
+::title::
+
 ### 有了参考标准，大家会遵守吗？
+
+::subtitle::
+
 Reference standards exist — but does everyone follow them?
 
 ---
 layout: statement
 ---
 
+::backdrop::
+
+LOUD
+
+::title::
+
 ### 响度战争：越响越好听？
+
+::subtitle::
+
 Loudness war: louder = better?
 
 <!--
@@ -445,7 +592,16 @@ Loudness war: louder = better?
 layout: statement
 ---
 
+::backdrop::
+
+HABIT
+
+::title::
+
 ### 校准日常的听声环境，养成良好的听声习惯。
+
+::subtitle::
+
 Adjust daily listening environment and cultivate good listening habit.
 
 <!--
