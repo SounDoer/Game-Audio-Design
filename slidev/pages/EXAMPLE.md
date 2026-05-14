@@ -215,7 +215,7 @@ COMPONENTS
 
 ::title::
 
-### 信息卡片、强调与重点
+### 强调、重点与信息卡片
 
 ::body::
 
@@ -224,21 +224,21 @@ COMPONENTS
     <h4>使用原则</h4>
     <p>这些元素都用于提升阅读层级，但语义和强调程度不同。</p>
     <ul>
-      <li v-click>信息卡片承载定义、原则等需要被重点提示的判断。</li>
       <li v-click>强调承载一句短判断，仍然从属于当前正文。</li>
       <li v-click>重点面板标出本页常驻的主观察对象。</li>
+      <li v-click>信息卡片承载定义、原则等需要被重点提示的判断。</li>
     </ul>
   </div>
   <div v-click class="flex min-h-0 flex-col gap-3">
-    <div class="callout">
-      <span class="callout-title">信息卡片</span>
-      <p>当一句话承载的是判断标准，而不是普通项目符号，就适合从列表中抬出来。</p>
-    </div>
     <div class="quote-accent">
       <p>强调的任务是告诉观众哪里是当前结构的支点。</p>
     </div>
     <div class="active-panel p-4">
       <p>重点面板不随点击状态更新。</p>
+    </div>
+    <div class="callout">
+      <span class="callout-title">信息卡片</span>
+      <p>当一句话承载的是判断标准，而不是普通项目符号，就适合从列表中抬出来。</p>
     </div>
   </div>
 </div>
@@ -282,6 +282,34 @@ METRICS
     <p><code>badge</code> 标记工具、媒体类型、案例属性或示范状态，不承载完整判断。</p>
   </div>
 </div>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+LINKS
+
+::eyebrow::
+
+Links
+
+::title::
+
+### 链接
+
+::body::
+
+<v-clicks>
+
+- 链接用于交代来源和延伸阅读。
+- 正文链接使用明确名称，例如 <a href="https://gad.soundoer.com/" target="_blank" rel="noreferrer">Game Audio Design - SounDoer</a>。
+- 资料来源可放在图注、说明牌或信息卡片中，不抢主标题层级。
+- 外部资料只标出可识别的标题或站点名称，完整 URL 留在 Markdown 链接目标中。
+- 避免使用裸链接、二维码堆叠或「点击这里」这类无语义文本。
+
+</v-clicks>
 
 ---
 layout: header-body

@@ -217,6 +217,7 @@ slidev/
 - **跨页且与默认主题冲突的排版**：写入 **`slidev/styles/base.css`**，选择器挂在 **`.slidev-layout`** 下，减轻对演讲者界面 chrome 的影响。
 - **单页一次性实验**：可在该页 md 底部使用 `<style scoped>`，**慎用**，避免复制扩散。
 - **点击步进**：讲解型 bullet 默认用 `<v-clicks>` 包裹，让列表逐条出现；只有需要同时比较、作为索引目录、或在 statement / cover / section 中承担整体陈述时，才让 bullet 一次性显示。多栏卡片若需要逐块出现，可在每个子 `<div>` 上写 `v-click`。
+- **链接与来源**：正文链接必须有可识别名称，不使用裸 URL 或「点击这里」；外部资料优先放在图注、说明牌或信息卡片中。若使用 HTML `<a>` 写外链，添加 `target="_blank" rel="noreferrer"`。
 
 参考：[UnoCSS](https://unocss.dev/) · [Tailwind CSS](https://tailwindcss.com/docs) · [Slidev 自定义 · Style](https://sli.dev/custom/directory-structure#style)。
 
@@ -309,7 +310,7 @@ Principle
 
 所有常规截图、频谱图、流程图、视频容器默认使用 `.figure-frame`；需要铺满整页时改用 `fullscreen-media`。
 
-**信息卡片、强调与重点面板**：
+**强调、重点与信息卡片**：
 
 ```markdown
 ::body::
@@ -320,19 +321,37 @@ Principle
     <p>先解释这些元素承担的阅读层级。</p>
   </div>
   <div class="flex min-h-0 flex-col gap-3">
-    <div class="callout">
-      <span class="callout-title">信息卡片</span>
-      <p>承载定义、原则或案例提示。</p>
-    </div>
     <div class="quote-accent">
       <p>强调一句短判断。</p>
     </div>
     <div class="active-panel p-4">
       <p>标出本页常驻的主观察对象。</p>
     </div>
+    <div class="callout">
+      <span class="callout-title">信息卡片</span>
+      <p>承载定义、原则或案例提示。</p>
+    </div>
   </div>
 </div>
 ```
+
+**链接**：
+
+```markdown
+::body::
+
+<v-clicks>
+
+- 链接用于交代来源和延伸阅读。
+- 正文链接使用明确名称，例如 <a href="https://gad.soundoer.com/" target="_blank" rel="noreferrer">Game Audio Design - SounDoer</a>。
+- 资料来源可放在图注、说明牌或信息卡片中，不抢主标题层级。
+- 外部资料只标出可识别的标题或站点名称，完整 URL 留在 Markdown 链接目标中。
+- 避免使用裸链接、二维码堆叠或「点击这里」这类无语义文本。
+
+</v-clicks>
+```
+
+链接样式由 `slidev/styles/base.css` 中 `.slidev-layout a` 统一控制；不要在单页内临时改回浏览器默认蓝色链接。需要强调引用出处时，优先组合正文列表、`.caption`、`.caption-plate` 或 `.callout`，而不是把链接放进标题区。
 
 **全屏媒体页**：
 

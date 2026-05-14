@@ -121,6 +121,18 @@
   font-size: 0.875rem;
 }
 
+/* ── Links ── */
+.slidev-layout a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(212, 90, 42, 0.45);
+  text-underline-offset: 0.18em;
+}
+
+.slidev-layout a:hover {
+  text-decoration-color: var(--color-accent);
+}
+
 /* ── Utility classes ── */
 
 /* English eyebrow label */
