@@ -2,41 +2,61 @@
 layout: cover
 ---
 
+::backdrop::
+
+GAD
+
 ::eyebrow::
+
 What is Game Audio Design?
 
 ::title::
+
 # 游戏音频设计是什么？
 
 ::info::
+
 Xichen
 
 ---
 layout: section
 ---
 
+::backdrop::
+
+01
+
 ::eyebrow::
-Game
+
+Framework
 
 ::title::
+
 ## 游戏·音频·设计
 
 ---
 layout: header-body
 ---
 
+::backdrop::
+
+GAME
+
 ::eyebrow::
+
 Game
 
 ::title::
-### <span class="text-red-500">游戏</span>
+
+### 游戏
 
 ::body::
 
-<div class="grid grid-cols-3 gap-4 text-left">
+<div class="grid h-full min-h-0 grid-cols-3 gap-4 text-left">
 
-<div v-click>
+<div v-click class="min-h-0 min-w-0">
 
+<span class="step-index">PLATFORM</span>
 #### 平台
 
 - Console
@@ -44,10 +64,11 @@ Game
 - Mobile
 - ……
 
-</div v-click>
+</div>
 
-<div v-click>
+<div v-click class="min-h-0 border-l hairline pl-4">
 
+<span class="step-index">GENRE</span>
 #### 类型
 
 - First-Person Shooter
@@ -60,17 +81,18 @@ Game
 - Racing
 - ……
 
-</div v-click>
+</div>
 
-<div v-click>
+<div v-click class="active-panel min-h-0 p-4">
 
+<span class="step-index">MEDIA</span>
 #### 游戏 vs. 电影
 
 - Visual Media
 - 交互媒体
 - 线性媒体
 
-</div v-click>
+</div>
 
 </div>
 
@@ -81,28 +103,36 @@ Game
 layout: header-body
 ---
 
+::backdrop::
+
+AUDIO
+
 ::eyebrow::
+
 Audio
 
 ::title::
-### <span class="text-green-500">音频</span>
+
+### 音频
 
 ::body::
 
-<div class="grid grid-cols-2 gap-4 text-left">
+<div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5 text-left">
 
-<div v-click>
+<div v-click class="active-panel min-h-0 p-4">
 
+<span class="step-index">CONTENT</span>
 #### 声音内容
 
 - 音效 Sound Effect
 - 音乐 Music
 - 语音 Voice
 
-</div v-click>
+</div>
 
-<div v-click>
+<div v-click class="callout min-h-0">
 
+<span class="callout-title">Implementation</span>
 #### 实现方式
 
 - 基于对象的资源制作形式
@@ -115,7 +145,7 @@ Audio
 - 语音系统
 - ……
 
-</div v-click>
+</div>
 
 </div>
 
@@ -126,17 +156,28 @@ Audio
 layout: header-body
 ---
 
+::backdrop::
+
+SFX
+
 ::eyebrow::
+
 Audio
 
 ::title::
-### <span class="text-green-500">音频</span>
+
+### 音频
 
 ::body::
 
-<div class="text-left">
+<div class="grid h-full min-h-0 grid-cols-[0.75fr_1.25fr] gap-5 text-left">
 
-#### 声音内容 · 音效 Sound Effect
+<div class="quote-accent self-center">
+  <h4>声音内容 · 音效 Sound Effect</h4>
+</div>
+
+<div class="callout self-center">
+<span class="callout-title">Sound Effect</span>
 
 <v-clicks>
 
@@ -150,25 +191,6 @@ Audio
 
 </div>
 
-<!--
--->
-
----
-layout: header-body
----
-
-::eyebrow::
-Audio
-
-::title::
-### <span class="text-green-500">音频</span>
-
-::body::
-
-<div class="flex h-full items-center justify-center text-center text-xl font-semibold tracking-wide">
-
-声音素材的主要来源：音效库，合成器，录音
-
 </div>
 
 <!--
@@ -178,17 +200,58 @@ Audio
 layout: header-body
 ---
 
+::backdrop::
+
+SOURCE
+
 ::eyebrow::
+
 Audio
 
 ::title::
-### <span class="text-green-500">音频</span>
+
+### 音频
 
 ::body::
 
-<div class="flex h-full flex-col items-center justify-center gap-4 text-center">
+<div class="flex h-full min-h-0 items-center justify-center">
 
-<p class="text-lg font-semibold">Field Recording & Foley Recording BTS</p>
+<div class="quote-accent max-w-[42rem]">
+  <p class="text-[1.7rem] font-semibold leading-snug text-[var(--color-text-primary)]">声音素材的主要来源：音效库，合成器，录音</p>
+</div>
+
+</div>
+
+<!--
+-->
+
+---
+layout: header-body
+background: what-is-game-audio-design/bg-image-for-audio.png
+---
+
+::backdrop::
+
+RECORDING
+
+::eyebrow::
+
+Audio
+
+::title::
+
+### 音频
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
+
+<div class="figure-frame min-h-0"></div>
+
+<div class="caption-plate self-end">
+  <span class="badge">BTS</span>
+  <p class="mt-3 text-[1.2rem] font-semibold leading-snug text-[var(--color-text-primary)]">Field Recording & Foley Recording BTS</p>
+</div>
 
 </div>
 
@@ -200,24 +263,35 @@ Audio
 layout: header-body
 ---
 
+::backdrop::
+
+SPACE
+
 ::eyebrow::
+
 Audio
 
 ::title::
-### <span class="text-green-500">音频</span>
+
+### 音频
 
 ::body::
 
-<div class="text-left">
+<div class="grid h-full min-h-0 grid-cols-[0.8fr_1.2fr] gap-5 text-left">
 
-<p class="mb-4 text-base opacity-90">交互媒体的特点决定了游戏音频复杂的实现方式</p>
+<div class="active-panel p-4">
+  <span class="step-index">INTERACTIVE MEDIA</span>
+  <p>交互媒体的特点决定了游戏音频复杂的实现方式</p>
 
-<div class="mb-4 grid grid-cols-2 gap-2 text-sm opacity-80">
+  <div class="mt-4 grid grid-cols-2 gap-2 text-sm text-[var(--color-text-muted)]">
 
-<div>Emitter (X, Y, Z)</div>
-<div>Listener (X, Y, Z)</div>
+  <div>Emitter (X, Y, Z)</div>
+  <div>Listener (X, Y, Z)</div>
 
+  </div>
 </div>
+
+<div class="min-h-0 min-w-0 border-l hairline pl-4">
 
 <v-clicks>
 
@@ -235,6 +309,8 @@ Audio
 
 </div>
 
+</div>
+
 <!--
 -->
 
@@ -242,18 +318,29 @@ Audio
 layout: header-body
 ---
 
+::backdrop::
+
+MUSIC
+
 ::eyebrow::
+
 Audio
 
 ::title::
-### <span class="text-green-500">音频</span>
+
+### 音频
 
 ::body::
 
-<div class="text-left">
+<div class="grid h-full min-h-0 grid-cols-[0.8fr_1.2fr] gap-5 text-left">
 
-<p class="mb-3 text-base opacity-90">交互媒体的特点决定了游戏音频复杂的实现方式</p>
+<div class="active-panel p-4">
+  <span class="step-index">INTERACTIVE MEDIA</span>
+  <p>交互媒体的特点决定了游戏音频复杂的实现方式</p>
+</div>
 
+<div class="callout self-start">
+<span class="callout-title">Interactive Music</span>
 #### 互动音乐
 
 <v-clicks>
@@ -266,6 +353,8 @@ Audio
 
 </div>
 
+</div>
+
 <!--
 -->
 
@@ -273,18 +362,29 @@ Audio
 layout: header-body
 ---
 
+::backdrop::
+
+VOICE
+
 ::eyebrow::
+
 Audio
 
 ::title::
-### <span class="text-green-500">音频</span>
+
+### 音频
 
 ::body::
 
-<div class="text-left">
+<div class="grid h-full min-h-0 grid-cols-[0.8fr_1.2fr] gap-5 text-left">
 
-<p class="mb-3 text-base opacity-90">交互媒体的特点决定了游戏音频复杂的实现方式</p>
+<div class="active-panel p-4">
+  <span class="step-index">INTERACTIVE MEDIA</span>
+  <p>交互媒体的特点决定了游戏音频复杂的实现方式</p>
+</div>
 
+<div class="callout self-start">
+<span class="callout-title">Voice System</span>
 #### 语音系统
 
 <v-clicks>
@@ -296,25 +396,35 @@ Audio
 
 </div>
 
+</div>
+
 <!--
 -->
 
 ---
 layout: header-body
+background: what-is-game-audio-design/bg-image-for-design.png
 ---
 
+::backdrop::
+
+DESIGN
+
 ::eyebrow::
+
 Design
 
 ::title::
-### <span class="text-blue-500">设计</span>
+
+### 设计
 
 ::body::
 
-<div class="grid grid-cols-2 gap-4 text-left">
+<div class="grid h-full min-h-0 grid-cols-2 gap-5 text-left">
 
-<div v-click>
+<div v-click class="active-panel min-h-0 p-4">
 
+<span class="step-index">AESTHETIC</span>
 #### 美学性
 
 与艺术风格和内容表现相匹配
@@ -328,10 +438,11 @@ Design
 - 赛璐珞 Cel-Shading
 - ……
 
-</div v-click>
+</div>
 
-<div v-click>
+<div v-click class="callout min-h-0">
 
+<span class="callout-title">Functional</span>
 #### 功能性
 
 与游戏类型和玩法机制相结合
@@ -343,7 +454,7 @@ Design
 - Horror / Survival：心理暗示
 - ……
 
-</div v-click>
+</div>
 
 </div>
 
@@ -354,25 +465,48 @@ Design
 layout: header-body
 ---
 
+::backdrop::
+
+STYLE
+
 ::eyebrow::
+
 Design
 
 ::title::
-### <span class="text-blue-500">设计</span>
+
+### 设计
 
 ::body::
 
-<div class="text-left text-sm">
+<div class="grid h-full min-h-0 grid-cols-[0.8fr_1.2fr] gap-5 text-left">
 
-#### 美学性：声音设计风格的体现
+<div class="quote-accent self-center">
+  <h4>美学性：声音设计风格的体现</h4>
+</div>
+
+<div class="grid min-h-0 grid-cols-3 gap-3">
 
 <v-clicks>
 
-- *Animal Well* · 2024
-- *Sekiro: Shadows Die Twice* · 2019
-- *Arknights: Endfield*
+<div class="figure-frame flex min-h-0 flex-col justify-end">
+  <span class="badge">Case</span>
+  <p class="mt-3"><em>Animal Well</em> · 2024</p>
+</div>
+
+<div class="figure-frame flex min-h-0 flex-col justify-end">
+  <span class="badge">Case</span>
+  <p class="mt-3"><em>Sekiro: Shadows Die Twice</em> · 2019</p>
+</div>
+
+<div class="figure-frame flex min-h-0 flex-col justify-end">
+  <span class="badge">Case</span>
+  <p class="mt-3"><em>Arknights: Endfield</em></p>
+</div>
 
 </v-clicks>
+
+</div>
 
 </div>
 
@@ -384,26 +518,42 @@ Design
 layout: statement
 ---
 
-功能性：“玩家想听到什么”
+::backdrop::
+
+FUNCTION
+
+::title::
+
+### 功能性：“玩家想听到什么”
 
 <!--
 -->
 
 ---
 layout: header-body
+background: what-is-game-audio-design/game-poster.png
 ---
 
+::backdrop::
+
+DOOM
+
 ::eyebrow::
+
 Design
 
 ::title::
+
 ### 设计 · 功能性：“玩家想听到什么”
 
 ::body::
 
-<div class="flex h-full items-center justify-center text-center text-2xl font-semibold tracking-wide">
+<div class="flex h-full min-h-0 items-center justify-center">
 
-DOOM · 2016
+<div class="caption-plate">
+  <span class="badge">Case</span>
+  <p class="mt-3 text-[2rem] font-semibold leading-tight text-[var(--color-text-primary)]">DOOM · 2016</p>
+</div>
 
 </div>
 
@@ -415,17 +565,25 @@ DOOM · 2016
 layout: header-body
 ---
 
+::backdrop::
+
+TARKOV
+
 ::eyebrow::
+
 Design
 
 ::title::
+
 ### 设计 · 功能性：“玩家想听到什么”
 
 ::body::
 
-<div class="flex h-full items-center justify-center text-center text-2xl font-semibold tracking-wide">
+<div class="flex h-full min-h-0 items-center justify-center">
 
-Escape From Tarkov · 2017
+<div class="quote-accent">
+  <p class="text-[2rem] font-semibold leading-tight text-[var(--color-text-primary)]">Escape From Tarkov · 2017</p>
+</div>
 
 </div>
 
@@ -437,5 +595,14 @@ Escape From Tarkov · 2017
 layout: statement
 ---
 
+::backdrop::
+
+?
+
+::title::
+
 ### 游戏音频设计是什么？
+
+::subtitle::
+
 **What is game audio design？**
