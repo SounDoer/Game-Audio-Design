@@ -11,15 +11,19 @@ EXAMPLE
 
 ::eyebrow::
 
-Slidev Layout System
+GAD Design Reference
 
 ::title::
 
-# Slidev 布局样张
+# GAD 设计参考
+
+::subtitle::
+
+如何使用页面布局和设计元素
 
 ::info::
 
-Game Audio Design · Visual Test Deck
+xichen @ gad.soundoer.com
 
 ---
 layout: section
@@ -31,15 +35,15 @@ layout: section
 
 ::eyebrow::
 
-Layout
+Layouts
 
 ::title::
 
-## 基础页面结构
+## 页面布局
 
 ::subtitle::
 
-Cover / Section / Header-Body
+各类布局的示例展示
 
 ---
 layout: header-body
@@ -47,11 +51,11 @@ layout: header-body
 
 ::backdrop::
 
-TYPE
+CONTENT
 
 ::eyebrow::
 
-CONTEXT
+Header Body
 
 ::title::
 
@@ -59,18 +63,47 @@ CONTEXT
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
+上方标题区用于建立阅读定位，正文区承担论证、案例与媒体。
+
+<v-clicks>
+
+- <span class="accent">眉标</span> 不是逐页标题翻译，而是页面视角。
+- 正文区可以自由组合单栏、双栏、图示、组件与局部强调。
+- 右下角页码自动处理。
+
+</v-clicks>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+COLUMNS
+
+::eyebrow::
+
+Two Columns
+
+::title::
+
+### 正文区：两栏分布
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
   <div class="min-h-0 min-w-0">
-    <p>这一页展示主力 layout：上方标题区用于建立阅读定位，正文区承担论证、案例与媒体。</p>
+    <h4>左侧：论证主线</h4>
+    <p>适合把判断标准与案例材料并置，在同一页内完成对照阅读。</p>
     <ul>
-      <li><span class="accent">眉标</span> 不是逐页标题翻译，而是页面视角。</li>
-      <li>正文区可以自由组合单栏、双栏、图示、组件与局部强调。</li>
-      <li>右下角页码由 layout 自动处理。</li>
+      <li v-click>先给出页面的核心判断。</li>
+      <li v-click>再拆成几个可观察维度。</li>
+      <li v-click>避免把两栏都塞满同等密度的信息。</li>
     </ul>
   </div>
-  <div class="callout">
-    <span class="callout-title">Reading Order</span>
-    <p>先读英文短标签，定位语境；再读中文主标题，进入具体论点。</p>
+  <div v-click class="callout">
+    <span class="callout-title">右侧</span>
+    <p>右侧适合放案例、图示说明、操作步骤或关键限制。它服务左侧论点，不另起一条主线。</p>
   </div>
 </div>
 
@@ -80,34 +113,92 @@ layout: header-body
 
 ::backdrop::
 
-GRID
+COLUMNS
 
 ::eyebrow::
 
-STRUCTURE
+Three Columns
 
 ::title::
 
-### Body 区：双栏、当前项与分隔线
+### 正文区：三栏分布
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div class="active-panel min-h-0 p-4">
-    <span class="step-index">STEP 01</span>
-    <h4>判断需求</h4>
-    <p>先确认声音要服务的玩法、叙事或反馈目标。</p>
+  <div v-click class="min-h-0 min-w-0">
+    <span class="step-index">COLUMN 01</span>
+    <h4>左栏：并列信息</h4>
+    <p>三栏结构适合承载同一层级的分类、步骤或观察维度。</p>
   </div>
-  <div class="min-h-0 border-l hairline pl-4">
-    <span class="step-index">STEP 02</span>
-    <h4>选择来源</h4>
-    <p>现场录音、素材库、合成、外包或生成式工具。</p>
+  <div v-click class="min-h-0 border-l hairline pl-4">
+    <span class="step-index">COLUMN 02</span>
+    <h4>中栏：并列信息</h4>
+    <p>栏位之间用留白和细分隔线区分。</p>
   </div>
-  <div class="min-h-0 border-l hairline pl-4">
-    <span class="step-index">STEP 03</span>
-    <h4>整理入库</h4>
-    <p>命名、版权、规格与可追溯性决定后续效率。</p>
+  <div v-click class="min-h-0 border-l hairline pl-4">
+    <span class="step-index">COLUMN 03</span>
+    <h4>右栏：并列信息</h4>
+    <p>当信息颗粒足够短，也可以扩展到更多栏位，但要优先保证可读性。</p>
   </div>
+</div>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+RATIO
+
+::eyebrow::
+
+Image and Text
+
+::title::
+
+### 正文区：左图右文
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1.3fr_0.7fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <span class="badge">Main Visual</span>
+  </div>
+  <div class="min-h-0 min-w-0">
+    <h4>右侧：解释与判断</h4>
+    <p>左图右文适合把截图、频谱、流程图或游戏画面作为主材料，右侧只解释观察点。</p>
+    <ul>
+      <li v-click>左侧优先放需要被观察的视觉材料。</li>
+      <li v-click>右侧用短句说明看哪里、为什么看。</li>
+      <li v-click>比例可以按内容调整，同时主视觉应保持清晰。</li>
+    </ul>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+MEDIA
+
+::eyebrow::
+
+Media
+
+::title::
+
+### 正文区：主图
+
+::body::
+
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="figure-frame flex min-h-0 flex-1 items-center justify-center">
+    <span class="badge">Media</span>
+  </div>
+  <div class="shrink-0 text-center text-[1rem] leading-tight text-[var(--color-text-body)]">上方用于主图内容的展示，下方为居中的文字说明。</div>
 </div>
 
 ---
@@ -124,24 +215,30 @@ COMPONENTS
 
 ::title::
 
-### 信息卡片与小标签
+### 信息卡片、强调与重点
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="callout">
-    <span class="callout-title">Principle</span>
-    <p>当一句话承载的是判断标准，而不是普通项目符号，就适合从列表中抬出来。</p>
+  <div class="min-h-0 min-w-0">
+    <h4>使用原则</h4>
+    <p>这些元素都用于提升阅读层级，但语义和强调程度不同。</p>
+    <ul>
+      <li v-click>信息卡片承载定义、原则等需要被重点提示的判断。</li>
+      <li v-click>强调承载一句短判断，仍然从属于当前正文。</li>
+      <li v-click>重点面板标出本页常驻的主观察对象。</li>
+    </ul>
   </div>
-  <div class="flex min-h-0 flex-col gap-3">
-    <div>
-      <span class="badge">Wwise</span>
-      <span class="badge ml-2">RTPC</span>
-      <span class="badge ml-2">Case</span>
+  <div v-click class="flex min-h-0 flex-col gap-3">
+    <div class="callout">
+      <span class="callout-title">信息卡片</span>
+      <p>当一句话承载的是判断标准，而不是普通项目符号，就适合从列表中抬出来。</p>
     </div>
-    <p>小标签用于标记工具、案例类型、媒体属性或示范状态。它只用细描边，不制造大面积色块。</p>
     <div class="quote-accent">
-      <p>强调色的任务不是“变亮”，而是告诉观众哪里是当前结构的支点。</p>
+      <p>强调的任务是告诉观众哪里是当前结构的支点。</p>
+    </div>
+    <div class="active-panel p-4">
+      <p>重点面板不随点击状态更新。</p>
     </div>
   </div>
 </div>
@@ -152,7 +249,7 @@ layout: header-body
 
 ::backdrop::
 
-24
+9
 
 ::eyebrow::
 
@@ -160,25 +257,29 @@ METRICS
 
 ::title::
 
-### 关键数字、步骤号与标签
+### 关键数字、步骤号与短标签
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-3 gap-5">
-  <div>
-    <div class="metric">01</div>
-    <div class="metric-label">first decision</div>
-    <p>章节编号、步骤序号或参数数量可以用轻字重数字建立节奏。</p>
-  </div>
-  <div>
+  <div v-click>
     <div class="metric">3</div>
     <div class="metric-label">source types</div>
-    <p>数字不是装饰，而是帮助学生把复杂问题拆成可记忆的阶段。</p>
+    <p><code>metric</code> 与 <code>metric-label</code> 成组使用，用于数量、阈值、阶段总数等关键数字。</p>
   </div>
-  <div>
-    <div class="metric">A/B</div>
-    <div class="metric-label">comparison</div>
-    <p>对比页可以用短标签把视线引向当前讨论对象。</p>
+  <div v-click class="border-l hairline pl-4">
+    <span class="step-index">STEP 02</span>
+    <h4>步骤号</h4>
+    <p><code>step-index</code> 用于流程、检查项或卡片内的小号步骤编号。</p>
+  </div>
+  <div v-click class="border-l hairline pl-4">
+    <div>
+      <span class="badge">Badge</span>
+      <span class="badge ml-2">Wwise</span>
+      <span class="badge ml-2">CASE</span>
+    </div>
+    <h4 class="mt-4">短标签</h4>
+    <p><code>badge</code> 标记工具、媒体类型、案例属性或示范状态，不承载完整判断。</p>
   </div>
 </div>
 
@@ -188,7 +289,7 @@ layout: header-body
 
 ::backdrop::
 
-IMG
+MEDIA
 
 ::eyebrow::
 
@@ -196,37 +297,58 @@ MEDIA
 
 ::title::
 
-### 图片、图注与媒体框
+### 媒体框
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="figure-frame min-h-0">
-    <img src="/intro/Arknights_Endfield_Title.jpg" alt="Arknights Endfield title artwork" class="max-h-[300px] w-full object-contain" />
-    <p class="caption"><span class="caption-label">Reference Image</span> 参考图适合放进 figure frame，避免图片像随手贴在画布上。</p>
+<div class="grid h-full min-h-0 grid-cols-[1.3fr_0.7fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <span class="badge">MEDIA</span>
   </div>
-  <div class="min-h-0">
-    <h4>何时使用 figure frame？</h4>
-    <ul>
-      <li>软件截图、频谱图、流程图、对比图。</li>
-      <li>需要图注解释来源或观察点。</li>
-      <li>图片本身边界不清，需要从背景里分离出来。</li>
-    </ul>
+  <div class="callout self-start">
+    <span class="callout-title">使用规则</span>
+    <p>所有多媒体内容默认都需要。</p>
   </div>
 </div>
 
 ---
-layout: image
-image: intro/FarCry5_Title.jpg
+layout: fullscreen-media
+image: intro/FarCryPrimal_Title.jpg
 backgroundSize: cover
 ---
 
-<div class="absolute left-12 top-10">
-  <span class="corner-label">Image Layout</span>
+<div class="relative h-full w-full">
+  <span class="badge absolute left-6 top-6">Fullscreen Media</span>
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[34rem]">
+    <p class="caption">全屏媒体页适合展示游戏画面、界面截图或参考图；说明牌只解释观察点，不替代标题区。</p>
+  </div>
 </div>
 
-<div class="caption-plate absolute bottom-10 left-12 max-w-[34rem]">
-  <p class="caption"><span class="caption-label">Observation</span> 全屏图页适合展示界面、场景或参考图；说明牌只解释观察点，不抢主图。</p>
+
+---
+layout: custom
+---
+
+::default::
+
+<div class="relative h-full w-full p-12">
+  <span class="badge absolute left-12 top-10">Custom Layout</span>
+  <div class="grid h-full grid-cols-[0.9fr_1.1fr] gap-6 pt-14">
+    <div class="self-center bg-[var(--color-surface)] p-5">
+      <div class="mb-4 w-full border-t border-[var(--color-accent)]"></div>
+      <h4>自定义布局</h4>
+      <ul>
+        <li>匹配具体内容按需设计</li>
+        <li>使用同一套视觉系统</li>
+      </ul>
+    </div>
+    <div class="grid self-center grid-cols-2 gap-3">
+      <div class="border hairline p-3">Grid A</div>
+      <div class="border hairline p-3">Grid B</div>
+      <div class="border hairline p-3">Grid C</div>
+      <div class="border hairline p-3">Grid D</div>
+    </div>
+  </div>
 </div>
 
 ---
@@ -235,56 +357,16 @@ layout: statement
 
 ::backdrop::
 
-?
+STATEMENT
 
 ::title::
 
-### 这套视觉系统的重点不是“更多装饰”，而是让结构被看见。
+### 这套视觉系统的重点不是更多装饰，
+### 而是让结构被看见。
 
 ::subtitle::
 
 The point is not more decoration, but making structure visible.
-
----
-layout: custom
----
-
-::backdrop::
-
-MAP
-
-::default::
-
-<div class="relative h-full w-full p-12">
-  <span class="corner-label absolute left-12 top-10">Custom Canvas</span>
-  <div class="grid h-full grid-cols-[0.9fr_1.1fr] gap-6 pt-14">
-    <div class="callout self-center">
-      <span class="callout-title">Use Case</span>
-      <p>custom 适合整页自定义构图：关系图、流程图、视觉地图、全屏 UI 注释。</p>
-    </div>
-    <div class="relative active-panel min-h-0 p-6">
-      <span class="hotspot-label absolute right-6 top-6">Hotspot</span>
-      <h4>画布内仍然使用同一套 token</h4>
-      <p>背景、边框、标签、说明牌和当前项都保持一致，不另开一套视觉语言。</p>
-      <div class="mt-6 grid grid-cols-2 gap-3">
-        <div class="border hairline p-3">Source</div>
-        <div class="border hairline p-3">Edit</div>
-        <div class="border hairline p-3">Name</div>
-        <div class="border hairline p-3">Archive</div>
-      </div>
-    </div>
-  </div>
-</div>
-
----
-layout: default
----
-
-<div class="h-full w-full p-14">
-  <span class="badge">Default Layout</span>
-  <h3 class="mt-4">主题默认 layout</h3>
-  <p>本仓库没有覆盖 `default` 时，会使用 Slidev 主题默认结构。需要稳定视觉时，优先使用本地 layout；需要临时占位或实验时，可以使用 default。</p>
-</div>
 
 ---
 layout: end

@@ -13,6 +13,11 @@
         </div>
       </template>
       <slot name="title" />
+      <template v-if="$slots.subtitle">
+        <div class="subtitle-slot">
+          <slot name="subtitle" />
+        </div>
+      </template>
     </div>
     <!-- Keep a stable footnote region; optional ::info:: content is easy to miss at 0.65rem in the corner. -->
     <div class="info-area">
@@ -66,6 +71,20 @@
   text-transform: uppercase;
   margin: 0;
   line-height: 1.4;
+}
+
+.subtitle-slot {
+  margin-top: 0.9rem;
+}
+
+.subtitle-slot :deep(p) {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
 }
 
 .info-area {

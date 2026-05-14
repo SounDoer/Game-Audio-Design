@@ -11,7 +11,7 @@ layout: section
 <!--  -->
 
 ---
-layout: image
+layout: fullscreen-media
 image: aigc-forest-cabin.png
 ---
 

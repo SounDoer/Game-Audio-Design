@@ -7,6 +7,7 @@
 | 颜色、标题字号、正文与列表、页码、工具类 | `slidev/styles/base.css` |
 | 画布尺寸、字体栈、过渡、主题、MDC 等 | `slidev/deck-entry-header.in.yaml` |
 | 各页版式结构（槽位、局部样式） | `slidev/layouts/*.vue` |
+| 标准 Markdown 样张（可复制写法） | `slidev/pages/EXAMPLE.md` |
 | 单套讲义正文 | `slidev/pages/<stem>.md` |
 | 构建入口与顺序 | `scripts/build-slidev-decks.mjs`、`slidev/deck-order.txt` |
 | 每套构建时的 `public` 子集 | `scripts/prepare-slidev-public-subset.mjs`（由 `build-slidev-decks.mjs` 调用） |
@@ -20,6 +21,7 @@
 ```
 slidev/
   pages/*.md              # 讲义 Markdown（多数 stem 对应一套可构建 deck）
+  pages/EXAMPLE.md        # 设计系统与 layout 的标准样张
   layouts/*.vue           # 本仓库自定义 layout（同名优先于 Slidev 内置）
   components/*.vue        # 在 pages 中引用的 Vue 组件（如 SPLDiagram）
   styles/base.css         # 幻灯画布内全局样式与设计令牌
@@ -28,6 +30,7 @@ slidev/
   deck-order.txt          # `/slides/` 索引与默认构建顺序（每行一个 stem）
 ```
 
+- **样张**：`pages/EXAMPLE.md` 是当前视觉系统、槽位写法与常用组合的标准样张；README 说明原则与边界，具体 Markdown 片段以该文件为首要参考。
 - **Slug**：默认等于文件名去掉 `.md`；在该 deck 文件 **首张幻灯片** 的 frontmatter（文件顶部的第一个 `---` 块）里可用 `slug:` 覆盖（解析见 `slidev/deck-pages-shared.mjs` 的 `listDeckPages`）。
 - **`deckListTitle:`**：可选，同上首张 frontmatter；用于站点 `/slides/` 列表标题。缺省顺序为：`deckListTitle` → 首张里的 `title:` → 首张之后正文中出现的第一个 Markdown **`# ` 标题行**（`extractFirstH1`，见 `deck-pages-shared.mjs`）→ `humanizeStem(stem)`。
 - **`slidesOrder:`**：可选；写在首张 frontmatter，用于覆盖该 deck 在目录中的排序（数值越小越靠前）；未出现在 `deck-order.txt` 中的 stem 默认排在后面（实现见 `listDeckPages`）。
@@ -43,7 +46,7 @@ slidev/
 实现要点（与代码一致）：
 
 1. **`materializePublicSubsetStaging`** 在 **`slidev/.deck-public-staging`** 生成子树；源仍以仓库里的完整 **`slidev/public/`** 为真源（磁盘布局不变）。
-2. **收集路径**：从 **`slidev/pages/<stem>.md`** 的正文（去掉 HTML 注释后）用正则抓取 Markdown 图片、常见 `src` / `href` / `url(...)` 等形式的 **`/...`** 路径；从该文件**首张** frontmatter 读取 **`image:`**、**`background:`** 等键；扫描 **`slidev/layouts/*.vue`** 与 **`slidev/components/*.vue`** 内出现的 **`/...`**；并始终尝试拷贝 **`GAD_Logo.ico`**（`ALWAYS_COPY_REL`）。
+2. **收集路径**：从 **`slidev/pages/<stem>.md`** 的正文（去掉 HTML 注释后）用正则抓取 Markdown 图片、常见 `src` / `href` / `url(...)` 等形式的 **`/...`** 路径；从该文件**所有 slide frontmatter** 读取 **`image:`**、**`background:`** 等键（含 `fullscreen-media` 的后续页图片）；扫描 **`slidev/layouts/*.vue`** 与 **`slidev/components/*.vue`** 内出现的 **`/...`**；并始终尝试拷贝 **`GAD_Logo.ico`**（`ALWAYS_COPY_REL`）。
 3. **整章目录**：若存在 **`slidev/public/<stem>/`** 目录，则**递归整目录**拷入 staging（与「同名 public 子目录」约定一致）。
 4. **切换与恢复**：将当前 **`slidev/public`** 重命名为 **`slidev/public.__full__`**，再把 staging 重命名为 **`slidev/public`**；在 **`try/finally`** 中执行 `slidev build`，结束后删除临时 `public`、把 **`public.__full__`** 改回 **`public`**，并清理 **`.deck-public-staging`**。
 
@@ -94,11 +97,12 @@ slidev/
 | 角色 | 实现 |
 |------|------|
 | 中文标题 / 正文无衬线 | `deck-entry-header.in.yaml` → `fonts.sans: Noto Sans SC`，`base.css` 中 `--font-sans` |
-| 英文副标题 / 译文（`::subtitle::`） | `--font-sans`；用于 `section` 与 `statement` 的可选副标题槽 |
+| 英文副标题 / 译文（`::subtitle::`） | `--font-sans`；用于 `cover`、`section` 与 `statement` 的可选副标题槽 |
+| 信息结构标题（`.callout-title`） | `--font-sans`；`1rem` / `font-weight: 700`，属于卡片内标题，不归入眉标装饰 |
 | 英文眉标（全大写、细字重） | `fonts.serif: Cormorant Garamond`，`--font-serif`；各 layout 的 `.eyebrow-slot` 内 `font-weight: 300`，`letter-spacing: 0.15em`，`text-transform: uppercase` |
 | 代码 | `fonts.mono: Fira Code`，`--font-mono`；页码亦使用 mono |
 
-**设计意图**：英文眉标小字、细笔画，与粗黑体中文标题形成「细 / 粗、衬线 / 黑体」对比，接近刊物栏目标签的阅读顺序。
+**设计意图**：英文眉标小字、细笔画，与粗黑体中文标题形成「细 / 粗、衬线 / 黑体」对比，接近刊物栏目标签的阅读顺序。`callout-title` 是信息卡片内部的结构标题，优先保证可读性，因此使用 sans。
 
 ### 3.4 标题层级与 Markdown 映射
 
@@ -123,8 +127,8 @@ slidev/
 
 设计意图：先以英文短标签定位语境，再读中文大字标题。眉标是 **阅读定位标签**，不固定等同于中文标题的英文翻译：
 
-- **`cover`**：可写整套 deck 的英文副标题 / 英文译名，例如 `What is Game Audio Design?`。
-- **`section`**：优先写结构标签，例如 `PART 01`、`FRAMEWORK`、`CASE STUDY`。若需要英文副标题，写在 **`::title::`** 内主标题下方的弱一层文字，不占用眉标。
+- **`cover`**：眉标写整套 deck 的结构定位或系列名；英文副标题 / 英文译名写入可选 **`::subtitle::`**，例如 `What is Game Audio Design?`。
+- **`section`**：优先写结构标签，例如 `PART 01`、`FRAMEWORK`、`CASE STUDY`。若需要章节说明、英文副标题或译名，写入可选 **`::subtitle::`**，不占用眉标。
 - **`header-body`**：优先写本页论证类型或当前视角，例如 `CONTEXT`、`PRINCIPLE`、`EXAMPLE`、`IMPLEMENTATION`、`LISTENING`、`PRACTICE`，不逐页翻译中文标题。
 - **`statement` / `custom`**：默认不复制标题区。需要弱标签时放在正文结构内。
 
@@ -137,14 +141,16 @@ slidev/
 | 行内强调 | `base.css` `.accent` | 文字颜色 `--color-accent` |
 | 眉标纯 HTML 场景 | `base.css` `.eyebrow`、`.accent-rule` | 不用 layout 槽时的退路 |
 | 背景装饰槽 | `layouts/*.vue` `::backdrop::` + `base.css` `.layout-backdrop` | 各 layout 可选弱背景层；放 `01`、`FIELD`、`?` 等章节编号、关键词或符号；若后面要回到默认槽，使用 `::default::` |
-| 信息卡片 | `base.css` `.callout`、`.callout-title` | 深灰 surface + 细边框 + 赤陶左线；承载定义、原则、案例提示等需要从 bullet 中抬出来的信息 |
-| 小标签 | `base.css` `.badge`、`.caption-label` | 细描边短标签；标注 `Wwise`、`RTPC`、`CASE`、`DEMO`、媒体类型，不做大面积色块 |
+| 信息卡片 | `base.css` `.callout`、`.callout-title` | 深灰 surface + 细边框 + 赤陶左线；承载定义、原则、案例提示等需要从 bullet 中抬出来的信息；`.callout-title` 使用正文同级 sans 粗体，表示卡片内结构标题 |
+| 小标签 | `base.css` `.badge` | 细描边短标签；标注 `Wwise`、`RTPC`、`CASE`、`DEMO`、媒体类型、图注标签或叠加说明，不做大面积色块 |
 | 数字与步骤 | `base.css` `.metric`、`.metric-label`、`.step-index` | 大号轻字重数字、mono 步骤号；用于关键数值、阶段序号、操作顺序 |
-| 引用与媒体 | `base.css` `.quote-accent`、`.figure-frame` | 左侧赤陶引线、图片 / 视频细框、图注；用于 statement、频谱图、流程图、案例截图 |
-| 全屏图标注 | `base.css` `.caption-plate`、`.corner-label`、`.hotspot-label` | `image` / `custom` 页的半透明说明牌、角标、热点标签，用于指出画面中的观察点 |
-| 分隔与当前项 | `base.css` `.accent-rail`、`.hairline`、`.active-panel` | 分栏边界、当前步骤、当前列；灰线为主，赤陶只标当前重点 |
+| 引用与媒体 | `base.css` `.quote-accent`、`.figure-frame` | 左侧赤陶引线、图片 / 视频细框、图注；用于 statement、频谱图、流程图、案例截图；常规媒体默认放入 `.figure-frame` |
+| 全屏图说明牌 | `base.css` `.caption-plate` | `fullscreen-media` / `custom` 页的半透明说明牌容器；说明牌内的短标签仍使用 `.badge` |
+| 分隔与静态重点 | `base.css` `.accent-rail`、`.hairline`、`.active-panel` | 分栏边界、主观察对象、推荐做法、核心案例；灰线为主，赤陶只标本页常驻重点 |
 
-强调色继续保持单色：不新增第二强调色，不把主标题整段染成赤陶。赤陶用于定位、分组、数值、引用、图注、当前步骤等结构性信息。
+强调色继续保持单色：不新增第二强调色，不把主标题整段染成赤陶。赤陶用于定位、分组、数值、引用、图注、静态重点等结构性信息。
+
+`active-panel` 只表示**本页常驻的重点面板**，不会随着 `v-click` 自动切换。适合用于对照页中的推荐做法、案例拆解页的核心材料、流程页正在讨论的起点或 `custom` 画布里的主热点。若需要逐步揭示内容，使用 `v-click` / `<v-clicks>`；若需要“高亮随点击移动”，应另写显式组件或 `$clicks` 绑定，不把它伪装成静态 class。
 
 ### 3.7 画布与主题
 
@@ -154,20 +160,20 @@ slidev/
 
 ## 4. Layout 体系（本地）
 
-以下 6 个文件在 **`slidev/layouts/`**，在 frontmatter 写 `layout: <name>` 时**优先**于 Slidev 内置同名 layout 加载。
+以下 7 个文件在 **`slidev/layouts/`**，在 frontmatter 写 `layout: <name>` 时**优先**于 Slidev 内置同名 layout 加载。
 
 画布逻辑尺寸：**1080 × 607**（16:9，由 `canvasWidth` 与比例推导）。
 
 ### 4.1 `cover` — Deck 封面
 
 - **文件**：`layouts/cover.vue`
-- **结构**：可选 `::backdrop::`（弱背景装饰）；可选 `::eyebrow::` → 赤陶下划线 → `::title::`（一般为单个 `#` 主标题）；可选 **`::info::`**，固定在右下脚注区（`0.8rem` muted），避免小字被误当作留白。
+- **结构**：可选 `::backdrop::`（弱背景装饰）；可选 `::eyebrow::` → 赤陶下划线 → `::title::`（一般为单个 `#` 主标题）→ 可选 **`::subtitle::`**（样式同 `section` 的 subtitle）；可选 **`::info::`**，固定在右下脚注区（`0.8rem` muted），避免小字被误当作留白。
 - **版式**：整页 `flex` 垂直居中；内容区全宽，主标题 `h1` **4.5rem**（与 `base.css` 一致）；左侧有极细赤陶竖线，`::info::` 非空时上方有短赤陶线。
 
 ### 4.2 `section` — 章节分隔页
 
 - **文件**：`layouts/section.vue`
-- **槽位**：可选 `::backdrop::`（弱化背景章节编号或关键词，如 `01`、`FRAMEWORK`）；可选 `::eyebrow::`；**`::title::`**（章节主标题，推荐 **`##`**）；可选 **`::subtitle::`**（章节英文副标题 / 译名，不写则不渲染）。
+- **槽位**：可选 `::backdrop::`（弱化背景章节编号或关键词，如 `01`、`FRAMEWORK`）；可选 `::eyebrow::`；**`::title::`**（章节主标题，推荐 **`##`**）；可选 **`::subtitle::`**（章节说明、英文副标题或译名，不写则不渲染）。
 - **版式**：全页居中，`section-content` `text-align: center`；`::backdrop::` 居中铺在背景层，使用极弱 surface 色。
 - **注意**：若主标题使用 **`#`**，则套用全局 **`h1`（4.5rem）**（与封面同级），与 **`##`（`h2`，3.5rem）** 视觉不同；见 `base.css` 中 `.slidev-layout h1` / `h2`。
 
@@ -176,7 +182,7 @@ slidev/
 - **文件**：`layouts/header-body.vue`
 - **结构**：可选 `::backdrop::`（弱背景装饰）→ Header 区（`px-6 pt-2 pb-4`）→ 可选 `::eyebrow::` + 赤陶线 + **`::title::`**（通常 `###`）→ Main（`flex-1 overflow-hidden px-6 pb-6 pt-3`）→ **`::body::`**；右下页码。
 - **Body**：为自由画布。**单栏、两栏、三栏、主区垂直居中、大图 `contain`** 等一律在 **`::body::` 内**用 UnoCSS / Tailwind 风格类（`grid`、`flex`、`min-h-0` 等）完成，**不**增加 layout 级 props。
-- **背景图**：可在该页 frontmatter 使用 Slidev 的 **`background:`**（相对 `public/` 的路径），与 `ambience-sound-design.md` 等现稿一致；需要全屏底图且自带 `image` frontmatter 时，可使用 **Slidev 内置** `layout: image`（本仓库不提供同名覆盖）。
+- **背景图**：可在该页 frontmatter 使用 Slidev 的 **`background:`**（相对 `public/` 的路径），与 `ambience-sound-design.md` 等现稿一致；需要全屏媒体时优先使用本地 **`layout: fullscreen-media`**。
 
 ### 4.4 `statement` — 居中陈述
 
@@ -193,9 +199,15 @@ slidev/
 - **文件**：`layouts/custom.vue`
 - **行为**：可选 `::backdrop::`（弱背景装饰）；默认槽提供一层全屏内容容器，**无**预设眉标或标题区；适合特殊构图或整页自定义 HTML。需要与全局令牌一致时，仍应使用 `base.css` 中的变量与 `.slidev-layout` 下规则。
 
-### 4.7 Slidev 内置 layout（无本地文件时）
+### 4.7 `fullscreen-media` — 全屏媒体
 
-若 `slidev/layouts/` 下**没有**同名 `.vue`，则使用 **`@slidev/client`**（及主题）自带实现，例如 **`default`**、**`image`**。全屏背景图可优先用内置 **`layout: image`** + frontmatter `image:`（及可选 `backgroundSize`）。
+- **文件**：`layouts/fullscreen-media.vue`
+- **结构**：frontmatter 必填 **`image:`**（相对 `public/` 的路径，或 `/...` 根路径）；可选 **`backgroundSize:`**，默认 `cover`，写 `contain` 时完整显示媒体；可选 **`alt:`**。默认槽为全屏叠加层，可放绝对定位的 `.badge`、`.caption-plate` 等说明元素。
+- **行为**：无标题区、无页码；用于游戏画面、界面截图、参考图等需要铺满画布的媒体页。若只是自由构图而不是全屏媒体，使用 `custom`。
+
+### 4.8 Slidev 内置 layout（无本地文件时）
+
+若 `slidev/layouts/` 下**没有**同名 `.vue`，则使用 **`@slidev/client`**（及主题）自带实现，例如 **`default`**。本仓库已有全屏媒体 layout，正式样张优先使用 **`fullscreen-media`**。
 
 ---
 
@@ -204,36 +216,61 @@ slidev/
 - **原子类**：Slidev 集成 **UnoCSS**，与 **Tailwind CSS** 文档兼容；优先 `class="..."`，少用行内 `style`（仅任意值临时对照等例外）。
 - **跨页且与默认主题冲突的排版**：写入 **`slidev/styles/base.css`**，选择器挂在 **`.slidev-layout`** 下，减轻对演讲者界面 chrome 的影响。
 - **单页一次性实验**：可在该页 md 底部使用 `<style scoped>`，**慎用**，避免复制扩散。
+- **点击步进**：讲解型 bullet 默认用 `<v-clicks>` 包裹，让列表逐条出现；只有需要同时比较、作为索引目录、或在 statement / cover / section 中承担整体陈述时，才让 bullet 一次性显示。多栏卡片若需要逐块出现，可在每个子 `<div>` 上写 `v-click`。
 
 参考：[UnoCSS](https://unocss.dev/) · [Tailwind CSS](https://tailwindcss.com/docs) · [Slidev 自定义 · Style](https://sli.dev/custom/directory-structure#style)。
 
-### 5.1 `header-body` 常用片段
+### 5.1 `v-click` 与讲解型列表
 
-**单栏 + 淡底图（frontmatter）**：
-
-```yaml
----
-layout: header-body
-background: what-is-game-audio-design/game-poster.png
----
-
-### 小节标题
-
-::body::
-
-正文……
-```
-
-**主区垂直居中 + 大图 `contain`（Body 内）**：
+普通讲解列表默认逐条出现：
 
 ```markdown
+<v-clicks>
+
+- 先给出判断标准
+- 再展示对应案例
+- 最后落到可执行步骤
+
+</v-clicks>
+```
+
+多栏卡片逐块出现时，把 `v-click` 放在子项上；`active-panel` 仍只是静态重点，不会跟随点击状态自动移动：
+
+```markdown
+<div class="grid h-full min-h-0 grid-cols-3 gap-4">
+  <div class="active-panel min-h-0 p-4">
+    <span class="step-index">FOCUS</span>
+    <h4>本页主观察对象</h4>
+  </div>
+  <div v-click class="min-h-0 border-l hairline pl-4">补充维度 A</div>
+  <div v-click class="min-h-0 border-l hairline pl-4">补充维度 B</div>
+</div>
+```
+
+### 5.2 `header-body` 常用片段
+
+`header-body` 是主力内容页。标准写法始终把页眉标题放进 `::title::`，正文结构放进 `::body::`：
+
+```markdown
+---
+layout: header-body
+---
+
+::backdrop::
+
+CONTENT
+
+::eyebrow::
+
+Principle
+
+::title::
+
+### 标准内容页标题
+
 ::body::
 
-<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
-
-![](/diagram.svg)
-
-</div>
+正文区承担论证、案例与媒体。
 ```
 
 **两栏 / 三栏（Body 内 `grid`）**：
@@ -241,11 +278,80 @@ background: what-is-game-audio-design/game-poster.png
 ```markdown
 ::body::
 
-<div class="grid min-h-0 grid-cols-2 gap-4">
-  <div class="min-h-0 min-w-0 overflow-auto">左</div>
-  <div class="min-h-0 min-w-0 overflow-auto">右</div>
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <div class="min-h-0 min-w-0">
+    <h4>左侧：论证主线</h4>
+    <p>先给出页面的核心判断。</p>
+  </div>
+  <div class="callout">
+    <span class="callout-title">右侧</span>
+    <p>放案例、图示说明、操作步骤或关键限制。</p>
+  </div>
 </div>
 ```
+
+三栏结构用于并列分类、步骤或观察维度；栏位之间优先用 `gap`、`border-l hairline pl-4` 区分。
+
+**主图 / 媒体框（Body 内 `.figure-frame`）**：
+
+```markdown
+::body::
+
+<div class="flex h-full min-h-0 flex-col gap-4">
+  <div class="figure-frame flex min-h-0 flex-1 items-center justify-center">
+    <img class="max-h-full max-w-full object-contain" src="/example/image.png" alt="">
+  </div>
+  <div class="shrink-0 text-center text-[1rem] leading-tight text-[var(--color-text-body)]">
+    图注只说明观察点，不承载另一条主线。
+  </div>
+</div>
+```
+
+所有常规截图、频谱图、流程图、视频容器默认使用 `.figure-frame`；需要铺满整页时改用 `fullscreen-media`。
+
+**信息卡片、强调与重点面板**：
+
+```markdown
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <div>
+    <h4>使用原则</h4>
+    <p>先解释这些元素承担的阅读层级。</p>
+  </div>
+  <div class="flex min-h-0 flex-col gap-3">
+    <div class="callout">
+      <span class="callout-title">信息卡片</span>
+      <p>承载定义、原则或案例提示。</p>
+    </div>
+    <div class="quote-accent">
+      <p>强调一句短判断。</p>
+    </div>
+    <div class="active-panel p-4">
+      <p>标出本页常驻的主观察对象。</p>
+    </div>
+  </div>
+</div>
+```
+
+**全屏媒体页**：
+
+```markdown
+---
+layout: fullscreen-media
+image: intro/FarCryPrimal_Title.jpg
+backgroundSize: cover
+---
+
+<div class="relative h-full w-full">
+  <span class="badge absolute left-6 top-6">Fullscreen Media</span>
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[34rem]">
+    <p class="caption">说明牌只解释观察点，不替代标题区。</p>
+  </div>
+</div>
+```
+
+`image:` 可写相对 `public/` 的路径，也可写 `/...` 根路径；`backgroundSize: contain` 用于完整显示媒体，其它情况默认 `cover`。
 
 ---
 
@@ -263,7 +369,7 @@ background: what-is-game-audio-design/game-poster.png
 以下条目保留为 **产品 / 工程决策**，实现以本 README 与代码为准；完成后请改代码并更新本节。
 
 - 是否引入 **自定义 Slidev theme 包**，或长期在 **`theme: default`** 上叠 `base.css` + 本地 `layouts`（当前为后者）。
-- 带复杂背景的全屏页：继续组合 **`header-body` + `background:`**、**内置 `image`** 与 **`custom`**，是否再抽象统一规范。
+- 带复杂背景的全屏页：继续组合 **`header-body` + `background:`**、**`fullscreen-media`** 与 **`custom`**，是否再抽象统一规范。
 - 组件 **`SPLDiagram.vue`** 等嵌入图表与全局设计令牌的视觉对齐（按需迭代）。
 
 ---

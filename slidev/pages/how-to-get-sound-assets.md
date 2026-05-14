@@ -366,7 +366,7 @@ LIBRARY AS LAYER
   </div>
 </div>
 
-<p class="caption mt-4"><span class="caption-label">Library Role</span> 素材库适合补层、补事件、补远景；但完整空间仍需要按项目语境重新组织。</p>
+<p class="caption mt-4"><span class="badge">Library Role</span> 素材库适合补层、补事件、补远景；但完整空间仍需要按项目语境重新组织。</p>
 
 <!--
 讲解重点：不要把库素材当作「成品环境声」，而是把它作为层。比如底噪来自实地录音，鸟叫、远处车辆、树枝摩擦用库补密度。
@@ -526,7 +526,7 @@ CUE SHEET
   </div>
 </div>
 
-<p class="caption mt-4"><span class="caption-label">Cue Sheet</span> 录制清单不是越长越好，而是要让后期编辑知道每条素材服务哪个动作。</p>
+<p class="caption mt-4"><span class="badge">Cue Sheet</span> 录制清单不是越长越好，而是要让后期编辑知道每条素材服务哪个动作。</p>
 
 <!--
 备注：可以解释 spotting 的概念。先标记画面或动画中的动作点，再决定录什么。
@@ -679,7 +679,7 @@ WEAPON ASSET
   </div>
 </div>
 
-<p class="caption mt-4"><span class="caption-label">Asset Pack</span> 如果只获取「一声枪响」，后面很难支撑游戏里的距离、连发、视角和交互变化。</p>
+<p class="caption mt-4"><span class="badge">Asset Pack</span> 如果只获取「一声枪响」，后面很难支撑游戏里的距离、连发、视角和交互变化。</p>
 
 <!--
 可以讲：枪械素材不是一个 wav，而是一套可以被系统重组的素材包。

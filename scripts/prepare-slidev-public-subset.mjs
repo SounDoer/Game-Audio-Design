@@ -7,7 +7,6 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { readFirstFrontmatterBlock } from '../slidev/deck-pages-shared.mjs';
 
 const STAGING_NAME = '.deck-public-staging';
 const BACKUP_NAME = 'public.__full__';
@@ -80,6 +79,18 @@ function collectFrontmatterAssetPaths(fmRaw, out) {
     if (!v || /^https?:\/\//i.test(v)) continue;
     if (v.startsWith('/')) out.add(v.slice(1));
     else out.add(v);
+  }
+}
+
+/**
+ * @param {string} text
+ * @param {Set<string>} out
+ */
+function collectAllFrontmatterAssetPaths(text, out) {
+  const re = /(?:^|\r?\n)---\r?\n([\s\S]*?)\r?\n---(?=\r?\n|$)/g;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    collectFrontmatterAssetPaths(m[1], out);
   }
 }
 
@@ -161,14 +172,13 @@ export function materializePublicSubsetStaging(repoRoot, stem) {
 
   const pagePath = path.join(repoRoot, 'slidev', 'pages', `${stem}.md`);
   const full = fs.readFileSync(pagePath, 'utf8');
-  const { raw: fmRaw } = readFirstFrontmatterBlock(pagePath);
   const fmEnd = full.indexOf('\n---', 3);
   const body = fmEnd === -1 ? full : full.slice(fmEnd + 4);
 
   /** @type {Set<string>} */
   const rel = new Set();
   for (const a of ALWAYS_COPY_REL) rel.add(a);
-  collectFrontmatterAssetPaths(fmRaw, rel);
+  collectAllFrontmatterAssetPaths(full, rel);
   collectAbsolutePublicPaths(stripHtmlComments(body), rel);
   collectSharedVuePublicPaths(repoRoot, rel);
 
