@@ -4,12 +4,12 @@
 
 | 主题 | 实现文件（优先查阅） |
 |------|----------------------|
-| 颜色、标题字号、正文与列表、页码、工具类 | `slidev/styles/base.css` |
-| 画布尺寸、字体栈、过渡、主题、MDC 等 | `slidev/deck-entry-header.in.yaml` |
-| 各页版式结构（槽位、局部样式） | `slidev/layouts/*.vue` |
-| 标准 Markdown 样张（可复制写法） | `slidev/pages/EXAMPLE.md` |
-| 单套讲义正文 | `slidev/pages/<stem>.md` |
-| 构建入口与顺序 | `scripts/build-slidev-decks.mjs`、`slidev/deck-order.txt` |
+| 颜色、标题字号、正文与列表、页码、工具类 | `slides/styles/base.css` |
+| 画布尺寸、字体栈、过渡、主题、MDC 等 | `slides/deck-entry-header.in.yaml` |
+| 各页版式结构（槽位、局部样式） | `slides/layouts/*.vue` |
+| 标准 Markdown 样张（可复制写法） | `slides/pages/EXAMPLE.md` |
+| 单套讲义正文 | `slides/pages/<stem>.md` |
+| 构建入口与顺序 | `scripts/build-slidev-decks.mjs`、`slides/deck-order.txt` |
 | 每套构建时的 `public` 子集 | `scripts/prepare-slidev-public-subset.mjs`（由 `build-slidev-decks.mjs` 调用） |
 
 槽位语法见 Slidev 文档：[Slot syntax (MDC)](https://sli.dev/features/slot-syntax)。
@@ -19,7 +19,7 @@
 ## 1. 仓库结构与产物
 
 ```
-slidev/
+slides/
   pages/*.md              # 讲义 Markdown（多数 stem 对应一套可构建 deck）
   pages/EXAMPLE.md        # 设计系统与 layout 的标准样张
   layouts/*.vue           # 本仓库自定义 layout（同名优先于 Slidev 内置）
@@ -31,24 +31,24 @@ slidev/
 ```
 
 - **样张**：`pages/EXAMPLE.md` 是当前视觉系统、槽位写法与常用组合的标准样张；README 说明原则与边界，具体 Markdown 片段以该文件为首要参考。
-- **Slug**：默认等于文件名去掉 `.md`；在该 deck 文件 **首张幻灯片** 的 frontmatter（文件顶部的第一个 `---` 块）里可用 `slug:` 覆盖（解析见 `slidev/deck-pages-shared.mjs` 的 `listDeckPages`）。
+- **Slug**：默认等于文件名去掉 `.md`；在该 deck 文件 **首张幻灯片** 的 frontmatter（文件顶部的第一个 `---` 块）里可用 `slug:` 覆盖（解析见 `slides/deck-pages-shared.mjs` 的 `listDeckPages`）。
 - **`deckListTitle:`**：可选，同上首张 frontmatter；用于站点 `/slides/` 列表标题。缺省顺序为：`deckListTitle` → 首张里的 `title:` → 首张之后正文中出现的第一个 Markdown **`# ` 标题行**（`extractFirstH1`，见 `deck-pages-shared.mjs`）→ `humanizeStem(stem)`。
 - **`slidesOrder:`**：可选；写在首张 frontmatter，用于覆盖该 deck 在目录中的排序（数值越小越靠前）；未出现在 `deck-order.txt` 中的 stem 默认排在后面（实现见 `listDeckPages`）。
-- **不参与构建与索引的 `pages/*.md`**：`deck-pages-shared.mjs` 中常量 **`EXCLUDED_STEMS`**（当前为 **`cover`**、**`intro`**、**`fin`**）对应的文件 **不会**进入 `listDeckPages()`，因此 **`npm run slidev:build` 不会生成** `static/slides/<stem>/`，站点 **`/slides/`** 索引也不列出。需要纳入构建时，从 `EXCLUDED_STEMS` 移除 stem（并视情况加入 `deck-order.txt`）。
+- **不参与构建与索引的 `pages/*.md`**：`deck-pages-shared.mjs` 中常量 **`EXCLUDED_STEMS`**（当前为 **`cover`**、**`intro`**、**`fin`**）对应的文件 **不会**进入 `listDeckPages()`，因此 **`npm run slidev:build` 不会生成** `website/static/slides/<stem>/`，站点 **`/slides/`** 索引也不列出。需要纳入构建时，从 `EXCLUDED_STEMS` 移除 stem（并视情况加入 `deck-order.txt`）。
 - **遗留 `slides.md`**：不再是 Slidev 入口，仅保留说明性注释；正式内容均在 `pages/*.md`。
 
-**构建产物**：`npm run slidev:build` 将**参与构建的**各 deck 输出到仓库根目录 **`static/slides/<slug>/`**。全站 **`npm run build`**（见根目录 `package.json`）会先执行 **`npm run slidev:build`**，再执行 **`astro build`**；单独跑 Astro 不会自动构建幻灯。
+**构建产物**：`npm run slidev:build` 将**参与构建的**各 deck 输出到仓库根目录 **`website/static/slides/<slug>/`**。全站 **`npm run build`**（见根目录 `package.json`）会先执行 **`npm run slidev:build`**，再执行 **`astro build`**；单独跑 Astro 不会自动构建幻灯。
 
 ### 构建期 `public` 子集（`scripts/prepare-slidev-public-subset.mjs`）
 
-`scripts/build-slidev-decks.mjs` 在调用 `slidev build` **每一套** deck 之前，会用 **`withPublicSubset(repoRoot, stem, fn)`**（本脚本导出）在回调 `fn` 执行期间，把 **`slidev/public`** 临时换成「仅本套 deck 可能需要」的子集，避免 Vite 把**整库** `public/` 打进每个 `static/slides/<slug>/`。
+`scripts/build-slidev-decks.mjs` 在调用 `slidev build` **每一套** deck 之前，会用 **`withPublicSubset(repoRoot, stem, fn)`**（本脚本导出）在回调 `fn` 执行期间，把 **`slides/public`** 临时换成「仅本套 deck 可能需要」的子集，避免 Vite 把**整库** `public/` 打进每个 `website/static/slides/<slug>/`。
 
 实现要点（与代码一致）：
 
-1. **`materializePublicSubsetStaging`** 在 **`slidev/.deck-public-staging`** 生成子树；源仍以仓库里的完整 **`slidev/public/`** 为真源（磁盘布局不变）。
-2. **收集路径**：从 **`slidev/pages/<stem>.md`** 的正文（去掉 HTML 注释后）用正则抓取 Markdown 图片、常见 `src` / `href` / `url(...)` 等形式的 **`/...`** 路径；从该文件**所有 slide frontmatter** 读取 **`image:`**、**`background:`** 等键（含 `fullscreen-media` 的后续页图片）；扫描 **`slidev/layouts/*.vue`** 与 **`slidev/components/*.vue`** 内出现的 **`/...`**；并始终尝试拷贝 **`GAD_Logo.ico`**（`ALWAYS_COPY_REL`）。
-3. **整章目录**：若存在 **`slidev/public/<stem>/`** 目录，则**递归整目录**拷入 staging（与「同名 public 子目录」约定一致）。
-4. **切换与恢复**：将当前 **`slidev/public`** 重命名为 **`slidev/public.__full__`**，再把 staging 重命名为 **`slidev/public`**；在 **`try/finally`** 中执行 `slidev build`，结束后删除临时 `public`、把 **`public.__full__`** 改回 **`public`**，并清理 **`.deck-public-staging`**。
+1. **`materializePublicSubsetStaging`** 在 **`slides/.deck-public-staging`** 生成子树；源仍以仓库里的完整 **`slides/public/`** 为真源（磁盘布局不变）。
+2. **收集路径**：从 **`slides/pages/<stem>.md`** 的正文（去掉 HTML 注释后）用正则抓取 Markdown 图片、常见 `src` / `href` / `url(...)` 等形式的 **`/...`** 路径；从该文件**所有 slide frontmatter** 读取 **`image:`**、**`background:`** 等键（含 `fullscreen-media` 的后续页图片）；扫描 **`slides/layouts/*.vue`** 与 **`slides/components/*.vue`** 内出现的 **`/...`**；并始终尝试拷贝 **`GAD_Logo.ico`**（`ALWAYS_COPY_REL`）。
+3. **整章目录**：若存在 **`slides/public/<stem>/`** 目录，则**递归整目录**拷入 staging（与「同名 public 子目录」约定一致）。
+4. **切换与恢复**：将当前 **`slides/public`** 重命名为 **`slides/public.__full__`**，再把 staging 重命名为 **`slides/public`**；在 **`try/finally`** 中执行 `slidev build`，结束后删除临时 `public`、把 **`public.__full__`** 改回 **`public`**，并清理 **`.deck-public-staging`**。
 
 本地若在 Windows 上构建时出现对 **`public` / `public.__full__` 的 `rename` EPERM**，多为目录被其它进程占用；关闭占用后重试 **`npm run slidev:build`**。
 
@@ -59,10 +59,10 @@ slidev/
 | 命令 | 作用 |
 |------|------|
 | `npm run slidev:dev -- <stem>` | 本地预览指定 deck（透传 `scripts/slidev-dev-deck.mjs`），浏览器路径形如 `/slides/<slug>/`。 |
-| `npm run slidev:build` | 构建全部 deck 到 `static/slides/`。 |
+| `npm run slidev:build` | 构建全部 deck 到 `website/static/slides/`。 |
 | `npm run slidev:sync-public` | 一次性从旧仓库同步 `public` 资源（见 `scripts/sync-slidev-public.mjs` 参数：`--resume`、`--skip-mp4`、`--mp4-only`）。 |
 
-若构建报资源缺失，在 `slidev/public/` 下补文件或改正文引用路径。
+若构建报资源缺失，在 `slides/public/` 下补文件或改正文引用路径。
 
 线上目录索引：<https://gad.soundoer.com/slides/>。
 
@@ -70,7 +70,7 @@ slidev/
 
 ## 3. 设计系统
 
-本节描述 **视觉意图** 与 **当前 CSS 实现**；二者不一致时，以 `slidev/styles/base.css` 与 `layouts/*.vue` 为准。
+本节描述 **视觉意图** 与 **当前 CSS 实现**；二者不一致时，以 `slides/styles/base.css` 与 `layouts/*.vue` 为准。
 
 ### 3.1 视觉定位
 
@@ -78,7 +78,7 @@ slidev/
 
 ### 3.2 配色（CSS 变量）
 
-定义于 `slidev/styles/base.css` 的 `:root`：
+定义于 `slides/styles/base.css` 的 `:root`：
 
 | Token | 色值 | 用途 |
 |-------|------|------|
@@ -160,7 +160,7 @@ slidev/
 
 ## 4. Layout 体系（本地）
 
-以下 7 个文件在 **`slidev/layouts/`**，在 frontmatter 写 `layout: <name>` 时**优先**于 Slidev 内置同名 layout 加载。
+以下 7 个文件在 **`slides/layouts/`**，在 frontmatter 写 `layout: <name>` 时**优先**于 Slidev 内置同名 layout 加载。
 
 画布逻辑尺寸：**1080 × 607**（16:9，由 `canvasWidth` 与比例推导）。
 
@@ -207,14 +207,14 @@ slidev/
 
 ### 4.8 Slidev 内置 layout（无本地文件时）
 
-若 `slidev/layouts/` 下**没有**同名 `.vue`，则使用 **`@slidev/client`**（及主题）自带实现，例如 **`default`**。本仓库已有全屏媒体 layout，正式样张优先使用 **`fullscreen-media`**。
+若 `slides/layouts/` 下**没有**同名 `.vue`，则使用 **`@slides/client`**（及主题）自带实现，例如 **`default`**。本仓库已有全屏媒体 layout，正式样张优先使用 **`fullscreen-media`**。
 
 ---
 
 ## 5. 正文与样式写法
 
 - **原子类**：Slidev 集成 **UnoCSS**，与 **Tailwind CSS** 文档兼容；优先 `class="..."`，少用行内 `style`（仅任意值临时对照等例外）。
-- **跨页且与默认主题冲突的排版**：写入 **`slidev/styles/base.css`**，选择器挂在 **`.slidev-layout`** 下，减轻对演讲者界面 chrome 的影响。
+- **跨页且与默认主题冲突的排版**：写入 **`slides/styles/base.css`**，选择器挂在 **`.slidev-layout`** 下，减轻对演讲者界面 chrome 的影响。
 - **单页一次性实验**：可在该页 md 底部使用 `<style scoped>`，**慎用**，避免复制扩散。
 - **点击步进**：讲解型 bullet 默认用 `<v-clicks>` 包裹，让列表逐条出现；只有需要同时比较、作为索引目录、或在 statement / cover / section 中承担整体陈述时，才让 bullet 一次性显示。多栏卡片若需要逐块出现，可在每个子 `<div>` 上写 `v-click`。
 - **链接与来源**：正文链接必须有可识别名称，不使用裸 URL 或「点击这里」；外部资料优先放在图注、说明牌或信息卡片中。若使用 HTML `<a>` 写外链，添加 `target="_blank" rel="noreferrer"`。
@@ -351,7 +351,7 @@ Principle
 </v-clicks>
 ```
 
-链接样式由 `slidev/styles/base.css` 中 `.slidev-layout a` 统一控制；不要在单页内临时改回浏览器默认蓝色链接。需要强调引用出处时，优先组合正文列表、`.caption`、`.caption-plate` 或 `.callout`，而不是把链接放进标题区。
+链接样式由 `slides/styles/base.css` 中 `.slidev-layout a` 统一控制；不要在单页内临时改回浏览器默认蓝色链接。需要强调引用出处时，优先组合正文列表、`.caption`、`.caption-plate` 或 `.callout`，而不是把链接放进标题区。
 
 **全屏媒体页**：
 
@@ -374,12 +374,12 @@ backgroundSize: cover
 
 ---
 
-## 6. 静态资源 `slidev/public/`
+## 6. 静态资源 `slides/public/`
 
-- **约定**：`pages/<stem>.md` 与 **`public/<stem>/`** 同名目录一一对应；该讲义用到的图片、音频等放入此目录。正文里用 **站点根路径**，例如 `/how-to-listen-sound/foo.png` 对应磁盘 `slidev/public/how-to-listen-sound/foo.png`。
+- **约定**：`pages/<stem>.md` 与 **`public/<stem>/`** 同名目录一一对应；该讲义用到的图片、音频等放入此目录。正文里用 **站点根路径**，例如 `/how-to-listen-sound/foo.png` 对应磁盘 `slides/public/how-to-listen-sound/foo.png`。
 - **`background:` / `image:`** 等 frontmatter 可写 **相对 `public/`** 的路径（无 leading `/`），与现稿一致。
 - **历史路径**：部分资源仍在 `public/src/<主题>/`，正文里常见 `/src/...`；共用游戏封面在 **`public/game-poster/`**，新稿优先 **`/game-poster/...`**。
-- 与讲稿增删同步提交 `slidev/public/` 下变更。
+- 与讲稿增删同步提交 `slides/public/` 下变更。
 
 ---
 

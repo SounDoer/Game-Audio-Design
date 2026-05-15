@@ -1,6 +1,6 @@
 # 参考 - GAD Docs Authoring
 
-本文件是 `docs/` 文章写作规范、模板和示例的真源。工作流规则与阶段门槛以 [SKILL.md](SKILL.md) 为准。
+本文件是 `website/docs/` 文章写作规范、模板和示例的真源。工作流规则与阶段门槛以 [SKILL.md](SKILL.md) 为准。
 
 项目级协作入口见 [`AGENTS.md`](../../../AGENTS.md)。
 
@@ -14,9 +14,9 @@
 
 以下文章是风格基准，生成内容时对照参考：
 
-- `docs/A-Thought-of-Designing-Sound-in-Game-Deconstruction-and-Modeling.md`
-- `docs/Listener-Centered-Dynamic-Wind-Audio-Design/Listener-Centered-Dynamic-Wind-Audio-Design.md`
-- `docs/A-Procedural-Way-of-Melee-Weapon-Whoosh-Sound-Design/A-Procedural-Way-of-Melee-Weapon-Whoosh-Sound-Design.md`
+- `website/docs/A-Thought-of-Designing-Sound-in-Game-Deconstruction-and-Modeling.md`
+- `website/docs/Listener-Centered-Dynamic-Wind-Audio-Design/Listener-Centered-Dynamic-Wind-Audio-Design.md`
+- `website/docs/A-Procedural-Way-of-Melee-Weapon-Whoosh-Sound-Design/A-Procedural-Way-of-Melee-Weapon-Whoosh-Sound-Design.md`
 
 风格要点：
 - 方法论导向，有清晰的分析框架。
@@ -59,7 +59,7 @@
 
 ## Draft 模板
 
-保存为 `drafts/draft-<slug>.md`。
+保存为 `website/drafts/draft-<slug>.md`。
 
 ```markdown
 # Draft - <文章标题>
@@ -67,18 +67,18 @@
 ## 目标
 
 - Slug: `<slug>`
-- Draft 文件: `drafts/draft-<slug>.md`
-- 正式文章路径: `docs/<Article-Title>/<Article-Title>.md`
+- Draft 文件: `website/drafts/draft-<slug>.md`
+- 正式文章路径: `website/docs/<Article-Title>/<Article-Title>.md`
 - 当前阶段: A / B / C
 
 ## 仓库状态
 
-- `drafts/draft-<slug>.md`: exists / missing / to update
-- `docs/<Article-Title>/<Article-Title>.md`: exists / missing / to create / to update
+- `website/drafts/draft-<slug>.md`: exists / missing / to update
+- `website/docs/<Article-Title>/<Article-Title>.md`: exists / missing / to create / to update
 - 相关现有文章:
-  - `docs/...`: none / path
+  - `website/docs/...`: none / path
 - 相关来源材料:
-  - `slidev/...`: none / path
+  - `slides/...`: none / path
   - 其他参考: none / path
 
 ## 文章主线
@@ -163,7 +163,7 @@ date: 2026-05-15
 
 ## 发布前检查清单
 
-- [ ] 正式路径是 `docs/<Article-Title>/<Article-Title>.md`，不是 `docs/<slug>.md`。
+- [ ] 正式路径是 `website/docs/<Article-Title>/<Article-Title>.md`，不是 `website/docs/<slug>.md`。
 - [ ] `<Article-Title>` 已由用户确认，或可从 draft 中明确得到。
 - [ ] `slug` 是 kebab-case。
 - [ ] `description` 是一句适合首页展示和分享的摘要。

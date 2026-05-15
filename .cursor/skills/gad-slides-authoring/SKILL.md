@@ -1,6 +1,6 @@
----
+﻿---
 name: gad-slides-authoring
-description: Use when preparing, rewriting, or maintaining Game-Audio-Design Slidev teaching decks, `slidev/pages/*.md` files, `slidev/drafts/*.md` outlines, or course slides for online `/slides/` pages. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slidev/pages、slidev/drafts。
+description: Use when preparing, rewriting, or maintaining Game-Audio-Design Slidev teaching decks, `slides/pages/*.md` files, `slides/drafts/*.md` outlines, or course slides for online `/slides/` pages. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slides/pages、slides/drafts。
 ---
 
 # GAD Slides Authoring
@@ -16,15 +16,15 @@ description: Use when preparing, rewriting, or maintaining Game-Audio-Design Sli
 ## 入口检查
 
 1. 识别目标 `stem`。
-   - 如果用户提供 `slidev/pages/<stem>.md`，使用该 `stem`。
+   - 如果用户提供 `slides/pages/<stem>.md`，使用该 `stem`。
    - 如果用户提供 draft 路径，用 `draft-<stem>.md` 推断 `stem`，并在本次会话中使用这个具体 draft。
-   - 如果用户只提供不带目录的 `draft-<stem>.md`，默认标准路径是 `slidev/drafts/draft-<stem>.md`；如果该文件不存在，在进入 B 或 C 前先询问实际路径。
+   - 如果用户只提供不带目录的 `draft-<stem>.md`，默认标准路径是 `slides/drafts/draft-<stem>.md`；如果该文件不存在，在进入 B 或 C 前先询问实际路径。
    - 如果没有具体 `stem` 或文档，先请用户确定；不要自行命名。
-   - active draft 是用户提供的 draft 路径；如果用户未提供，则是 `slidev/drafts/draft-<stem>.md`。
+   - active draft 是用户提供的 draft 路径；如果用户未提供，则是 `slides/drafts/draft-<stem>.md`。
 
 2. 检查目标在仓库中的状态。
-   - 检查 `slidev/pages/<stem>.md`。
-   - 检查 `slidev/public/<stem>/`。
+   - 检查 `slides/pages/<stem>.md`。
+   - 检查 `slides/public/<stem>/`。
    - 检查 active draft 路径。
    - 如果文件或文件夹缺失，记录为“待创建”或“缺少资源文件夹”；缺失文件不阻止 A，但可能阻止 B 或 C。
 
@@ -51,7 +51,7 @@ Interview the user relentlessly about every aspect of this plan until we reach a
 
 进入条件：
 - 已知目标 `stem`。
-- 已检查 `slidev/pages/<stem>.md`、`slidev/public/<stem>/` 和 active draft。
+- 已检查 `slides/pages/<stem>.md`、`slides/public/<stem>/` 和 active draft。
 
 流程：
 - 如果用户给了具体来源文档或现有 deck，先检查它；不要追问仓库中已经能回答的事实。
@@ -59,11 +59,11 @@ Interview the user relentlessly about every aspect of this plan until we reach a
 - 明确主线、案例、粗略章节结构和限制条件。
 
 退出产物：
-- 保存或更新 active draft。新建 draft 时，使用 `slidev/drafts/draft-<stem>.md`。
+- 保存或更新 active draft。新建 draft 时，使用 `slides/drafts/draft-<stem>.md`。
 - draft 必须包含目标 deck、仓库状态、专题主线、大纲、资源备注和开放问题。
 - 使用 [REFERENCE.md](REFERENCE.md) 中的模板。
 
-除非用户明确把任务切换到 C，且 Stage B 已经完成，否则不要在 Stage A 创建或重写 `slidev/pages/<stem>.md`。
+除非用户明确把任务切换到 C，且 Stage B 已经完成，否则不要在 Stage A 创建或重写 `slides/pages/<stem>.md`。
 
 ## Stage B - 逐页内容
 
@@ -94,7 +94,7 @@ Interview the user relentlessly about every aspect of this plan until we reach a
 
 ## Stage C - Slidev 实现
 
-目的：根据已确认的 page plan 实现 `slidev/pages/<stem>.md`。
+目的：根据已确认的 page plan 实现 `slides/pages/<stem>.md`。
 
 进入条件：
 - active draft 存在。
@@ -103,13 +103,13 @@ Interview the user relentlessly about every aspect of this plan until we reach a
 - “Confirmed” 指用户在你复述 page plan 后批准，或 draft 本身已将相关 slides 标为 `confirmed` / `placeholder`，且没有未解决的 `needs-user` 或 `blocked` 项。
 
 必读参考：
-- 读取并遵循 [`slidev/README.md`](../../../slidev/README.md)。
-- 读取并遵循 [`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)。
+- 读取并遵循 [`slides/README.md`](../../../slides/README.md)。
+- 读取并遵循 [`slides/pages/EXAMPLE.md`](../../../slides/pages/EXAMPLE.md)。
 - 不要在本 skill 中复述或覆盖它们的设计规则。
 
 流程：
-- 创建或更新 `slidev/pages/<stem>.md`。
-- 优先使用 `slidev/public/<stem>/` 中已有且合适的资产。
+- 创建或更新 `slides/pages/<stem>.md`。
+- 优先使用 `slides/public/<stem>/` 中已有且合适的资产。
 - 如果资产缺失或不合适，使用清晰的文字 placeholder，并保持 draft 中的资源清单准确。
 - 不要编造资源文件名、项目截图、引用或媒体细节。
 

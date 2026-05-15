@@ -19,8 +19,8 @@
 
 ## 专项 Skill 入口
 
-- `docs/` 正式文章与根目录 `drafts/draft-*.md` 草稿：使用 `.cursor/skills/gad-docs-authoring/`。
-- `slidev/pages/*.md` 课程讲稿与 `slidev/drafts/` 草稿：使用 `.cursor/skills/gad-slides-authoring/`。
+- `website/docs/` 正式文章与 `website/drafts/draft-*.md` 草稿：使用 `.cursor/skills/gad-docs-authoring/`。
+- `slides/pages/*.md` 课程讲稿与 `slides/drafts/` 草稿：使用 `.cursor/skills/gad-slides-authoring/`。
 
 ---
 
@@ -28,11 +28,10 @@
 
 ```
 Game-Audio-Design/
-  docs/          ← Astro 正式文章（.md 文件或同名目录）
-  drafts/        ← 新文章草稿：`draft-<slug>.md`
-  slidev/        ← Slidev：`pages/*.md` 每文件独立讲稿；构建见 `npm run slidev:build`；线上 `/slides/<slug>/`；目录页 `/slides/`（Astro）
-  static/        ← 静态资源
-  src/           ← 站点前端代码
+  website/      ← Astro 文章网站：`src/`、`docs/`、`drafts/`、`static/`
+  slides/       ← Slidev 课程讲稿：`pages/*.md`、`drafts/`、`public/`、layouts/components/styles
+  scripts/      ← 根目录共享构建脚本；`npm run slidev:build` 会输出到 `website/static/slides/`
+  README.md     ← 仓库级入口；网站说明见 `website/README.md`
   AGENTS.md      ← 本文件（项目级协作入口）
   CLAUDE.md      ← 指向本文件的兼容入口
   （若使用各工具的 agent 扩展，可能另有 `.claude/commands/` 等目录，以本地为准）
@@ -42,7 +41,7 @@ Game-Audio-Design/
 
 ## 代码语言
 
-`src/` 目录下所有代码内部一律使用英文，包括：
+`website/src/` 目录下所有代码内部一律使用英文，包括：
 
 - UI 文案（按钮、标签、提示文字、空态文案）
 - HTML 属性（`aria-label`、`alt`、`placeholder` 等）

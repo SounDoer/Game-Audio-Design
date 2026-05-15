@@ -2,11 +2,11 @@
 
 本文件只放模板和示例。工作流规则与阶段门槛以 [SKILL.md](SKILL.md) 为准。
 
-设计规范以 [`slidev/README.md`](../../../slidev/README.md) 为准。实现样例以 [`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md) 为准。
+设计规范以 [`slides/README.md`](../../../slides/README.md) 为准。实现样例以 [`slides/pages/EXAMPLE.md`](../../../slides/pages/EXAMPLE.md) 为准。
 
 ## Draft 模板
 
-保存为 `slidev/drafts/draft-<stem>.md`。
+保存为 `slides/drafts/draft-<stem>.md`。
 
 ```markdown
 # Draft - <deck 标题>
@@ -14,16 +14,16 @@
 ## 目标
 
 - Stem: `<stem>`
-- Slide 文件: `slidev/pages/<stem>.md`
-- 资源文件夹: `slidev/public/<stem>/`
+- Slide 文件: `slides/pages/<stem>.md`
+- 资源文件夹: `slides/public/<stem>/`
 - 当前阶段: A / B / C
 
 ## 仓库状态
 
-- `slidev/pages/<stem>.md`: exists / missing / to update
-- `slidev/public/<stem>/`: exists / missing / has usable assets
+- `slides/pages/<stem>.md`: exists / missing / to update
+- `slides/public/<stem>/`: exists / missing / has usable assets
 - 已有来源文档:
-  - `docs/...`: none / path
+  - `website/docs/...`: none / path
   - 其他参考: none / path
 
 ## 专题主线
@@ -91,9 +91,9 @@ placeholder 要暴露缺失的决策，不要把问题藏起来。
 ```markdown
 | Need | Existing asset | Placeholder | Status |
 |------|----------------|-------------|--------|
-| Loudness meter 截图 | `slidev/public/<stem>/loudness-meter.png` |  | usable |
+| Loudness meter 截图 | `slides/public/<stem>/loudness-meter.png` |  | usable |
 | Footstep layering 图示 |  | Text block: "diagram placeholder: layer stack" | missing |
-| Before/after audio demo | 仅有 `slidev/public/<stem>/dry.wav` | Need wet version | blocked |
+| Before/after audio demo | 仅有 `slides/public/<stem>/dry.wav` | Need wet version | blocked |
 ```
 
 ## 命令速查
