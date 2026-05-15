@@ -12,7 +12,8 @@
     "build": "npm run slidev:build && astro build website",
     "preview": "astro preview website",
     "check": "astro check --root website",
-    "test": "vitest run --config website/vitest.config.ts"
+    "test": "vitest run --config website/vitest.config.ts",
+    "verify:build-output": "node scripts/verify-build-output.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
