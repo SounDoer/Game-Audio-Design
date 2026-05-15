@@ -13,7 +13,7 @@ import {
   readFirstFrontmatterBlock,
   extractFirstH1,
   humanizeStem,
-} from '../slidev/deck-pages-shared.mjs';
+} from '../slides/deck-pages-shared.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -27,11 +27,11 @@ if (!stem) {
 const rows = listDeckPages(repoRoot);
 const row = rows.find((r) => r.stem === stem);
 if (!row) {
-  console.error(`Unknown deck stem "${stem}". Is it under slidev/pages/ and not excluded?`);
+  console.error(`Unknown deck stem "${stem}". Is it under slides/pages/ and not excluded?`);
   process.exit(1);
 }
 
-const pagePath = path.join(repoRoot, 'slidev', 'pages', `${stem}.md`);
+const pagePath = path.join(repoRoot, 'slides', 'pages', `${stem}.md`);
 const { raw, bodyAfter } = readFirstFrontmatterBlock(pagePath);
 /** @type {Array<[string, string]>} */
 const pairs = [];
@@ -59,11 +59,11 @@ const deckTitle =
   humanizeStem(stem);
 
 const entryName = `.deck-build-auto-${stem}.md`;
-const entryPath = path.join(repoRoot, 'slidev', entryName);
+const entryPath = path.join(repoRoot, 'slides', entryName);
 const md = buildDeckEntryMarkdown(repoRoot, stem, deckTitle);
 fs.writeFileSync(entryPath, md, 'utf8');
 
-const relEntry = path.join('slidev', entryName).split(path.sep).join('/');
+const relEntry = path.join('slides', entryName).split(path.sep).join('/');
 const base = `/slides/${row.slug}/`;
 
 console.log(`Starting Slidev for stem=${stem} slug=${row.slug} base=${base}`);

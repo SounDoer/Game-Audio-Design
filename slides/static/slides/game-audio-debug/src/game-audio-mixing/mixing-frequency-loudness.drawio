@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.2">
+  <diagram name="Page-1" id="x8fBk7MQE1kxmY3nRWrV">
+    <mxGraphModel dx="880" dy="1456" grid="1" gridSize="10" guides="0" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" value="A" parent="0" visible="0" />
+        <mxCell id="YIwaUXupgG63SPLAdWT4-1" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="960" as="sourcePoint" />
+            <mxPoint x="1720" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-2" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="960" as="sourcePoint" />
+            <mxPoint x="160" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-3" value="Loudness" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;" vertex="1" parent="1">
+          <mxGeometry x="174" y="106" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-4" value="Frequency" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="904" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-7" value="Music" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#6600CC);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=50;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="450" width="730" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-9" value="3P Gun Shot" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FF6666);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=50;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="360" width="940" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-8" value="1P Gun Shot" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FF0000);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=50;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="190" width="900" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-11" value="Explosion" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#3333FF);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=50;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="220" width="770" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-6" value="Ambience" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#CC6600);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=50;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="780" width="1360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-10" value="UI Critical" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFF00);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=50;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="130" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-13" value="B" parent="0" />
+        <mxCell id="YIwaUXupgG63SPLAdWT4-14" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" edge="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2080" y="960" as="sourcePoint" />
+            <mxPoint x="3640" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-15" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" edge="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2080" y="960" as="sourcePoint" />
+            <mxPoint x="2080" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-16" value="Loudness" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="2094" y="106" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-17" value="Frequency" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="3490" y="904" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-18" value="Music" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#6600CC);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=20;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;textOpacity=40;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="2730" y="450" width="730" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-19" value="3P Gun Shot" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FF6666);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=20;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;textOpacity=40;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="2430" y="360" width="940" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-20" value="1P Gun Shot" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FF0000);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=20;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;textOpacity=40;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="2500" y="190" width="900" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-21" value="Explosion" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#3333FF);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=20;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;textOpacity=40;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="2110" y="220" width="770" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-22" value="Ambience" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#CC6600);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=20;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;textOpacity=40;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="2160" y="780" width="1360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-23" value="UI Critical" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFF00);fontSize=36;fontStyle=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;strokeColor=none;opacity=20;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;textOpacity=40;" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="3140" y="130" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-24" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=5;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;dashed=1;" edge="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2080" y="956" as="sourcePoint" />
+            <mxPoint x="3050" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YIwaUXupgG63SPLAdWT4-26" value="Time" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontStyle=1" vertex="1" parent="YIwaUXupgG63SPLAdWT4-13">
+          <mxGeometry x="3053" y="113" width="100" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

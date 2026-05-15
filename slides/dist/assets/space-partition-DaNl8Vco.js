@@ -1,0 +1,1 @@
+var e=`/space-partition.svg`;export{e as t};

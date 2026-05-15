@@ -1,8 +1,8 @@
 /**
- * For each Slidev deck build, materialize a minimal slidev/public tree so Vite
+ * For each Slidev deck build, materialize a minimal slides/public tree so Vite
  * does not copy the full multi-deck asset library into every /static/slides/<slug>/.
  *
- * Source of truth stays: one slidev/public/ in the repo (unchanged layout).
+ * Source of truth stays: one slides/public/ in the repo (unchanged layout).
  */
 
 import fs from 'node:fs';
@@ -147,7 +147,7 @@ function copyIntoStaging(publicRoot, stagingRoot, relPosix) {
  */
 function collectSharedVuePublicPaths(repoRoot, out) {
   for (const sub of ['layouts', 'components']) {
-    const dir = path.join(repoRoot, 'slidev', sub);
+    const dir = path.join(repoRoot, 'slides', sub);
     if (!fs.existsSync(dir)) continue;
     for (const name of fs.readdirSync(dir)) {
       if (!name.endsWith('.vue')) continue;
@@ -158,19 +158,19 @@ function collectSharedVuePublicPaths(repoRoot, out) {
 }
 
 /**
- * Build slidev/.deck-public-staging with only assets needed for pages/<stem>.md.
+ * Build slides/.deck-public-staging with only assets needed for pages/<stem>.md.
  * @param {string} repoRoot
  * @param {string} stem
- * @returns {string} absolute path to staging directory (slidev/.deck-public-staging)
+ * @returns {string} absolute path to staging directory (slides/.deck-public-staging)
  */
 export function materializePublicSubsetStaging(repoRoot, stem) {
-  const publicRoot = path.join(repoRoot, 'slidev', 'public');
-  const stagingRoot = path.join(repoRoot, 'slidev', STAGING_NAME);
+  const publicRoot = path.join(repoRoot, 'slides', 'public');
+  const stagingRoot = path.join(repoRoot, 'slides', STAGING_NAME);
 
   rmrf(stagingRoot);
   fs.mkdirSync(stagingRoot, { recursive: true });
 
-  const pagePath = path.join(repoRoot, 'slidev', 'pages', `${stem}.md`);
+  const pagePath = path.join(repoRoot, 'slides', 'pages', `${stem}.md`);
   const full = fs.readFileSync(pagePath, 'utf8');
   const fmEnd = full.indexOf('\n---', 3);
   const body = fmEnd === -1 ? full : full.slice(fmEnd + 4);
@@ -195,20 +195,20 @@ export function materializePublicSubsetStaging(repoRoot, stem) {
 }
 
 /**
- * Swap slidev/public to subset for the duration of sync fn; always restores full public.
+ * Swap slides/public to subset for the duration of sync fn; always restores full public.
  * @param {string} repoRoot
  * @param {string} stem
  * @param {() => void} fn
  */
 export function withPublicSubset(repoRoot, stem, fn) {
-  const publicDir = path.join(repoRoot, 'slidev', 'public');
-  const backupDir = path.join(repoRoot, 'slidev', BACKUP_NAME);
-  const stagingMarker = path.join(repoRoot, 'slidev', STAGING_NAME);
+  const publicDir = path.join(repoRoot, 'slides', 'public');
+  const backupDir = path.join(repoRoot, 'slides', BACKUP_NAME);
+  const stagingMarker = path.join(repoRoot, 'slides', STAGING_NAME);
 
   if (fs.existsSync(backupDir)) rmrf(backupDir);
   materializePublicSubsetStaging(repoRoot, stem);
   if (!fs.existsSync(publicDir)) {
-    throw new Error('[prepare-slidev-public-subset] slidev/public missing before swap');
+    throw new Error('[prepare-slidev-public-subset] slides/public missing before swap');
   }
 
   fs.renameSync(publicDir, backupDir);

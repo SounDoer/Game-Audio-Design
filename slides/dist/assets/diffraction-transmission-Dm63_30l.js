@@ -1,0 +1,1 @@
+var e=`/diffraction-transmission.svg`;export{e as t};

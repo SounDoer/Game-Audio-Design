@@ -1,5 +1,5 @@
 /**
- * Build each Slidev deck from slidev/pages/*.md into static/slides/<slug>/
+ * Build each Slidev deck from slides/pages/*.md into static/slides/<slug>/
  */
 
 import { spawnSync } from 'node:child_process';
@@ -12,7 +12,7 @@ import {
   readFirstFrontmatterBlock,
   extractFirstH1,
   humanizeStem,
-} from '../slidev/deck-pages-shared.mjs';
+} from '../slides/deck-pages-shared.mjs';
 import { withPublicSubset } from './prepare-slidev-public-subset.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -23,7 +23,7 @@ function rmrf(dir) {
 }
 
 function deckListTitleForStem(repoRoot, stem) {
-  const filePath = path.join(repoRoot, 'slidev', 'pages', `${stem}.md`);
+  const filePath = path.join(repoRoot, 'slides', 'pages', `${stem}.md`);
   const { raw, bodyAfter } = readFirstFrontmatterBlock(filePath);
   /** @type {Array<[string, string]>} */
   const pairs = [];
@@ -61,14 +61,14 @@ for (const row of rows) {
   const { stem, slug } = row;
   const deckTitle = deckListTitleForStem(repoRoot, stem);
   const entryName = `.deck-build-auto-${stem}.md`;
-  const entryPath = path.join(repoRoot, 'slidev', entryName);
+  const entryPath = path.join(repoRoot, 'slides', entryName);
   const md = buildDeckEntryMarkdown(repoRoot, stem, deckTitle);
   fs.writeFileSync(entryPath, md, 'utf8');
 
   const outDir = path.join(outRoot, slug);
   rmrf(outDir);
   const base = `/slides/${slug}/`;
-  const relEntry = path.join('slidev', entryName).split(path.sep).join('/');
+  const relEntry = path.join('slides', entryName).split(path.sep).join('/');
 
   let status = 0;
   withPublicSubset(repoRoot, stem, () => {

@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.11">
+  <diagram name="Page-1" id="EEytKLQ9o5RP3dy8__cd">
+    <mxGraphModel dx="2074" dy="1121" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rhhC_Ako3J8bRTdagBws-8" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#CC0000);strokeColor=none;opacity=20;" parent="1" vertex="1">
+          <mxGeometry x="760" y="190" width="400" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-10" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#006633);strokeColor=none;opacity=20;" parent="1" vertex="1">
+          <mxGeometry x="360" y="260" width="780" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-11" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#004C99);strokeColor=none;opacity=20;" parent="1" vertex="1">
+          <mxGeometry x="790" y="520" width="770" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=6;dashed=1;opacity=75;" parent="1" source="rhhC_Ako3J8bRTdagBws-4" target="rhhC_Ako3J8bRTdagBws-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-4" value="设计需求" style="rounded=1;whiteSpace=wrap;html=1;fontSize=36;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;verticalAlign=middle;fillColor=none;fontStyle=1;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="80" y="480" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-6" value="游戏表现" style="rounded=1;whiteSpace=wrap;html=1;fontSize=36;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;verticalAlign=middle;fillColor=none;fontStyle=1;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="480" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-13" value="数字音频工作站" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;" parent="1" vertex="1">
+          <mxGeometry x="610" y="260" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-14" value="游戏音频中间件" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;" parent="1" vertex="1">
+          <mxGeometry x="860" y="205" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-15" value="游戏引擎" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;" parent="1" vertex="1">
+          <mxGeometry x="1130" y="743" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-1" value="音频数据" style="rounded=1;whiteSpace=wrap;html=1;fontSize=36;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;verticalAlign=top;fontStyle=1;fillColor=light-dark(#FFFFFF,#990000);strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="820" y="340" width="280" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-2" value="声音资源" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;verticalAlign=middle;fillColor=none;fontStyle=0;align=center;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="880" y="430" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-3" value="实现逻辑" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;verticalAlign=middle;fillColor=none;fontStyle=0;align=center;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="880" y="560" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-27" value="line" parent="0" />
+        <mxCell id="rhhC_Ako3J8bRTdagBws-20" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeColor=default;curved=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;endSize=10;" parent="rhhC_Ako3J8bRTdagBws-27" source="rhhC_Ako3J8bRTdagBws-4" target="rhhC_Ako3J8bRTdagBws-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="590" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-21" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;curved=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;endSize=10;" parent="rhhC_Ako3J8bRTdagBws-27" source="rhhC_Ako3J8bRTdagBws-4" target="rhhC_Ako3J8bRTdagBws-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-22" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;curved=1;endSize=10;" parent="rhhC_Ako3J8bRTdagBws-27" source="rhhC_Ako3J8bRTdagBws-6" target="rhhC_Ako3J8bRTdagBws-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="1170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-25" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=3;curved=1;endSize=10;" parent="rhhC_Ako3J8bRTdagBws-27" source="rhhC_Ako3J8bRTdagBws-6" target="rhhC_Ako3J8bRTdagBws-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1410" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-26" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=3;curved=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;endSize=10;" parent="rhhC_Ako3J8bRTdagBws-27" source="rhhC_Ako3J8bRTdagBws-6" target="rhhC_Ako3J8bRTdagBws-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1672" y="610" as="sourcePoint" />
+            <mxPoint x="1010" y="660" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1430" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rhhC_Ako3J8bRTdagBws-23" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;curved=1;endSize=10;" parent="rhhC_Ako3J8bRTdagBws-27" source="rhhC_Ako3J8bRTdagBws-1" target="rhhC_Ako3J8bRTdagBws-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1210" y="435" as="sourcePoint" />
+            <mxPoint x="1570" y="450" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1400" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
