@@ -9,7 +9,7 @@
     "slidev:dev": "node scripts/slidev-dev-deck.mjs",
     "slidev:sync-public": "node scripts/sync-slidev-public.mjs --resume",
     "slidev:build": "node scripts/build-slidev-decks.mjs",
-    "build": "npm run slidev:build && astro build",
+    "build": "npm run slidev:build && astro build website",
     "preview": "astro preview website",
     "check": "astro check --root website",
     "test": "vitest run --config website/vitest.config.ts"

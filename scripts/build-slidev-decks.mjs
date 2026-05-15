@@ -1,5 +1,5 @@
 /**
- * Build each Slidev deck from slides/pages/*.md into static/slides/<slug>/
+ * Build each Slidev deck from slides/pages/*.md into website/static/slides/<slug>/
  */
 
 import { spawnSync } from 'node:child_process';
@@ -53,7 +53,7 @@ function deckListTitleForStem(repoRoot, stem) {
 }
 
 const rows = listDeckPages(repoRoot);
-const outRoot = path.join(repoRoot, 'static', 'slides');
+const outRoot = path.join(repoRoot, 'website', 'static', 'slides');
 rmrf(outRoot);
 fs.mkdirSync(outRoot, { recursive: true });
 
@@ -87,4 +87,4 @@ for (const row of rows) {
   }
 }
 
-console.log(`Built ${rows.length} Slidev decks into static/slides/`);
+console.log(`Built ${rows.length} Slidev decks into website/static/slides/`);
