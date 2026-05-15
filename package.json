@@ -4,15 +4,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev website",
+    "start": "astro dev website",
     "slidev:dev": "node scripts/slidev-dev-deck.mjs",
     "slidev:sync-public": "node scripts/sync-slidev-public.mjs --resume",
     "slidev:build": "node scripts/build-slidev-decks.mjs",
     "build": "npm run slidev:build && astro build",
-    "preview": "astro preview",
-    "check": "astro check",
-    "test": "vitest run"
+    "preview": "astro preview website",
+    "check": "astro check --root website",
+    "test": "vitest run --config website/vitest.config.ts"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",

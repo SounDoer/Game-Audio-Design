@@ -1,0 +1,1 @@
+var e=`/slides/audio-spatialization/object-based-positioning.svg`;export{e as t};

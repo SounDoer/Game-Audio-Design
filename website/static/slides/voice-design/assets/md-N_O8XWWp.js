@@ -1,0 +1,4 @@
+import{I as e,_ as t,dt as n,g as r,h as i,pt as a,q as o,w as s}from"./modules/shiki-Bs8bxVnK.js";import{J as c,Y as l}from"./index-DsME_d9b.js";import{t as u}from"./header-body-Cq2e5zni.js";var d={__name:`voice-design.md__slidev_6`,setup(d){let{$slidev:f,$nav:p,$clicksContext:m,$clicks:h,$page:g,$renderContext:_,$frontmatter:v}=l();return m.setup(),(l,d)=>(e(),r(u,a(s(n(c)(n(v),5))),{body:o(e=>[...d[0]||=[i(`div`,{class:`flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center`},[t(`
+- Voice Line Property
+- The Whole Pipeline Graph
+`)],-1)]]),default:o(()=>[d[1]||=i(`h3`,null,`语音设计管线`,-1),d[2]||=i(`p`,null,`Pipeline Overview Graph`,-1)]),_:1},16))}};export{d as default};
