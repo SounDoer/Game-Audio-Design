@@ -46,9 +46,9 @@ describe('website repository layout', () => {
   it('points root Astro commands at the website project root', () => {
     const scripts = readPackageJson().scripts ?? {};
 
-    expect(scripts.dev).toBe('astro dev website');
-    expect(scripts.start).toBe('astro dev website');
-    expect(scripts.preview).toBe('astro preview website');
+    expect(scripts.dev).toBe('astro dev --root website');
+    expect(scripts.start).toBe('astro dev --root website');
+    expect(scripts.preview).toBe('astro preview --root website');
     expect(scripts.check).toBe('astro check --root website');
   });
 });
