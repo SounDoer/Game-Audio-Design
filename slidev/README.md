@@ -395,5 +395,6 @@ backgroundSize: cover
 
 ## 8. 与站点、文章规范的关系
 
-- 站点根说明与文章写作规范见仓库 **`AGENTS.md`**。
-- 幻灯口播与演讲者备注可与文章语气不同，但 **Wwise、Unreal Engine** 等术语表建议与 `AGENTS.md` 一致。
+- 站点项目级说明见仓库 **`AGENTS.md`**。
+- 文章写作规范见 **`.cursor/skills/gad-docs-authoring/REFERENCE.md`**。
+- 幻灯口播与演讲者备注可与文章语气不同，但 **Wwise、Unreal Engine** 等术语写法建议与文章写作规范一致。
