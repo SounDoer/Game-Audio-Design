@@ -1,74 +1,130 @@
 ---
 name: gad-slides-authoring
-description: Use when preparing, rewriting, or maintaining Game-Audio-Design Slidev teaching decks, `slidev/pages/*.md` files, online `/slides/` pages, or adapting game-audio articles into course slides. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slidev/pages、gad 在线展示幻灯。
+description: Use when preparing, rewriting, or maintaining Game-Audio-Design Slidev teaching decks, `slidev/pages/*.md` files, `slidev/drafts/*.md` outlines, or course slides for online `/slides/` pages. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slidev/pages、slidev/drafts。
 ---
 
 # GAD Slides Authoring
 
-## Session entry（必须先做）
+## 核心规则
 
-1. **锁定目标文稿**  
-   - 若用户已给出具体路径或文件（例如 `slidev/pages/<stem>.md`、某篇 `docs/*.md` 要改编为幻灯），直接进入后续流程。  
-   - **若未提供**：不要假设、不要起草；**先问一句**：本轮要改 / 新建的是哪一个 md（或是否从某篇长文改编），请用户指明路径或 stem。
+使用三阶段工作流：**A 大纲 -> B 逐页内容 -> C Slidev 实现**。
 
-2. **讨论方式（与 grill-me 对齐）**  
-   在达成共同理解之前，**不要**一上来就输出你自己的完整想法、大纲或页表。  
-   改为持续访谈，直到双方在受众、主线、产出与约束上对齐。
+在 B 阶段形成 confirmed page plan 之前，不要跳到 C。除非用户明确授权你起草缺失内容，否则不要凭想象补写 B 阶段内容。
 
-   **访谈的第一题（须在已锁定目标文稿之后；若上一节刚问过「改哪一个 md」，下一题即本条）：** 用**单独一条消息里的一个问题**问用户：当前对这套幻灯是否已有初步想法（想讲透的主线、必须出现的案例、想避开的误区、对听众的先验假设等）。  
-   - **若对方有想法**：后续问题**顺着其叙述往下拆**——补齐依赖、澄清含糊处、对将与 Slidev 落地相关的约束做推敲；仍保持 **一题一问**，每题给出你的推荐答案。  
-   - **若对方没有或想法很空**：再据你对题材与仓库语境的理解，**仍以一题一问**抛出你认为合适的切入问题（每题附带推荐答案），展开 design tree；**不要**在未问清「有无想法」之前就先抛一串你自己的方案。
+用户可以从 A、B、C 任意阶段进入。继续之前，先检查上游产物是否存在且足够具体；如果缺失，就退回对应阶段补齐。
 
-   Interview the user relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. **For each question, provide your recommended answer.**
+## 入口检查
 
-   **Ask the questions one at a time.**
+1. 识别目标 `stem`。
+   - 如果用户提供 `slidev/pages/<stem>.md`，使用该 `stem`。
+   - 如果用户提供 draft 路径，用 `draft-<stem>.md` 推断 `stem`，并在本次会话中使用这个具体 draft。
+   - 如果用户只提供不带目录的 `draft-<stem>.md`，默认标准路径是 `slidev/drafts/draft-<stem>.md`；如果该文件不存在，在进入 B 或 C 前先询问实际路径。
+   - 如果没有具体 `stem` 或文档，先请用户确定；不要自行命名。
+   - active draft 是用户提供的 draft 路径；如果用户未提供，则是 `slidev/drafts/draft-<stem>.md`。
 
-   **If a question can be answered by exploring the codebase, explore the codebase instead**（例如现有 deck 的 stem、`deck-order.txt`、layout 约定、同主题已有页），不要为可自查的信息反复追问用户。
+2. 检查目标在仓库中的状态。
+   - 检查 `slidev/pages/<stem>.md`。
+   - 检查 `slidev/public/<stem>/`。
+   - 检查 active draft 路径。
+   - 如果文件或文件夹缺失，记录为“待创建”或“缺少资源文件夹”；缺失文件不阻止 A，但可能阻止 B 或 C。
 
-3. 对齐后再进入 **一级大纲 → 二级要点 → 每节建议页型**（可由你整理成文，但须在用户确认或迭代后再写 Slidev）。
+3. 确认当前阶段。
+   - A：用户想讨论专题、想法、结构或教学大纲。
+   - B：用户已有大纲，想确定每页 slide 的文字、媒体和布局。
+   - C：用户已有 confirmed page plan，想制作实际的 Slidev 页面。
 
-## Quick start（在 Session entry 之后）
+进入 B 或 C 时，先读取 active draft，并向用户简短复述当前状态，再继续。
 
-1. 在已锁定文件或 stem 的前提下，按 **Session entry §2** 完成「有无想法」首题与后续单题访谈；其间自然覆盖 **audience**、**时长**、**学习目标**与先修假设（见 [REFERENCE.md](REFERENCE.md) 开场清单）；若用户未说明，先按 REFERENCE **「本仓库默认语境」** 假设，并用**单题**方式确认是否覆盖。
-2. 访谈与对齐完成后，再产出结构化大纲；确认后再写 Slidev。
-3. 在 `slidev/pages/<stem>.md` 中实现；设计规范以 **[`slidev/README.md`](../../../slidev/README.md)** 为单一真源，实际写法以 **[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)** 为标准样张；收尾验证见 **Phase D**（默认 `npm run slidev:build`）。
+## 讨论方式
 
-## Workflows
+当决策不清楚时，使用 grill-me 方式：
 
-### Phase A — 大纲（讨论优先）
+Interview the user relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. **For each question, provide your recommended answer.**
 
-- 先定 **一个核心问题** 或 **一条方法论主线**，避免知识点堆砌；通过**单题访谈**推进，而非一次性抛整份草案。
-- 追问：学生课后能 **做出什么** 或 **解释什么**（可观察产出）。
-- 仅在双方对齐后输出：树状大纲 + 每章 **预估页数** + 建议 **layout**；layout、slot、class 与视觉规则一律查 **[`slidev/README.md`](../../../slidev/README.md)**，具体 Markdown 写法参照 **[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)**。
+**Ask the questions one at a time.**
 
-### Phase B — 逐页内容表（不写 Slidev 之前）
+**If a question can be answered by exploring the codebase, explore the codebase instead.**
 
-- **何时必须先产出页表**（对话里 Markdown 表格即可，见 [REFERENCE.md](REFERENCE.md) 示例）：**新建** `slidev/pages/<stem>.md`；或本轮改动预计 **新增 / 重写合计超过约 10 页**；或 **大段重排**（章节顺序调整、批量改 layout、整段替换结构）。**可跳过页表**：单页文案微调、错字、个别路径 / frontmatter、纯样式小改。
-- 为每一页填：**标题（中文）**、可选 **英文眉标 / 副标题**、**要点 bullets**、**媒体需求**（图/音/视频路径占位）；具体 slot 写法以 **[`slidev/README.md`](../../../slidev/README.md)** 与 **[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)** 为准。
-- 标 **演讲者备注**（`<!-- ... -->`）里要写什么（案例、时间、演示步骤）。
-- 与用户对齐 **信息密度**：课堂可更口语、线上版宜更自洽。
+## Stage A - 大纲
 
-### Phase C — 正式 Slidev 实现
+目的：把一个专题或粗略想法整理成清晰的教学大纲。
 
-- **新建 deck**：在 `slidev/pages/<stem>.md` 建文件；静态资源放 `slidev/public/<stem>/`（与 md **同名目录**）；若需目录排序，把 stem 加入 `slidev/deck-order.txt`；需要可改首张 frontmatter 的 `slug:`、`deckListTitle:`、`slidesOrder:`（见 README §1）。**默认不参与构建的 stem**（`cover`、`intro`、`fin`）见 `slidev/deck-pages-shared.mjs` 的 `EXCLUDED_STEMS`；若要上线该套，需从常量中移除并视情况写入 `deck-order.txt`。
-- **系统级配置**不复制进每页：字体、过渡等以 `slidev/deck-entry-header.in.yaml` 为准。
-- **版式**：不要在 skill 内复述设计规范；class、行内样式、跨页样式与局部组件的取舍以 **[`slidev/README.md`](../../../slidev/README.md)** 为准。
-- **长文站点**：正文写作规范见仓库根目录 `AGENTS.md`；幻灯口播/备注可与文章语气区分，但术语表仍建议一致。
+进入条件：
+- 已知目标 `stem`。
+- 已检查 `slidev/pages/<stem>.md`、`slidev/public/<stem>/` 和 active draft。
 
-### Phase D — 收尾
+流程：
+- 如果用户给了具体来源文档或现有 deck，先检查它；不要追问仓库中已经能回答的事实。
+- 如果专题仍然模糊，使用一问一答的 grill-me 讨论。
+- 明确主线、案例、粗略章节结构和限制条件。
 
-- **默认（仅幻灯 / Slidev 相关）**：`npm run slidev:build`；修复断链与 layout 槽位错误（`cover` / `section` / `header-body`：`::eyebrow::` 可选，`::title::` + `header-body` 另需 `::body::`）。
-- **同次会话还改了** `src/`、`astro.config.*`、或会影响站点的脚本 / 类型时：在 `slidev:build` 之外补跑 **`npm run check`**；合并前若需与线上一致，可再跑 **`npm run build`**（见根目录 `package.json`）。
-- 本地单套预览：`npm run slidev:dev -- <stem>`（见 README §2）。
-- 若从旧仓同步 `public` 资源，按 README 使用 `npm run slidev:sync-public`（如工作流需要）。
+退出产物：
+- 保存或更新 active draft。新建 draft 时，使用 `slidev/drafts/draft-<stem>.md`。
+- draft 必须包含目标 deck、仓库状态、专题主线、大纲、资源备注和开放问题。
+- 使用 [REFERENCE.md](REFERENCE.md) 中的模板。
 
-## Advanced / deep reference
+除非用户明确把任务切换到 C，且 Stage B 已经完成，否则不要在 Stage A 创建或重写 `slidev/pages/<stem>.md`。
 
-- 流程与路径摘要、Phase B 门槛、**反模式 / 易踩坑**、**完成前验证**：[REFERENCE.md](REFERENCE.md)
-- **设计规范唯一真源**（目录、设计系统、layout、class、字体字号颜色、资源、构建与产物）：[`slidev/README.md`](../../../slidev/README.md)
-- **标准实现参考**（可复制的 Markdown 写法与页面组织）：[`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)
+## Stage B - 逐页内容
 
-## Collaboration notes
+目的：把大纲转化为已确认的逐页计划。
 
-- 三阶段常 **回退迭代**：新页可能倒逼大纲调整，在 skill 流程里属正常。
-- 需要发散创意时，可并行使用仓库或个人的 **brainstorming** 类 skill；本 skill 在 **未对齐前** 仍以单题访谈为主，对齐后再由本 skill **落到 Slidev 结构与规范**。
+进入条件：
+- active draft 存在。
+- Stage A 大纲已经具体到可以拆分为 slides。
+- 你已经读取 draft，并向用户确认过你的理解。
+
+硬门槛：
+- 除非用户明确授权你起草缺失内容，否则不要自行填充 slide 文案、论点、案例或媒体选择。
+- 如果内容缺失，在 draft 中写 placeholder、问题或 `TBD`。
+- “直接开始”“快一点”“按大纲做成 slides”这类请求，不足以授权你编写缺失论点、案例、媒体、引用或资源路径。
+- “帮我补每页内容”只授权你起草可见文字；不确定的事实、案例和媒体仍要保留为 placeholder 或问题。如果授权范围不清楚，继续追问。
+
+流程：
+- 和用户一起确定每页 slide 的标题、目的、可见文字、媒体需求、layout intent 和 speaker note intent。
+- 当某页内容依赖未解决的决策时，使用一问一答的 grill-me 讨论。
+- 更新同一个 active draft；不要只把页表散落在聊天记录里。
+
+退出产物：
+- active draft 包含足够进入实现的 page table。
+- 缺失媒体或未决内容被明确标注。
+- page table 只有在每页都具备 purpose、visible title、key text 或明确 placeholder、layout intent、media status，并且状态为 `confirmed` 或 `placeholder` 时，才算足够进入实现。标记为 `needs-user` 或 `blocked` 的页面必须先由用户解决；除非用户明确要求把它们作为 placeholder 实现。
+
+除非用户明确把任务切换到 C，且 page table 已足够完整，否则不要在 Stage B 实现 Slidev 页面。
+
+## Stage C - Slidev 实现
+
+目的：根据已确认的 page plan 实现 `slidev/pages/<stem>.md`。
+
+进入条件：
+- active draft 存在。
+- draft 包含 confirmed page table。
+- 你已经读取 draft，并向用户确认过 page plan 和缺失资源。
+- “Confirmed” 指用户在你复述 page plan 后批准，或 draft 本身已将相关 slides 标为 `confirmed` / `placeholder`，且没有未解决的 `needs-user` 或 `blocked` 项。
+
+必读参考：
+- 读取并遵循 [`slidev/README.md`](../../../slidev/README.md)。
+- 读取并遵循 [`slidev/pages/EXAMPLE.md`](../../../slidev/pages/EXAMPLE.md)。
+- 不要在本 skill 中复述或覆盖它们的设计规则。
+
+流程：
+- 创建或更新 `slidev/pages/<stem>.md`。
+- 优先使用 `slidev/public/<stem>/` 中已有且合适的资产。
+- 如果资产缺失或不合适，使用清晰的文字 placeholder，并保持 draft 中的资源清单准确。
+- 不要编造资源文件名、项目截图、引用或媒体细节。
+
+验证：
+- 对 Slidev 做实质性编辑后，运行 `npm run slidev:build`。
+- 如果任务还修改了站点代码、配置或构建脚本，按仓库要求运行更广的检查。
+- 除非实际运行并看到成功结果，否则不要声称构建或检查已通过。
+
+## 参考边界
+
+`SKILL.md` 是工作流规则和阶段门槛的真源。
+
+[REFERENCE.md](REFERENCE.md) 只包含可复用模板和示例：
+- draft 文件模板
+- page table 字段
+- placeholder 示例
+- 资源状态示例
+- 命令速查
