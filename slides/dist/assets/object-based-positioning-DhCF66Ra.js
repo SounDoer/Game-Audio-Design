@@ -1,1 +1,0 @@
-var e=`/object-based-positioning.svg`;export{e as t};

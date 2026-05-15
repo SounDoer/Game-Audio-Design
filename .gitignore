@@ -14,6 +14,11 @@
 /slidev/.deck-build-auto-*.md
 /slidev/.deck-public-staging
 /slidev/public.__full__
+/slides/static
+/slides/dist
+/slides/.deck-build-auto-*.md
+/slides/.deck-public-staging
+/slides/public.__full__
 
 # Generated files
 .astro

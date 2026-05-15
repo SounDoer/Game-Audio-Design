@@ -1,1 +1,0 @@
-var e=`/sound-attenuation.svg`;export{e as t};
