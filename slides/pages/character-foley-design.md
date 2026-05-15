@@ -23,7 +23,7 @@ layout: header-body
 
 <div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center">
 
-<p class="text-sm opacity-70">演示视频已迁出 <code>slidev/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
+<p class="text-sm opacity-70">演示视频已迁出 <code>slides/public</code>（见仓库 <code>vidTemp/</code>），此处暂不内嵌播放以减小 CI 构建体积。</p>
 
 </div>
 

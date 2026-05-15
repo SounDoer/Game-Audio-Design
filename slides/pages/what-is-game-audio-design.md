@@ -256,7 +256,7 @@ Audio
 </div>
 
 <!--
-配图：Field recording / Foley 幕后或现场素材（放入 slidev/public/what-is-game-audio-design/ 后可用 `layout: header-body` 的 `::body::` 内 `flex` + 居中 + `img` 约束，或本地 `layout: fullscreen-media`）
+配图：Field recording / Foley 幕后或现场素材（放入 slides/public/what-is-game-audio-design/ 后可用 `layout: header-body` 的 `::body::` 内 `flex` + 居中 + `img` 约束，或本地 `layout: fullscreen-media`）
 -->
 
 ---
@@ -558,7 +558,7 @@ Design
 </div>
 
 <!--
-配图：全屏案例图可改为 layout: fullscreen-media，frontmatter 设 image: /你的路径（放在 slidev/public/what-is-game-audio-design/ 下时与 background 写法一致）
+配图：全屏案例图可改为 layout: fullscreen-media，frontmatter 设 image: /你的路径（放在 slides/public/what-is-game-audio-design/ 下时与 background 写法一致）
 -->
 
 ---
@@ -588,7 +588,7 @@ Design
 </div>
 
 <!--
-配图：全屏案例图可改为 layout: fullscreen-media，frontmatter 设 image: /你的路径（放在 slidev/public/what-is-game-audio-design/ 下时与 background 写法一致）
+配图：全屏案例图可改为 layout: fullscreen-media，frontmatter 设 image: /你的路径（放在 slides/public/what-is-game-audio-design/ 下时与 background 写法一致）
 -->
 
 ---
