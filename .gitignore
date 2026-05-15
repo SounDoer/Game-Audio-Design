@@ -1,5 +1,6 @@
 # Dependencies
 /node_modules
+/website/node_modules
 
 # Production
 /build
@@ -7,6 +8,7 @@
 # Slidev build output (copied into Astro static dir)
 /static/slidev
 /static/slides
+/website/static/slides
 /slidev/static
 /slidev/dist
 /slidev/.deck-build-auto-*.md

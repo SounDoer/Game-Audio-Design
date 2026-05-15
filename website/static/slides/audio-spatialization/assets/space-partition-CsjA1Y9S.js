@@ -1,1 +1,0 @@
-var e=`/slides/audio-spatialization/space-partition.svg`;export{e as t};

@@ -1,1 +1,0 @@
-var e=`/slides/audio-spatialization/diffraction-transmission.svg`;export{e as t};

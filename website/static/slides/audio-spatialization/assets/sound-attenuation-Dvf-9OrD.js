@@ -1,1 +1,0 @@
-var e=`/slides/audio-spatialization/sound-attenuation.svg`;export{e as t};
