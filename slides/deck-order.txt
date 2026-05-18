@@ -15,5 +15,6 @@ music-design
 voice-design
 cinematic-sound-design
 ai-in-game-audio
+ai-in-game-audio-design-2026
 game-audio-mixing
 game-audio-debug
