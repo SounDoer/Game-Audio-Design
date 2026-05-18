@@ -45,6 +45,10 @@ Interview the user relentlessly about every aspect of this plan until we reach a
 
 **If a question can be answered by exploring the codebase, explore the codebase instead.**
 
+默认按 GAD 网站读者和在线 Slidev deck 语境推进。不要开场询问目标受众、授课时长或难度等级；只有用户明确在做线下课、直播课、工作坊，或这些信息会直接改变 deck 结构时，才把它们作为决策问题。
+
+在 A/B 讨论阶段，除非用户明确说暂停、先到这里或不要继续问，每次回答或更新 draft 后都要继续推进一个最小决策：提出一个具体问题，并给出推荐答案。用户说“可以，先这样”时，理解为确认当前建议并继续下一个最小决策。
+
 ## Stage A - 大纲
 
 目的：把一个专题或粗略想法整理成清晰的教学大纲。
@@ -57,6 +61,7 @@ Interview the user relentlessly about every aspect of this plan until we reach a
 - 如果用户给了具体来源文档或现有 deck，先检查它；不要追问仓库中已经能回答的事实。
 - 如果专题仍然模糊，使用一问一答的 grill-me 讨论。
 - 明确主线、案例、粗略章节结构和限制条件。
+- 不要默认规划整体或各章节分钟数；只有用户明确要求演讲排练、直播课、工作坊或课堂时长控制时，才讨论时间分配。
 
 退出产物：
 - 保存或更新 active draft。新建 draft 时，使用 `slides/drafts/draft-<stem>.md`。
@@ -83,6 +88,7 @@ Interview the user relentlessly about every aspect of this plan until we reach a
 流程：
 - 和用户一起确定每页 slide 的标题、目的、可见文字、媒体需求、layout intent 和 speaker note intent。
 - 当某页内容依赖未解决的决策时，使用一问一答的 grill-me 讨论。
+- 优先推进内容结构、案例、可见文字、媒体和 layout intent；不要把每页或每章时长当作默认讨论项。
 - 更新同一个 active draft；不要只把页表散落在聊天记录里。
 
 退出产物：
