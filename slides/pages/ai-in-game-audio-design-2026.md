@@ -205,7 +205,7 @@ Voice
 
 ::title::
 
-### Qwen 语音音色 Demo
+### Qwen 语音音色
 
 ::body::
 
@@ -276,10 +276,10 @@ Music
   </a>
   <div class="min-h-0 min-w-0">
     <ul>
-      <li><strong>Text to Song</strong>：用自然语言描述音乐方向</li>
+      <li><strong>Text to Music</strong>：用自然语言描述音乐方向</li>
       <li><strong>Prompt Control</strong>：风格、情绪和结构等关键词控制</li>
       <li><strong>Use Reference</strong>：指定音乐片段作为参考</li>
-      <li><strong>Stems in Studio</strong>：DAW 式的分轨编辑方式</li>
+      <li><strong>Music to Stems</strong>：DAW 式的分轨编辑方式</li>
     </ul>
   </div>
 </div>
@@ -359,44 +359,23 @@ Music
 layout: header-body
 ---
 
-::backdrop::
-
-SFX
-
 ::eyebrow::
 
-SFX
+Text-to-Audio
 
 ::title::
 
-### ElevenLabs Sound Effects：用文字生成音效
+### ElevenLabs: Text-to-Audio
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>可以尝试的声音类型</h4>
-    <ul>
-      <li v-click>短音效与 utility SFX</li>
-      <li v-click>foley、ambience、UI sound</li>
-      <li v-click>机械、魔法、科幻等概念声音</li>
-      <li v-click>给后续声音设计提供起点或变体</li>
-    </ul>
-  </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: ElevenLabs Sound Effects 截图 / demo</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">重点讲产品化程度相对高的生成入口。</p>
-  </div>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" :src="'ai-in-game-audio-design-2026/elevenlabs-text-to-audio.mp4'" controls preload="metadata"></video>
 </div>
 
 ---
 layout: header-body
 ---
-
-::backdrop::
-
-VIDEO
 
 ::eyebrow::
 
@@ -404,23 +383,28 @@ Video To Audio
 
 ::title::
 
-### Video-to-audio：给画面自动生成声音
+### Video-to-Audio 学术研究前沿
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5">
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: MMAudio / PrismAudio demo 截图</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">谨慎表述：前沿研究方向，不包装成成熟主流商用工具。</p>
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <div class="callout flex min-h-0 flex-col gap-3 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <h4><a href="https://hkchengrex.com/MMAudio/" target="_blank" rel="noreferrer">MMAudio</a></h4>
+      <span class="badge">CVPR 2025</span>
+    </div>
+    <div class="figure-frame flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+      <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/mmaudio-paper-diagram.png" alt="MMAudio paper diagram">
+    </div>
   </div>
-  <div class="min-h-0 min-w-0">
-    <h4>这个方向真正值得观察</h4>
-    <ul>
-      <li>声音可以从画面运动和事件中被推断。</li>
-      <li>同步、节奏和材质判断开始进入模型能力范围。</li>
-      <li>但可编辑性、授权和项目实现仍是核心门槛。</li>
-    </ul>
+  <div class="callout flex min-h-0 flex-col gap-3 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <h4><a href="https://prismaudio-project.github.io/" target="_blank" rel="noreferrer">PrismAudio</a></h4>
+      <span class="badge">ICLR 2026</span>
+    </div>
+    <div class="figure-frame flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+      <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/prismaudio-paper-diagram.png" alt="PrismAudio paper diagram">
+    </div>
   </div>
 </div>
 
@@ -428,32 +412,96 @@ Video To Audio
 layout: header-body
 ---
 
-::backdrop::
-
-AV
-
 ::eyebrow::
 
-Trend
+Text To Video
 
 ::title::
 
-### Seedance 2.0：native audio-video generation
+### Text-to-Video 最新模型
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>趋势不是“给静音视频补声”这么简单</h4>
-    <p>当视频生成开始内建声音，声音设计的入口会从单独的 wav 文件进一步前移到视听一体的概念生成阶段。</p>
-    <div v-click class="quote-accent mt-5">
-      <p>问题变成：这个声音能不能被解释、修改、授权，并放进真实互动系统？</p>
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <div class="callout flex min-h-0 flex-col gap-4 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <h4><a href="https://seed.bytedance.com/zh/seedance2_0" target="_blank" rel="noreferrer">Seedance 2.0</a></h4>
+    </div>
+    <div>
+      <span class="callout-title">团队</span>
+      <p>字节跳动 Seed</p>
+    </div>
+    <div>
+      <span class="callout-title">发布时间</span>
+      <p>2026 年 2 月</p>
     </div>
   </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: Seedance 2.0 公开材料</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">区分它和纯 video-to-audio 工具。</p>
+  <div class="callout flex min-h-0 flex-col gap-4 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <h4>HappyHorse 1.0</h4>
+    </div>
+    <div>
+      <span class="callout-title">团队</span>
+      <p>阿里淘天 Future Life Lab</p>
+    </div>
+    <div>
+      <span class="callout-title">发布时间</span>
+      <p>2026 年 4 月</p>
+    </div>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+SOTA
+
+::title::
+
+### Seedance 2.0 示例
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1.35fr_0.65fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+    <video class="h-full w-full object-contain" :src="'ai-in-game-audio-design-2026/seedance2_example_game.mp4'" controls preload="metadata"></video>
+  </div>
+  <div class="callout flex min-h-0 flex-col gap-3 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <h4>Prompt</h4>
+      <span class="badge">Official Example</span>
+    </div>
+    <pre class="figure-frame m-0 min-h-0 flex-1 overflow-auto p-4 text-[0.7rem] leading-relaxed whitespace-pre-wrap"><code>赛博朋克风格，游戏CG，暗场，城市的角落，城市右转放映，一位年轻杀手，对战敌人的画面，镜头快速拉近，杀手正被一些敌人围困，然而杀手手持光剑，与敌人打斗，最终将敌人一一击破，敌人纷纷倒地，整个过程快而不突兀，最后杀手在镜头前，抬头看向镜头，整个视频既有“瞬移”的瞬间感，又有视觉上的流畅过渡。</code></pre>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+SOTA
+
+::title::
+
+### HappyHorse 1.0 示例
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1.35fr_0.65fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+    <video class="h-full w-full object-contain" :src="'ai-in-game-audio-design-2026/happyhorse1-test.mp4'" controls preload="metadata"></video>
+  </div>
+  <div class="callout flex min-h-0 flex-col gap-3 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <h4>Prompt</h4>
+      <span class="badge">Test Example</span>
+    </div>
+    <pre class="figure-frame m-0 min-h-0 flex-1 overflow-auto p-4 text-[0.7rem] leading-relaxed whitespace-pre-wrap"><code>一位老铁匠在昏暗的锻造铺中，用铁锤敲打着炉火烧红的马蹄铁，每一击都迸溅出大片火星。随后他将炽热的金属插入木桶中淬火，瞬间爆发出猛烈的蒸汽嘶鸣声。背景中的炉火噼啪作响。电影级光影，特写铁匠的手与金属，慢动作火星飞溅。</code></pre>
   </div>
 </div>
 
