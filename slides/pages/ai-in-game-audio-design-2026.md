@@ -501,7 +501,7 @@ SOTA
       <h4>Prompt</h4>
       <span class="badge">Test Example</span>
     </div>
-    <pre class="figure-frame m-0 min-h-0 flex-1 overflow-auto p-4 text-[0.7rem] leading-relaxed whitespace-pre-wrap"><code>一位老铁匠在昏暗的锻造铺中，用铁锤敲打着炉火烧红的马蹄铁，每一击都迸溅出大片火星。随后他将炽热的金属插入木桶中淬火，瞬间爆发出猛烈的蒸汽嘶鸣声。背景中的炉火噼啪作响。电影级光影，特写铁匠的手与金属，慢动作火星飞溅。</code></pre>
+    <pre class="figure-frame m-0 min-h-0 flex-1 overflow-auto p-4 text-[0.7rem] leading-relaxed whitespace-pre-wrap"><code>赛博朋克风格，游戏CG，暗场，城市的角落，城市右转放映，一位年轻杀手，对战敌人的画面，镜头快速拉近，杀手正被一些敌人围困，然而杀手手持光剑，与敌人打斗，最终将敌人一一击破，敌人纷纷倒地，整个过程快而不突兀，最后杀手在镜头前，抬头看向镜头，整个视频既有“瞬移”的瞬间感，又有视觉上的流畅过渡。</code></pre>
   </div>
 </div>
 
@@ -511,33 +511,52 @@ layout: header-body
 
 ::backdrop::
 
-RISK
+2026
 
 ::eyebrow::
 
-AIGC Summary
+AIGC Summary in Game Audio Design
 
 ::title::
 
-### AIGC 音频资产的通用问题
+### AIGC 在游戏音频设计领域
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div v-click class="active-panel p-4">
-    <span class="step-index">QUALITY</span>
-    <h4>质量与一致性</h4>
-    <p>单次结果惊艳，不代表批量稳定，也不代表角色和风格能连续。</p>
+  <div class="border-l hairline pl-4">
+    <span class="step-index">VOICE</span>
+    <h4>语音</h4>
+    <ul>
+      <li v-click>音频质量已经达到要求</li>
+      <li v-click>丰富的声线自定义</li>
+      <li v-click>语气和情绪的有限控制</li>
+      <li v-click>已大规模用于开发阶段的临时资产</li>
+      <li v-click>与专业演员相比，仍存在表演细节和一致性的问题</li>
+      <li v-click>需要解决授权问题</li>
+    </ul>
   </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">CONTROL</span>
-    <h4>可控编辑</h4>
-    <p>声音能生成，还要能解释、修改、迭代和适配实现。</p>
+  <div class="border-l hairline pl-4">
+    <span class="step-index">MUSIC</span>
+    <h4>音乐</h4>
+    <ul>
+      <li v-click>音频质量已经到达要求</li>
+      <li v-click>对大多数风格的歌曲理解都很到位</li>
+      <li v-click>提取分轨编辑的方式适用于后续的正式制作</li>
+      <li v-click>常用于风格参考、原型示例和临时资产，部分可作用正式资产使用。</li>
+      <li v-click>因训练数据所限，配乐等偏小众品类的生成效果不佳</li>
+      <li v-click>需要解决音乐版权问题</li>
+    </ul>
   </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">RIGHTS</span>
-    <h4>版权与授权</h4>
-    <p>训练数据、商业使用、演员和创作者权益都会影响项目风险。</p>
+  <div class="border-l hairline pl-4">
+    <span class="step-index">SFX</span>
+    <h4>音效</h4>
+    <ul>
+      <li v-click>单纯 Text-to-Audio 的市场体量太小</li>
+      <li v-click>音频质量尚可，但对声音设计师来说还不够</li>
+      <li v-click>包含声音的 Text-to-Video 可用于临时资产快速验证</li>
+      <li v-click>鲜有人提起的训练数据授权问题</li>
+    </ul>
   </div>
 </div>
 
@@ -551,29 +570,38 @@ LEGAL
 
 ::eyebrow::
 
-Evolving Risk
+Legal
 
 ::title::
 
-### 这些问题正在如何演进？
+### 法律问题
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>语音侧</h4>
-    <ul>
-      <li>配音演员授权</li>
-      <li>知情同意与补偿</li>
-      <li>数字声音复制的行业协议</li>
-    </ul>
+  <div class="flex min-h-0 min-w-0 flex-col gap-5">
+    <div class="callout p-5">
+      <h4>原罪</h4>
+      <p>使用未经授权的录音制品用于模型训练</p>
+    </div>
+    <div class="callout p-5">
+      <h4>未来</h4>
+      <p>数据授权和资产版权问题的制度化解决</p>
+    </div>
   </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: SAG-AFTRA / Suno 公开新闻截图</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">这不是法律课，只提醒“可商用”背后有制度变化。</p>
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+    <a class="flex h-full w-full items-center justify-center" href="https://completemusicupdate.com/universal-and-sony-must-be-allowed-to-see-warners-deal-with-suno-lawyers-tell-judge-as-ai-legal-battle-continues/" target="_blank" rel="noreferrer">
+      <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/cmu-suno-legal-post.png" alt="CMU article screenshot about Universal, Sony, Warner, and Suno legal dispute">
+    </a>
   </div>
 </div>
+
+<!--
+1. 2024 年 RIAA/三大唱片体系起诉 Suno，2025 年 Warner 先和 Suno 达成授权/和解，2026 年 UMG 和 Sony 仍在打
+2. 唱片公司起诉点：未经授权使用录音训练模型。
+3. Warner 路线：和解 + 授权 + 平台规则调整。
+4. UMG / Sony 路线：继续诉讼，争论 fair use 与训练授权市场是否成立。
+-->
 
 ---
 layout: header-body
