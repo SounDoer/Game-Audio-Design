@@ -77,9 +77,9 @@ Framework
     <h4>AI Powered Tools</h4>
     <p>工作流程如何更加快捷便利？</p>
     <ul>
-      <li>素材管理与搜索：语音搜索、相似查找</li>
+      <li>素材管理与搜索：语义搜索、相似查找</li>
       <li>声音编辑与修复：分轨提取、降噪清理</li>
-      <li>音频工具操作辅助：自动化、API MCP</li>
+      <li>音频工作流优化：自动化、API MCP</li>
     </ul>
   </div>
 </div>
@@ -607,32 +607,30 @@ Legal
 layout: header-body
 ---
 
-::backdrop::
-
-SEARCH
-
 ::eyebrow::
 
-Before
+Search
 
 ::title::
 
-### 素材发现与管理：以前怎么找声音？
+### 素材管理与搜索
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>传统素材库工作流</h4>
+  <div v-click="1" class="active-panel min-h-0 p-5">
+    <h4 class="mt-2">原有工作流</h4>
     <ul>
-      <li v-click>依赖文件名和关键词</li>
-      <li v-click>依赖人工标签和素材库经验</li>
-      <li v-click>反复试听、筛选、重命名</li>
-      <li v-click>找相似声音往往靠记忆和耐心</li>
+      <li>依赖文件名、目录结构、关键词和元数据</li>
+      <li>反复试听与筛选</li>
+      <li>相似查找的依据非常有限</li>
     </ul>
   </div>
-  <div class="quote-accent self-center">
-    <p>痛点不是“没有素材”，而是你很难快速找到项目此刻真正需要的那一个声音。</p>
+  <div v-click="2" class="callout flex min-h-0 flex-col gap-3">
+    <span class="callout-title">新思路</span>
+    <p><strong>从找文件到找意图，让搜索理解语义、听感和相似性。</strong></p>
+    <p>成熟专业工具：<a href="https://getsoundly.com/" target="_blank" rel="noreferrer">Soundly</a> / <a href="https://www.prosoundeffects.com/soundq" target="_blank" rel="noreferrer">SoundQ</a>，把语义搜索、相似声音、自动标签等能力整合进已有的素材库管理软件中。</p>
+    <p>AI-Native 方向：<a href="https://www.orion-sfx.com/" target="_blank" rel="noreferrer">Orion</a> / <a href="https://sfxstacks.com/" target="_blank" rel="noreferrer">SFX Stacks</a>，从描述、听感和相似性出发，重新组织声音的搜索过程。</p>
   </div>
 </div>
 
@@ -640,68 +638,31 @@ Before
 layout: header-body
 ---
 
-::backdrop::
-
-SEARCH
-
 ::eyebrow::
 
-After
+Repair
 
 ::title::
 
-### AI powered 素材发现
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="grid min-h-0 grid-cols-2 gap-3">
-    <div class="callout">
-      <span class="callout-title">成熟专业工作流</span>
-      <p>Soundly / SoundQ：语义、相似声音、自动标签等能力进入素材库使用过程。</p>
-    </div>
-    <div class="callout">
-      <span class="callout-title">AI-native 搜索方向</span>
-      <p>Orion / SFX Stacks：更强调从描述、听感和相似性出发组织声音。</p>
-    </div>
-  </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: 素材发现工具截图</p>
-  </div>
-</div>
-
----
-layout: header-body
----
-
-::backdrop::
-
-REPAIR
-
-::eyebrow::
-
-Before
-
-::title::
-
-### 音频编辑与修复：以前怎么修素材？
+### 声音编辑与修复
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="active-panel p-5">
-    <h4>传统修复流程</h4>
+  <div v-click="1" class="active-panel p-5">
+    <h4>原有工作流</h4>
     <ul>
       <li>人工听辨问题区域</li>
-      <li>手动 spectral editing</li>
-      <li>搭插件链、调经验参数</li>
-      <li>在时间、质量和可接受度之间取舍</li>
+      <li>手动编辑</li>
+      <li>搭建插件链</li>
+      <li>根据经验调整参数</li>
     </ul>
   </div>
-  <div class="callout">
-    <span class="callout-title">对学习者的难点</span>
-    <p>很多问题不是“会不会点按钮”，而是能不能听出问题、判断处理是否过度，并知道什么时候该停。</p>
+  <div v-click="2" class="callout flex min-h-0 flex-col gap-3">
+    <span class="callout-title">新思路</span>
+    <p><strong>从手动修改到辅助判断，让工具处理清理、分离和修复等重复劳动。</strong></p>
+    <p>专业工具：<a href="https://www.izotope.com/en/products/rx.html" target="_blank" rel="noreferrer">iZotope RX</a>，AI 能力整合到原有的降噪和频谱编辑等修复功能中。</p>
+    <p>低门槛语音工具：<a href="https://podcast.adobe.com/enhance" target="_blank" rel="noreferrer">Adobe Podcast</a>，快速改善语音录制素材的质量。</p>
   </div>
 </div>
 
@@ -709,33 +670,30 @@ Before
 layout: header-body
 ---
 
-::backdrop::
-
-REPAIR
-
 ::eyebrow::
 
-After
+Workflow
 
 ::title::
 
-### AI powered 音频修复
+### 音频工作流优化
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>典型方向</h4>
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <div v-click="1" class="active-panel p-5">
+    <h4>原有工作流</h4>
     <ul>
-      <li>iZotope RX：专业修复主线</li>
-      <li>Adobe Enhance Speech：低门槛语音清理</li>
-      <li>stem separation：分离、重组和二次制作</li>
+      <li>在数字音频工作站、游戏音频中间件和游戏引擎之间处理繁琐的资产流转问题</li>
+      <li>手写脚本处理资源检查和命名规则等问题</li>
+      <li>手动维护资源组织和工程结构</li>
     </ul>
   </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: RX / Adobe / stem separation 截图</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">重点仍是判断：处理后的声音是否可用、可交付。</p>
+  <div v-click="2" class="callout flex min-h-0 flex-col gap-3">
+    <span class="callout-title">新思路</span>
+    <p><strong>从手动实现到辅助执行，让工具理解工程规范上下文，并处理重复的配置和排查工作。</strong></p>
+    <p>自动化基础：AI 编写脚本工具并执行批处理，比如 WAAPI 执行各种 Wwise 操作。</p>
+    <p>Agent 化方向：自然语言控制音频工具，比如各类 Reaper MCP、Wwise MCP。</p>
   </div>
 </div>
 
@@ -743,88 +701,30 @@ After
 layout: header-body
 ---
 
-::backdrop::
-
-IMPLEMENT
-
 ::eyebrow::
 
-Before
+Case Tool
 
 ::title::
 
-### 技术音频与实现辅助：以前怎么做？
+### 自制小工具：Reaper to Wwise
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div v-click class="active-panel p-4">
-    <span class="step-index">SCRIPT</span>
-    <h4>脚本与批处理</h4>
-    <p>手写脚本、查 API、处理重复对象和命名规则。</p>
+<div class="grid h-full min-h-0 grid-cols-[1.35fr_0.65fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+    <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/reaper-to-wwise.png" alt="Reaper to Wwise custom tool screenshot">
   </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">ENGINE</span>
-    <h4>引擎与中间件</h4>
-    <p>在 Wwise、Unreal、Unity 中反复设置和排查。</p>
-  </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">DEBUG</span>
-    <h4>实现验证</h4>
-    <p>确认事件、参数、路由、混音和资源组织是否符合预期。</p>
-  </div>
-</div>
-
----
-layout: header-body
----
-
-::backdrop::
-
-IMPLEMENT
-
-::eyebrow::
-
-After
-
-::title::
-
-### AI powered 技术音频工作流
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-[0.95fr_1.05fr] gap-5">
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: WAAPI / MCP / ReAgent 材料</p>
-  </div>
-  <div class="min-h-0 min-w-0">
-    <h4>从自动化到 agent 化</h4>
+  <div class="callout self-start">
+    <span class="callout-title">功能</span>
     <ul>
-      <li>WAAPI：成熟自动化基础</li>
-      <li>Wwise MCP / UE Audio MCP：agent 化前沿方向</li>
-      <li>Unity / Unreal AI：引擎生态也在引入辅助能力</li>
-      <li>ReAgent：REAPER 工作流中的 agentic automation 例子</li>
+      <li>根据 Reaper 内的参数规则进行批量命名</li>
+      <li>导入资产至指定的 Wwise 工程和目录</li>
+      <li>根据命名规则创建 Wwise 内的资产结构</li>
+      <li>接入 LLM 实现识别和检查功能</li>
     </ul>
   </div>
 </div>
-
----
-layout: statement
----
-
-::backdrop::
-
-?
-
-::title::
-
-### AI 已经进来了，
-### 那设计师还负责什么？
-
-::subtitle::
-
-方向、语境、实现、质量、验收
 
 ---
 layout: section
@@ -840,11 +740,13 @@ Part 02
 
 ::title::
 
-## 个人经验分享
+## Vibe Coding
 
 ::subtitle::
 
-从行业观察转向我如何把 AI 放进学习、创作和开发流程
+中年男人的赛博钓鱼
+
+<!-- vibe coding 起源？ -->
 
 ---
 layout: statement
@@ -1249,8 +1151,9 @@ layout: statement
 
 ::title::
 
-### 这套 slides 明年可能就要重写。
+### AI 能做的越来越多，
+### 但它不知道什么才是“对”的。
 
 ::subtitle::
 
-工具会变，案例会变；真正值得带走的是判断标准、协作方法和验证意识。
+设计目标、项目语境、实现约束、质量判断与最终验收。
