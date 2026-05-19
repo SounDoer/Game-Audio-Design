@@ -11,19 +11,39 @@ AI AUDIO
 
 ::eyebrow::
 
-Game Audio Design 2026
+AI in Game Audio Design 2026
 
 ::title::
 
-# 2026 年，AI 正在怎样进入游戏音频设计？
+# 2026 年，AI 与游戏音频设计
 
 ::subtitle::
 
-行业现状、AIGC、AI 工具与个人协作经验
+AIGC、AI Tools 与 Vibe Coding
 
 ::info::
 
 xichen @ gad.soundoer.com
+
+
+---
+layout: section
+---
+
+::backdrop::
+
+01
+
+::eyebrow::
+
+Part 01
+
+::title::
+
+## AIGC & AI Tools
+
+::subtitle::
+
 
 ---
 layout: header-body
@@ -39,52 +59,30 @@ Framework
 
 ::title::
 
-### 两条线：AIGC 与 AI 工具
+### AIGC & AI Tools
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="active-panel p-5">
-    <span class="step-index">LINE 01</span>
-    <h4>AIGC</h4>
-    <p>看声音内容从哪里来。</p>
+  <div class="active-panel min-h-0 min-w-0 p-5">
+    <h4>AI Generated Content</h4>
+    <p>声音资产如何生成？</p>
     <ul>
-      <li>语音：角色、临时对白、本地化</li>
-      <li>音乐：mood、reference、temp music</li>
-      <li>音效：text-to-audio、video-to-audio</li>
+      <li>语音：Text-to-Speech、Voice Clone、Voice Design</li>
+      <li>音乐：Text-to-Music、Music-to-Stems</li>
+      <li>音效：Text-to-Audio、Video-to-Audio</li>
     </ul>
   </div>
-  <div class="callout">
-    <span class="step-index">LINE 02</span>
-    <h4>AI Tools</h4>
-    <p>看工作如何更快、更可控、更可验证。</p>
+  <div class="active-panel min-h-0 min-w-0 p-5">
+    <h4>AI Powered Tools</h4>
+    <p>工作流程如何更加快捷便利？</p>
     <ul>
-      <li>素材发现与管理</li>
-      <li>音频编辑与修复</li>
-      <li>技术音频与实现辅助</li>
+      <li>素材管理与搜索：语音搜索、相似查找</li>
+      <li>声音编辑与修复：分轨提取、降噪清理</li>
+      <li>音频工具操作辅助：自动化、API MCP</li>
     </ul>
   </div>
 </div>
-
----
-layout: section
----
-
-::backdrop::
-
-VOICE
-
-::eyebrow::
-
-Part 01
-
-::title::
-
-## AI Voice：游戏对白生产流程
-
-::subtitle::
-
-不是猎奇的 voice cloning，而是对白生产方式正在变化
 
 ---
 layout: header-body
@@ -96,29 +94,80 @@ VOICE
 
 ::eyebrow::
 
-Tool Focus
+Voice
 
 ::title::
 
-### ElevenLabs：英文 AI 语音生成典型
+### ElevenLabs
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
+<div class="grid h-full min-h-0 grid-cols-[1.15fr_0.85fr] gap-5">
+  <a class="figure-frame relative block h-full min-h-0 overflow-hidden" href="https://elevenlabs.io/" target="_blank" rel="noreferrer">
+    <img class="h-full w-full object-cover object-top" src="/ai-in-game-audio-design-2026/elevenlabs-home-01.png" alt="ElevenLabs official homepage screenshot">
+    <div class="absolute bottom-4 right-4 w-[58%] bg-[var(--color-bg)]/80 p-1 shadow-[0_18px_45px_rgba(0,0,0,0.6)]">
+      <img class="w-full" src="/ai-in-game-audio-design-2026/elevenlabs-home-02.png" alt="ElevenLabs creation tools screenshot">
+    </div>
+  </a>
   <div class="min-h-0 min-w-0">
-    <h4>它代表的使用范式</h4>
     <ul>
-      <li v-click>快速探索角色声音方向</li>
-      <li v-click>为原型阶段生成临时对白</li>
-      <li v-click>在版本迭代中批量试音</li>
-      <li v-click>把语音生成纳入导演式筛选流程</li>
+      <li><strong>Text to Speech</strong>：通过标签控制语气和情绪</li>
+      <li><strong>Voice Cloning</strong>：复刻特定声线</li>
+      <li><strong>Voice Changer</strong>：变声和声线转换</li>
+      <li><strong>Voice Isolator</strong>：从复杂音频中提取清晰语音</li>
+      <li><strong>Voice Design</strong>：通过描述来设计角色声线</li>
+      <li><strong>Dubbing</strong>：多语言本地化</li>
     </ul>
   </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: ElevenLabs 官网或 demo 截图</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">实现时需核验可展示材料和最新功能。</p>
+</div>
+
+<!-- 我觉得国内用户对语音是最熟悉不过的，因为短视频平台…… -->
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Voice
+
+::title::
+
+### ElevenLabs: Text to Speech
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-2 gap-4">
+  <div class="flex min-h-0 flex-col gap-3">
+    <div class="figure-frame flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+      <video class="h-full w-full object-contain" src="/ai-in-game-audio-design-2026/elevenlabs-tts-english.mp4" controls preload="metadata"></video>
+    </div>
+    <p class="shrink-0 text-center text-[0.9rem] text-[var(--color-text-muted)]">English TTS Demo</p>
   </div>
+  <div class="flex min-h-0 flex-col gap-3">
+    <div class="figure-frame flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+      <video class="h-full w-full object-contain" src="/ai-in-game-audio-design-2026/elevenlabs-tts-chinese.mp4" controls preload="metadata"></video>
+    </div>
+    <p class="shrink-0 text-center text-[0.9rem] text-[var(--color-text-muted)]">Chinese TTS Demo</p>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Voice
+
+::title::
+
+### ElevenLabs: Voice Design
+
+::body::
+
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/ai-in-game-audio-design-2026/elevenlabs-voice-design.mp4" controls preload="metadata"></video>
 </div>
 
 ---
@@ -131,24 +180,24 @@ VOICE
 
 ::eyebrow::
 
-Placeholder
+Voice
 
 ::title::
 
-### Qwen TTS：国内语音模型案例
+### Qwen
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5">
   <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
     <span class="badge">USER MATERIAL</span>
-    <p class="text-center">TODO: Qwen 系列 TTS 模型材料</p>
+    <p class="text-center">TODO: Qwen 系列语音模型材料</p>
     <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">当前只保留国内案例位置，不编写未核验细节。</p>
   </div>
   <div class="min-h-0 min-w-0">
     <h4>保留这个位置的原因</h4>
     <ul>
-      <li>中文语音和本地化场景需要单独观察。</li>
+      <li>中文 TTS、语音克隆、变声和本地化场景需要单独观察。</li>
       <li>国内模型进展会影响学习者可接触的工具生态。</li>
       <li>真正进入项目仍要看授权、稳定性和可控性。</li>
     </ul>
@@ -190,26 +239,6 @@ Summary
     <p>表演、授权、角色一致性和演员权益仍然需要人判断。</p>
   </div>
 </div>
-
----
-layout: section
----
-
-::backdrop::
-
-MUSIC
-
-::eyebrow::
-
-Part 02
-
-::title::
-
-## AI Music：从正式配乐到方向探索
-
-::subtitle::
-
-这一节只讲 Suno：mood、reference 与 temp music
 
 ---
 layout: header-body
@@ -282,26 +311,6 @@ Boundary
     </ul>
   </div>
 </div>
-
----
-layout: section
----
-
-::backdrop::
-
-SFX
-
-::eyebrow::
-
-Part 03
-
-::title::
-
-## AI Sound Effects：文字与视频两条入口
-
-::subtitle::
-
-text-to-audio 与 video-to-audio 正在改变声音原型制作入口
 
 ---
 layout: header-body
@@ -474,26 +483,6 @@ Evolving Risk
     <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">这不是法律课，只提醒“可商用”背后有制度变化。</p>
   </div>
 </div>
-
----
-layout: section
----
-
-::backdrop::
-
-TOOLS
-
-::eyebrow::
-
-Part 04
-
-::title::
-
-## AI Tools：不是生成声音，而是改变工作流
-
-::subtitle::
-
-找素材、修素材、做实现
 
 ---
 layout: header-body
@@ -717,6 +706,26 @@ layout: statement
 ::subtitle::
 
 方向、语境、实现、质量、验收
+
+---
+layout: section
+---
+
+::backdrop::
+
+02
+
+::eyebrow::
+
+Part 02
+
+::title::
+
+## 个人经验分享
+
+::subtitle::
+
+从行业观察转向我如何把 AI 放进学习、创作和开发流程
 
 ---
 layout: statement
