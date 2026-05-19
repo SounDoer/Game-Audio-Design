@@ -68,7 +68,7 @@ Framework
     <h4>AI Generated Content</h4>
     <p>声音资产如何生成？</p>
     <ul>
-      <li>语音：Text-to-Speech、Voice Clone、Voice Design</li>
+      <li>语音：Text-to-Speech、Voice Design</li>
       <li>音乐：Text-to-Music、Music-to-Stems</li>
       <li>音效：Text-to-Audio、Video-to-Audio</li>
     </ul>
@@ -120,8 +120,6 @@ Voice
     </ul>
   </div>
 </div>
-
-<!-- 我觉得国内用户对语音是最熟悉不过的，因为短视频平台…… -->
 
 ---
 layout: header-body
@@ -184,24 +182,71 @@ Voice
 
 ::title::
 
-### Qwen
+### Qwen 语音模型系列
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5">
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">USER MATERIAL</span>
-    <p class="text-center">TODO: Qwen 系列语音模型材料</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">当前只保留国内案例位置，不编写未核验细节。</p>
-  </div>
-  <div class="min-h-0 min-w-0">
-    <h4>保留这个位置的原因</h4>
-    <ul>
-      <li>中文 TTS、语音克隆、变声和本地化场景需要单独观察。</li>
-      <li>国内模型进展会影响学习者可接触的工具生态。</li>
-      <li>真正进入项目仍要看授权、稳定性和可控性。</li>
-    </ul>
-  </div>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <img class="h-full w-full object-contain" src="/ai-in-game-audio-design-2026/bailian-qwen-voice-model.png" alt="阿里云百炼 Qwen 语音模型列表截图" />
+</div>
+
+<!--
+1. 我觉得国内用户对语音是最熟悉不过的，因为短视频平台……
+2. 国内外生态不同，国内可能更为下沉
+-->
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Voice
+
+::title::
+
+### Qwen 语音音色 Demo
+
+::body::
+
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/ai-in-game-audio-design-2026/bailian-voice-character.mp4" controls preload="metadata"></video>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Voice
+
+::title::
+
+### 本地部署：Voice Clone
+
+::body::
+
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/ai-in-game-audio-design-2026/localtts-voice-clone.mp4" controls preload="metadata"></video>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Voice
+
+::title::
+
+### 本地部署：Voice Design
+
+::body::
+
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/ai-in-game-audio-design-2026/localtts-voice-design.mp4" controls preload="metadata"></video>
 </div>
 
 ---
@@ -210,33 +255,32 @@ layout: header-body
 
 ::backdrop::
 
-VOICE
+MUSIC
 
 ::eyebrow::
 
-Summary
+Music
 
 ::title::
 
-### AI 语音真正改变了什么？
+### Suno
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div v-click class="active-panel p-4">
-    <span class="step-index">01</span>
-    <h4>占位更快</h4>
-    <p>原型阶段可以更快听到角色对白，而不是只看文字脚本。</p>
-  </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">02</span>
-    <h4>探索更多</h4>
-    <p>声线、语气和语言版本可以更早进入比较。</p>
-  </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">03</span>
-    <h4>责任更重</h4>
-    <p>表演、授权、角色一致性和演员权益仍然需要人判断。</p>
+<div class="grid h-full min-h-0 grid-cols-[1.15fr_0.85fr] gap-5">
+  <a class="figure-frame relative block h-full min-h-0 overflow-hidden" href="https://suno.com/" target="_blank" rel="noreferrer">
+    <img class="h-full w-full object-cover object-top" src="/ai-in-game-audio-design-2026/suno-home-01.png" alt="Suno home page screenshot">
+    <div class="absolute bottom-4 right-4 w-[34%] bg-[var(--color-bg)]/80 p-1 shadow-[0_14px_36px_rgba(160,160,160,0.32)]">
+      <img class="w-full" src="/ai-in-game-audio-design-2026/suno-explore-01.png" alt="Suno explore page screenshot">
+    </div>
+  </a>
+  <div class="min-h-0 min-w-0">
+    <ul>
+      <li><strong>Text to Song</strong>：用自然语言描述音乐方向</li>
+      <li><strong>Prompt Control</strong>：风格、情绪和结构等关键词控制</li>
+      <li><strong>Use Reference</strong>：指定音乐片段作为参考</li>
+      <li><strong>Stems in Studio</strong>：DAW 式的分轨编辑方式</li>
+    </ul>
   </div>
 </div>
 
@@ -250,28 +294,46 @@ MUSIC
 
 ::eyebrow::
 
-Tool Focus
+Music
 
 ::title::
 
-### Suno：快速生成音乐方向
+### Suno 创作示例
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
+<div class="grid h-full min-h-0 grid-cols-[1fr_0.9fr] gap-5">
   <div class="min-h-0 min-w-0">
-    <h4>适合放在原型与沟通阶段</h4>
-    <ul>
-      <li v-click>生成多个 mood board 方向</li>
-      <li v-click>给作曲家或团队提供 reference</li>
-      <li v-click>快速制作 pitch / prototype 阶段 temp music</li>
-      <li v-click>帮助讨论风格、情绪和节奏关键词</li>
-    </ul>
+    <h4>Prompt</h4>
+    <pre class="max-h-[360px] whitespace-pre-wrap break-words overflow-auto rounded border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-[0.78rem] leading-relaxed text-[var(--color-text-body)]"><code>folk, dreamy lo-fi bedroom pop at ~90 BPM, soft female vocals up close and breathy, nylon acoustic guitar doing a light bossa sway, warm analog pads blooming under a hazy reverb cloud, Soft brushed snare and round kick tucked deep with vinyl crackle in the background, Verses stay intimate and close-mic'd; chorus widens with layered doubles and hushed harmonies, everything gently side-chained for a floating, nostalgic sway, bossa nova, romantic, nostalgic, female vocals, breathy, soft, lo-fi, indie pop, pop, gentle, acoustic, warm, light</code></pre>
   </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">PLACEHOLDER</span>
-    <p class="text-center">TODO: Suno 公开材料或 demo 截图</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">不要把它讲成互动音乐系统替代品。</p>
+  <div class="callout flex min-h-0 flex-col gap-4">
+    <span class="callout-title">Polaroids In The Pillowcase</span>
+    <audio class="w-full" :src="'ai-in-game-audio-design-2026/suno-polaroids-in-the-pillowcase.wav'" controls preload="metadata"></audio>
+    <div class="max-h-[260px] overflow-auto text-[0.8rem] leading-relaxed text-[var(--color-text-body)]">
+      <p class="m-0">
+        [Verse 1]<br />
+        You said you'd stay<br />
+        But you fell asleep halfway through the movie<br />
+        Empty mug<br />
+        Lipstick ring still blurring on the nightstand<br />
+        Curtains breathe<br />
+        Streetglow dripping slow across your shoulder<br />
+        I press pause<br />
+        On every little moment in this room<br />
+        <br />
+        [Chorus]<br />
+        Polaroids in the pillowcase<br />
+        All the little days we never framed<br />
+        Faded corners<br />
+        Fingerprints<br />
+        Every crease remembers where you've been<br />
+        Hold my hand till the colors run<br />
+        Stay here till the morning comes<br />
+        Polaroids in the pillowcase<br />
+        We're sleeping in the softest proof of us
+      </p>
+    </div>
   </div>
 </div>
 
@@ -279,37 +341,18 @@ Tool Focus
 layout: header-body
 ---
 
-::backdrop::
-
-SYSTEM
-
 ::eyebrow::
 
-Boundary
+Music
 
 ::title::
 
-### 生成一首歌，不等于设计互动音乐
+### Stems in Suno Studio
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="callout">
-    <span class="callout-title">AI 生成歌曲</span>
-    <ul>
-      <li>单一线性音频文件</li>
-      <li>适合快速感受风格和情绪</li>
-      <li>常用于临时音乐与方向沟通</li>
-    </ul>
-  </div>
-  <div class="active-panel p-5">
-    <span class="callout-title">游戏互动音乐系统</span>
-    <ul>
-      <li>loop、分层、转场、状态切换</li>
-      <li>需要服务玩法节奏和交互反馈</li>
-      <li>混音、授权和实现仍需人负责</li>
-    </ul>
-  </div>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" :src="'ai-in-game-audio-design-2026/suno-studio-stems.mp4'" controls preload="metadata"></video>
 </div>
 
 ---
@@ -318,11 +361,11 @@ layout: header-body
 
 ::backdrop::
 
-PROMPT
+SFX
 
 ::eyebrow::
 
-Text To Audio
+SFX
 
 ::title::
 
