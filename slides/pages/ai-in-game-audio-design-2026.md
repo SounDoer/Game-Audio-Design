@@ -780,6 +780,12 @@ START
 ::subtitle::
 
 ---
+layout: custom
+---
+
+<AIResearchToolsWordCloud />
+
+---
 layout: header-body
 ---
 
