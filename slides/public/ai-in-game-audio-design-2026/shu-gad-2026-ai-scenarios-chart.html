@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI工具使用场景分布</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+      max-width: 680px;
+    }
+
+    .cw { padding: 6px 0; }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 4px 0;
+    }
+
+    .cat {
+      width: 72px;
+      font-size: 14px;
+      text-align: right;
+      flex-shrink: 0;
+      color: #1a1a1a;
+    }
+
+    .trk {
+      flex: 1;
+      height: 22px;
+      background: #f0efea;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: 3px;
+      min-width: 3px;
+    }
+
+    .blue { background: #378ADD; }
+
+    .stacked {
+      height: 100%;
+      display: flex;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .num {
+      width: 22px;
+      font-size: 13px;
+      color: #888;
+      flex-shrink: 0;
+    }
+
+    .aigc-row { margin-top: 12px; }
+
+    .aigc-legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 5px 0 2px 82px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .aigc-legend span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .aigc-legend i {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #888;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      body { background: #1a1a1a; color: #e8e8e8; }
+      .cat { color: #e8e8e8; }
+      .trk { background: #2c2c2a; }
+    }
+  </style>
+</head>
+<body>
+
+<!--
+  AI工具使用场景分布图
+  数据来源：25份同学来信
+  同一受访者可出现在多个场景
+  基准 = 18（编程辅助人数，最大值）
+  AIGC创作条宽 = 12人（去重）/ 18，内部按各子类原始计数比例划分（9:7:5:2，合计23）
+-->
+
+<div class="cw">
+
+  <div class="row">
+    <span class="cat">编程辅助</span>
+    <div class="trk"><div class="bar blue" style="width:100%"></div></div>
+    <span class="num">18</span>
+  </div>
+
+  <div class="row">
+    <span class="cat">学习辅助</span>
+    <div class="trk"><div class="bar blue" style="width:94.44%"></div></div>
+    <span class="num">17</span>
+  </div>
+
+  <div class="row">
+    <span class="cat">文字处理</span>
+    <div class="trk"><div class="bar blue" style="width:61.11%"></div></div>
+    <span class="num">11</span>
+  </div>
+
+  <div class="row">
+    <span class="cat">日常生活</span>
+    <div class="trk"><div class="bar blue" style="width:44.44%"></div></div>
+    <span class="num">8</span>
+  </div>
+
+  <!-- AIGC 创作：一条堆叠条 -->
+  <!-- 总宽 = 12/18 = 66.67%（去重独立用户数） -->
+  <!-- 内部比例 = 9:7:5:2（各子类原始计数，总和23） -->
+  <div class="row aigc-row">
+    <span class="cat">AIGC 创作</span>
+    <div class="trk">
+      <div class="stacked" style="width:66.67%">
+        <div style="flex:9; background:#7F77DD"></div>
+        <div style="flex:7; background:#D85A30"></div>
+        <div style="flex:5; background:#1D9E75"></div>
+        <div style="flex:2; background:#BA7517"></div>
+      </div>
+    </div>
+    <span class="num">12</span>
+  </div>
+
+  <div class="aigc-legend">
+    <span><i style="background:#7F77DD"></i>图像生成 9</span>
+    <span><i style="background:#D85A30"></i>视频生成 7</span>
+    <span><i style="background:#1D9E75"></i>音频生成 5</span>
+    <span><i style="background:#BA7517"></i>其他资产 2</span>
+  </div>
+
+</div>
+
+<p class="note">n = 25，同一受访者可出现在多个场景；AIGC 创作条显示 12 位独立用户，内部按各子类计数比例分段</p>
+
+</body>
+</html>

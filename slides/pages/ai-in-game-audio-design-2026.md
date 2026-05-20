@@ -780,6 +780,26 @@ START
 ::subtitle::
 
 ---
+layout: header-body
+---
+
+::backdrop::
+
+SURVEY
+
+::eyebrow::
+
+Survey
+
+::title::
+
+### AI 使用场景分布
+
+::body::
+
+<AIScenariosChart />
+
+---
 layout: custom
 ---
 

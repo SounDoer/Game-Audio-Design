@@ -20,25 +20,28 @@ const legendRef = ref(null)
 const canvasRef = ref(null)
 
 const data = [
-  { t: 'Gemini', n: 6, c: 'llm' },
-  { t: 'DeepSeek', n: 5, c: 'llm' },
-  { t: '豆包', n: 5, c: 'llm' },
+  { t: 'Gemini', n: 8, c: 'llm' },
+  { t: 'DeepSeek', n: 7, c: 'llm' },
+  { t: '豆包', n: 7, c: 'llm' },
+  { t: 'Nano Banana', n: 5, c: 'image' },
   { t: 'Suno', n: 4, c: 'audio' },
-  { t: 'Nano Banana', n: 4, c: 'image' },
-  { t: '即梦', n: 3, c: 'video' },
-  { t: 'ChatGPT', n: 3, c: 'llm' },
+  { t: '即梦', n: 4, c: 'video' },
+  { t: 'ChatGPT', n: 4, c: 'llm' },
   { t: 'Cursor', n: 3, c: 'coding' },
   { t: 'GPT Image 2', n: 3, c: 'image' },
-  { t: 'Seedance', n: 2, c: 'video' },
+  { t: '可灵', n: 3, c: 'image' },
+  { t: 'Seedance', n: 3, c: 'video' },
   { t: 'Midjourney', n: 2, c: 'image' },
-  { t: '可灵', n: 2, c: 'image' },
   { t: 'ComfyUI', n: 2, c: 'image' },
   { t: 'Stable Diffusion', n: 2, c: 'image' },
   { t: 'Claude', n: 2, c: 'llm' },
   { t: 'Codex', n: 2, c: 'llm' },
+  { t: 'Trae', n: 2, c: 'coding' },
+  { t: 'TapNow', n: 2, c: 'video' },
+  { t: 'WorkBuddy', n: 2, c: 'other' },
   { t: 'LibTV', n: 1, c: 'video' },
   { t: 'updream', n: 1, c: 'video' },
-  { t: 'TapNow', n: 1, c: 'video' },
+  { t: 'HappyHorse', n: 1, c: 'video' },
   { t: 'Topaz Video', n: 1, c: 'video' },
   { t: 'LTX-2.3', n: 1, c: 'video' },
   { t: 'GPT-SoVITS', n: 1, c: 'audio' },
@@ -49,16 +52,22 @@ const data = [
   { t: 'VoxCPM2', n: 1, c: 'audio' },
   { t: 'GitHub Copilot', n: 1, c: 'coding' },
   { t: 'Windsurf', n: 1, c: 'coding' },
-  { t: 'Trae', n: 1, c: 'coding' },
+  { t: 'CodeBuddy', n: 1, c: 'coding' },
+  { t: '元宝', n: 1, c: 'llm' },
+  { t: 'Grok', n: 1, c: 'llm' },
+  { t: '混元', n: 1, c: 'llm' },
   { t: '千问', n: 1, c: 'llm' },
-  { t: 'WorkBuddy', n: 1, c: 'other' },
   { t: 'TapTap Maker', n: 1, c: 'other' },
   { t: 'AstrBot', n: 1, c: 'other' },
   { t: 'OpenClaw', n: 1, c: 'other' },
+  { t: 'laper.ai', n: 1, c: 'other' },
+  { t: 'V2-fun', n: 1, c: 'other' },
+  { t: 'HappyOyster', n: 1, c: 'other' },
   { t: 'Holopix', n: 1, c: 'image' },
   { t: 'Tripo', n: 1, c: 'image' },
   { t: 'FLUX.2', n: 1, c: 'image' },
   { t: 'Seedream', n: 1, c: 'image' },
+  { t: 'Canva', n: 1, c: 'image' },
   { t: 'ima', n: 1, c: 'image' },
 ]
 
@@ -72,12 +81,12 @@ const palette = {
 }
 
 const labels = {
-  llm: '大语言模型',
-  image: '图像生成',
-  video: '视频/动画',
-  audio: '音频/音乐',
-  coding: '编程工具',
-  other: '其他平台',
+  llm: 'LLM',
+  image: '图像',
+  video: '视频',
+  audio: '音频',
+  coding: '编程',
+  other: '其他',
 }
 
 const legendItems = computed(() =>
@@ -88,7 +97,7 @@ const legendItems = computed(() =>
   })),
 )
 
-const getBaseSize = n => (n >= 6 ? 50 : n >= 5 ? 42 : n >= 4 ? 35 : n >= 3 ? 28 : n >= 2 ? 21 : 15)
+const getBaseSize = n => (n >= 6 ? 50 : n >= 5 ? 42 : n >= 4 ? 35 : n >= 3 ? 28 : n >= 2 ? 20 : 12)
 
 const toolLinks = {
   Gemini: 'https://gemini.google.com',
@@ -109,6 +118,7 @@ const toolLinks = {
   Codex: 'https://openai.com/codex/',
   LibTV: 'https://www.liblib.tv',
   updream: 'https://www.updream.cn',
+  HappyHorse: 'https://tongyi.aliyun.com/wanxiang/video',
   TapNow: 'https://www.tapnow.ai',
   'Topaz Video': 'https://www.topazlabs.com/topaz-video',
   'LTX-2.3': 'https://ltx.io/model/ltx-2-3',
@@ -121,15 +131,23 @@ const toolLinks = {
   'GitHub Copilot': 'https://github.com/features/copilot',
   Windsurf: 'https://windsurf.com',
   Trae: 'https://www.trae.ai',
+  CodeBuddy: 'https://www.codebuddy.cn',
+  元宝: 'https://yuanbao.tencent.com',
+  Grok: 'https://grok.com',
+  混元: 'https://hunyuan.tencent.com',
   千问: 'https://tongyi.aliyun.com',
   WorkBuddy: 'https://www.codebuddy.cn/home/',
   'TapTap Maker': 'https://maker.taptap.cn',
   AstrBot: 'https://github.com/AstrBotDevs/AstrBot',
   OpenClaw: 'https://github.com/openclaw/openclaw',
+  'laper.ai': 'https://www.laper.ai',
+  'V2-fun': 'https://www.v2.fun',
+  HappyOyster: 'https://www.happyoyster.com',
   Holopix: 'https://holopix.cn',
   Tripo: 'https://www.tripo3d.ai',
   'FLUX.2': 'https://bfl.ai/models/flux-2',
   Seedream: 'https://seed.bytedance.com/en/blog/seedream-4-0-officially-released-beyond-drawing-into-imagination',
+  Canva: 'https://www.canva.com',
   ima: 'https://share.ima.qq.com',
 }
 
@@ -183,7 +201,7 @@ function drawWordCloud() {
 
   const sorted = [...data].sort((a, b) => b.n - a.n)
   const placed = []
-  const gap = 10 * scale
+  const gap = 6 * scale
   const centerX = width / 2
   const centerY = height / 2
 
@@ -197,42 +215,44 @@ function drawWordCloud() {
     )
 
   for (const word of sorted) {
-    const fontSize = getBaseSize(word.n) * scale
-    const textWidth = measureWidth(word.t, fontSize) + 6 * scale
-    const textHeight = fontSize * 1.35
-    let done = false
-    let t = 0
+    const placeWord = sizeFactor => {
+      const fontSize = getBaseSize(word.n) * scale * sizeFactor
+      const textWidth = measureWidth(word.t, fontSize) + 6 * scale
+      const textHeight = fontSize * 1.35
 
-    while (!done && t < 5000) {
-      const angle = 0.13 * t
-      const radius = (5.5 * scale * t) / (2 * Math.PI)
-      const x = centerX + radius * Math.cos(angle) - textWidth / 2
-      const y = centerY + radius * Math.sin(angle) - textHeight / 2
+      for (let t = 0; t < 7000; t += 1) {
+        const angle = 0.13 * t
+        const radius = (5.5 * scale * t) / (2 * Math.PI)
+        const x = centerX + radius * Math.cos(angle) - textWidth / 2
+        const y = centerY + radius * Math.sin(angle) - textHeight / 2
 
-      if (
-        x >= 8 * scale &&
-        y >= 8 * scale &&
-        x + textWidth <= width - 8 * scale &&
-        y + textHeight <= height - 8 * scale &&
-        !collides(x, y, textWidth, textHeight)
-      ) {
-        placed.push({
-          baseX: x,
-          baseY: y,
-          w: textWidth,
-          h: textHeight,
-          text: word.t,
-          fontSize,
-          color: palette[word.c],
-          phase: (t % 360) * 0.03 + placed.length * 0.4,
-          link: getToolLink(word.t),
-          hitX: 0,
-          hitY: 0,
-        })
-        done = true
+        if (
+          x >= 8 * scale &&
+          y >= 8 * scale &&
+          x + textWidth <= width - 8 * scale &&
+          y + textHeight <= height - 8 * scale &&
+          !collides(x, y, textWidth, textHeight)
+        ) {
+          placed.push({
+            baseX: x,
+            baseY: y,
+            w: textWidth,
+            h: textHeight,
+            text: word.t,
+            fontSize,
+            color: palette[word.c],
+            phase: (t % 360) * 0.03 + placed.length * 0.4,
+            link: getToolLink(word.t),
+            hitX: 0,
+            hitY: 0,
+          })
+          return true
+        }
       }
-      t += 1
+      return false
     }
+
+    placeWord(1) || placeWord(0.85) || placeWord(0.7)
   }
 
   words = placed
