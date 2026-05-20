@@ -758,7 +758,11 @@ Part 02
 
 我的“赛博钓鱼”经验分享
 
-<!-- vibe coding 起源？ -->
+<!-- “Vibe coding” 这个词通常追溯到 Andrej Karpathy 在 2025 年 2 月 2 日的一条 X 帖文。他说这是一种新的写代码方式：fully give in to the vibes，embrace exponentials，甚至 forget that the code even exists。
+
+所以它并不是“AI 辅助写代码”的起源，而是给一种新的工作姿态命名：不再逐行控制代码，而是通过描述需求、运行结果、把报错丢回去、接受生成结果来推进项目。
+
+Karpathy 后面还有一句很适合作为课堂解释：“I just see stuff, say stuff, run stuff, and copy paste stuff, and it mostly works.” 这也是它后来从开发者圈层梗扩散成公共语言的原因。 -->
 
 ---
 layout: statement
@@ -874,37 +878,74 @@ Context
   </div>
 </div>
 
-<!--
-1. source control
-2. code editor
-3. 个人网站
-4. ue 项目，调用 api
--->
-
----
-layout: statement
----
-
-::backdrop::
-
-VIBE
-
-::title::
-
-### 想法第一次能落地，
-### 但也第一次进入“让它再改改”的循环。
-
-::subtitle::
-
-缺少结构、标准和验证时，vibe coding 很容易变成反复试错。
-
 ---
 layout: header-body
 ---
 
 ::backdrop::
 
-SKILLS
+AGENTS
+
+::eyebrow::
+
+Tools
+
+::title::
+
+### Coding Agents
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <a class="callout flex min-h-0 flex-col gap-3 no-underline" href="https://www.anthropic.com/claude-code" target="_blank" rel="noreferrer">
+    <span class="callout-title">Claude Code</span>
+    <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+      <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/claude-code-terminal.png" alt="Claude Code terminal interface">
+    </div>
+  </a>
+  <a class="callout flex min-h-0 flex-col gap-3 no-underline" href="https://cursor.com/" target="_blank" rel="noreferrer">
+    <span class="callout-title">Cursor</span>
+    <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+      <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/cursor.png" alt="Cursor coding agent interface">
+    </div>
+  </a>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Start
+
+::title::
+
+### 想法初步落地
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1.25fr_0.75fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+    <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/audiometer-legacy.png" alt="Legacy audiometer interface">
+  </div>
+  <div v-click="1" class="callout flex min-h-0 flex-col gap-3 self-start">
+    <span class="callout-title">遇到的问题</span>
+    <ul>
+      <li v-click="2">想到什么做什么</li>
+      <li v-click="3">功能实现上没有明确的检验标准</li>
+      <li v-click="4">界面设计上没有统一的元素规范</li>
+      <li v-click="5">不知道如何调教 Agents</li>
+    </ul>
+    <div v-click="5" class="flex justify-start">
+      <img class="max-h-[12rem] max-w-full object-contain" src="/ai-in-game-audio-design-2026/vibe-coding-meme.jfif" alt="Vibe coding meme">
+    </div>
+  </div>
+</div>
+
+---
+layout: header-body
+---
 
 ::eyebrow::
 
@@ -912,23 +953,65 @@ Process
 
 ::title::
 
-### 从聊天，到理解 agents 与 skills
+### 学习如何使用 Coding Agents
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>早期使用</h4>
-    <p>我描述功能，agent 写代码；我发现不对，再让它继续改。</p>
+<div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5">
+  <div class="callout p-5">
+    <h4>理解工具的模式与理念</h4>
+    <ul>
+      <li>不是简单的 LLM Chatbot</li>
+      <li>理解术语
+        <ul>
+          <li><a href="https://developers.openai.com/codex/guides/agents-md" target="_blank" rel="noreferrer">Rules</a></li>
+          <li><a href="https://agentskills.io/home" target="_blank" rel="noreferrer">Skills</a></li>
+          <li><a href="https://developers.openai.com/codex/subagents" target="_blank" rel="noreferrer">Subagents</a></li>
+          <li><a href="https://code.claude.com/docs/en/agent-sdk/hooks" target="_blank" rel="noreferrer">Hooks</a></li>
+          <li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noreferrer">MCP</a></li>
+        </ul>
+      </li>
+      <li>理解工具的能力边界</li>
+    </ul>
   </div>
   <div class="active-panel p-5">
-    <h4>后来意识到</h4>
+    <h4>Agent Skills 是什么？</h4>
+    <p>Agent Skills 是一种轻量、开放的格式，用专门知识与工作流程扩展 AI Agent 的能力。</p>
+    <pre><code>my-skill/
+├── SKILL.md      # Required: metadata + instructions
+├── scripts/      # Optional: executable code
+├── references/   # Optional: documentation
+├── assets/       # Optional: templates, resources
+└── ...           # Any additional files or directories</code></pre>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Principles
+
+::title::
+
+### Karpathy-Inspired Guidelines
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[0.78fr_1.22fr] gap-5">
+  <div class="active-panel flex min-h-0 flex-col gap-0 p-5">
+    <p><a href="https://github.com/multica-ai/andrej-karpathy-skills/blob/main/README.zh.md" target="_blank" rel="noreferrer">andrej-karpathy-skills</a> 是一个用于 Agents 行为的指南，源自 <a href="https://karpathy.ai/" target="_blank" rel="noreferrer">Andrej Karpathy</a> 对 LLM 编码陷阱的观察。四条原则：</p>
     <ul>
-      <li>brainstorming / grill-me：先把问题问清楚</li>
-      <li>TDD / verification：把结果变成可验证目标</li>
-      <li>code review：让修改接受另一轮检查</li>
-      <li>docs / slides authoring：把内容生产也流程化</li>
+      <li v-click>编码前思考：不要假设。不要隐藏困惑。呈现权衡。</li>
+      <li v-click>简洁优先：用最少的代码解决问题。不要过度推测。</li>
+      <li v-click>精准修改：只碰必须碰的。只清理自己造成的混乱。</li>
+      <li v-click>目标驱动执行：定义成功标准。循环验证直到达成。</li>
     </ul>
+  </div>
+  <div class="figure-frame min-h-0 overflow-hidden p-3">
+    <pre class="m-0 h-full overflow-y-auto whitespace-pre-wrap break-words rounded bg-[var(--color-bg)]/40 px-3 py-2 font-mono text-[0.46rem] leading-[0.66rem] text-[var(--color-text-body)]"><code># CLAUDE.md<br><br>Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.<br><br>**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.<br><br>## 1. Think Before Coding<br><br>**Don't assume. Don't hide confusion. Surface tradeoffs.**<br><br>Before implementing:<br>- State your assumptions explicitly. If uncertain, ask.<br>- If multiple interpretations exist, present them - don't pick silently.<br>- If a simpler approach exists, say so. Push back when warranted.<br>- If something is unclear, stop. Name what's confusing. Ask.<br><br>## 2. Simplicity First<br><br>**Minimum code that solves the problem. Nothing speculative.**<br><br>- No features beyond what was asked.<br>- No abstractions for single-use code.<br>- No "flexibility" or "configurability" that wasn't requested.<br>- No error handling for impossible scenarios.<br>- If you write 200 lines and it could be 50, rewrite it.<br><br>Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.<br><br>## 3. Surgical Changes<br><br>**Touch only what you must. Clean up only your own mess.**<br><br>When editing existing code:<br>- Don't "improve" adjacent code, comments, or formatting.<br>- Don't refactor things that aren't broken.<br>- Match existing style, even if you'd do it differently.<br>- If you notice unrelated dead code, mention it - don't delete it.<br><br>When your changes create orphans:<br>- Remove imports/variables/functions that YOUR changes made unused.<br>- Don't remove pre-existing dead code unless asked.<br><br>The test: Every changed line should trace directly to the user's request.<br><br>## 4. Goal-Driven Execution<br><br>**Define success criteria. Loop until verified.**<br><br>Transform tasks into verifiable goals:<br>- "Add validation" → "Write tests for invalid inputs, then make them pass"<br>- "Fix the bug" → "Write a test that reproduces it, then make it pass"<br>- "Refactor X" → "Ensure tests pass before and after"<br><br>For multi-step tasks, state a brief plan:<br>&#96;&#96;&#96;<br>1. [Step] → verify: [check]<br>2. [Step] → verify: [check]<br>3. [Step] → verify: [check]<br>&#96;&#96;&#96;<br><br>Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.<br><br>&#45;&#45;&#45;<br><br>**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.</code></pre>
   </div>
 </div>
 
