@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI产品词云</title>
+  <style>
+    body { margin: 0; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: ui-sans-serif, system-ui, sans-serif; }
+    canvas { max-width: 680px; width: 100%; display: block; }
+    #leg { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 10px 20px; justify-content: center; max-width: 680px; }
+    #leg span { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #888; }
+  </style>
+</head>
+<body>
+
+<canvas id="wc"></canvas>
+<div id="leg"></div>
+
+<!--
+  IMPLEMENTATION NOTES FOR SLIDEV AGENT
+  ======================================
+  This word cloud is built with HTML5 Canvas + vanilla JS (no dependencies).
+
+  DATA: 40 AI products/models from a student survey (23 respondents).
+  - Word SIZE = number of times mentioned (1–6)
+  - Word COLOR = tool category (see palette below)
+  - Layout = Archimedean spiral placement with AABB collision detection
+
+  TO USE IN SLIDEV:
+  1. Create a Vue component file (e.g. WordCloud.vue)
+  2. Move the canvas + legend markup into <template>
+  3. Wrap the entire <script> block logic inside onMounted(() => { ... })
+     because Canvas requires the DOM to exist before drawing.
+  4. Use <WordCloud /> in your .md slide with layout: center or similar.
+
+  CATEGORIES & COLORS:
+  - 大语言模型 (LLM)   → #378ADD (blue)
+  - 图像生成 (Image)   → #7F77DD (purple)
+  - 视频/动画 (Video)  → #D85A30 (coral)
+  - 音频/音乐 (Audio)  → #1D9E75 (teal)
+  - 编程工具 (Coding)  → #639922 (green)
+  - 其他平台 (Other)   → #BA7517 (amber)
+
+  CANVAS SIZE: 680 × 440 px (designed for 16:9 slides)
+  DPR-aware: scales for retina displays automatically.
+-->
+
+<script>
+(function(){
+  const data = [
+    {t:'Gemini',n:6,c:'llm'},
+    {t:'DeepSeek',n:5,c:'llm'},
+    {t:'豆包',n:5,c:'llm'},
+    {t:'Suno',n:4,c:'audio'},
+    {t:'Nano Banana',n:4,c:'image'},
+    {t:'即梦',n:3,c:'video'},
+    {t:'ChatGPT',n:3,c:'llm'},
+    {t:'Cursor',n:3,c:'coding'},
+    {t:'GPT Image 2',n:3,c:'image'},
+    {t:'Seedance',n:2,c:'video'},
+    {t:'Midjourney',n:2,c:'image'},
+    {t:'可灵',n:2,c:'image'},
+    {t:'ComfyUI',n:2,c:'image'},
+    {t:'Stable Diffusion',n:2,c:'image'},
+    {t:'Claude',n:2,c:'llm'},
+    {t:'Codex',n:2,c:'llm'},
+    {t:'LibTV',n:1,c:'video'},
+    {t:'updream',n:1,c:'video'},
+    {t:'TapNow',n:1,c:'video'},
+    {t:'Topaz Video',n:1,c:'video'},
+    {t:'LTX-2.3',n:1,c:'video'},
+    {t:'GPT-SoVITS',n:1,c:'audio'},
+    {t:'Sony Woosh',n:1,c:'audio'},
+    {t:'Cyanite',n:1,c:'audio'},
+    {t:'ACE-Step',n:1,c:'audio'},
+    {t:'Qwen3-TTS',n:1,c:'audio'},
+    {t:'VoxCPM2',n:1,c:'audio'},
+    {t:'GitHub Copilot',n:1,c:'coding'},
+    {t:'Windsurf',n:1,c:'coding'},
+    {t:'Trae',n:1,c:'coding'},
+    {t:'千问',n:1,c:'llm'},
+    {t:'WorkBuddy',n:1,c:'other'},
+    {t:'TapTap Maker',n:1,c:'other'},
+    {t:'AstrBot',n:1,c:'other'},
+    {t:'OpenClaw',n:1,c:'other'},
+    {t:'Holopix',n:1,c:'image'},
+    {t:'Tripo',n:1,c:'image'},
+    {t:'FLUX.2',n:1,c:'image'},
+    {t:'Seedream',n:1,c:'image'},
+    {t:'ima',n:1,c:'image'},
+  ];
+
+  const pal = {
+    llm:    '#378ADD',
+    image:  '#7F77DD',
+    video:  '#D85A30',
+    audio:  '#1D9E75',
+    coding: '#639922',
+    other:  '#BA7517'
+  };
+
+  const labels = {
+    llm:    '大语言模型',
+    image:  '图像生成',
+    video:  '视频/动画',
+    audio:  '音频/音乐',
+    coding: '编程工具',
+    other:  '其他平台'
+  };
+
+  // Font size by mention count
+  const getSize = n => n>=6?50 : n>=5?42 : n>=4?35 : n>=3?28 : n>=2?21 : 15;
+
+  const W = 680, H = 440;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const cv = document.getElementById('wc');
+  cv.width  = W * dpr;
+  cv.height = H * dpr;
+  cv.style.height = H + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const setFont = s => { ctx.font = `500 ${s}px ui-sans-serif, system-ui, sans-serif`; };
+  const measureW = (text, size) => { setFont(size); return ctx.measureText(text).width; };
+
+  // Sort largest first so big words get center priority
+  const sorted = [...data].sort((a, b) => b.n - a.n);
+  const placed = [];
+  const GAP = 10; // px padding between words
+
+  function collides(x, y, w, h) {
+    for (const p of placed) {
+      if (x < p.x+p.w+GAP && x+w+GAP > p.x && y < p.y+p.h+GAP && y+h+GAP > p.y) return true;
+    }
+    return false;
+  }
+
+  // Archimedean spiral placement
+  const cx = W / 2, cy = H / 2;
+  for (const word of sorted) {
+    const fs = getSize(word.n);
+    const tw = measureW(word.t, fs) + 6;
+    const th = fs * 1.35;
+    let done = false, t = 0;
+    while (!done && t < 5000) {
+      const angle  = 0.13 * t;
+      const radius = 5.5 * t / (2 * Math.PI);
+      const x = cx + radius * Math.cos(angle) - tw / 2;
+      const y = cy + radius * Math.sin(angle) - th / 2;
+      if (x >= 8 && y >= 8 && x+tw <= W-8 && y+th <= H-8 && !collides(x, y, tw, th)) {
+        placed.push({ x, y, w: tw, h: th, t: word.t, fs, col: pal[word.c] });
+        done = true;
+      }
+      t++;
+    }
+  }
+
+  // Draw words
+  ctx.clearRect(0, 0, W, H);
+  for (const p of placed) {
+    setFont(p.fs);
+    ctx.fillStyle   = p.col;
+    ctx.textBaseline = 'top';
+    ctx.fillText(p.t, p.x + 3, p.y + p.h * 0.08);
+  }
+
+  // Build legend
+  const leg = document.getElementById('leg');
+  for (const [k, label] of Object.entries(labels)) {
+    const s = document.createElement('span');
+    s.innerHTML = `<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${pal[k]};flex-shrink:0"></span>${label}`;
+    leg.appendChild(s);
+  }
+})();
+</script>
+
+</body>
+</html>
