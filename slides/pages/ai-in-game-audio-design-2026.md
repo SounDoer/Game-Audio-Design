@@ -774,8 +774,8 @@ START
 
 ::title::
 
-### 如何使用 AI，
-### 其实所有人是站在同一起跑线上的。
+### 关于如何使用 AI，
+### 其实大家都是站在同一起跑线上的。
 
 ::subtitle::
 
@@ -838,7 +838,7 @@ Context
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div class="callout flex min-h-0 flex-col gap-3">
+  <div v-click="1" class="callout flex min-h-0 flex-col gap-3">
     <span class="callout-title">版本控制</span>
     <ul>
       <li><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></li>
@@ -853,7 +853,7 @@ Context
       </div>
     </div>
   </div>
-  <div class="callout flex min-h-0 flex-col gap-3">
+  <div v-click="2" class="callout flex min-h-0 flex-col gap-3">
     <span class="callout-title">代码编辑</span>
     <ul>
       <li><a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">VS Code</a></li>
@@ -868,7 +868,7 @@ Context
       </div>
     </div>
   </div>
-  <div class="active-panel flex min-h-0 flex-col gap-3 p-4">
+  <div v-click="3" class="active-panel flex min-h-0 flex-col gap-3 p-4">
     <span class="callout-title">以往案例</span>
     <ul>
       <li>Personal Website</li>
