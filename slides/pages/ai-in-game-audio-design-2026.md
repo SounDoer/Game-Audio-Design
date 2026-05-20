@@ -958,11 +958,11 @@ Process
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5">
-  <div class="callout p-5">
+  <div v-click="1" class="callout p-5">
     <h4>理解工具的模式与理念</h4>
     <ul>
-      <li>不是简单的 LLM Chatbot</li>
-      <li>理解术语
+      <li v-click="2">不是简单的 LLM Chatbot</li>
+      <li v-click="3">理解术语
         <ul>
           <li><a href="https://developers.openai.com/codex/guides/agents-md" target="_blank" rel="noreferrer">Rules</a></li>
           <li><a href="https://agentskills.io/home" target="_blank" rel="noreferrer">Skills</a></li>
@@ -971,10 +971,10 @@ Process
           <li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noreferrer">MCP</a></li>
         </ul>
       </li>
-      <li>理解工具的能力边界</li>
+      <li v-click="4">理解工具的能力边界</li>
     </ul>
   </div>
-  <div class="active-panel p-5">
+  <div v-click="5" class="active-panel p-5">
     <h4>Agent Skills 是什么？</h4>
     <p>Agent Skills 是一种轻量、开放的格式，用专门知识与工作流程扩展 AI Agent 的能力。</p>
     <pre><code>my-skill/
@@ -1014,12 +1014,63 @@ layout: header-body
       <li v-click>目标驱动执行：定义成功标准。循环验证直到达成。</li>
     </ul>
   </div>
-  <div class="figure-frame min-h-0 overflow-hidden p-3">
+  <div v-click class="figure-frame min-h-0 overflow-hidden p-3">
     <pre class="m-0 h-full overflow-y-auto whitespace-pre-wrap break-words rounded bg-[var(--color-bg)]/40 px-3 py-2 font-mono text-[0.46rem] leading-[0.66rem] text-[var(--color-text-body)]"><code># CLAUDE.md<br><br>Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.<br><br>**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.<br><br>## 1. Think Before Coding<br><br>**Don't assume. Don't hide confusion. Surface tradeoffs.**<br><br>Before implementing:<br>- State your assumptions explicitly. If uncertain, ask.<br>- If multiple interpretations exist, present them - don't pick silently.<br>- If a simpler approach exists, say so. Push back when warranted.<br>- If something is unclear, stop. Name what's confusing. Ask.<br><br>## 2. Simplicity First<br><br>**Minimum code that solves the problem. Nothing speculative.**<br><br>- No features beyond what was asked.<br>- No abstractions for single-use code.<br>- No "flexibility" or "configurability" that wasn't requested.<br>- No error handling for impossible scenarios.<br>- If you write 200 lines and it could be 50, rewrite it.<br><br>Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.<br><br>## 3. Surgical Changes<br><br>**Touch only what you must. Clean up only your own mess.**<br><br>When editing existing code:<br>- Don't "improve" adjacent code, comments, or formatting.<br>- Don't refactor things that aren't broken.<br>- Match existing style, even if you'd do it differently.<br>- If you notice unrelated dead code, mention it - don't delete it.<br><br>When your changes create orphans:<br>- Remove imports/variables/functions that YOUR changes made unused.<br>- Don't remove pre-existing dead code unless asked.<br><br>The test: Every changed line should trace directly to the user's request.<br><br>## 4. Goal-Driven Execution<br><br>**Define success criteria. Loop until verified.**<br><br>Transform tasks into verifiable goals:<br>- "Add validation" → "Write tests for invalid inputs, then make them pass"<br>- "Fix the bug" → "Write a test that reproduces it, then make it pass"<br>- "Refactor X" → "Ensure tests pass before and after"<br><br>For multi-step tasks, state a brief plan:<br>&#96;&#96;&#96;<br>1. [Step] → verify: [check]<br>2. [Step] → verify: [check]<br>3. [Step] → verify: [check]<br>&#96;&#96;&#96;<br><br>Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.<br><br>&#45;&#45;&#45;<br><br>**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.</code></pre>
   </div>
 </div>
 
 <!-- Andrej Karpathy -->
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+<div class="flex items-center gap-3">
+  <a class="inline-flex" href="https://github.com/obra/superpowers" target="_blank" rel="noreferrer">
+    <img class="h-5" src="https://img.shields.io/github/stars/obra/superpowers?style=social" alt="GitHub stars for obra superpowers">
+  </a>
+</div>
+
+::title::
+
+### Superpowers
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
+  <div class="active-panel flex min-h-0 flex-col gap-0 p-5">
+    <p><a href="https://github.com/obra/superpowers" target="_blank" rel="noreferrer">obra/superpowers</a> 是一套面向 Coding Agents 的完整开发方法论：</p>
+    <ul>
+      <li v-click>看到你要构建东西时，先退一步追问：你真正想做什么？</li>
+      <li v-click>从对话里提炼需求说明，确认后再写足够明确的执行计划。</li>
+      <li v-click>确认之后，进入子 Agent 分工执行：拆任务、执行、检查、复查，再继续推进。</li>
+      <li v-click>核心价值：把 Brainstorming、TDD、YAGNI、DRY 和 Code Review 变成自动触发的工作流。</li>
+    </ul>
+  </div>
+  <div class="p-5">
+    <pre><code>superpowers/
+├── .cursor-plugin/    # Cursor
+├── .claude-plugin/    # Claude Code
+├── .codex-plugin/     # Codex
+├── skills/            # Agent workflows
+│   ├── using-superpowers/
+│   ├── brainstorming/
+│   ├── test-driven-development/
+│   ├── subagent-driven-development/
+│   └── .../
+├── hooks/             # Event automation
+├── docs/              # Methodology
+└── AGENTS.md          # Initial instructions</code></pre>
+  </div>
+</div>
+
+<!--
+1. TDD — Test-Driven Development
+2. YAGNI — You Aren't Gonna Need It
+3. DRY — Don't Repeat Yourself
+-->
 
 ---
 layout: header-body
@@ -1042,48 +1093,55 @@ layout: header-body
 <div class="grid h-full min-h-0 grid-cols-[0.78fr_1.22fr] gap-5">
   <div class="active-panel flex min-h-0 flex-col gap-0 p-5">
     <p><a href="https://github.com/mattpocock/skills" target="_blank" rel="noreferrer">mattpocock/skills</a></p>
-    <p>开发真实应用很难。GSD、BMAD、Spec-Kit 这类方法会试图替你掌控完整流程，但流程一旦被接管，人的控制感会变少，出错时也更难定位。</p>
+    <p>开发真实应用很难。</p>
+    <p>GSD、BMAD、Spec-Kit 这类方法会试图替你掌控完整流程，但流程一旦被接管，人的控制感会变少，出错时也更难定位。</p>
     <p>这些 skills 被设计得很小、容易改造、可以组合；它们适用于任何模型，并且建立在多年工程经验之上。</p>
     <ul>
-      <li><code>grill-me</code></li>
-      <li><code>grill-with-docs</code></li>
+      <li v-click="1"><code>grill-me</code></li>
+      <li v-click="1"><code>grill-with-docs</code></li>
     </ul>
   </div>
-  <div class="figure-frame min-h-0 overflow-hidden p-3">
+  <div v-click="1" class="figure-frame min-h-0 overflow-hidden p-3">
     <pre class="m-0 h-full overflow-y-auto whitespace-pre-wrap break-words rounded bg-[var(--color-bg)]/40 px-3 py-2 font-mono text-[0.58rem] leading-[0.82rem] text-[var(--color-text-body)]"><code>&#45;&#45;&#45;<br>name: grill-me<br>description: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".<br>&#45;&#45;&#45;<br><br>Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.<br><br>Ask the questions one at a time.<br><br>If a question can be answered by exploring the codebase, explore the codebase instead.</code></pre>
   </div>
 </div>
 
-<!-- Matt Pocock -->
+<!--
+1. Matt Pocock
+2. GSD — Get Shit Done
+3. BMAD — Breakthrough Method for Agentive Development
+4. Spec-Kit — Specification-Driven Development
+-->
 
 ---
 layout: header-body
 ---
 
-::backdrop::
-
-SHIFT
-
 ::eyebrow::
 
-Before / After
+Human In The Loop
 
 ::title::
 
-### 协作范式的 before / after
+### 人的参与和决策
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="callout">
-    <span class="callout-title">以前</span>
-    <p>我描述功能，AI 写代码。</p>
-    <p class="text-[0.9rem] text-[var(--color-text-muted)]">结果看起来能跑，但边界、标准和验收经常不清楚。</p>
+<div class="flex h-full min-h-0 flex-col gap-5">
+  <div class="p-5">
+    <div v-click>
+      <span class="callout-title">HITL: Human In The Loop</span>
+      <p>Skills 能让 Agents 更会工作，但它们不能替你决定你真正想要什么。</p>
+    </div>
+    <ul>
+      <li v-click>目标、边界、取舍仍然需要人提前想清楚。</li>
+      <li v-click>关键决策不能只留在聊天记录里。</li>
+      <li v-click>人负责判断问题是否值得做、结果是否可接受，以及什么时候该停下来改方向。</li>
+    </ul>
   </div>
-  <div class="active-panel p-5">
-    <span class="callout-title">现在</span>
-    <p>我定义目标、边界、标准和验收，AI 在流程中执行、检查和迭代。</p>
-    <p class="text-[0.9rem] text-[var(--color-text-muted)]">PLVS 后续功能开发也从 vibe coding 逐步变成更结构化的协作。</p>
+  <div v-click class="callout p-5">
+    <span class="callout-title">SSOT: Single Source of Truth</span>
+    <p>把需求目标、设计理念、开发规范和验收标准等整理成稳定文档，让人和 Agents 共享同一份事实来源。</p>
   </div>
 </div>
 
@@ -1097,7 +1155,7 @@ SSOT
 
 ::eyebrow::
 
-Development Awareness
+SSOT Map
 
 ::title::
 
@@ -1106,25 +1164,27 @@ Development Awareness
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-4 gap-3">
-  <div v-click class="active-panel p-4">
-    <span class="step-index">01</span>
-    <h4>设计系统</h4>
-    <p>定义界面气质和组件语言。</p>
+  <div v-click class="border-l hairline pl-4">
+    <span class="step-index">PRD</span>
+    <h4>产品需求文档</h4>
+    <p>产品事实：为什么做、给谁用、解决什么问题、成功标准是什么。</p>
   </div>
   <div v-click class="border-l hairline pl-4">
-    <span class="step-index">02</span>
-    <h4>Design Token</h4>
-    <p>让颜色、间距、字号有稳定来源。</p>
+    <span class="step-index">Architecture + ADR</span>
+    <h4>架构文档</h4>
+    <h4>架构决策记录</h4>
+    <p>技术事实：系统怎么组成，关键选择为什么这么定、放弃了什么。</p>
   </div>
   <div v-click class="border-l hairline pl-4">
-    <span class="step-index">03</span>
-    <h4>组件规范</h4>
-    <p>让复用和一致性不靠临场发挥。</p>
+    <span class="step-index">Design Token</span>
+    <h4>设计规则</h4>
+    <p>设计事实：把颜色、字号、间距和组件语义变成稳定规则。</p>
   </div>
   <div v-click class="border-l hairline pl-4">
-    <span class="step-index">04</span>
-    <h4>验收标准</h4>
-    <p>让 agent 的输出可以被检查。</p>
+    <span class="step-index">Spec + Plan</span>
+    <h4>规格说明</h4>
+    <h4>执行计划</h4>
+    <p>执行事实：这次要做成什么样，以及按什么步骤实现、检查和交付。</p>
   </div>
 </div>
 
@@ -1138,27 +1198,29 @@ PLVS
 
 ::eyebrow::
 
-Showcase
+Case Story
 
 ::title::
 
-### PLVS：这个工具现在变成了什么？
+### 从个人需求到开源产品
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.15fr_0.85fr] gap-5">
+<div class="grid h-full min-h-0 grid-cols-[1.6fr_0.4fr] gap-5">
   <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">USER MATERIAL</span>
-    <p class="text-center">TODO: PLVS 工具实际截图</p>
-    <p class="text-center text-[0.9rem] text-[var(--color-text-muted)]">展示它如何从个人听声需求变成可发布的开源产品。</p>
+    <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/plvs-20260520.png" alt="PLVS real-time audio metering interface">
   </div>
   <div class="min-h-0 min-w-0">
-    <h4>Real-time Audio Metering</h4>
+    <div class="flex items-center gap-3">
+      <h4 class="mb-0">PLVS</h4>
+      <a class="badge" href="https://plvs.soundoer.com/" target="_blank" rel="noreferrer">Website</a>
+      <a class="badge" href="https://github.com/SounDoer/PLVS" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
     <ul>
-      <li>Peak、Loudness、Vectorscope</li>
-      <li>Spectrum、Spectrogram</li>
-      <li>系统音频捕获、灵活布局、历史快照</li>
-      <li><a href="https://plvs.soundoer.com/" target="_blank" rel="noreferrer">PLVS 官网</a> / <a href="https://github.com/SounDoer/PLVS" target="_blank" rel="noreferrer">GitHub 仓库</a></li>
+      <li>原生系统音频捕获</li>
+      <li>响度历史与快照回看</li>
+      <li>多声道支持</li>
+      <li>完全灵活的分屏布局</li>
     </ul>
   </div>
 </div>
@@ -1177,60 +1239,81 @@ Human Value
 
 ::title::
 
-### 人在 AI 协作中的价值
+### 人在 AI 协作开发范式中的价值
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="active-panel p-5">
+  <div class="min-h-0 min-w-0 p-3">
     <span class="callout-title">工程决策</span>
-    <ul>
-      <li>目标</li>
-      <li>边界</li>
-      <li>架构</li>
-      <li>验收</li>
-    </ul>
+    <div class="mt-3 flex flex-col gap-3">
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">目标</p>
+          <p class="text-[1rem] leading-tight">要解决什么问题？</p>
+        </div>
+      </div>
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">边界</p>
+          <p class="text-[1rem] leading-tight">哪些不做，哪些风险可接受？</p>
+        </div>
+      </div>
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">架构</p>
+          <p class="text-[1rem] leading-tight">系统怎么拆，数据怎么组织？</p>
+        </div>
+      </div>
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">验收</p>
+          <p class="text-[1rem] leading-tight">怎样才算完成，如何验证？</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="callout">
+  <div class="min-h-0 min-w-0 p-3">
     <span class="callout-title">审美决策</span>
-    <ul>
-      <li>风格</li>
-      <li>取舍</li>
-      <li>体验</li>
-      <li>声音 / 界面品味</li>
-    </ul>
+    <div class="mt-3 flex flex-col gap-3">
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">风格</p>
+          <p class="text-[1rem] leading-tight">整体气质是否成立？</p>
+        </div>
+      </div>
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">层次</p>
+          <p class="text-[1rem] leading-tight">什么信息应该先被感知？</p>
+        </div>
+      </div>
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">节奏</p>
+          <p class="text-[1rem] leading-tight">交互和反馈是否舒服？</p>
+        </div>
+      </div>
+      <div class="quote-accent py-1">
+        <div class="flex items-start gap-4">
+          <p class="min-w-[3.5rem] text-[1.15rem] font-bold text-[var(--color-text-primary)]">品味</p>
+          <p class="text-[1rem] leading-tight">什么时候够了，什么时候还不对？</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 ---
-layout: header-body
+layout: fullscreen-media
+image: /ai-in-game-audio-design-2026/slides-overview.png
+backgroundSize: contain
+alt: Overview of the AI in game audio design Slidev deck
 ---
 
-::backdrop::
-
-META
-
-::eyebrow::
-
-Meta Case
-
-::title::
-
-### 这套 slides 也是 AI 协作完成的
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-[1.15fr_0.85fr] gap-5">
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">USER MATERIAL</span>
-    <p class="text-center">TODO: Slidev 全览图</p>
-  </div>
-  <div class="min-h-0 min-w-0">
-    <h4>不只代码可以协作</h4>
-    <p>课程准备、内容结构、逐页计划和 Slidev 实现也可以被流程化。</p>
-    <div v-click class="quote-accent mt-5">
-      <p>前面讲的方法，正在被这套 deck 自己使用。</p>
-    </div>
+<div class="relative h-full w-full">
+  <div class="callout absolute bottom-8 left-8 z-1 max-w-[28rem] bg-[rgba(20,20,20,0.92)] shadow-[0_0_32px_rgba(0,0,0,0.85)]">
+    <p><strong>这套 Slides 也是和 Agents 协作完成的。</strong></p>
   </div>
 </div>
 
@@ -1248,25 +1331,27 @@ Skill
 
 ::title::
 
-### `gad-slides-authoring`：把协作拆成 A / B / C
+### `gad-slides-authoring`
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div v-click class="active-panel p-4">
-    <span class="step-index">A</span>
-    <h4>先决定讲什么</h4>
-    <p>大纲阶段确定主线、章节结构、案例方向和开放问题。</p>
+<div class="grid h-full min-h-0 grid-cols-[0.6fr_1.4fr] gap-5">
+  <div class="flex min-h-0 flex-col gap-4">
+    <div class="callout">
+      <span class="callout-title">A</span>
+      <h4>大纲框架</h4>
+    </div>
+    <div class="callout">
+      <span class="callout-title">B</span>
+      <h4>逐页草稿</h4>
+    </div>
+    <div class="callout">
+      <span class="callout-title">C</span>
+      <h4>整合实现</h4>
+    </div>
   </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">B</span>
-    <h4>再决定每页怎么讲</h4>
-    <p>逐页确认 purpose、visible title、key text、media 和 layout intent。</p>
-  </div>
-  <div v-click class="border-l hairline pl-4">
-    <span class="step-index">C</span>
-    <h4>最后做成 Slidev</h4>
-    <p>根据 confirmed page plan 写页面，并用构建验证结果。</p>
+  <div class="figure-frame min-h-0 overflow-hidden p-3">
+    <pre class="m-0 h-full overflow-y-auto whitespace-pre-wrap break-words rounded bg-[var(--color-bg)]/40 px-3 py-2 font-mono text-[0.45rem] leading-[0.64rem] text-[var(--color-text-body)]"><code>&#45;&#45;&#45;<br>name: gad-slides-authoring<br>description: Use when preparing, rewriting, or maintaining Game-Audio-Design Slidev teaching decks, `slides/pages/*.md` files, `slides/drafts/*.md` outlines, or course slides for online `/slides/` pages. 中文触发：游戏音频备课幻灯、课程 Slidev 讲稿、slides/pages、slides/drafts。<br>&#45;&#45;&#45;<br><br># GAD Slides Authoring<br><br>## 核心规则<br><br>使用三阶段工作流：**A 大纲 -&gt; B 逐页内容 -&gt; C Slidev 实现**。<br><br>在 B 阶段形成 confirmed page plan 之前，不要跳到 C。除非用户明确授权你起草缺失内容，否则不要凭想象补写 B 阶段内容。<br><br>用户可以从 A、B、C 任意阶段进入。继续之前，先检查上游产物是否存在且足够具体；如果缺失，就退回对应阶段补齐。<br><br>## 入口检查<br><br>1. 识别目标 `stem`。<br>   - 如果用户提供 `slides/pages/&lt;stem&gt;.md`，使用该 `stem`。<br>   - 如果用户提供 draft 路径，用 `draft-&lt;stem&gt;.md` 推断 `stem`，并在本次会话中使用这个具体 draft。<br>   - 如果用户只提供不带目录的 `draft-&lt;stem&gt;.md`，默认标准路径是 `slides/drafts/draft-&lt;stem&gt;.md`；如果该文件不存在，在进入 B 或 C 前先询问实际路径。<br>   - 如果没有具体 `stem` 或文档，先请用户确定；不要自行命名。<br>   - active draft 是用户提供的 draft 路径；如果用户未提供，则是 `slides/drafts/draft-&lt;stem&gt;.md`。<br><br>2. 检查目标在仓库中的状态。<br>   - 检查 `slides/pages/&lt;stem&gt;.md`。<br>   - 检查 `slides/public/&lt;stem&gt;/`。<br>   - 检查 active draft 路径。<br>   - 如果文件或文件夹缺失，记录为“待创建”或“缺少资源文件夹”；缺失文件不阻止 A，但可能阻止 B 或 C。<br><br>3. 确认当前阶段。<br>   - A：用户想讨论专题、想法、结构或教学大纲。<br>   - B：用户已有大纲，想确定每页 slide 的文字、媒体和布局。<br>   - C：用户已有 confirmed page plan，想制作实际的 Slidev 页面。<br><br>进入 B 或 C 时，先读取 active draft，并向用户简短复述当前状态，再继续。<br><br>……</code></pre>
   </div>
 </div>
 
@@ -1284,30 +1369,27 @@ SSOT
 
 ::title::
 
-### `README.md` 与 `EXAMPLE.md`：规则说明书 + 可复制样张
+### 规则说明书 & 示例样张
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="active-panel p-5">
-    <span class="callout-title">`slides/README.md`</span>
-    <p>规则说明书，回答“这个 deck 系统怎么运转”。</p>
-    <ul>
-      <li>目录与构建</li>
-      <li>设计 token</li>
-      <li>layout 体系</li>
-      <li>资源约定</li>
-    </ul>
+  <div class="callout">
+    <span class="callout-title">slides/README.md</span>
+    <p><strong>规则说明书，回答“这个系统怎么运转”。</strong></p>
+    <div class="flex flex-col text-[0.68rem] leading-tight">
+      <p>1. 仓库结构与产物</p>
+      <p>2. 命令与工作流</p>
+      <p>3. 设计系统：<span class="text-[var(--color-text-muted)]">视觉定位 / 配色 / 字体 / 装饰 / ...</span></p>
+      <p>4. 布局体系：<span class="text-[var(--color-text-muted)]">cover / section / header-body / ...</span></p>
+      <p>5. 样式写法</p>
+      <p>6. 静态资源</p>
+    </div>
   </div>
   <div class="callout">
-    <span class="callout-title">`slides/pages/EXAMPLE.md`</span>
-    <p>可复制样张，回答“具体页面应该怎么写”。</p>
-    <ul>
-      <li>cover / section</li>
-      <li>header-body</li>
-      <li>fullscreen-media</li>
-      <li>statement</li>
-    </ul>
+    <span class="callout-title">slides/pages/EXAMPLE.md</span>
+    <p><strong>示例样张，回答“具体页面应该怎么写”。</strong></p>
+    <img class="mt-3 max-h-[15rem] w-full object-contain" src="/ai-in-game-audio-design-2026/example-slides-overview.png" alt="Overview of the GAD Slidev example deck">
   </div>
 </div>
 
@@ -1321,9 +1403,23 @@ layout: statement
 
 ::title::
 
-### AI 能做的越来越多，
-### 但它不知道什么才是“对”的。
+### 探索你自己的协作方式，
+### 解决你自己的实际需求。
 
 ::subtitle::
 
-设计目标、项目语境、实现约束、质量判断与最终验收。
+<span v-click>🤣“AI 时代，只要你学得足够慢，你就可以什么都不用学。” </span>
+
+---
+layout: end
+---
+
+::backdrop::
+
+FIN
+
+::default::
+
+Thanks & Questions?
+
+xichen@soundoer.com
