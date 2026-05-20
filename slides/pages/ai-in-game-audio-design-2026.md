@@ -727,6 +727,18 @@ Case Tool
 </div>
 
 ---
+layout: statement
+---
+
+::backdrop::
+
+?
+
+::title::
+
+### 游戏公司内部正在如何布局？
+
+---
 layout: section
 ---
 
@@ -744,7 +756,7 @@ Part 02
 
 ::subtitle::
 
-中年男人的赛博钓鱼
+我的“赛博钓鱼”经验分享
 
 <!-- vibe coding 起源？ -->
 
@@ -758,12 +770,50 @@ START
 
 ::title::
 
-### 关于如何使用 AI，
-### 大家其实是站在同一起跑线上的。
+### 如何使用 AI，
+### 其实所有人是站在同一起跑线上的。
 
 ::subtitle::
 
-不要先假设自己落后，而是建立协作方式和判断标准。
+---
+layout: header-body
+---
+
+::backdrop::
+
+CASE
+
+::eyebrow::
+
+Case Story
+
+::title::
+
+### 为什么我要做一个音频信号监测工具？
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
+  <div class="min-h-0 min-w-0">
+    <ul>
+      <li v-click="1">个人听声习惯，需要一个桌面端工具监测系统的音频信号</li>
+      <li v-click="2">监测信号包括流媒体、游戏、编辑工具、中间件和引擎等各种应用和场景</li>
+      <li v-click="3">需要关注监测信号的响度指标，以及峰值和频谱等其他参数</li>
+      <li v-click="4">现成的工具无法满足我的个性化需求</li>
+    </ul>
+    <div v-click="5" class="quote-accent mt-5">
+      <p>尝试以开发一个产品的形式，探索与 AI 协作的开发范式</p>
+    </div>
+  </div>
+  <div v-click="4" class="grid min-h-0 grid-rows-2 gap-3">
+    <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+      <img class="max-h-full max-w-full object-contain" src="/how-to-listen-sound/Youlean-Loudness-Meter.png" alt="Youlean Loudness Meter interface">
+    </div>
+    <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+      <img class="max-h-full max-w-full object-contain" src="/how-to-listen-sound/TC-CLARITY-M-STEREO.png" alt="TC Electronic Clarity M Stereo interface">
+    </div>
+  </div>
+</div>
 
 ---
 layout: header-body
@@ -779,61 +829,57 @@ Context
 
 ::title::
 
-### 我不是零基础，但过去仍被门槛卡住
+### 有限的开发能力
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5">
-  <div class="callout">
-    <span class="callout-title">已有基础</span>
+<div class="grid h-full min-h-0 grid-cols-3 gap-4">
+  <div class="callout flex min-h-0 flex-col gap-3">
+    <span class="callout-title">版本控制</span>
     <ul>
-      <li>GitHub</li>
-      <li>Perforce</li>
-      <li>VS Code</li>
-      <li>一些开发经验</li>
+      <li><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></li>
+      <li><a href="https://www.perforce.com/" target="_blank" rel="noreferrer">Perforce</a></li>
     </ul>
-  </div>
-  <div class="active-panel p-5">
-    <span class="callout-title">真正卡住的地方</span>
-    <p>有很多工具和产品想法，但在 coding agents 兴起前，很难独立把它们推进到可迭代、可维护、可发布的工程实践。</p>
-  </div>
-</div>
-
----
-layout: header-body
----
-
-::backdrop::
-
-PLVS
-
-::eyebrow::
-
-Case Story
-
-::title::
-
-### 从需求开始：为什么我要做 audiometer？
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>个人听声习惯</h4>
-    <ul>
-      <li>用监测表头观察桌面端各种音频信号。</li>
-      <li>场景包括视频、游戏和开发中的项目。</li>
-      <li>希望同时看到 LUFS 响度和频谱。</li>
-    </ul>
-    <div v-click class="quote-accent mt-5">
-      <p>不是为了写代码而写代码，而是现有工具不够贴合自己的工作方式。</p>
+    <div class="grid min-h-0 flex-1 grid-rows-2 gap-2">
+      <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+        <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/github-soundoer.png" alt="SounDoer GitHub profile">
+      </div>
+      <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+        <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/perforce-localtts.png" alt="Perforce Helix Visual Client workspace">
+      </div>
     </div>
   </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-5">
-    <span class="badge">USER MATERIAL</span>
-    <p class="text-center">TODO: audiometer 早期版本截图</p>
+  <div class="callout flex min-h-0 flex-col gap-3">
+    <span class="callout-title">代码编辑</span>
+    <ul>
+      <li><a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">VS Code</a></li>
+      <li><a href="https://www.jetbrains.com/rider/" target="_blank" rel="noreferrer">JetBrains Rider</a></li>
+    </ul>
+    <div class="grid min-h-0 flex-1 grid-rows-2 gap-2">
+      <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+        <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/vscode-plvs.png" alt="PLVS project open in VS Code">
+      </div>
+      <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden">
+        <img class="max-h-full max-w-full object-contain" src="/ai-in-game-audio-design-2026/jetbrains-rider.webp" alt="JetBrains Rider interface">
+      </div>
+    </div>
+  </div>
+  <div class="active-panel flex min-h-0 flex-col gap-3 p-4">
+    <span class="callout-title">以往案例</span>
+    <ul>
+      <li>Personal Website</li>
+      <li>Game Jam Demos</li>
+      <li>Online Slide Decks</li>
+    </ul>
   </div>
 </div>
+
+<!--
+1. source control
+2. code editor
+3. 个人网站
+4. ue 项目，调用 api
+-->
 
 ---
 layout: statement
