@@ -102,6 +102,12 @@
   font-size: 1rem;
   color: var(--color-text-body);
   line-height: 1.75;
+  margin: 0 0 0.65rem;
+}
+
+.slidev-layout p:has(+ ul),
+.slidev-layout p:has(+ ol) {
+  margin-bottom: 0.35rem;
 }
 
 .slidev-layout li {

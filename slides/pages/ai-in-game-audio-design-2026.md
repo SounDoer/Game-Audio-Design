@@ -992,7 +992,11 @@ layout: header-body
 
 ::eyebrow::
 
-Principles
+<div class="flex items-center gap-3">
+  <a class="inline-flex" href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank" rel="noreferrer">
+    <img class="h-5" src="https://img.shields.io/github/stars/multica-ai/andrej-karpathy-skills?style=social" alt="GitHub stars for andrej-karpathy-skills">
+  </a>
+</div>
 
 ::title::
 
@@ -1002,7 +1006,7 @@ Principles
 
 <div class="grid h-full min-h-0 grid-cols-[0.78fr_1.22fr] gap-5">
   <div class="active-panel flex min-h-0 flex-col gap-0 p-5">
-    <p><a href="https://github.com/multica-ai/andrej-karpathy-skills/blob/main/README.zh.md" target="_blank" rel="noreferrer">andrej-karpathy-skills</a> 是一个用于 Agents 行为的指南，源自 <a href="https://karpathy.ai/" target="_blank" rel="noreferrer">Andrej Karpathy</a> 对 LLM 编码陷阱的观察。四条原则：</p>
+    <p><a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank" rel="noreferrer">andrej-karpathy-skills</a> 是一个用于 Agents 行为的指南，源自 <a href="https://karpathy.ai/" target="_blank" rel="noreferrer">Andrej Karpathy</a> 对 LLM 编码陷阱的观察。四条原则：</p>
     <ul>
       <li v-click>编码前思考：不要假设。不要隐藏困惑。呈现权衡。</li>
       <li v-click>简洁优先：用最少的代码解决问题。不要过度推测。</li>
@@ -1014,6 +1018,43 @@ Principles
     <pre class="m-0 h-full overflow-y-auto whitespace-pre-wrap break-words rounded bg-[var(--color-bg)]/40 px-3 py-2 font-mono text-[0.46rem] leading-[0.66rem] text-[var(--color-text-body)]"><code># CLAUDE.md<br><br>Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.<br><br>**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.<br><br>## 1. Think Before Coding<br><br>**Don't assume. Don't hide confusion. Surface tradeoffs.**<br><br>Before implementing:<br>- State your assumptions explicitly. If uncertain, ask.<br>- If multiple interpretations exist, present them - don't pick silently.<br>- If a simpler approach exists, say so. Push back when warranted.<br>- If something is unclear, stop. Name what's confusing. Ask.<br><br>## 2. Simplicity First<br><br>**Minimum code that solves the problem. Nothing speculative.**<br><br>- No features beyond what was asked.<br>- No abstractions for single-use code.<br>- No "flexibility" or "configurability" that wasn't requested.<br>- No error handling for impossible scenarios.<br>- If you write 200 lines and it could be 50, rewrite it.<br><br>Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.<br><br>## 3. Surgical Changes<br><br>**Touch only what you must. Clean up only your own mess.**<br><br>When editing existing code:<br>- Don't "improve" adjacent code, comments, or formatting.<br>- Don't refactor things that aren't broken.<br>- Match existing style, even if you'd do it differently.<br>- If you notice unrelated dead code, mention it - don't delete it.<br><br>When your changes create orphans:<br>- Remove imports/variables/functions that YOUR changes made unused.<br>- Don't remove pre-existing dead code unless asked.<br><br>The test: Every changed line should trace directly to the user's request.<br><br>## 4. Goal-Driven Execution<br><br>**Define success criteria. Loop until verified.**<br><br>Transform tasks into verifiable goals:<br>- "Add validation" → "Write tests for invalid inputs, then make them pass"<br>- "Fix the bug" → "Write a test that reproduces it, then make it pass"<br>- "Refactor X" → "Ensure tests pass before and after"<br><br>For multi-step tasks, state a brief plan:<br>&#96;&#96;&#96;<br>1. [Step] → verify: [check]<br>2. [Step] → verify: [check]<br>3. [Step] → verify: [check]<br>&#96;&#96;&#96;<br><br>Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.<br><br>&#45;&#45;&#45;<br><br>**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.</code></pre>
   </div>
 </div>
+
+<!-- Andrej Karpathy -->
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+<div class="flex items-center gap-3">
+  <a class="inline-flex" href="https://github.com/mattpocock/skills" target="_blank" rel="noreferrer">
+    <img class="h-5" src="https://img.shields.io/github/stars/mattpocock/skills?style=social" alt="GitHub stars for mattpocock skills">
+  </a>
+</div>
+
+::title::
+
+### Skills For Real Engineers
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[0.78fr_1.22fr] gap-5">
+  <div class="active-panel flex min-h-0 flex-col gap-0 p-5">
+    <p><a href="https://github.com/mattpocock/skills" target="_blank" rel="noreferrer">mattpocock/skills</a></p>
+    <p>开发真实应用很难。GSD、BMAD、Spec-Kit 这类方法会试图替你掌控完整流程，但流程一旦被接管，人的控制感会变少，出错时也更难定位。</p>
+    <p>这些 skills 被设计得很小、容易改造、可以组合；它们适用于任何模型，并且建立在多年工程经验之上。</p>
+    <ul>
+      <li><code>grill-me</code></li>
+      <li><code>grill-with-docs</code></li>
+    </ul>
+  </div>
+  <div class="figure-frame min-h-0 overflow-hidden p-3">
+    <pre class="m-0 h-full overflow-y-auto whitespace-pre-wrap break-words rounded bg-[var(--color-bg)]/40 px-3 py-2 font-mono text-[0.58rem] leading-[0.82rem] text-[var(--color-text-body)]"><code>&#45;&#45;&#45;<br>name: grill-me<br>description: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".<br>&#45;&#45;&#45;<br><br>Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.<br><br>Ask the questions one at a time.<br><br>If a question can be answered by exploring the codebase, explore the codebase instead.</code></pre>
+  </div>
+</div>
+
+<!-- Matt Pocock -->
 
 ---
 layout: header-body
