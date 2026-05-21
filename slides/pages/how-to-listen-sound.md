@@ -1,5 +1,6 @@
 ---
 layout: cover
+description: 从听感、环境与工具出发，建立分析声音的基础方法。
 ---
 
 ::backdrop::

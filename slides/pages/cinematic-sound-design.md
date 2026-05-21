@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解游戏过场与叙事镜头中的声音设计方法。
 ---
 
 ::title::

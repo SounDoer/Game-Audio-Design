@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
 function findRepoRoot(): string {
@@ -71,19 +71,50 @@ describe('slides repository layout', () => {
     expect(publicSubsetScript).not.toContain('if (fs.existsSync(backupDir)) rmrf(backupDir);');
   });
 
-  it('keeps the slides index as a searchable channel list', () => {
+  it('keeps the slides index as a searchable channel list aligned with articles', () => {
     const slidesIndexPage = read('website/src/pages/slides/index.astro');
 
     expect(slidesIndexPage).not.toContain('<h1 class="slides-index-title">Slides</h1>');
     expect(slidesIndexPage).not.toContain('Standalone Slidev decks. Open a link below.');
     expect(slidesIndexPage).toContain('id="slides-search"');
-    expect(slidesIndexPage).toContain('aria-label="Search title or slug"');
+    expect(slidesIndexPage).toContain('aria-label="Search title or description"');
     expect(slidesIndexPage).toContain('id="slides-count"');
     expect(slidesIndexPage).toContain('slides / ');
     expect(slidesIndexPage).toContain('matching');
     expect(slidesIndexPage).toContain('data-title=');
-    expect(slidesIndexPage).toContain('data-slug=');
+    expect(slidesIndexPage).toContain('data-description=');
+    expect(slidesIndexPage).not.toContain('data-slug=');
+    expect(slidesIndexPage).toContain('class="slides-index-description"');
+    expect(slidesIndexPage).not.toContain('class="slides-index-meta"');
     expect(slidesIndexPage).toContain('target="_blank"');
     expect(slidesIndexPage).toContain('rel="noopener noreferrer"');
+    expect(slidesIndexPage).toMatch(/\.slides-index-list a\s*\{[\s\S]*color:\s*var\(--fg\)/);
+    expect(slidesIndexPage).toMatch(/\.slides-index-list a\s*\{[\s\S]*text-decoration:\s*none/);
+    expect(slidesIndexPage).toMatch(/\.slides-index-list a\s*\{[\s\S]*font-size:\s*1\.25rem/);
+    expect(slidesIndexPage).toMatch(/\.slides-index-description\s*\{[\s\S]*font-size:\s*0\.94rem/);
+  });
+
+  it('requires descriptions for all slide decks listed on the website', async () => {
+    const helperUrl = pathToFileURL(path.join(repoRoot, 'slides/deck-pages-shared.mjs')).href;
+    const { listDeckPages } = (await import(helperUrl)) as {
+      listDeckPages: (root: string) => Array<{ stem: string; description?: unknown }>;
+    };
+    const decks = listDeckPages(repoRoot);
+
+    expect(decks.length).toBeGreaterThan(0);
+
+    for (const deck of decks) {
+      const source = read(`slides/pages/${deck.stem}.md`);
+      const firstFrontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+
+      expect(deck.description, `${deck.stem} should expose description`).toEqual(
+        expect.any(String),
+      );
+      expect((deck.description as string).trim(), `${deck.stem} should expose non-empty description`).not.toBe('');
+      expect(firstFrontmatter, `${deck.stem} should have first-slide frontmatter`).not.toBeNull();
+      expect(firstFrontmatter?.[1], `${deck.stem} should define description`).toMatch(
+        /^description:\s*\S/m,
+      );
+    }
   });
 });

@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 介绍游戏音频设计常用开发工具与协作工具。
 ---
 
 ::title::

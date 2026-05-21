@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解环境声设计的层次、氛围构建与案例方法。
 ---
 
 ::title::

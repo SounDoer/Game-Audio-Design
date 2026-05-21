@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解游戏音乐设计中的结构、情绪、交互与实现思路。
 ---
 
 ::title::

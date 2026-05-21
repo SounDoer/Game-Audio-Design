@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 梳理游戏音频从需求、制作到引擎集成的开发流程。
 ---
 
 ::title::

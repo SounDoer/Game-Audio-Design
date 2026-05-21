@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解空间音频、定位感与游戏场景中的听觉呈现。
 ---
 
 ::title::

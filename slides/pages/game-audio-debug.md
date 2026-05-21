@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解游戏音频调试中的问题定位、工具使用与协作流程。
 ---
 
 ::title::

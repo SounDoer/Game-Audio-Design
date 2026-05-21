@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解载具声音设计的循环、速度状态与交互变化。
 ---
 
 ::title::

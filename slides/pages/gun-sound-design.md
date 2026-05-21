@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 拆解枪械声音的结构层次、瞬态表现与设计方法。
 ---
 
 ::title::

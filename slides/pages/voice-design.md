@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解游戏语音设计、录制流程与角色表达控制。
 ---
 
 ::title::

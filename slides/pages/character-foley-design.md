@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 拆解角色 Foley 声音的动作逻辑、材质层次与制作方法。
 ---
 
 ::title::

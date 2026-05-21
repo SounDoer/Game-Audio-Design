@@ -17,7 +17,7 @@ const decks = listDeckPages(repoRoot);
       <input
         id="slides-search"
         type="search"
-        aria-label="Search title or slug"
+        aria-label="Search title or description"
         aria-controls="slides-list"
         autocomplete="off"
       />
@@ -37,12 +37,12 @@ const decks = listDeckPages(repoRoot);
           class="slides-index-item"
           data-title={d.listTitle.toLowerCase()}
           data-title-original={d.listTitle}
-          data-slug={d.slug.toLowerCase()}
+          data-description={d.description.toLowerCase()}
         >
           <a href={`/slides/${d.slug}/`} target="_blank" rel="noopener noreferrer">
             <span class="slides-title">{d.listTitle}</span>
           </a>
-          <span class="slides-index-meta">{d.slug}</span>
+          <p class="slides-index-description">{d.description}</p>
         </li>
       ))
     }
@@ -104,8 +104,8 @@ const decks = listDeckPages(repoRoot);
         var matched = 0;
         items.forEach(function (item) {
           var title = item.getAttribute('data-title') || '';
-          var slug = item.getAttribute('data-slug') || '';
-          var visible = !query || title.indexOf(query) >= 0 || slug.indexOf(query) >= 0;
+          var description = item.getAttribute('data-description') || '';
+          var visible = !query || title.indexOf(query) >= 0 || description.indexOf(query) >= 0;
           item.hidden = !visible;
           if (visible) matched += 1;
         });
@@ -166,14 +166,22 @@ const decks = listDeckPages(repoRoot);
     margin: 0;
   }
   .slides-index-list li {
-    margin-bottom: 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.5rem 1rem;
+    margin: 0 0 1rem;
+    padding: 0 0 1rem;
+    border-bottom: 1px dashed var(--border);
+  }
+  .slides-index-list li:last-child {
+    margin-bottom: 0;
+    border-bottom: 0;
   }
   .slides-index-list a {
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 1.25rem;
     font-weight: 600;
+  }
+  .slides-index-list a:hover {
+    text-decoration: underline;
   }
   .slides-title mark {
     background: rgba(11, 95, 255, 0.18);
@@ -181,10 +189,10 @@ const decks = listDeckPages(repoRoot);
     border-radius: 2px;
     padding: 0 0.08em;
   }
-  .slides-index-meta {
-    font-size: 0.85rem;
-    opacity: 0.65;
-    font-family: ui-monospace, monospace;
+  .slides-index-description {
+    margin: 0.35rem 0 0;
+    color: var(--muted);
+    font-size: 0.94rem;
   }
   #slides-empty-result {
     margin: 0.75rem 0 0;

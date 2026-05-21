@@ -106,7 +106,7 @@ export function extractFirstH1(bodyAfterFirstFm) {
 
 /**
  * @param {string} repoRoot
- * @returns {Array<{ stem: string, slug: string, slidesOrder: number, listTitle: string }>}
+ * @returns {Array<{ stem: string, slug: string, slidesOrder: number, listTitle: string, description: string }>}
  */
 export function listDeckPages(repoRoot) {
   const pagesDir = path.join(repoRoot, 'slides', 'pages');
@@ -114,7 +114,7 @@ export function listDeckPages(repoRoot) {
   const stemOrder = loadStemOrder(repoRoot);
   const orderIndex = new Map(stemOrder.map((s, i) => [s, i]));
 
-  /** @type {Array<{ stem: string, slug: string, slidesOrder: number, listTitle: string }>} */
+  /** @type {Array<{ stem: string, slug: string, slidesOrder: number, listTitle: string, description: string }>} */
   const rows = [];
 
   for (const name of names) {
@@ -136,8 +136,9 @@ export function listDeckPages(repoRoot) {
       (kv.title && kv.title.trim()) ||
       h1 ||
       humanizeStem(stem);
+    const description = (kv.description && kv.description.trim()) || '';
 
-    rows.push({ stem, slug, slidesOrder, listTitle });
+    rows.push({ stem, slug, slidesOrder, listTitle, description });
   }
 
   const slugSet = new Set();

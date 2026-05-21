@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 说明 SoundBank 生成、管理与游戏音频资源交付流程。
 ---
 
 ::title::

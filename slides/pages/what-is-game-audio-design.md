@@ -1,5 +1,6 @@
 ---
 layout: cover
+description: 建立游戏音频设计的基础概念、边界与工作框架。
 ---
 
 ::backdrop::

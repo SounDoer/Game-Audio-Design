@@ -3,6 +3,7 @@ layout: cover
 slug: ai-in-game-audio-design-2026
 deckListTitle: 2026 年 AI 与游戏音频设计
 slidesOrder: 17.5
+description: 从 AIGC、AI 工具与 Vibe Coding 观察 2026 年游戏音频设计变化。
 ---
 
 ::backdrop::

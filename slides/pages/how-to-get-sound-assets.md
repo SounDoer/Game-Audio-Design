@@ -1,5 +1,6 @@
 ---
 layout: cover
+description: 梳理游戏音频素材的录制、采集、整理与授权来源。
 ---
 
 ::backdrop::

@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讲解游戏音频混音中的层级、动态范围与播放场景控制。
 ---
 
 ::title::

@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 以篝火声音为例拆解环境音效的设计思路。
 ---
 
 ::title::

@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 建立游戏音频资源命名、分类与团队协作规范。
 ---
 
 ::title::

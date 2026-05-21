@@ -1,5 +1,6 @@
 ---
 layout: section
+description: 讨论 AI 技术在游戏音频设计流程中的应用方向。
 ---
 
 ::title::

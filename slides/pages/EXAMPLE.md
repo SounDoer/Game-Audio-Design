@@ -2,6 +2,7 @@
 layout: cover
 slug: example
 deckListTitle: Slidev Layout Example
+description: 展示 GAD Slidev 布局、组件与写法约定的参考样张。
 slidesOrder: 9998
 ---
 
