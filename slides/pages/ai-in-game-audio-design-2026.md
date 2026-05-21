@@ -541,10 +541,10 @@ AIGC Summary in Game Audio Design
     <span class="step-index">MUSIC</span>
     <h4>音乐</h4>
     <ul>
-      <li v-click>音频质量已经到达要求</li>
+      <li v-click>音频质量已经达到要求</li>
       <li v-click>对大多数风格的歌曲理解都很到位</li>
       <li v-click>提取分轨编辑的方式适用于后续的正式制作</li>
-      <li v-click>常用于风格参考、原型示例和临时资产，部分可作用正式资产使用。</li>
+      <li v-click>常用于风格参考、原型示例和临时资产，部分可作为正式资产使用。</li>
       <li v-click>因训练数据所限，配乐等偏小众品类的生成效果不佳</li>
       <li v-click>需要解决音乐版权问题</li>
     </ul>
