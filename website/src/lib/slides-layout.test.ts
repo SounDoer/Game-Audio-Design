@@ -59,11 +59,15 @@ describe('slides repository layout', () => {
     expect(devScript).toContain("'slides'");
     expect(publicSubsetScript).toContain("'slides'");
     expect(slidesIndexPage).toContain('../../../../slides/deck-pages-shared.mjs');
+    expect(slidesIndexPage).toContain('const repoRoot = process.cwd()');
+    expect(slidesIndexPage).not.toContain("path.resolve(__dirname, '../../../..')");
 
     expect(buildScript).not.toContain('../slidev/deck-pages-shared.mjs');
     expect(devScript).not.toContain('../slidev/deck-pages-shared.mjs');
     expect(buildScript).not.toContain("path.join(repoRoot, 'slidev'");
     expect(devScript).not.toContain("path.join(repoRoot, 'slidev'");
     expect(publicSubsetScript).not.toContain("path.join(repoRoot, 'slidev'");
+    expect(publicSubsetScript).toContain('restoreBackupIfPresent(repoRoot)');
+    expect(publicSubsetScript).not.toContain('if (fs.existsSync(backupDir)) rmrf(backupDir);');
   });
 });

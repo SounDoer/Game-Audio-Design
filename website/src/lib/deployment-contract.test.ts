@@ -31,7 +31,7 @@ describe('Netlify deployment build contract', () => {
     const scripts = readPackageJson().scripts ?? {};
     const netlifyConfig = read('netlify.toml');
 
-    expect(scripts.build).toBe('npm run slidev:build && astro build website');
+    expect(scripts.build).toBe('npm run slidev:build && astro build --root website');
     expect(netlifyConfig).toContain('command = "npm run build"');
     expect(netlifyConfig).toContain('publish = "build"');
   });

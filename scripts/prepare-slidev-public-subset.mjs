@@ -99,6 +99,19 @@ function rmrf(dir) {
 }
 
 /**
+ * Restore a previous full public backup before starting a new subset swap.
+ * A leftover backup means a prior build was interrupted during cleanup.
+ * @param {string} repoRoot
+ */
+function restoreBackupIfPresent(repoRoot) {
+  const publicDir = path.join(repoRoot, 'slides', 'public');
+  const backupDir = path.join(repoRoot, 'slides', BACKUP_NAME);
+  if (!fs.existsSync(backupDir)) return;
+  if (fs.existsSync(publicDir)) rmrf(publicDir);
+  fs.renameSync(backupDir, publicDir);
+}
+
+/**
  * @param {string} publicRoot
  * @param {string} relPosix
  * @returns {string | null} absolute source path
@@ -205,7 +218,7 @@ export function withPublicSubset(repoRoot, stem, fn) {
   const backupDir = path.join(repoRoot, 'slides', BACKUP_NAME);
   const stagingMarker = path.join(repoRoot, 'slides', STAGING_NAME);
 
-  if (fs.existsSync(backupDir)) rmrf(backupDir);
+  restoreBackupIfPresent(repoRoot);
   materializePublicSubsetStaging(repoRoot, stem);
   if (!fs.existsSync(publicDir)) {
     throw new Error('[prepare-slidev-public-subset] slides/public missing before swap');
