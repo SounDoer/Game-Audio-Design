@@ -104,4 +104,10 @@ describe('website repository layout', () => {
     expect(globalCss).not.toContain('inset: 0 auto 0 0');
     expect(globalCss).not.toMatch(/\.site-main\s*\{[\s\S]*margin-left:\s*var\(--site-sidebar-width\)/);
   });
+
+  it('keeps page chrome from shifting when channel content height changes', () => {
+    const globalCss = read('website/src/styles/global.css');
+
+    expect(globalCss).toMatch(/html\s*\{[\s\S]*scrollbar-gutter:\s*stable/);
+  });
 });
