@@ -70,4 +70,20 @@ describe('slides repository layout', () => {
     expect(publicSubsetScript).toContain('restoreBackupIfPresent(repoRoot)');
     expect(publicSubsetScript).not.toContain('if (fs.existsSync(backupDir)) rmrf(backupDir);');
   });
+
+  it('keeps the slides index as a searchable channel list', () => {
+    const slidesIndexPage = read('website/src/pages/slides/index.astro');
+
+    expect(slidesIndexPage).not.toContain('<h1 class="slides-index-title">Slides</h1>');
+    expect(slidesIndexPage).not.toContain('Standalone Slidev decks. Open a link below.');
+    expect(slidesIndexPage).toContain('id="slides-search"');
+    expect(slidesIndexPage).toContain('aria-label="Search title or slug"');
+    expect(slidesIndexPage).toContain('id="slides-count"');
+    expect(slidesIndexPage).toContain('slides / ');
+    expect(slidesIndexPage).toContain('matching');
+    expect(slidesIndexPage).toContain('data-title=');
+    expect(slidesIndexPage).toContain('data-slug=');
+    expect(slidesIndexPage).toContain('target="_blank"');
+    expect(slidesIndexPage).toContain('rel="noopener noreferrer"');
+  });
 });

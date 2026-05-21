@@ -57,9 +57,8 @@ try {
   <TableOfContents headings={headings} />
 
   {hasNewsletter ? <SubscribeForm compact={true} heading="Subscribe for new articles" /> : null}
-  <div class="fixed-actions">
-    <a href="/" class="back-home-link">--> Home</a>
-    {qrDataUrl ? (
+  {qrDataUrl ? (
+    <div class="fixed-actions">
       <div class="share-wrap">
         <div class="share-popover" id="share-popover" hidden>
           <img src={qrDataUrl} width="140" height="140" alt="QR code for this page" />
@@ -67,8 +66,8 @@ try {
         </div>
         <button class="share-btn" aria-expanded="false" aria-controls="share-popover">--> Share</button>
       </div>
-    ) : null}
-  </div>
+    </div>
+  ) : null}
   <script>
     const btn = document.querySelector<HTMLButtonElement>('.share-btn');
     const popover = document.getElementById('share-popover');

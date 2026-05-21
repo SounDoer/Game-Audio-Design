@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SiteShell from '../components/SiteShell.astro';
 
 interface Props {
   title: string;
@@ -62,8 +63,8 @@ const resolvedOgImageType = (() => {
     <meta name="twitter:image" content={resolvedOgImage} />
   </head>
   <body>
-    <main>
+    <SiteShell path={path}>
       <slot />
-    </main>
+    </SiteShell>
   </body>
 </html>

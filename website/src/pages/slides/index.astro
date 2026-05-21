@@ -11,30 +11,154 @@ const decks = listDeckPages(repoRoot);
   description="Game Audio Design slide decks."
   path="/slides/"
 >
-  <h1 class="slides-index-title">Slides</h1>
-  <p class="slides-index-lead">Standalone Slidev decks. Open a link below.</p>
-  <ul class="slides-index-list">
+  <section class="slides-index-controls">
+    <label class="search-box">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input
+        id="slides-search"
+        type="search"
+        aria-label="Search title or slug"
+        aria-controls="slides-list"
+        autocomplete="off"
+      />
+      <button id="clear-slides-search" type="button" aria-label="Clear search" aria-controls="slides-list" hidden>
+        ×
+      </button>
+    </label>
+    <p id="slides-count" class="article-count" role="status" aria-live="polite" aria-atomic="true">
+      {`${decks.length} slides / ${decks.length} matching`}
+    </p>
+  </section>
+
+  <ul id="slides-list" class="slides-index-list">
     {
       decks.map((d) => (
-        <li>
+        <li
+          class="slides-index-item"
+          data-title={d.listTitle.toLowerCase()}
+          data-title-original={d.listTitle}
+          data-slug={d.slug.toLowerCase()}
+        >
           <a href={`/slides/${d.slug}/`} target="_blank" rel="noopener noreferrer">
-            {d.listTitle}
+            <span class="slides-title">{d.listTitle}</span>
           </a>
           <span class="slides-index-meta">{d.slug}</span>
         </li>
       ))
     }
   </ul>
+  <p id="slides-empty-result" hidden>No results. <button id="slides-empty-clear" type="button">Clear</button></p>
+
+  <script is:inline>
+    (function () {
+      var input = document.getElementById('slides-search');
+      var clearBtn = document.getElementById('clear-slides-search');
+      var emptyClear = document.getElementById('slides-empty-clear');
+      var list = document.getElementById('slides-list');
+      var items = list ? Array.prototype.slice.call(list.querySelectorAll('.slides-index-item')) : [];
+      var count = document.getElementById('slides-count');
+      var empty = document.getElementById('slides-empty-result');
+
+      if (!input || !list || !count || !empty) return;
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function highlightText(raw, query) {
+        if (!query) return escapeHtml(raw);
+        var lowerRaw = raw.toLowerCase();
+        var lowerQuery = query.toLowerCase();
+        var start = lowerRaw.indexOf(lowerQuery);
+        if (start < 0) return escapeHtml(raw);
+        var end = start + lowerQuery.length;
+        return (
+          escapeHtml(raw.slice(0, start)) +
+          '<mark>' +
+          escapeHtml(raw.slice(start, end)) +
+          '</mark>' +
+          escapeHtml(raw.slice(end))
+        );
+      }
+
+      function updateHighlight(query) {
+        items.forEach(function (item) {
+          var titleNode = item.querySelector('.slides-title');
+          if (!titleNode) return;
+          var rawTitle = item.getAttribute('data-title-original') || titleNode.textContent || '';
+          titleNode.innerHTML = highlightText(rawTitle, query);
+        });
+      }
+
+      function normalize(value) {
+        return String(value || '').toLowerCase();
+      }
+
+      function applyFilter() {
+        var query = normalize(input.value).trim();
+        var matched = 0;
+        items.forEach(function (item) {
+          var title = item.getAttribute('data-title') || '';
+          var slug = item.getAttribute('data-slug') || '';
+          var visible = !query || title.indexOf(query) >= 0 || slug.indexOf(query) >= 0;
+          item.hidden = !visible;
+          if (visible) matched += 1;
+        });
+
+        count.textContent = items.length + ' slides / ' + matched + ' matching';
+        updateHighlight(query);
+        empty.hidden = matched !== 0;
+        if (clearBtn) {
+          clearBtn.hidden = !query;
+        }
+      }
+
+      function clearSearch() {
+        input.value = '';
+        applyFilter();
+        input.focus();
+      }
+
+      var debounceTimer = null;
+      input.addEventListener('input', function () {
+        if (debounceTimer) {
+          clearTimeout(debounceTimer);
+        }
+        debounceTimer = setTimeout(function () {
+          applyFilter();
+        }, 80);
+      });
+      input.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          if (input.value.trim()) {
+            clearSearch();
+          } else {
+            input.blur();
+          }
+        }
+      });
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', clearSearch);
+      }
+      if (emptyClear) {
+        emptyClear.addEventListener('click', clearSearch);
+      }
+
+      applyFilter();
+    })();
+  </script>
 </BaseLayout>
 
 <style>
-  .slides-index-title {
-    margin-bottom: 0.5rem;
-  }
-  .slides-index-lead {
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    opacity: 0.85;
+  .slides-index-controls {
+    margin: 0 0 1.25rem;
   }
   .slides-index-list {
     list-style: none;
@@ -51,9 +175,29 @@ const decks = listDeckPages(repoRoot);
   .slides-index-list a {
     font-weight: 600;
   }
+  .slides-title mark {
+    background: rgba(11, 95, 255, 0.18);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 0.08em;
+  }
   .slides-index-meta {
     font-size: 0.85rem;
     opacity: 0.65;
     font-family: ui-monospace, monospace;
+  }
+  #slides-empty-result {
+    margin: 0.75rem 0 0;
+    color: var(--muted);
+  }
+  #slides-empty-result button {
+    margin-left: 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    color: var(--fg);
+    cursor: pointer;
+    font: inherit;
+    padding: 0.2rem 0.5rem;
   }
 </style>

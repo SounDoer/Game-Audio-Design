@@ -1,0 +1,54 @@
+---
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+const activeChannel = path === '/slides/' ? 'slides' : 'articles';
+
+const channels = [
+  { id: 'articles', label: 'Articles', href: '/' },
+  { id: 'slides', label: 'Slides', href: '/slides/' },
+];
+---
+
+<div class="site-shell">
+  <aside class="site-sidebar" aria-label="Site navigation">
+    <a class="site-title" href="/">
+      <span class="site-title-cn">游戏音频设计</span>
+      <span class="site-title-en">Game Audio Design</span>
+    </a>
+    <nav class="site-nav" aria-label="Channels">
+      {
+        channels.map((channel) => (
+          <a
+            href={channel.href}
+            class:list={['site-nav-link', { 'is-active': activeChannel === channel.id }]}
+            aria-current={activeChannel === channel.id ? 'page' : undefined}
+          >
+            {channel.label}
+          </a>
+        ))
+      }
+    </nav>
+  </aside>
+
+  <nav class="site-mobile-nav" aria-label="Site navigation">
+    <a class="site-mobile-title" href="/">GAD</a>
+    {
+      channels.map((channel) => (
+        <a
+          href={channel.href}
+          class:list={['site-mobile-link', { 'is-active': activeChannel === channel.id }]}
+          aria-current={activeChannel === channel.id ? 'page' : undefined}
+        >
+          {channel.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <main class="site-main">
+    <slot />
+  </main>
+</div>
