@@ -21,7 +21,7 @@
 
 - `website/docs/**/*.md` 正式文章与 `website/drafts/draft-*.md` active draft：使用 `.cursor/skills/gad-docs-authoring/`。
 - `slides/pages/*.md` 课程讲稿、`slides/drafts/` 草稿与 `slides/public/` 配套资源：使用 `.cursor/skills/gad-slides-authoring/`。
-- `website/docs/draft/` 是仓库中仍存在的历史内容目录；新文章协作不要把它当作 active draft 位置。
+- `website/drafts/legacy/` 是迁移前历史草稿目录；新文章协作不要把它当作 active draft 位置。
 
 ---
 

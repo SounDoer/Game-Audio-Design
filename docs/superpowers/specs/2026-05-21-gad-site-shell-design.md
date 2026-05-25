@@ -1,5 +1,7 @@
 # GAD Site Shell Design
 
+Status: Superseded for `/slides/` list item details by `2026-05-21-slides-index-list-alignment-design.md`. Keep this document for the shared site shell decision, but use the later Slides index spec for deck metadata, visible description text, and search behavior.
+
 ## Context
 
 `gad.soundoer.com` currently has two public entry points:

@@ -38,7 +38,9 @@ describe('website repository layout', () => {
   it('keeps the Astro website implementation under website', () => {
     expect(exists('website/src')).toBe(true);
     expect(exists('website/docs')).toBe(true);
-    expect(exists('website/docs/draft')).toBe(true);
+    expect(exists('website/docs/draft')).toBe(false);
+    expect(exists('website/drafts')).toBe(true);
+    expect(exists('website/drafts/legacy')).toBe(true);
     expect(exists('website/static')).toBe(true);
     expect(exists('website/astro.config.mjs')).toBe(true);
     expect(exists('website/vitest.config.ts')).toBe(true);

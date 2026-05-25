@@ -1,6 +1,6 @@
 /**
  * For each Slidev deck build, materialize a minimal slides/public tree so Vite
- * does not copy the full multi-deck asset library into every /static/slides/<slug>/.
+ * does not copy the full multi-deck asset library into every website/static/slides/<slug>/.
  *
  * Source of truth stays: one slides/public/ in the repo (unchanged layout).
  */

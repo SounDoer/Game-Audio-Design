@@ -26,7 +26,8 @@ website/
   astro.config.mjs        # Astro 配置；站点输出到根目录 build/
   tsconfig.json           # website 子项目 TypeScript 配置
   vitest.config.ts        # website 相关测试配置
-  docs/                   # 正式文章内容；含历史 draft 子目录
+  docs/                   # 正式文章内容
+  drafts/                 # 新文章协作草稿：draft-<slug>.md；历史草稿在 legacy/
   src/
     content.config.ts     # Astro content collections
     pages/                # 文件路由
@@ -38,8 +39,8 @@ website/
     slides/               # Slidev 构建产物，来自 npm run slidev:build
 ```
 
-- **正式文章**：位于 `website/docs/`。Astro content collection 从 `./docs` 读取 Markdown，并排除 `website/docs/draft/**`。
-- **历史草稿**：`website/docs/draft/` 仍存在，但不是新的 active draft 位置。
+- **正式文章**：位于 `website/docs/`。Astro content collection 从 `./docs` 读取 Markdown；该目录只放正式文章内容。
+- **历史草稿**：迁移前旧草稿已移至 `website/drafts/legacy/`，仅用于查阅和迁移。
 - **新文章协作草稿**：按项目规范使用 `website/drafts/draft-<slug>.md`；进入正式实现时再写入 `website/docs/<Article-Title>/<Article-Title>.md`。
 - **Slides 页面**：`/slides/` 是网站路由，源文件在 `website/src/pages/slides/index.astro`；具体 deck 源码与资源归 `slides/` 管理，说明见 `slides/README.md`。
 - **构建产物**：`npm run build` 会先把 Slidev deck 写入 `website/static/slides/`，再把 Astro 网站输出到仓库根目录 `build/`。

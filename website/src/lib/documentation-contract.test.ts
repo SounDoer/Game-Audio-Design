@@ -52,6 +52,7 @@ describe('repository documentation contract', () => {
     expect(docsSkill).toContain('website/docs/**/*.md');
     expect(docsSkill).toContain('website/drafts/draft-*.md');
     expect(docsSkill).not.toContain('root `drafts/draft-*.md`');
+    expect(docsSkill).not.toContain('website/docs/draft/');
 
     expect(slidesSkill).toContain('slides/pages/*.md');
     expect(slidesSkill).toContain('slides/drafts/');
@@ -68,5 +69,25 @@ describe('repository documentation contract', () => {
     expect(slidesReadme).toContain('website/static/slides/');
     expect(slidesReadme).not.toContain('slidev/pages');
     expect(slidesReadme).not.toContain('slidev/public');
+  });
+
+  it('keeps documentation-only paths aligned with the current repository structure', () => {
+    const legacyDraftReadme = read('website/drafts/legacy/README.md');
+    const oldSiteShellSpec = read('docs/superpowers/specs/2026-05-21-gad-site-shell-design.md');
+    const gitignore = read('.gitignore');
+
+    expect(legacyDraftReadme).toContain('历史');
+    expect(legacyDraftReadme).toContain('website/drafts/draft-<slug>.md');
+    expect(legacyDraftReadme).toContain('website/drafts/legacy/');
+    expect(legacyDraftReadme).not.toContain('website/docs/draft/');
+    expect(legacyDraftReadme).not.toContain('用于本地整理与写作');
+
+    expect(oldSiteShellSpec).toContain('Status: Superseded');
+    expect(oldSiteShellSpec).toContain('2026-05-21-slides-index-list-alignment-design.md');
+
+    expect(gitignore).toContain('/website/static/slides');
+    expect(gitignore).toContain('/slides/.deck-public-staging');
+    expect(gitignore).not.toMatch(/^\/static\/slides$/m);
+    expect(gitignore).not.toMatch(/^\/slidev\//m);
   });
 });

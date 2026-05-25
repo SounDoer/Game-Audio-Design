@@ -25,7 +25,7 @@ description: Use when preparing, rewriting, or maintaining Game-Audio-Design lon
    - 检查 `website/drafts/draft-<slug>.md`。
    - 检查是否已有正式文章匹配该 `slug` 或主题。
    - 检查目标正式路径是否符合 `website/docs/<Article-Title>/<Article-Title>.md`。
-   - 忽略旧的 `website/docs/draft/` 目录；本 skill 不使用它作为 draft 位置。
+   - 如需参考历史草稿，查看 `website/drafts/legacy/`；本 skill 不使用它作为 active draft 位置。
 
 3. 确认当前阶段。
    - A：用户想讨论专题、想法、主线或文章大纲。
