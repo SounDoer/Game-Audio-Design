@@ -9,6 +9,7 @@
 | 各页版式结构（槽位、局部样式） | `slides/layouts/*.vue` |
 | 标准 Markdown 样张（可复制写法） | `slides/pages/EXAMPLE.md` |
 | 单套讲义正文 | `slides/pages/<stem>.md` |
+| 历史讲义存档 | `slides/drafts/legacy/*.md` |
 | 构建入口与顺序 | `scripts/build-slidev-decks.mjs`、`slides/deck-order.txt` |
 | 每套构建时的 `public` 子集 | `scripts/prepare-slidev-public-subset.mjs`（由 `build-slidev-decks.mjs` 调用） |
 
@@ -20,8 +21,9 @@
 
 ```
 slides/
-  pages/*.md              # 讲义 Markdown（多数 stem 对应一套可构建 deck）
+  pages/*.md              # 活跃讲义 Markdown（多数 stem 对应一套可构建 deck）
   pages/EXAMPLE.md        # 设计系统与 layout 的标准样张
+  drafts/legacy/*.md      # 历史讲义存档，不参与构建与站点索引
   layouts/*.vue           # 本仓库自定义 layout（同名优先于 Slidev 内置）
   components/*.vue        # 在 pages 中引用的 Vue 组件（如 SPLDiagram）
   styles/base.css         # 幻灯画布内全局样式与设计令牌
@@ -34,7 +36,7 @@ slides/
 - **Slug**：默认等于文件名去掉 `.md`；在该 deck 文件 **首张幻灯片** 的 frontmatter（文件顶部的第一个 `---` 块）里可用 `slug:` 覆盖（解析见 `slides/deck-pages-shared.mjs` 的 `listDeckPages`）。
 - **`deckListTitle:`**：可选，同上首张 frontmatter；用于站点 `/slides/` 列表标题。缺省顺序为：`deckListTitle` → 首张里的 `title:` → 首张之后正文中出现的第一个 Markdown **`# ` 标题行**（`extractFirstH1`，见 `deck-pages-shared.mjs`）→ `humanizeStem(stem)`。
 - **`slidesOrder:`**：可选；写在首张 frontmatter，用于覆盖该 deck 在目录中的排序（数值越小越靠前）；未出现在 `deck-order.txt` 中的 stem 默认排在后面（实现见 `listDeckPages`）。
-- **不参与构建与索引的 `pages/*.md`**：`deck-pages-shared.mjs` 中常量 **`EXCLUDED_STEMS`**（当前为 **`cover`**、**`intro`**、**`fin`**）对应的文件 **不会**进入 `listDeckPages()`，因此 **`npm run slidev:build` 不会生成** `website/static/slides/<stem>/`，站点 **`/slides/`** 索引也不列出。需要纳入构建时，从 `EXCLUDED_STEMS` 移除 stem（并视情况加入 `deck-order.txt`）。
+- **历史讲义存档**：最近未维护、且不参与构建与索引的旧讲义放在 `slides/drafts/legacy/*.md`，不会进入 `listDeckPages()` 或 `npm run slidev:build`。`deck-pages-shared.mjs` 仍保留 `EXCLUDED_STEMS`（`cover`、`intro`、`fin`）作为兼容保护；若要重新发布某个 legacy deck，先移回 `slides/pages/<stem>.md`，再从 `EXCLUDED_STEMS` 移除 stem（并视情况加入 `deck-order.txt`）。
 - **遗留 `slides.md`**：不再是 Slidev 入口，仅保留说明性注释；正式内容均在 `pages/*.md`。
 
 **构建产物**：`npm run slidev:build` 将**参与构建的**各 deck 输出到仓库根目录 **`website/static/slides/<slug>/`**。全站 **`npm run build`**（见根目录 `package.json`）会先执行 **`npm run slidev:build`**，再执行 **`astro build`**；单独跑 Astro 不会自动构建幻灯。
