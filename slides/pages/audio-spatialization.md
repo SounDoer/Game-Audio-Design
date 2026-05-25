@@ -59,6 +59,8 @@ Listening in Game
   <video class="h-full w-full object-contain" src="/audio-spatialization/R6%20Siege%20X%20Audio%20Overhaul.mp4" controls preload="metadata"></video>
 </div>
 
+<!-- https://www.youtube.com/watch?v=f7IQ-EcZPmw -->
+
 ---
 layout: header-body
 ---
@@ -153,38 +155,29 @@ Sound Propagation
 layout: header-body
 ---
 
-::backdrop::
-
-L / E
-
 ::eyebrow::
 
-Objects
+Listener & Emitter
 
 ::title::
 
-### Listener / Emitter
+### 听者与声源
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="gad-stage">
-    <div class="gad-listener" style="left: 22%; top: 56%;">L</div>
-    <div class="gad-emitter" style="left: 73%; top: 34%;">E</div>
-    <div class="gad-line gad-line-distance"></div>
-    <div class="gad-direction" style="left: 27%; top: 48%; transform: rotate(-24deg);"></div>
-    <span class="gad-label" style="left: 16%; top: 69%;">Listener position / orientation</span>
-    <span class="gad-label" style="left: 62%; top: 22%;">Emitter position</span>
-    <span class="gad-label" style="left: 42%; top: 41%;">relative vector + distance</span>
+<div class="grid h-full min-h-0 grid-cols-[1.35fr_0.65fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-4">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/object-based-positioning.svg" alt="Object based audio positioning diagram">
   </div>
   <div class="flex min-h-0 flex-col justify-center gap-3">
     <div class="callout">
-      <span class="callout-title">谁在听？谁在发声？</span>
-      <p>位置、朝向、距离和相对角度，是后续定位、衰减与路径检测的基础。</p>
+      <span class="callout-title">Object-based positioning</span>
+      <p>声源不先被塞进固定声道，而是作为对象保留在三维坐标里，再相对 Listener 计算方向、距离和角度。</p>
     </div>
     <ul>
-      <li v-click>不绑定 Unity、Unreal 或 Wwise 的具体表达。</li>
-      <li v-click>先建立两个对象之间的空间关系。</li>
+      <li v-click>Listener：玩家或摄像机的 position / orientation。</li>
+      <li v-click>Emitter：发声对象的 world position。</li>
+      <li v-click>Spatializer：把相对向量转成可听的空间线索。</li>
     </ul>
   </div>
 </div>
@@ -208,18 +201,19 @@ Scene Model
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="gad-stage gad-room">
-    <div class="gad-wall" style="left: 14%; top: 18%; width: 72%; height: 3%;"></div>
-    <div class="gad-wall" style="left: 14%; top: 18%; width: 3%; height: 60%;"></div>
-    <div class="gad-wall" style="left: 83%; top: 18%; width: 3%; height: 60%;"></div>
-    <div class="gad-wall" style="left: 14%; top: 76%; width: 29%; height: 3%;"></div>
-    <div class="gad-wall" style="left: 58%; top: 76%; width: 28%; height: 3%;"></div>
-    <div class="gad-wall accent-wall" style="left: 47%; top: 76%; width: 7%; height: 3%;"></div>
-    <div class="gad-zone" style="left: 20%; top: 28%;">Zone A</div>
-    <div class="gad-zone" style="left: 58%; top: 28%;">Zone B</div>
-    <span class="gad-label" style="left: 36%; top: 81%;">opening / door state</span>
-    <span class="gad-label" style="left: 20%; top: 64%;">material: concrete</span>
-    <span class="gad-label" style="left: 58%; top: 64%;">material: wood</span>
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
+    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="Scene geometry with two acoustic zones and a door opening">
+      <rect x="70" y="55" width="580" height="290" fill="none" stroke="rgba(240,240,240,0.72)" stroke-width="10" />
+      <line x1="350" y1="55" x2="350" y2="345" stroke="rgba(240,240,240,0.72)" stroke-width="10" />
+      <line x1="310" y1="345" x2="390" y2="345" stroke="var(--color-accent)" stroke-width="10" />
+      <rect x="120" y="105" width="190" height="115" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" />
+      <rect x="410" y="105" width="190" height="115" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" />
+      <text x="215" y="170" fill="var(--color-text-primary)" text-anchor="middle" font-size="30" font-weight="700">Zone A</text>
+      <text x="505" y="170" fill="var(--color-text-primary)" text-anchor="middle" font-size="30" font-weight="700">Zone B</text>
+      <text x="255" y="385" fill="var(--color-text-muted)" font-size="20" font-family="monospace">material: concrete</text>
+      <text x="440" y="385" fill="var(--color-text-muted)" font-size="20" font-family="monospace">material: wood</text>
+      <text x="290" y="330" fill="var(--color-accent)" font-size="20" font-family="monospace">opening / door state</text>
+    </svg>
   </div>
   <div class="min-h-0 min-w-0">
     <h4>场景里哪些对象会改变声音？</h4>
@@ -254,29 +248,31 @@ Propagation
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.25fr_0.75fr] gap-5">
-  <div class="gad-stage gad-room">
-    <div class="gad-listener" style="left: 18%; top: 58%;">L</div>
-    <div class="gad-emitter" style="left: 78%; top: 30%;">E</div>
-    <div class="gad-obstacle" style="left: 43%; top: 20%; width: 5%; height: 58%;"></div>
-    <svg class="gad-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-      <line v-click x1="23" y1="62" x2="78" y2="34" class="path direct" />
-      <line v-click x1="23" y1="62" x2="43" y2="50" class="path blocked" />
-      <polyline v-click points="23,62 42,80 52,80 78,34" class="path diffraction" />
-      <polyline v-click points="23,62 22,25 78,34" class="path reflection" />
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
+    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="Direct, blocked, diffracted, and reflected propagation paths">
+      <rect x="328" y="70" width="34" height="260" fill="rgba(240,240,240,0.72)" />
+      <circle cx="145" cy="275" r="28" fill="var(--color-accent)" />
+      <text x="145" y="286" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">L</text>
+      <circle cx="590" cy="145" r="28" fill="var(--color-bg)" stroke="var(--color-text-primary)" stroke-width="3" />
+      <text x="590" y="156" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">E</text>
+      <line v-click x1="170" y1="260" x2="565" y2="155" stroke="rgba(240,240,240,0.75)" stroke-width="4" stroke-dasharray="8 8" />
+      <line v-click x1="170" y1="260" x2="330" y2="215" stroke="var(--color-accent)" stroke-width="4" />
+      <polyline v-click points="170,260 330,345 395,345 565,155" fill="none" stroke="#7aa2ff" stroke-width="4" stroke-linejoin="round" />
+      <polyline v-click points="170,260 175,80 565,155" fill="none" stroke="#6bd38d" stroke-width="4" stroke-linejoin="round" />
+      <text x="80" y="380" fill="var(--color-text-muted)" font-size="20" font-family="monospace">direct / blocked / diffracted / reflected paths</text>
     </svg>
-    <span class="gad-label" style="left: 10%; top: 80%;">direct / blocked / diffracted / reflected paths</span>
   </div>
   <div class="flex min-h-0 flex-col justify-center gap-3">
     <div class="callout">
       <span class="callout-title">路径不是一条直线</span>
       <p>不同方案可能用 raycast、ray tracing、pathing 或 probe lookup 估计声音如何到达听者。</p>
     </div>
-    <div class="gad-legend">
-      <span><i class="legend-direct"></i>direct</span>
-      <span><i class="legend-blocked"></i>blocked</span>
-      <span><i class="legend-diffraction"></i>diffraction</span>
-      <span><i class="legend-reflection"></i>reflection</span>
-    </div>
+    <ul>
+      <li v-click>direct：直达路径</li>
+      <li v-click>blocked：被几何阻挡</li>
+      <li v-click>diffraction：绕过边缘或开口</li>
+      <li v-click>reflection：由表面反射形成间接路径</li>
+    </ul>
   </div>
 </div>
 
@@ -298,18 +294,18 @@ Parameter Mapping
 
 ::body::
 
-<div class="gad-flow gad-flow-three">
-  <div class="gad-panel">
+<div class="grid h-full min-h-0 grid-cols-3 gap-4">
+  <div class="min-h-0 min-w-0">
     <span class="step-index">INPUT</span>
     <h4>Propagation Data</h4>
     <p>distance, visibility, occlusion, path length, direction, reflection, diffraction, environment</p>
   </div>
-  <div class="gad-panel active-panel">
+  <div class="active-panel min-h-0 p-4">
     <span class="step-index">MAPPING</span>
     <h4>转译层</h4>
     <p>把几何 / 路径结果变成声音系统能消费的控制参数。</p>
   </div>
-  <div class="gad-panel">
+  <div class="min-h-0 min-w-0 border-l hairline pl-4">
     <span class="step-index">OUTPUT</span>
     <h4>Audio Parameters</h4>
     <p>volume, LPF / EQ, reverb send, wet / dry, virtual source position, spread</p>
@@ -335,18 +331,22 @@ Case Study
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="gad-stage gad-wwise">
-    <div class="gad-room-box" style="left: 12%; top: 18%; width: 36%; height: 58%;">Room A</div>
-    <div class="gad-room-box" style="left: 52%; top: 18%; width: 36%; height: 58%;">Room B</div>
-    <div v-click class="gad-portal" style="left: 47%; top: 42%;"></div>
-    <div v-click class="gad-listener" style="left: 23%; top: 56%;">L</div>
-    <div v-click class="gad-emitter" style="left: 74%; top: 34%;">E</div>
-    <svg class="gad-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-      <polyline v-click points="25,60 48,45 74,38" class="path diffraction" />
-      <line v-click x1="25" y1="60" x2="74" y2="38" class="path transmission" />
-      <polyline v-click points="74,38 72,20 25,60" class="path reflection" />
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
+    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="Wwise spatial audio room and portal relationship">
+      <rect x="75" y="80" width="245" height="245" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" stroke-width="2" />
+      <rect x="400" y="80" width="245" height="245" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" stroke-width="2" />
+      <rect v-click x="340" y="180" width="40" height="70" fill="var(--color-accent)" />
+      <circle v-click cx="200" cy="250" r="28" fill="var(--color-accent)" />
+      <text x="200" y="261" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">L</text>
+      <circle v-click cx="535" cy="155" r="28" fill="var(--color-bg)" stroke="var(--color-text-primary)" stroke-width="3" />
+      <text x="535" y="166" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">E</text>
+      <text x="160" y="205" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="700">Room A</text>
+      <text x="485" y="205" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="700">Room B</text>
+      <polyline v-click points="200,250 360,215 535,155" fill="none" stroke="#7aa2ff" stroke-width="4" />
+      <line v-click x1="200" y1="250" x2="535" y2="155" stroke="var(--color-accent)" stroke-width="4" />
+      <polyline v-click points="535,155 525,90 200,250" fill="none" stroke="#6bd38d" stroke-width="4" />
+      <ellipse v-click cx="195" cy="205" rx="85" ry="130" fill="rgba(212,90,42,0.12)" stroke="rgba(212,90,42,0.6)" />
     </svg>
-    <div v-click class="gad-reverb" style="left: 16%; top: 24%; width: 28%; height: 45%;"></div>
   </div>
   <div class="min-h-0 min-w-0">
     <h4>不是“一个 raycast”</h4>
@@ -377,9 +377,9 @@ Demo
 
 ::body::
 
-<div class="gad-placeholder h-full">
+<div class="figure-frame flex h-full min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
   <span class="badge">Placeholder Video</span>
-  <div class="gad-placeholder-title">User will prepare Wwise Spatial Audio demo video later</div>
+  <h4>User will prepare Wwise Spatial Audio demo video later</h4>
   <p>视频用于承接上一页的 Listener / Emitter、Room / Portal、Diffraction、Transmission、Reverb 和 Reflect 概念。</p>
 </div>
 
@@ -401,18 +401,18 @@ Anonymous Case
 
 ::body::
 
-<div class="gad-flow gad-flow-three">
-  <div class="gad-panel">
+<div class="grid h-full min-h-0 grid-cols-3 gap-4">
+  <div class="min-h-0 min-w-0">
     <span class="step-index">ENGINE SCENE</span>
     <h4>Listener / Emitter Ray Queries</h4>
     <p>从引擎侧检测距离、遮挡、路径、材质和环境。</p>
   </div>
-  <div class="gad-panel active-panel">
+  <div class="active-panel min-h-0 p-4">
     <span class="step-index">PARAMETERS</span>
     <h4>Detected Data</h4>
     <p><code>occlusion=0.72</code><br><code>distance=18m</code><br><code>material=concrete</code><br><code>reverbSend=0.45</code></p>
   </div>
-  <div class="gad-panel">
+  <div class="min-h-0 min-w-0 border-l hairline pl-4">
     <span class="step-index">WWISE CONTROL</span>
     <h4>RTPC / States / Sends / Effects</h4>
     <p>驱动 Volume、LPF / EQ、Reverb Send、Wet / Dry 和效果强度。</p>
@@ -438,9 +438,9 @@ Case Study
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="gad-placeholder">
+  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
     <span class="badge">Pending Screenshots</span>
-    <div class="gad-placeholder-title">1-3 screenshots from GPU Raytracing for Audio in Snowdrop GDC2025.pdf</div>
+    <h4>1-3 screenshots from GPU Raytracing for Audio in Snowdrop GDC2025.pdf</h4>
     <p>后续替换为用户从 GDC PDF 中选定的截图。</p>
   </div>
   <div class="min-h-0 min-w-0">
@@ -484,12 +484,12 @@ Alternative Route
       <span class="callout-title">另一条路线</span>
       <p>更像静态光照烘焙：离线做波动声学模拟，再把结果压缩成运行时可查询的声学参数。</p>
     </div>
-    <div class="gad-route">
-      <span>Scene + Materials</span>
-      <span>Bake</span>
-      <span>Acoustic Data / Probes</span>
-      <span>Runtime Parameter Lookup</span>
-      <span>Audio Controls</span>
+    <div class="grid gap-2 text-[0.95rem] text-[var(--color-text-body)]">
+      <div><span class="step-index">01</span> Scene + Materials</div>
+      <div><span class="step-index">02</span> Bake</div>
+      <div><span class="step-index">03</span> Acoustic Data / Probes</div>
+      <div><span class="step-index">04</span> Runtime Parameter Lookup</div>
+      <div><span class="step-index">05</span> Audio Controls</div>
     </div>
   </div>
 </div>
@@ -512,9 +512,9 @@ Demo
 
 ::body::
 
-<div class="gad-placeholder h-full">
+<div class="figure-frame flex h-full min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
   <span class="badge">Placeholder Video</span>
-  <div class="gad-placeholder-title">User will prepare Project Acoustics / Triton video later</div>
+  <h4>User will prepare Project Acoustics / Triton video later</h4>
   <p>可以偏工具链流程，也可以偏听感对比；caption 再按最终素材调整。</p>
 </div>
 
@@ -557,13 +557,31 @@ Baseline
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="gad-pipeline">
-    <span>Game Source</span>
-    <span>Panning</span>
-    <span>Distance Attenuation</span>
-    <span>Spread</span>
-    <span>Reverb Send</span>
-    <span>Speaker / Headphone Output</span>
+  <div class="grid min-h-0 grid-cols-2 gap-3">
+    <div class="border-l hairline pl-4">
+      <span class="step-index">01</span>
+      <h4>Game Source</h4>
+    </div>
+    <div class="border-l hairline pl-4">
+      <span class="step-index">02</span>
+      <h4>Panning</h4>
+    </div>
+    <div class="border-l hairline pl-4">
+      <span class="step-index">03</span>
+      <h4>Distance Attenuation</h4>
+    </div>
+    <div class="border-l hairline pl-4">
+      <span class="step-index">04</span>
+      <h4>Spread</h4>
+    </div>
+    <div class="border-l hairline pl-4">
+      <span class="step-index">05</span>
+      <h4>Reverb Send</h4>
+    </div>
+    <div class="border-l hairline pl-4">
+      <span class="step-index">06</span>
+      <h4>Speaker / Headphone Output</h4>
+    </div>
   </div>
   <div class="min-h-0 min-w-0">
     <h4>它仍然很有用</h4>
@@ -594,19 +612,19 @@ Perception
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.15fr_0.85fr] gap-5">
-  <div class="gad-stage">
-    <div class="gad-head">
-      <div class="ear left"></div>
-      <div class="ear right"></div>
-    </div>
-    <div class="gad-emitter" style="left: 73%; top: 23%;">S</div>
-    <svg class="gad-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-      <line x1="75" y1="28" x2="47" y2="47" class="path direct" />
-      <line x1="75" y1="28" x2="56" y2="55" class="path diffraction" />
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
+    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="HRTF binaural cues from a sound source to both ears">
+      <path d="M285 110 C230 125 205 185 215 250 C225 330 275 365 335 360 C395 355 435 310 440 240 C445 170 400 115 335 105 C320 102 302 103 285 110 Z" fill="rgba(255,255,255,0.035)" stroke="var(--color-text-primary)" stroke-width="3" />
+      <ellipse cx="217" cy="235" rx="18" ry="38" fill="none" stroke="var(--color-accent)" stroke-width="3" />
+      <ellipse cx="440" cy="235" rx="18" ry="38" fill="none" stroke="var(--color-accent)" stroke-width="3" />
+      <circle cx="560" cy="95" r="30" fill="var(--color-bg)" stroke="var(--color-text-primary)" stroke-width="3" />
+      <text x="560" y="106" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">S</text>
+      <line x1="560" y1="110" x2="420" y2="205" stroke="rgba(240,240,240,0.75)" stroke-width="4" />
+      <line x1="560" y1="110" x2="455" y2="255" stroke="#7aa2ff" stroke-width="4" />
+      <text x="130" y="90" fill="var(--color-text-muted)" font-size="22" font-family="monospace">ITD / ILD</text>
+      <text x="410" y="320" fill="var(--color-text-muted)" font-size="22" font-family="monospace">pinna filtering</text>
+      <text x="215" y="390" fill="var(--color-text-muted)" font-size="22" font-family="monospace">binaural render -> headphones</text>
     </svg>
-    <span class="gad-label" style="left: 16%; top: 22%;">ITD / ILD</span>
-    <span class="gad-label" style="left: 55%; top: 67%;">pinna filtering</span>
-    <span class="gad-label" style="left: 34%; top: 82%;">binaural render → headphones</span>
   </div>
   <div class="min-h-0 min-w-0">
     <h4>双耳定位线索</h4>
@@ -638,18 +656,18 @@ Tool Role
 
 ::body::
 
-<div class="gad-flow gad-flow-three">
-  <div class="gad-panel">
+<div class="grid h-full min-h-0 grid-cols-3 gap-4">
+  <div class="min-h-0 min-w-0">
     <span class="step-index">GAME / AUDIO EVENT</span>
     <h4>Source Direction + Direct Sound</h4>
     <p>输入来自游戏和音频系统已有的位置、方向、距离和直达声参数。</p>
   </div>
-  <div class="gad-panel active-panel">
+  <div class="active-panel min-h-0 p-4">
     <span class="step-index">SPATIALIZER</span>
     <h4>Steam Audio Spatializer</h4>
     <p>在这里作为 HRTF / binaural rendering 工具案例，不展开 propagation、reflection 或 pathing。</p>
   </div>
-  <div class="gad-panel">
+  <div class="min-h-0 min-w-0 border-l hairline pl-4">
     <span class="step-index">OUTPUT</span>
     <h4>Headphones / L-R Signal</h4>
     <p>输出适合耳机播放的 binaural signal；custom HRTF / SOFA support 可作为扩展点。</p>
@@ -695,9 +713,9 @@ Case Setup
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="gad-placeholder">
+  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
     <span class="badge">Placeholder Image</span>
-    <div class="gad-placeholder-title">User will prepare case setup image</div>
+    <h4>User will prepare case setup image</h4>
     <p>图片用于说明玩家位置、声源位置、阻挡关系、室内外关系和楼层关系。</p>
   </div>
   <div class="callout self-center">
@@ -796,17 +814,17 @@ Question 03
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div v-click class="gad-panel">
+  <div v-click class="min-h-0 min-w-0">
     <span class="step-index">REFLECTION</span>
     <h4>反射密度</h4>
     <p>墙面和空间尺度改变早期反射的数量、方向和到达时间。</p>
   </div>
-  <div v-click class="gad-panel active-panel">
+  <div v-click class="active-panel min-h-0 p-4">
     <span class="step-index">REVERB</span>
     <h4>混响尾巴</h4>
     <p>尾巴长度和包围感帮助判断空间边界，但不能只用“大 / 小”解释。</p>
   </div>
-  <div v-click class="gad-panel">
+  <div v-click class="min-h-0 min-w-0 border-l hairline pl-4">
     <span class="step-index">CONTEXT</span>
     <h4>Room Tone</h4>
     <p>环境底噪、材质声和室内外声场差异也会参与判断。</p>
@@ -864,18 +882,18 @@ Question 05
 
 ::body::
 
-<div class="gad-flow gad-flow-three">
-  <div class="gad-panel">
+<div class="grid h-full min-h-0 grid-cols-3 gap-4">
+  <div class="min-h-0 min-w-0">
     <span class="step-index">EVENT</span>
     <h4>触发逻辑</h4>
     <p>声音何时触发、从哪里触发、是否持续更新，会直接影响空间判断。</p>
   </div>
-  <div class="gad-panel active-panel">
+  <div class="active-panel min-h-0 p-4">
     <span class="step-index">PRIORITY</span>
     <h4>优先级</h4>
     <p>同屏多个声音同时存在时，系统要决定哪些声音保留、降低或停止。</p>
   </div>
-  <div class="gad-panel">
+  <div class="min-h-0 min-w-0 border-l hairline pl-4">
     <span class="step-index">MIX</span>
     <h4>混音可读性</h4>
     <p>即使空间化计算正确，被 masking 后玩家仍然可能听不出关键信息。</p>
@@ -900,12 +918,27 @@ Synthesis
 
 ::body::
 
-<div class="gad-pipeline gad-pipeline-wide">
-  <span>Propagation Path</span>
-  <span>Parameter Mapping</span>
-  <span>Spatializer / HRTF</span>
-  <span>Event Priority / Mix</span>
-  <span>Player Judgement</span>
+<div class="grid min-h-0 grid-cols-5 gap-3">
+  <div class="border-l hairline pl-3">
+    <span class="step-index">01</span>
+    <h4>Propagation Path</h4>
+  </div>
+  <div class="border-l hairline pl-3">
+    <span class="step-index">02</span>
+    <h4>Parameter Mapping</h4>
+  </div>
+  <div class="border-l hairline pl-3">
+    <span class="step-index">03</span>
+    <h4>Spatializer / HRTF</h4>
+  </div>
+  <div class="border-l hairline pl-3">
+    <span class="step-index">04</span>
+    <h4>Event Priority / Mix</h4>
+  </div>
+  <div class="border-l hairline pl-3">
+    <span class="step-index">05</span>
+    <h4>Player Judgement</h4>
+  </div>
 </div>
 
 <div class="quote-accent mt-6">
@@ -925,312 +958,3 @@ FIN
 Thanks & Questions?
 
 xichen@soundoer.com
-
-<style>
-.slidev-layout .gad-placeholder {
-  min-height: 0;
-  border: 1px dashed var(--color-border);
-  background: rgba(255, 255, 255, 0.025);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem;
-  text-align: center;
-}
-
-.slidev-layout .gad-placeholder-title {
-  max-width: 42rem;
-  color: var(--color-text-primary);
-  font-size: 1.6rem;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.slidev-layout .gad-flow {
-  height: 100%;
-  min-height: 0;
-  display: grid;
-  gap: 1rem;
-  align-items: stretch;
-}
-
-.slidev-layout .gad-flow-two {
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-}
-
-.slidev-layout .gad-flow-three {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.slidev-layout .gad-arrow {
-  color: var(--color-accent);
-  font-size: 2.5rem;
-  font-weight: 900;
-}
-
-.slidev-layout .gad-panel {
-  min-height: 0;
-  border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.025);
-  padding: 1.25rem;
-}
-
-.slidev-layout .gad-panel h4 {
-  margin-bottom: 0.75rem;
-}
-
-.slidev-layout .gad-chip-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.slidev-layout .gad-chip-list span,
-.slidev-layout .gad-route span,
-.slidev-layout .gad-pipeline span {
-  border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--color-text-body);
-  padding: 0.45rem 0.65rem;
-  font-size: 0.9rem;
-}
-
-.slidev-layout .gad-stage {
-  position: relative;
-  min-height: 0;
-  height: 100%;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 36px 36px;
-}
-
-.slidev-layout .gad-listener,
-.slidev-layout .gad-emitter {
-  position: absolute;
-  z-index: 3;
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-primary);
-  font-weight: 900;
-}
-
-.slidev-layout .gad-listener {
-  background: var(--color-accent);
-}
-
-.slidev-layout .gad-emitter {
-  border: 1px solid var(--color-text-primary);
-  background: var(--color-bg);
-}
-
-.slidev-layout .gad-line-distance {
-  position: absolute;
-  left: 27%;
-  top: 53%;
-  width: 49%;
-  border-top: 2px dashed rgba(240, 240, 240, 0.48);
-  transform: rotate(-24deg);
-  transform-origin: left center;
-}
-
-.slidev-layout .gad-direction {
-  position: absolute;
-  width: 5rem;
-  border-top: 2px solid var(--color-accent);
-}
-
-.slidev-layout .gad-direction::after {
-  content: "";
-  position: absolute;
-  right: -0.2rem;
-  top: -0.32rem;
-  border-left: 0.45rem solid var(--color-accent);
-  border-top: 0.28rem solid transparent;
-  border-bottom: 0.28rem solid transparent;
-}
-
-.slidev-layout .gad-label {
-  position: absolute;
-  z-index: 4;
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.slidev-layout .gad-wall,
-.slidev-layout .gad-obstacle {
-  position: absolute;
-  z-index: 2;
-  background: rgba(240, 240, 240, 0.78);
-}
-
-.slidev-layout .accent-wall,
-.slidev-layout .gad-portal {
-  background: var(--color-accent);
-}
-
-.slidev-layout .gad-zone,
-.slidev-layout .gad-room-box {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border);
-  background: rgba(212, 90, 42, 0.08);
-  color: var(--color-text-body);
-  font-weight: 700;
-}
-
-.slidev-layout .gad-zone {
-  width: 22%;
-  height: 22%;
-}
-
-.slidev-layout .gad-room-box {
-  z-index: 1;
-}
-
-.slidev-layout .gad-portal {
-  position: absolute;
-  z-index: 4;
-  width: 6%;
-  height: 18%;
-}
-
-.slidev-layout .gad-svg {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.slidev-layout .path {
-  fill: none;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.slidev-layout .direct {
-  stroke: rgba(240, 240, 240, 0.75);
-  stroke-dasharray: 4 4;
-}
-
-.slidev-layout .blocked,
-.slidev-layout .transmission {
-  stroke: #d45a2a;
-}
-
-.slidev-layout .diffraction {
-  stroke: #7aa2ff;
-}
-
-.slidev-layout .reflection {
-  stroke: #6bd38d;
-}
-
-.slidev-layout .gad-legend {
-  display: grid;
-  gap: 0.55rem;
-  color: var(--color-text-body);
-}
-
-.slidev-layout .gad-legend i {
-  display: inline-block;
-  width: 1.5rem;
-  margin-right: 0.5rem;
-  border-top: 3px solid currentColor;
-  vertical-align: middle;
-}
-
-.slidev-layout .legend-direct {
-  color: rgba(240, 240, 240, 0.75);
-}
-
-.slidev-layout .legend-blocked {
-  color: #d45a2a;
-}
-
-.slidev-layout .legend-diffraction {
-  color: #7aa2ff;
-}
-
-.slidev-layout .legend-reflection {
-  color: #6bd38d;
-}
-
-.slidev-layout .gad-reverb {
-  position: absolute;
-  z-index: 2;
-  border: 1px solid rgba(212, 90, 42, 0.6);
-  border-radius: 999px;
-  background: rgba(212, 90, 42, 0.12);
-}
-
-.slidev-layout .gad-route,
-.slidev-layout .gad-pipeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.slidev-layout .gad-pipeline {
-  justify-content: center;
-}
-
-.slidev-layout .gad-pipeline-wide {
-  flex-direction: row;
-  align-items: center;
-}
-
-.slidev-layout .gad-pipeline span::after,
-.slidev-layout .gad-route span::after {
-  content: " →";
-  color: var(--color-accent);
-}
-
-.slidev-layout .gad-pipeline span:last-child::after,
-.slidev-layout .gad-route span:last-child::after {
-  content: "";
-}
-
-.slidev-layout .gad-head {
-  position: absolute;
-  left: 38%;
-  top: 33%;
-  width: 8.5rem;
-  height: 10rem;
-  border: 1px solid var(--color-text-primary);
-  border-radius: 46% 46% 42% 42%;
-  background: rgba(255, 255, 255, 0.035);
-}
-
-.slidev-layout .ear {
-  position: absolute;
-  top: 42%;
-  width: 1rem;
-  height: 2rem;
-  border: 1px solid var(--color-accent);
-  border-radius: 999px;
-}
-
-.slidev-layout .ear.left {
-  left: -0.7rem;
-}
-
-.slidev-layout .ear.right {
-  right: -0.7rem;
-}
-</style>
