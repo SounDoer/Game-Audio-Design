@@ -7,7 +7,6 @@
     "dev": "astro dev --root website",
     "start": "astro dev --root website",
     "slidev:dev": "node scripts/slidev-dev-deck.mjs",
-    "slidev:sync-public": "node scripts/sync-slidev-public.mjs --resume",
     "slidev:build": "node scripts/build-slidev-decks.mjs",
     "build": "npm run slidev:build && astro build --root website",
     "preview": "astro preview --root website",

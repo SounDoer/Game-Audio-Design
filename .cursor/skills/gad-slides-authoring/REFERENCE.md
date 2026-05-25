@@ -105,7 +105,3 @@ npm run slidev:build
 ```bash
 npm run slidev:dev -- <stem>
 ```
-
-```bash
-npm run slidev:sync-public
-```

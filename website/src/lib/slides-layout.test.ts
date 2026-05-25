@@ -48,7 +48,12 @@ describe('slides repository layout', () => {
     const scripts = readPackageJson().scripts ?? {};
     expect(scripts['slidev:dev']).toBe('node scripts/slidev-dev-deck.mjs');
     expect(scripts['slidev:build']).toBe('node scripts/build-slidev-decks.mjs');
-    expect(scripts['slidev:sync-public']).toBe('node scripts/sync-slidev-public.mjs --resume');
+    expect(scripts).not.toHaveProperty('slidev:sync-public');
+
+    const slidesReadme = read('slides/README.md');
+    const slidesReference = read('.cursor/skills/gad-slides-authoring/REFERENCE.md');
+    expect(slidesReadme).not.toContain('slidev:sync-public');
+    expect(slidesReference).not.toContain('slidev:sync-public');
 
     const buildScript = read('scripts/build-slidev-decks.mjs');
     const devScript = read('scripts/slidev-dev-deck.mjs');

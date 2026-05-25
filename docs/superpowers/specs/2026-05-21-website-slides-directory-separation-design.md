@@ -65,7 +65,7 @@ Use content-oriented directory names:
 
 Keep implementation and command names that intentionally refer to the Slidev framework:
 
-- Keep npm script names such as `slidev:build`, `slidev:dev`, and `slidev:sync-public`.
+- Keep npm script names such as `slidev:build` and `slidev:dev`.
 - Keep the package dependency names `@slidev/cli` and `@slidev/theme-default`.
 - Keep runtime/tool references such as `npx slidev build`, `@slidev/client`, and `.slidev-layout`.
 

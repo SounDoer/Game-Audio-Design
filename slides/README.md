@@ -60,7 +60,6 @@ slides/
 |------|------|
 | `npm run slidev:dev -- <stem>` | 本地预览指定 deck（透传 `scripts/slidev-dev-deck.mjs`），浏览器路径形如 `/slides/<slug>/`。 |
 | `npm run slidev:build` | 构建全部 deck 到 `website/static/slides/`。 |
-| `npm run slidev:sync-public` | 一次性从旧仓库同步 `public` 资源（见 `scripts/sync-slidev-public.mjs` 参数：`--resume`、`--skip-mp4`、`--mp4-only`）。 |
 
 若构建报资源缺失，在 `slides/public/` 下补文件或改正文引用路径。
 
