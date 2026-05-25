@@ -116,7 +116,7 @@ Stage B 正在展开。逐页计划需要为每页确认 purpose、visible title
 |---|---------|---------------|----------|-------|---------------|---------------|--------|
 | 1 | 建立专题身份和主题范围 | 音频空间化 / Audio Spatialization | “听声辨位”是如何实现的？ | none | cover | 开场说明本课会从玩家体验倒推游戏如何重建可玩的空间听觉 | confirmed |
 | 2 | 进入第一章：讲解音频空间化的原理、抽象和实现流程 | 从声音传播到空间化系统 | none | none | section | 第一章不是具体案例，而是从声音传播现象推到游戏音频空间化系统 | confirmed |
-| 3 | 用游戏视频 hook 吸引注意 | TBD: 等游戏视频素材确定后命名 | 只用 callout class 放视频标题，不额外放提问 | Missing: gameplay clip showing player locating sound by listening | full-media / video + callout title | 不先解释技术，让学生先形成直觉问题 | needs-user |
+| 3 | 用游戏视频 hook 吸引注意 | TBD: 等游戏视频素材确定后命名 | 只用 callout class 放视频标题，不额外放提问 | Placeholder: gameplay clip showing player locating sound by listening | full-media / video + callout title | 不先解释技术，让学生先形成直觉问题 | placeholder |
 | 4 | 从现实声音传播引出复杂性 | 现实中的声音传播 | 定位、直达声 / 距离衰减、遮挡 / 透射、衍射 / 绕射、反射、混响 | Missing: real-world sound propagation clip | video + key points | 视频之外露出声音传播关键点，为后续“游戏如何近似实现”铺垫 | placeholder |
 | 5 | 把现实传播现象转译成游戏音频空间化目标 | 游戏里要重建哪些空间线索？ | 方向、距离、遮挡、环境、路径 | TBD: simple mapping diagram or text-only | question / mapping | 从“真实声音怎么传播”转向“游戏需要计算和控制哪些线索” | placeholder |
 | 6 | 建立空间音频计算的两个基本对象 | Listener / Emitter | 谁在听？谁在发声？位置、朝向、距离和相对关系 | TBD: neutral listener-emitter diagram | diagram / two-object model | 强调这是后续定位、衰减和路径检测的基础 | placeholder |
@@ -130,7 +130,7 @@ Stage B 正在展开。逐页计划需要为每页确认 purpose、visible title
 | 14 | 进入 HRTF 章节，承接“空间计算结果如何被听见” | 从空间计算到双耳听感 | TBD: section subtitle | none | section | 前面讲的是传播和参数；这里开始讲耳机里的方向感如何被渲染出来 | confirmed |
 | 15 | 解释 HRTF 提供哪些双耳定位线索 | HRTF | ITD; ILD; pinna filtering; front-back / up-down cues; externalization; individual differences | TBD: simple head / ear filtering diagram | concept diagram | 不展开 SOFA 数据、测量方法或插件参数；重点是为什么同一个方向需要经过头部和耳廓相关滤波才能形成双耳空间感 | confirmed |
 | 16 | 用 Steam Audio 说明项目中 HRTF / binaural rendering 的工具角色 | Steam Audio HRTF | HRTF-based binaural rendering; Spatializer; custom HRTF / SOFA support; used here as final rendering, not propagation | Steam Audio docs / own project routing diagram TBD | case study / pipeline | 作为 HRTF 案例；其他 HRTF/spatializer 方案可在备注中提到 Meta XR Audio, Oculus Spatializer, Resonance Audio, atmoky Ears | confirmed |
-| 17+ | 用已有“听声辨位”案例综合回收本课主线 | 听声辨位 | TBD: 根据已有案例拆解方向、距离、遮挡、空间环境、HRTF 等线索 | User has existing case material; exact assets TBD | section + case analysis, page count TBD | 具体页数等写作时根据案例素材决定；不要在当前阶段强行拆页 | needs-user |
+| 17+ | 用已有“听声辨位”案例综合回收本课主线 | 听声辨位 | Placeholder: 根据已有案例拆解方向、距离、遮挡、空间环境、HRTF 等线索 | User has existing case material; exact assets TBD | section + case analysis, page count TBD | 具体页数等写作时根据案例素材决定；Stage C 可先用 placeholder 实现 | placeholder |
 
 ## Media Assets
 
