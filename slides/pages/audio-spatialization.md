@@ -11,7 +11,7 @@ SPATIAL
 
 ::eyebrow::
 
-Game Audio System
+Audio Spatialization
 
 ::title::
 
@@ -19,11 +19,11 @@ Game Audio System
 
 ::subtitle::
 
-Audio Spatialization
+在数字领域中还原真实世界的声音传播效果
 
 ::info::
 
-“听声辨位”是如何实现的？
+xichen @ gad.soundoer.com
 
 ---
 layout: section
@@ -35,38 +35,28 @@ layout: section
 
 ::eyebrow::
 
-Framework
+Sound Propagation
 
 ::title::
 
-## 从声音传播到空间化系统
-
-::subtitle::
-
-先把真实声学现象，压缩成游戏可以实时计算和控制的空间线索。
+## 声音传播的解构与建模
 
 ---
 layout: header-body
 ---
 
-::backdrop::
-
-HOOK
-
 ::eyebrow::
 
-Opening Clip
+Listening in Game
 
 ::title::
 
-### TBD：听声辨位 gameplay clip
+### 游戏中的听声辨位
 
 ::body::
 
-<div class="gad-placeholder h-full">
-  <span class="badge">Placeholder Video</span>
-  <div class="gad-placeholder-title">Gameplay clip showing player locating sound by listening</div>
-  <p>这里先保留视频位。正式素材确定后，只替换媒体和标题，不改变本页结构。</p>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/audio-spatialization/R6%20Siege%20X%20Audio%20Overhaul.mp4" controls preload="metadata"></video>
 </div>
 
 ---
@@ -87,63 +77,74 @@ Real Acoustics
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.25fr_0.75fr] gap-5">
-  <div class="gad-placeholder">
-    <span class="badge">Placeholder Video</span>
-    <div class="gad-placeholder-title">Real-world sound propagation clip</div>
-    <p>可展示隔墙、门洞、拐角、室内外过渡、反射或混响变化。</p>
-  </div>
-  <div class="flex min-h-0 flex-col justify-center gap-3">
-    <div v-click class="callout">
-      <span class="callout-title">现实里同时发生的事</span>
-      <p>直达、距离衰减、遮挡、透射、衍射、反射和混响不是分开的开关，而是叠在同一个听觉结果里。</p>
-    </div>
-    <div v-click class="quote-accent">
-      <p>游戏音频空间化的目标不是完整复刻空气振动，而是生成玩家可用的空间判断线索。</p>
-    </div>
-  </div>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/audio-spatialization/SoundPropagation_Stairwell_FIN.mp4" controls preload="metadata"></video>
 </div>
 
 ---
 layout: header-body
 ---
 
-::backdrop::
-
-CUES
-
 ::eyebrow::
 
-Mapping
+Reproduction in DAW
 
 ::title::
 
-### 游戏里要重建哪些空间线索？
+### 数字音频制作复刻声音效果
 
 ::body::
 
-<div class="gad-flow gad-flow-two">
-  <div class="gad-panel">
-    <span class="step-index">REAL WORLD</span>
-    <h4>真实传播现象</h4>
-    <div class="gad-chip-list">
-      <span>声源方向</span>
-      <span>距离衰减</span>
-      <span>遮挡 / 透射</span>
-      <span>衍射 / 绕射</span>
-      <span>反射 / 混响</span>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/audio-spatialization/Duck_DAW_Effect_FIN.mp4" controls preload="metadata"></video>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Sound Propagation
+
+::title::
+
+### 声音传播的解构
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-3 gap-5">
+  <div v-click class="callout flex min-h-0 flex-col justify-center gap-5">
+    <span class="callout-title">定位</span>
+    <div>
+      <span class="step-index">Direction</span>
+      <h4>方向</h4>
+    </div>
+    <div>
+      <span class="step-index">Distance</span>
+      <h4>距离</h4>
     </div>
   </div>
-  <div class="gad-arrow">→</div>
-  <div class="gad-panel active-panel">
-    <span class="step-index">GAME SYSTEM</span>
-    <h4>可计算的空间线索</h4>
-    <div class="gad-chip-list">
-      <span>方向</span>
-      <span>距离</span>
-      <span>遮挡</span>
-      <span>环境</span>
-      <span>路径</span>
+  <div v-click class="callout flex min-h-0 flex-col justify-center gap-5 p-5">
+    <span class="callout-title">路径</span>
+    <div>
+      <span class="step-index">Diffraction</span>
+      <h4>衍射</h4>
+    </div>
+    <div>
+      <span class="step-index">Transmission</span>
+      <h4>透射</h4>
+    </div>
+  </div>
+  <div v-click class="callout flex min-h-0 flex-col justify-center gap-5">
+    <span class="callout-title">空间</span>
+    <div>
+      <span class="step-index">Reverberation</span>
+      <h4>混响</h4>
+    </div>
+    <div>
+      <span class="step-index">Reflection</span>
+      <h4>反射</h4>
     </div>
   </div>
 </div>
