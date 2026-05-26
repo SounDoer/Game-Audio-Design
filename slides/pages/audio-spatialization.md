@@ -230,50 +230,6 @@ Propagation Path
 </div>
 
 ---
-layout: fullscreen-media
-image: audio-spatialization/afop_raytracingsound_waterfall_1280x720.jpg
-backgroundSize: contain
-alt: Visualization of ray tracing a waterfall's sound in Avatar Frontiers of Pandora
----
-
-<div class="relative h-full w-full">
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
-    <span class="badge">Massive Snowdrop</span>
-    <p class="caption mt-3">Visualization of Ray Tracing a waterfall's sound in <em>Avatar: Frontiers of Pandora</em>.</p>
-  </div>
-</div>
-
-<!-- https://www.massive.se/blog/news/ray-tracing-audio-in-snowdrop-creating-a-living-pandora/ -->
-
----
-layout: fullscreen-media
-image: audio-spatialization/afop_raytracingsound_diffraction_1280x720.jpg
-backgroundSize: contain
-alt: Tracing sound rays through dense vegetation
----
-
-<div class="relative h-full w-full">
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
-    <span class="badge">Massive Snowdrop</span>
-    <p class="caption mt-3">Tracing sound rays through dense vegetation.</p>
-  </div>
-</div>
-
----
-layout: fullscreen-media
-image: audio-spatialization/afop_raytracingsound_indoorspaceportals_1280x720.jpg
-backgroundSize: contain
-alt: Sound transparency through windows and doors
----
-
-<div class="relative h-full w-full">
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
-    <span class="badge">Massive Snowdrop</span>
-    <p class="caption mt-3">Sound transparency through windows and doors.</p>
-  </div>
-</div>
-
----
 layout: header-body
 ---
 
@@ -448,15 +404,33 @@ In-house Solution
 </div>
 
 ---
-layout: fullscreen-media
-image: audio-spatialization/gpu-raytracing-for-audio-gdc2025-page-01.png
-backgroundSize: contain
-alt: GPU Raytracing for Audio in Snowdrop GDC 2025 title slide
+layout: header-body
 ---
 
-<div class="relative h-full w-full">
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[36rem]">
-    <ul>
+::backdrop::
+
+SNOWDROP
+
+::eyebrow::
+
+Ubisoft
+
+::title::
+
+### Snowdrop GPU Raytracing
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <img class="max-h-full max-w-full object-contain" src="/audio-spatialization/gpu-raytracing-for-audio-gdc2025-page-01.png" alt="GPU Raytracing for Audio in Snowdrop GDC 2025 title slide">
+  </div>
+  <div class="flex min-h-0 flex-col justify-start gap-3">
+    <div class="callout">
+      <span class="callout-title">GPU Raytracing</span>
+      <p>利用硬件光追在 GPU 上异步执行大量声线查询，实时估算复杂场景中的声传播路径。</p>
+    </div>
+    <ul class="list-disc space-y-2 pl-5 text-[0.95rem] text-[var(--color-text-body)]">
       <li><a href="https://www.gdcvault.com/play/1035485/GPU-Raytracing-for-Audio-in" target="_blank" rel="noreferrer">GPU Raytracing for Audio in Snowdrop</a></li>
       <li><a href="https://www.massive.se/blog/news/ray-tracing-audio-in-snowdrop-creating-a-living-pandora/" target="_blank" rel="noreferrer">Ray Tracing Audio in Snowdrop: Creating a Living Pandora</a></li>
     </ul>
@@ -487,39 +461,46 @@ layout: custom
 </div>
 
 ---
-layout: header-body
+layout: fullscreen-media
+image: audio-spatialization/afop_raytracingsound_waterfall_1280x720.jpg
+backgroundSize: contain
+alt: Visualization of ray tracing a waterfall's sound in Avatar Frontiers of Pandora
 ---
 
-::backdrop::
-
-TRITON
-
-::eyebrow::
-
-Alternative Route
-
-::title::
-
-### Project Acoustics / Triton
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-[1.15fr_0.85fr] gap-5">
-  <div class="figure-frame flex min-h-0 items-center justify-center">
-    <img class="max-h-full max-w-full object-contain" src="/audio-spatialization/triton.gif" alt="Project Triton acoustic simulation visualization">
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
+    <span class="badge">Massive Snowdrop</span>
+    <p class="caption mt-3">Visualization of Ray Tracing a waterfall's sound in <em>Avatar: Frontiers of Pandora</em>.</p>
   </div>
-  <div class="flex min-h-0 flex-col justify-center gap-3">
-    <div class="callout">
-      <span class="callout-title">另一条路线</span>
-      <p>更像静态光照烘焙：离线做波动声学模拟，再把结果压缩成运行时可查询的声学参数。</p>
-    </div>
-    <div class="grid gap-2 text-[0.95rem] text-[var(--color-text-body)]">
-      <div><span class="step-index">01</span> Scene + Materials</div>
-      <div><span class="step-index">02</span> Bake</div>
-      <div><span class="step-index">03</span> Acoustic Data / Probes</div>
-      <div><span class="step-index">04</span> Runtime Parameter Lookup</div>
-      <div><span class="step-index">05</span> Audio Controls</div>
-    </div>
+</div>
+
+<!-- https://www.massive.se/blog/news/ray-tracing-audio-in-snowdrop-creating-a-living-pandora/ -->
+
+---
+layout: fullscreen-media
+image: audio-spatialization/afop_raytracingsound_diffraction_1280x720.jpg
+backgroundSize: contain
+alt: Tracing sound rays through dense vegetation
+---
+
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
+    <span class="badge">Massive Snowdrop</span>
+    <p class="caption mt-3">Tracing sound rays through dense vegetation.</p>
+  </div>
+</div>
+
+---
+layout: fullscreen-media
+image: audio-spatialization/afop_raytracingsound_indoorspaceportals_1280x720.jpg
+backgroundSize: contain
+alt: Sound transparency through windows and doors
+---
+
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
+    <span class="badge">Massive Snowdrop</span>
+    <p class="caption mt-3">Sound transparency through windows and doors.</p>
   </div>
 </div>
 
@@ -529,11 +510,43 @@ layout: header-body
 
 ::backdrop::
 
-DEMO
+TRITON
 
 ::eyebrow::
 
-Demo
+Microsoft
+
+::title::
+
+### Project Acoustics / Triton
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <img class="max-h-full max-w-full object-contain" src="/audio-spatialization/triton.gif" alt="Project Triton acoustic simulation visualization">
+  </div>
+  <div class="flex min-h-0 flex-col justify-start gap-3">
+    <div class="callout">
+      <span class="callout-title">另一条路线</span>
+      <p>类似静态光照烘焙，离线做波动声学模拟，再把结果压缩成运行时可查询的声学参数。</p>
+    </div>
+    <ul class="list-disc space-y-2 pl-5 text-[0.95rem] text-[var(--color-text-body)]">
+      <li><a href="https://www.microsoft.com/en-us/research/project/project-triton/" target="_blank" rel="noreferrer">Project Triton - Microsoft Research</a></li>
+      <li><a href="https://www.microsoft.com/en-us/research/video/project-triton-making-waves-with-acoustics/" target="_blank" rel="noreferrer">Project Acoustics: Making Waves with Triton</a></li>
+      <li><a href="https://github.com/microsoft/ProjectAcoustics" target="_blank" rel="noreferrer">microsoft/ProjectAcoustics</a></li>
+      <li><a href="https://gad.soundoer.com/microsoft-project-acoustics-wave-physics-simulation-playtest/" target="_blank" rel="noreferrer">Microsoft Project Acoustics 声波物理模拟测试</a></li>
+    </ul>
+  </div>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Microsoft
 
 ::title::
 
@@ -541,10 +554,8 @@ Demo
 
 ::body::
 
-<div class="figure-frame flex h-full min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
-  <span class="badge">Placeholder Video</span>
-  <h4>User will prepare Project Acoustics / Triton video later</h4>
-  <p>可以偏工具链流程，也可以偏听感对比；caption 再按最终素材调整。</p>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/audio-spatialization/ProjectAcoustics_WavePhysicsSimulation_Demo.mp4" controls preload="metadata"></video>
 </div>
 
 ---
