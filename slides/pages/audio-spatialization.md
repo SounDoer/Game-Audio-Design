@@ -448,35 +448,41 @@ In-house Solution
 </div>
 
 ---
-layout: header-body
+layout: fullscreen-media
+image: audio-spatialization/gpu-raytracing-for-audio-gdc2025-page-01.png
+backgroundSize: contain
+alt: GPU Raytracing for Audio in Snowdrop GDC 2025 title slide
 ---
 
-::backdrop::
-
-UBISOFT
-
-::eyebrow::
-
-UBISOFT
-
-::title::
-
-### GPU Raytracing for Audio
-#### Ubisoft Snowdrop
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
-    <span class="badge">Pending Screenshots</span>
-    <h4>1-3 screenshots from GPU Raytracing for Audio in Snowdrop GDC2025.pdf</h4>
-    <p>后续替换为用户从 GDC PDF 中选定的截图。</p>
-  </div>
-  <div class="min-h-0 min-w-0">
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[36rem]">
     <ul>
-      <li><a href="https://www.gdcvault.com/play/1035485/GPU-Raytracing-for-Audio-in" target="_blank" rel="noreferrer">GDC Vault - GPU Raytracing for Audio in Snowdrop</a></li>
-      <li><a href="https://www.massive.se/blog/news/ray-tracing-audio-in-snowdrop-creating-a-living-pandora/" target="_blank" rel="noreferrer">Massive Entertainment - Ray Tracing Audio in Snowdrop: Creating a Living Pandora</a></li>
+      <li><a href="https://www.gdcvault.com/play/1035485/GPU-Raytracing-for-Audio-in" target="_blank" rel="noreferrer">GPU Raytracing for Audio in Snowdrop</a></li>
+      <li><a href="https://www.massive.se/blog/news/ray-tracing-audio-in-snowdrop-creating-a-living-pandora/" target="_blank" rel="noreferrer">Ray Tracing Audio in Snowdrop: Creating a Living Pandora</a></li>
     </ul>
+  </div>
+</div>
+
+---
+layout: custom
+---
+
+::default::
+
+<div class="relative h-full w-full bg-[var(--color-bg)] p-6">
+  <div class="grid h-full min-h-0 grid-cols-2 grid-rows-2 gap-3">
+    <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-2">
+      <img class="h-full w-full object-contain" src="/audio-spatialization/gpu-raytracing-for-audio-gdc2025-page-10.png" alt="Snowdrop engine introduction from GPU Raytracing for Audio in Snowdrop">
+    </div>
+    <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-2">
+      <img class="h-full w-full object-contain" src="/audio-spatialization/gpu-raytracing-for-audio-gdc2025-page-11.png" alt="Audio ray tracing goals in Snowdrop">
+    </div>
+    <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-2">
+      <img class="h-full w-full object-contain" src="/audio-spatialization/gpu-raytracing-for-audio-gdc2025-page-23.png" alt="Audio raytracing pipeline in Snowdrop">
+    </div>
+    <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-2">
+      <img class="h-full w-full object-contain" src="/audio-spatialization/gpu-raytracing-for-audio-gdc2025-page-107.png" alt="Sound propagation simulation recap from GPU Raytracing for Audio in Snowdrop">
+    </div>
   </div>
 </div>
 
