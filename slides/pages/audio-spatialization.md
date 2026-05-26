@@ -329,6 +329,22 @@ Parameter Mapping
 </div>
 
 ---
+layout: section
+---
+
+::backdrop::
+
+02
+
+::eyebrow::
+
+IMPLEMENTATION
+
+::title::
+
+## 实现方案
+
+---
 layout: header-body
 ---
 
@@ -338,7 +354,7 @@ WWISE
 
 ::eyebrow::
 
-Case Study
+Wwise
 
 ::title::
 
@@ -346,46 +362,30 @@ Case Study
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
-    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="Wwise spatial audio room and portal relationship">
-      <rect x="75" y="80" width="245" height="245" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" stroke-width="2" />
-      <rect x="400" y="80" width="245" height="245" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" stroke-width="2" />
-      <rect v-click x="340" y="180" width="40" height="70" fill="var(--color-accent)" />
-      <circle v-click cx="200" cy="250" r="28" fill="var(--color-accent)" />
-      <text x="200" y="261" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">L</text>
-      <circle v-click cx="535" cy="155" r="28" fill="var(--color-bg)" stroke="var(--color-text-primary)" stroke-width="3" />
-      <text x="535" y="166" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">E</text>
-      <text x="160" y="205" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="700">Room A</text>
-      <text x="485" y="205" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="700">Room B</text>
-      <polyline v-click points="200,250 360,215 535,155" fill="none" stroke="#7aa2ff" stroke-width="4" />
-      <line v-click x1="200" y1="250" x2="535" y2="155" stroke="var(--color-accent)" stroke-width="4" />
-      <polyline v-click points="535,155 525,90 200,250" fill="none" stroke="#6bd38d" stroke-width="4" />
-      <ellipse v-click cx="195" cy="205" rx="85" ry="130" fill="rgba(212,90,42,0.12)" stroke="rgba(212,90,42,0.6)" />
-    </svg>
-  </div>
+<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
   <div class="min-h-0 min-w-0">
-    <h4>不是“一个 raycast”</h4>
     <ul>
       <li v-click>Listener & Emitter 建立基础关系</li>
-      <li v-click>Room & Portal 组织声学区域和连接</li>
-      <li v-click>Diffraction / Transmission 处理非直达路径</li>
-      <li v-click>Reverb / Reflect 提供环境和早期反射线索</li>
+      <li v-click>Room & Portal 组件界定空间和通路</li>
+      <li v-click>Diffraction & Transmission 处理非直达路径</li>
+      <li v-click>Reverb & Reflect 效果器插件实现空间混响和表面反射</li>
     </ul>
   </div>
+  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 overflow-hidden p-3">
+    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/di11_map004_roomportal_01.png" alt="Room and portal geometry overview in a Wwise spatial audio scene">
+    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/di11_map004_roomportal_02.png" alt="Room and portal placement view in a Wwise spatial audio scene">
+  </div>
 </div>
+
+<!-- https://www.audiokinetic.com/en/wwise/wwise-spatial-audio/ -->
 
 ---
 layout: header-body
 ---
 
-::backdrop::
-
-DEMO
-
 ::eyebrow::
 
-Demo
+Wwise
 
 ::title::
 
@@ -393,10 +393,8 @@ Demo
 
 ::body::
 
-<div class="figure-frame flex h-full min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
-  <span class="badge">Placeholder Video</span>
-  <h4>User will prepare Wwise Spatial Audio demo video later</h4>
-  <p>视频用于承接上一页的 Listener / Emitter、Room / Portal、Diffraction、Transmission、Reverb 和 Reflect 概念。</p>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/audio-spatialization/SOP_Spatial_Audio_Voice_Demo_FIN.mp4" controls preload="metadata"></video>
 </div>
 
 ---
