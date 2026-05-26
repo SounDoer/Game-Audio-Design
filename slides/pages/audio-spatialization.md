@@ -363,6 +363,9 @@ Wwise
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/SOP_Wwise_3D_Viewer.png" alt="Wwise 3D viewer spatial audio visualization">
+  </div>
   <div class="min-h-0 min-w-0">
     <ul>
       <li v-click>Listener & Emitter 建立基础关系</li>
@@ -370,10 +373,6 @@ Wwise
       <li v-click>Diffraction & Transmission 处理非直达路径</li>
       <li v-click>Reverb & Reflect 效果器插件实现空间混响和表面反射</li>
     </ul>
-  </div>
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 overflow-hidden p-3">
-    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/di11_map004_roomportal_01.png" alt="Room and portal geometry overview in a Wwise spatial audio scene">
-    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/di11_map004_roomportal_02.png" alt="Room and portal placement view in a Wwise spatial audio scene">
   </div>
 </div>
 
@@ -403,33 +402,57 @@ layout: header-body
 
 ::backdrop::
 
-ENGINE
+SIGNAL
 
 ::eyebrow::
 
-Anonymous Case
+Wwise
 
 ::title::
 
-### 自研射线检测方案
+### Wwise Spatial Audio Signal Flow
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div class="min-h-0 min-w-0">
-    <span class="step-index">ENGINE SCENE</span>
-    <h4>Listener / Emitter Ray Queries</h4>
-    <p>从引擎侧检测距离、遮挡、路径、材质和环境。</p>
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden p-4">
+  <img class="h-full w-full object-contain" src="/audio-spatialization/wwise-spatial-audio-signal-flow.svg" alt="Wwise spatial audio signal flow diagram">
+</div>
+
+---
+layout: header-body
+---
+
+::backdrop::
+
+TRACING
+
+::eyebrow::
+
+In-house Solution
+
+::title::
+
+### Audio Ray Tracing 自研方案
+
+::body::
+
+<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
+  <div class="flex min-h-0 min-w-0 flex-col justify-start gap-4">
+    <div v-click="1">
+      <span class="callout-title">Wwise Spatial Audio 方案的取舍</span>
+      <ul>
+        <li>Room & Portal 组件可控性高，但会有额外的维护成本。</li>
+        <li>复杂空间难以用 Room & Portal 精准定义。</li>
+      </ul>
+    </div>
+    <div v-click="2" class="callout">
+      <span class="callout-title">Audio Ray Tracing + Wwise Sound Engine</span>
+      <p>在引擎中对标注过的场景几何体进行射线检测，得出听者与声源之间的遮蔽情况、通路的开合状态、空间的类型与开放程度等信息，再转换成 Wwise Game Syncs，驱动声音参数的实时变化。</p>
+    </div>
   </div>
-  <div class="active-panel min-h-0 p-4">
-    <span class="step-index">PARAMETERS</span>
-    <h4>Detected Data</h4>
-    <p><code>occlusion=0.72</code><br><code>distance=18m</code><br><code>material=concrete</code><br><code>reverbSend=0.45</code></p>
-  </div>
-  <div class="min-h-0 min-w-0 border-l hairline pl-4">
-    <span class="step-index">WWISE CONTROL</span>
-    <h4>RTPC / States / Sends / Effects</h4>
-    <p>驱动 Volume、LPF / EQ、Reverb Send、Wet / Dry 和效果强度。</p>
+  <div v-click="1" class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 overflow-hidden p-3">
+    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/di11_map004_roomportal_02.png" alt="Room and portal placement view in an audio ray tracing scene">
+    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/di11_map004_roomportal_01.png" alt="Room and portal geometry overview in an audio ray tracing scene">
   </div>
 </div>
 
