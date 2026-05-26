@@ -111,43 +111,30 @@ Sound Propagation
 
 ::title::
 
-### 声音传播的解构
+### 声音传播的典型效果
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-5">
-  <div v-click class="callout flex min-h-0 flex-col justify-center gap-5">
-    <span class="callout-title">定位</span>
-    <div>
-      <span class="step-index">Direction</span>
-      <h4>方向</h4>
-    </div>
-    <div>
-      <span class="step-index">Distance</span>
-      <h4>距离</h4>
-    </div>
+<div class="grid h-full min-h-0 grid-cols-5 gap-3">
+  <div v-click class="callout flex min-h-0 flex-col justify-center">
+    <span class="step-index">Attenuation</span>
+    <h4>衰减</h4>
   </div>
-  <div v-click class="callout flex min-h-0 flex-col justify-center gap-5 p-5">
-    <span class="callout-title">路径</span>
-    <div>
-      <span class="step-index">Diffraction</span>
-      <h4>衍射</h4>
-    </div>
-    <div>
-      <span class="step-index">Transmission</span>
-      <h4>透射</h4>
-    </div>
+  <div v-click class="callout flex min-h-0 flex-col justify-center">
+    <span class="step-index">Diffraction</span>
+    <h4>衍射</h4>
   </div>
-  <div v-click class="callout flex min-h-0 flex-col justify-center gap-5">
-    <span class="callout-title">空间</span>
-    <div>
-      <span class="step-index">Reverberation</span>
-      <h4>混响</h4>
-    </div>
-    <div>
-      <span class="step-index">Reflection</span>
-      <h4>反射</h4>
-    </div>
+  <div v-click class="callout flex min-h-0 flex-col justify-center">
+    <span class="step-index">Transmission</span>
+    <h4>透射</h4>
+  </div>
+  <div v-click class="callout flex min-h-0 flex-col justify-center">
+    <span class="step-index">Reflection</span>
+    <h4>反射</h4>
+  </div>
+  <div v-click class="callout flex min-h-0 flex-col justify-center">
+    <span class="step-index">Reverberation</span>
+    <h4>混响</h4>
   </div>
 </div>
 
@@ -167,17 +154,15 @@ Listener & Emitter
 
 <div class="grid h-full min-h-0 grid-cols-[1.35fr_0.65fr] gap-5">
   <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-4">
-    <img class="h-full w-full object-contain" src="/audio-spatialization/object-based-positioning.svg" alt="Object based audio positioning diagram">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/listener-emitter.svg" alt="Object based audio positioning diagram">
   </div>
-  <div class="flex min-h-0 flex-col justify-center gap-3">
-    <div class="callout">
-      <span class="callout-title">Object-based positioning</span>
-      <p>声源不先被塞进固定声道，而是作为对象保留在三维坐标里，再相对 Listener 计算方向、距离和角度。</p>
-    </div>
+  <div class="flex min-h-0 flex-col justify-start gap-3">
+    <span v-click class="callout-title">Object-Based Positioning</span>
     <ul>
-      <li v-click>Listener：玩家或摄像机的 position / orientation。</li>
-      <li v-click>Emitter：发声对象的 world position。</li>
-      <li v-click>Spatializer：把相对向量转成可听的空间线索。</li>
+      <li v-click>听者 Listener：玩家控制的角色或者摄像机</li>
+      <li v-click>声源 Emitter：各种发声体</li>
+      <li v-click>两者均有 Position 和 Orientation 等空间信息</li>
+      <li v-click>两者之间的向量关系可用于方向和距离的计算</li>
     </ul>
   </div>
 </div>
@@ -185,104 +170,112 @@ Listener & Emitter
 ---
 layout: header-body
 ---
-
-::backdrop::
-
-GEO
 
 ::eyebrow::
 
-Scene Model
+Scene Geometry
 
 ::title::
 
-### Scene Geometry
+### 场景几何
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
-    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="Scene geometry with two acoustic zones and a door opening">
-      <rect x="70" y="55" width="580" height="290" fill="none" stroke="rgba(240,240,240,0.72)" stroke-width="10" />
-      <line x1="350" y1="55" x2="350" y2="345" stroke="rgba(240,240,240,0.72)" stroke-width="10" />
-      <line x1="310" y1="345" x2="390" y2="345" stroke="var(--color-accent)" stroke-width="10" />
-      <rect x="120" y="105" width="190" height="115" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" />
-      <rect x="410" y="105" width="190" height="115" fill="rgba(212,90,42,0.08)" stroke="var(--color-border)" />
-      <text x="215" y="170" fill="var(--color-text-primary)" text-anchor="middle" font-size="30" font-weight="700">Zone A</text>
-      <text x="505" y="170" fill="var(--color-text-primary)" text-anchor="middle" font-size="30" font-weight="700">Zone B</text>
-      <text x="255" y="385" fill="var(--color-text-muted)" font-size="20" font-family="monospace">material: concrete</text>
-      <text x="440" y="385" fill="var(--color-text-muted)" font-size="20" font-family="monospace">material: wood</text>
-      <text x="290" y="330" fill="var(--color-accent)" font-size="20" font-family="monospace">opening / door state</text>
-    </svg>
+<div class="grid h-full min-h-0 grid-cols-[1.35fr_0.65fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-4">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/scene-geometry.svg" alt="Scene geometry diagram">
   </div>
-  <div class="min-h-0 min-w-0">
-    <h4>场景里哪些对象会改变声音？</h4>
+  <div class="flex min-h-0 flex-col justify-start gap-3">
+    <span v-click class="callout-title">影响声音传播的场景元素</span>
     <ul>
-      <li v-click>墙体、门窗、房间、区域和通路</li>
-      <li v-click>材质、厚度、开关状态等声学属性</li>
-      <li v-click>动态几何和玩法状态变化</li>
+      <li v-click>墙体、房间和障碍物</li>
+      <li v-click>门窗、通路和开放区域</li>
+      <li v-click>几何材质的声学特点</li>
+      <li v-click>可交互或可破坏的动态几何</li>
     </ul>
-    <div v-click class="callout mt-4">
-      <span class="callout-title">术语边界</span>
-      <p>这里先用中性几何语言，不提前把 Wwise 的 Room / Portal 当作通用基础术语。</p>
-    </div>
   </div>
 </div>
 
 ---
 layout: header-body
 ---
-
-::backdrop::
-
-PATH
 
 ::eyebrow::
 
-Propagation
+Propagation Path
 
 ::title::
 
-### Propagation Path
+### 传播路径
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.25fr_0.75fr] gap-5">
-  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
-    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="Direct, blocked, diffracted, and reflected propagation paths">
-      <rect x="328" y="70" width="34" height="260" fill="rgba(240,240,240,0.72)" />
-      <circle cx="145" cy="275" r="28" fill="var(--color-accent)" />
-      <text x="145" y="286" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">L</text>
-      <circle cx="590" cy="145" r="28" fill="var(--color-bg)" stroke="var(--color-text-primary)" stroke-width="3" />
-      <text x="590" y="156" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">E</text>
-      <line v-click x1="170" y1="260" x2="565" y2="155" stroke="rgba(240,240,240,0.75)" stroke-width="4" stroke-dasharray="8 8" />
-      <line v-click x1="170" y1="260" x2="330" y2="215" stroke="var(--color-accent)" stroke-width="4" />
-      <polyline v-click points="170,260 330,345 395,345 565,155" fill="none" stroke="#7aa2ff" stroke-width="4" stroke-linejoin="round" />
-      <polyline v-click points="170,260 175,80 565,155" fill="none" stroke="#6bd38d" stroke-width="4" stroke-linejoin="round" />
-      <text x="80" y="380" fill="var(--color-text-muted)" font-size="20" font-family="monospace">direct / blocked / diffracted / reflected paths</text>
-    </svg>
+<div class="grid h-full min-h-0 grid-cols-[1.35fr_0.65fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-4">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/propagation-path.svg" alt="Direct, blocked, diffracted, and reflected propagation paths">
   </div>
-  <div class="flex min-h-0 flex-col justify-center gap-3">
-    <div class="callout">
-      <span class="callout-title">路径不是一条直线</span>
-      <p>不同方案可能用 raycast、ray tracing、pathing 或 probe lookup 估计声音如何到达听者。</p>
-    </div>
+  <div class="flex min-h-0 flex-col justify-start gap-3">
+    <span v-click class="callout-title">声音的传播路径</span>
     <ul>
-      <li v-click>direct：直达路径</li>
-      <li v-click>blocked：被几何阻挡</li>
-      <li v-click>diffraction：绕过边缘或开口</li>
-      <li v-click>reflection：由表面反射形成间接路径</li>
+      <li v-click>直达声路径</li>
+      <li v-click>经过通路或绕过障碍物的衍射路径</li>
+      <li v-click>直接穿过墙体的透射路径</li>
+      <li v-click>墙体表面反弹形成反射路径</li>
     </ul>
+    <div v-click class="callout">
+      <span class="callout-title">Audio Ray Tracing</span>
+      <p>通常由一系列 Raycast 组成，从听者、声源或其他参考位置发出射线，查询距离、遮挡、命中表面等信息。</p>
+    </div>
+  </div>
+</div>
+
+---
+layout: fullscreen-media
+image: audio-spatialization/afop_raytracingsound_waterfall_1280x720.jpg
+backgroundSize: contain
+alt: Visualization of ray tracing a waterfall's sound in Avatar Frontiers of Pandora
+---
+
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
+    <span class="badge">Massive Snowdrop</span>
+    <p class="caption mt-3">Visualization of Ray Tracing a waterfall's sound in <em>Avatar: Frontiers of Pandora</em>.</p>
+  </div>
+</div>
+
+<!-- https://www.massive.se/blog/news/ray-tracing-audio-in-snowdrop-creating-a-living-pandora/ -->
+
+---
+layout: fullscreen-media
+image: audio-spatialization/afop_raytracingsound_diffraction_1280x720.jpg
+backgroundSize: contain
+alt: Tracing sound rays through dense vegetation
+---
+
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
+    <span class="badge">Massive Snowdrop</span>
+    <p class="caption mt-3">Tracing sound rays through dense vegetation.</p>
+  </div>
+</div>
+
+---
+layout: fullscreen-media
+image: audio-spatialization/afop_raytracingsound_indoorspaceportals_1280x720.jpg
+backgroundSize: contain
+alt: Sound transparency through windows and doors
+---
+
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-8 left-6 max-w-[38rem]">
+    <span class="badge">Massive Snowdrop</span>
+    <p class="caption mt-3">Sound transparency through windows and doors.</p>
   </div>
 </div>
 
 ---
 layout: header-body
 ---
-
-::backdrop::
-
-MAP
 
 ::eyebrow::
 
@@ -290,25 +283,48 @@ Parameter Mapping
 
 ::title::
 
-### Parameter Mapping
+### 参数映射
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div class="min-h-0 min-w-0">
-    <span class="step-index">INPUT</span>
-    <h4>Propagation Data</h4>
-    <p>distance, visibility, occlusion, path length, direction, reflection, diffraction, environment</p>
+<div class="grid h-full min-h-0 grid-cols-3 items-start gap-4">
+  <div v-click="1" class="min-h-0 min-w-0 border-l hairline bg-[var(--color-surface)] px-4 pb-4 pt-0">
+    <span class="step-index">Scene Data</span>
+    <h4>场景数据</h4>
+    <ul>
+      <li v-click="2">方向 Direction</li>
+      <li v-click="3">距离 Distance</li>
+      <li v-click="4">可见性 Visibility</li>
+      <li v-click="5">遮蔽值 Obstruction / Occlusion</li>
+      <li v-click="6">空间尺寸 SpaceSize</li>
+      <li v-click="7">空间开放度 SpaceOpenness</li>
+      <li v-click="8">……</li>
+    </ul>
   </div>
-  <div class="active-panel min-h-0 p-4">
-    <span class="step-index">MAPPING</span>
-    <h4>转译层</h4>
-    <p>把几何 / 路径结果变成声音系统能消费的控制参数。</p>
+  <div v-click="9" class="min-h-0 min-w-0 border-l hairline bg-[var(--color-surface)] px-4 pb-4 pt-0">
+    <span class="step-index">Audio Parameters</span>
+    <h4>音频参数</h4>
+    <ul>
+      <li v-click="10">响度 Volume</li>
+      <li v-click="11">频率 Frequency</li>
+      <li v-click="12">声像宽度 Spread</li>
+      <li v-click="13">混响 Reverberation</li>
+      <li v-click="14">干湿声比例 Wet / Dry Ratio</li>
+      <li v-click="15">虚像声源 Virtual Source</li>
+      <li v-click="16">……</li>
+    </ul>
   </div>
-  <div class="min-h-0 min-w-0 border-l hairline pl-4">
-    <span class="step-index">OUTPUT</span>
-    <h4>Audio Parameters</h4>
-    <p>volume, LPF / EQ, reverb send, wet / dry, virtual source position, spread</p>
+  <div v-click="17" class="min-h-0 min-w-0 border-l hairline bg-[var(--color-surface)] px-4 pb-4 pt-0">
+    <span class="step-index">Sound Results</span>
+    <h4>声音效果</h4>
+    <ul>
+      <li v-click="18">距离衰减</li>
+      <li v-click="19">障碍物衍射</li>
+      <li v-click="20">隔墙透射</li>
+      <li v-click="21">墙面反射</li>
+      <li v-click="22">混响效果</li>
+      <li v-click="23">……</li>
+    </ul>
   </div>
 </div>
 

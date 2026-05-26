@@ -1,36 +1,36 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36">
   <diagram name="Page-1" id="lq0GwR5uF42vUFGPrrZK">
-    <mxGraphModel dx="1528" dy="801" grid="1" gridSize="10" guides="0" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+    <mxGraphModel dx="1910" dy="1001" grid="1" gridSize="10" guides="0" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="lffYPvys2TkUN1hD1_hh-1" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=3;dashed=1;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <Array as="points">
-              <mxPoint x="680" y="240" />
-              <mxPoint x="1000" y="480" />
+              <mxPoint x="720" y="290" />
+              <mxPoint x="940" y="470" />
             </Array>
-            <mxPoint x="320" y="360" as="sourcePoint" />
-            <mxPoint x="920" y="1000" as="targetPoint" />
+            <mxPoint x="400" y="320" as="sourcePoint" />
+            <mxPoint x="870" y="930" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="lffYPvys2TkUN1hD1_hh-2" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=3;dashed=1;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <Array as="points">
-              <mxPoint x="1400" y="440" />
+              <mxPoint x="1230" y="460" />
             </Array>
-            <mxPoint x="1600" y="200" as="sourcePoint" />
-            <mxPoint x="1000" y="480" as="targetPoint" />
+            <mxPoint x="1350" y="300" as="sourcePoint" />
+            <mxPoint x="940" y="470" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lffYPvys2TkUN1hD1_hh-3" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=36;fontStyle=1" value="Region A" vertex="1">
-          <mxGeometry height="50" width="210" x="530" y="320" as="geometry" />
+        <mxCell id="lffYPvys2TkUN1hD1_hh-3" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=32;fontStyle=1" value="Region A" vertex="1">
+          <mxGeometry height="50" width="210" x="550" y="340" as="geometry" />
         </mxCell>
-        <mxCell id="lffYPvys2TkUN1hD1_hh-5" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=36;fontStyle=1" value="Region B" vertex="1">
-          <mxGeometry height="50" width="210" x="1160" y="320" as="geometry" />
+        <mxCell id="lffYPvys2TkUN1hD1_hh-5" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=32;fontStyle=1" value="Region B" vertex="1">
+          <mxGeometry height="50" width="210" x="960" y="360" as="geometry" />
         </mxCell>
-        <mxCell id="lffYPvys2TkUN1hD1_hh-6" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=36;fontStyle=1" value="Region C" vertex="1">
-          <mxGeometry height="50" width="210" x="1070" y="570" as="geometry" />
+        <mxCell id="lffYPvys2TkUN1hD1_hh-6" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=32;fontStyle=1" value="Region C" vertex="1">
+          <mxGeometry height="50" width="210" x="960" y="530" as="geometry" />
         </mxCell>
         <mxCell id="lffYPvys2TkUN1hD1_hh-7" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=3;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
@@ -61,16 +61,13 @@
           <mxGeometry height="30" width="160" x="500" y="870" as="geometry" />
         </mxCell>
         <mxCell id="lffYPvys2TkUN1hD1_hh-11" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=30;fontStyle=1" value="Portal A" vertex="1">
-          <mxGeometry height="30" width="160" x="640" y="610" as="geometry" />
+          <mxGeometry height="30" width="160" x="635" y="610" as="geometry" />
         </mxCell>
         <mxCell id="lffYPvys2TkUN1hD1_hh-12" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=30;fontStyle=1" value="Portal B" vertex="1">
           <mxGeometry height="30" width="160" x="510" y="720" as="geometry" />
         </mxCell>
-        <mxCell id="JskMCNd5RKz7V-3xn7bl-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=3;" value="" vertex="1">
-          <mxGeometry height="80" width="100" x="630" y="772.5" as="geometry" />
-        </mxCell>
-        <mxCell id="JskMCNd5RKz7V-3xn7bl-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Noto Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNoto%2BSans;fontSize=18;fontStyle=1" value="Obstacle" vertex="1">
-          <mxGeometry height="31" width="90" x="640" y="797" as="geometry" />
+        <mxCell id="JskMCNd5RKz7V-3xn7bl-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=3;" value="&lt;span style=&quot;font-family: &amp;quot;Noto Sans&amp;quot;; font-weight: 700; text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Obstacle&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="630" y="772.5" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
