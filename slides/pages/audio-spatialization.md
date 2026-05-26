@@ -397,25 +397,16 @@ Wwise
 </div>
 
 ---
-layout: header-body
+layout: fullscreen-media
+image: audio-spatialization/wwise-spatial-audio-signal-flow.svg
+backgroundSize: 90% auto
+alt: Wwise spatial audio signal flow diagram
 ---
 
-::backdrop::
-
-SIGNAL
-
-::eyebrow::
-
-Wwise
-
-::title::
-
-### Wwise Spatial Audio Signal Flow
-
-::body::
-
-<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden p-4">
-  <img class="h-full w-full object-contain" src="/audio-spatialization/wwise-spatial-audio-signal-flow.svg" alt="Wwise spatial audio signal flow diagram">
+<div class="relative h-full w-full">
+  <div class="caption-plate absolute bottom-6 right-6 max-w-[38rem]">
+    <p class="caption mt-3">Wwise Spatial Audio Signal Flow</p>
+  </div>
 </div>
 
 ---
@@ -462,15 +453,16 @@ layout: header-body
 
 ::backdrop::
 
-SNOW
+UBISOFT
 
 ::eyebrow::
 
-Case Study
+UBISOFT
 
 ::title::
 
-### Snowdrop GPU Raytracing for Audio
+### GPU Raytracing for Audio
+#### Ubisoft Snowdrop
 
 ::body::
 
@@ -481,16 +473,10 @@ Case Study
     <p>后续替换为用户从 GDC PDF 中选定的截图。</p>
   </div>
   <div class="min-h-0 min-w-0">
-    <h4>规模化压力下的 propagation</h4>
     <ul>
-      <li v-click>开放大世界和复杂几何让手工规则更难维护。</li>
-      <li v-click>公开材料提到 sound propagation、raytracing query system 和 GPU raytracing。</li>
-      <li v-click>Massive 文章明确这是 hybrid system，仍会结合 hand-placed data。</li>
+      <li><a href="https://www.gdcvault.com/play/1035485/GPU-Raytracing-for-Audio-in" target="_blank" rel="noreferrer">GDC Vault - GPU Raytracing for Audio in Snowdrop</a></li>
+      <li><a href="https://www.massive.se/blog/news/ray-tracing-audio-in-snowdrop-creating-a-living-pandora/" target="_blank" rel="noreferrer">Massive Entertainment - Ray Tracing Audio in Snowdrop: Creating a Living Pandora</a></li>
     </ul>
-    <div v-click class="callout mt-4">
-      <span class="callout-title">边界</span>
-      <p>不写具体性能数据或参数映射细节，除非后续截图或公开资料能明确支撑。</p>
-    </div>
   </div>
 </div>
 
