@@ -564,19 +564,15 @@ layout: section
 
 ::backdrop::
 
-02
+03
 
 ::eyebrow::
 
-Binaural Rendering
+Audio Panning
 
 ::title::
 
-## 从空间计算到双耳听感
-
-::subtitle::
-
-前面讲传播和参数；接下来讲耳机里的方向感如何被渲染出来。
+## 从空间计算到声像定位
 
 ---
 layout: header-body
@@ -584,62 +580,56 @@ layout: header-body
 
 ::backdrop::
 
-BASE
+PANNING
 
 ::eyebrow::
 
-Baseline
+Panning
 
 ::title::
 
-### 不用 HRTF 时怎么做空间化？
+### 声像定位
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="grid min-h-0 grid-cols-2 gap-3">
-    <div class="border-l hairline pl-4">
-      <span class="step-index">01</span>
-      <h4>Game Source</h4>
-    </div>
-    <div class="border-l hairline pl-4">
-      <span class="step-index">02</span>
-      <h4>Panning</h4>
-    </div>
-    <div class="border-l hairline pl-4">
-      <span class="step-index">03</span>
-      <h4>Distance Attenuation</h4>
-    </div>
-    <div class="border-l hairline pl-4">
-      <span class="step-index">04</span>
-      <h4>Spread</h4>
-    </div>
-    <div class="border-l hairline pl-4">
-      <span class="step-index">05</span>
-      <h4>Reverb Send</h4>
-    </div>
-    <div class="border-l hairline pl-4">
-      <span class="step-index">06</span>
-      <h4>Speaker / Headphone Output</h4>
-    </div>
+<div class="grid h-full min-h-0 grid-cols-[1fr_auto_1fr_auto_1fr] grid-rows-2 gap-x-4 gap-y-5">
+  <div v-click="1" class="figure-frame col-start-1 row-start-1 flex min-h-0 items-center justify-center overflow-hidden p-4">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/listener-emitter.svg" alt="Listener and emitter object positioning diagram">
   </div>
-  <div class="min-h-0 min-w-0">
-    <h4>它仍然很有用</h4>
-    <ul>
-      <li v-click>能提供左右声像、距离衰减、声像宽度和环境发送。</li>
-      <li v-click>在多声道 / 环绕系统里也可以承担空间路由。</li>
-      <li v-click>但在耳机双耳听感中，前后、上下和头外感通常不够稳定。</li>
-    </ul>
+  <div v-click="1" class="col-start-2 row-start-1 flex items-center justify-center text-3xl text-[var(--color-accent)]">&rarr;</div>
+  <div v-click="1" class="figure-frame col-start-3 row-start-1 flex min-h-0 items-center justify-center overflow-hidden p-4">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/speaker-panning.svg" alt="Speaker panning diagram">
+  </div>
+  <div v-click="1" class="callout col-start-5 row-start-1 flex h-fit self-start text-[1rem] leading-relaxed text-[var(--color-text-body)]">
+    从 Objected-Based Positioning 到 Channel-Based Panning
+  </div>
+  <div v-click="2" class="callout col-start-1 row-start-2 flex h-fit self-start text-[1rem] leading-relaxed text-[var(--color-text-body)]">
+    Audio Beds & Objects
+  </div>
+  <div v-click="2" class="figure-frame col-start-3 row-start-2 flex min-h-0 items-center justify-center overflow-hidden p-2">
+    <img class="h-full w-full object-contain" src="/audio-spatialization/Objects%20and%20Beds%20Explained%20-%20Audient.png" alt="Dolby Atmos objects and beds explained in renderer interface">
+  </div>
+  <div v-click="2" class="col-start-4 row-start-2 flex items-center justify-center text-3xl text-[var(--color-accent)]">&rarr;</div>
+  <div v-click="2" class="figure-frame col-start-5 row-start-2 flex min-h-0 items-center justify-center overflow-hidden p-2">
+    <img class="h-full w-full object-cover" src="/how-to-listen-sound/MixingStage.JPG" alt="Dolby Atmos mixing stage">
   </div>
 </div>
 
 ---
-layout: header-body
+layout: statement
 ---
 
 ::backdrop::
 
-HRTF
+HEADPHONES
+
+::title::
+
+#### 如何在耳机上听出来自上下前后的声音效果？
+
+---
+layout: header-body
+---
 
 ::eyebrow::
 
@@ -647,34 +637,18 @@ Perception
 
 ::title::
 
-### HRTF
+### Binaural & HRTF
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.15fr_0.85fr] gap-5">
-  <div class="figure-frame flex min-h-0 items-center justify-center overflow-hidden p-5">
-    <svg class="h-full w-full" viewBox="0 0 720 420" role="img" aria-label="HRTF binaural cues from a sound source to both ears">
-      <path d="M285 110 C230 125 205 185 215 250 C225 330 275 365 335 360 C395 355 435 310 440 240 C445 170 400 115 335 105 C320 102 302 103 285 110 Z" fill="rgba(255,255,255,0.035)" stroke="var(--color-text-primary)" stroke-width="3" />
-      <ellipse cx="217" cy="235" rx="18" ry="38" fill="none" stroke="var(--color-accent)" stroke-width="3" />
-      <ellipse cx="440" cy="235" rx="18" ry="38" fill="none" stroke="var(--color-accent)" stroke-width="3" />
-      <circle cx="560" cy="95" r="30" fill="var(--color-bg)" stroke="var(--color-text-primary)" stroke-width="3" />
-      <text x="560" y="106" fill="var(--color-text-primary)" text-anchor="middle" font-size="28" font-weight="900">S</text>
-      <line x1="560" y1="110" x2="420" y2="205" stroke="rgba(240,240,240,0.75)" stroke-width="4" />
-      <line x1="560" y1="110" x2="455" y2="255" stroke="#7aa2ff" stroke-width="4" />
-      <text x="130" y="90" fill="var(--color-text-muted)" font-size="22" font-family="monospace">ITD / ILD</text>
-      <text x="410" y="320" fill="var(--color-text-muted)" font-size="22" font-family="monospace">pinna filtering</text>
-      <text x="215" y="390" fill="var(--color-text-muted)" font-size="22" font-family="monospace">binaural render -> headphones</text>
-    </svg>
+<div class="grid h-full min-h-0 grid-cols-2 gap-5">
+  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 overflow-hidden p-3">
+    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/Georg_Neumann_Ku_100_Dummy_Head.jpg" alt="Neumann KU 100 dummy head for binaural recording">
+    <a class="text-[0.9rem] text-[var(--color-text-body)]" href="https://en.wikipedia.org/wiki/Binaural_recording" target="_blank" rel="noreferrer">Binaural Recording</a>
   </div>
-  <div class="min-h-0 min-w-0">
-    <h4>双耳定位线索</h4>
-    <ul>
-      <li v-click>ITD：到达左右耳的时间差</li>
-      <li v-click>ILD：到达左右耳的响度差</li>
-      <li v-click>耳廓滤波：帮助前后 / 上下判断</li>
-      <li v-click>Externalization：声音是否听起来在头外</li>
-      <li v-click>个体化差异：同一套 HRTF 不一定适合所有人</li>
-    </ul>
+  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 overflow-hidden p-3">
+    <img class="min-h-0 flex-1 w-full object-contain" src="/audio-spatialization/HRTF.svg.png" alt="Head-related transfer function diagram">
+    <a class="text-[0.9rem] text-[var(--color-text-body)]" href="https://en.wikipedia.org/wiki/Head-related_transfer_function" target="_blank" rel="noreferrer">Head-Related Transfer Function</a>
   </div>
 </div>
 
