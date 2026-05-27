@@ -575,6 +575,18 @@ Audio Panning
 ## 从空间计算到声像定位
 
 ---
+layout: statement
+---
+
+::backdrop::
+
+HEADPHONES
+
+::title::
+
+#### 如何在耳机上听出来自上下前后的声音效果？
+
+---
 layout: header-body
 ---
 
@@ -614,18 +626,6 @@ Panning
     <img class="h-full w-full object-cover" src="/how-to-listen-sound/MixingStage.JPG" alt="Dolby Atmos mixing stage">
   </div>
 </div>
-
----
-layout: statement
----
-
-::backdrop::
-
-HEADPHONES
-
-::title::
-
-#### 如何在耳机上听出来自上下前后的声音效果？
 
 ---
 layout: header-body
@@ -674,16 +674,16 @@ Tool Landscape
   <div v-click class="min-h-0 min-w-0">
     <span class="step-index">PLATFORM RENDERER</span>
     <h4>System Endpoint</h4>
-    <p>平台接收 audio objects / spatial bed，并在最终设备端完成耳机或扬声器空间化。</p>
+    <p>平台接收 Audio Objects，并在最终设备端完成耳机或扬声器的空间化。</p>
     <ul>
       <li><a href="https://learn.microsoft.com/en-us/windows/win32/coreaudio/spatial-sound" target="_blank" rel="noreferrer">Microsoft Spatial Sound</a></li>
       <li><a href="https://www.playstation.com/en-us/support/hardware/3d-audio-ps5/" target="_blank" rel="noreferrer">PS5 3D Audio</a></li>
     </ul>
   </div>
   <div v-click class="min-h-0 min-w-0 border-l hairline pl-4">
-    <span class="step-index">GENERAL SPATIAL AUDIO SDK</span>
-    <h4>Engine / Middleware Toolkit</h4>
-    <p>开发者在 Unity、Unreal、FMOD 或 Wwise 中直接控制 HRTF、Ambisonics 与环境声学。</p>
+    <span class="step-index">SPATIAL AUDIO SDK</span>
+    <h4>Develop Toolkit</h4>
+    <p>开发者在游戏引擎或音频中间件内整合 SDK 来控制空间音频的效果。</p>
     <ul>
       <li><a href="https://valvesoftware.github.io/steam-audio/" target="_blank" rel="noreferrer">Steam Audio</a></li>
       <li><a href="https://developers.meta.com/horizon/documentation/unreal/meta-xr-audio-sdk-unreal/" target="_blank" rel="noreferrer">Meta XR Audio SDK</a></li>
@@ -691,9 +691,9 @@ Tool Landscape
     </ul>
   </div>
   <div v-click class="min-h-0 min-w-0 border-l hairline pl-4">
-    <span class="step-index">PREMIUM / PERSONALIZED SPATIALIZER</span>
-    <h4>Quality + Personalization</h4>
-    <p>同样可接入 Wwise / UE / Unity，卖点更集中在外化感、个性化 HRTF 与商业项目调音。</p>
+    <span class="step-index">SPATIALIZER PRODUCTION</span>
+    <h4>Production</h4>
+    <p>同样可接入游戏引擎或音频中间件，更偏商业产品化。</p>
     <ul>
       <li><a href="https://embody.co/pages/game-development?currency=SGD" target="_blank" rel="noreferrer">Embody Immerse</a></li>
       <li><a href="https://atmoky.com/products/true-spatial/" target="_blank" rel="noreferrer">atmoky trueSpatial</a></li>
@@ -707,19 +707,15 @@ layout: section
 
 ::backdrop::
 
-03
+04
 
 ::eyebrow::
 
-Listening Analysis
+Locating with Sound
 
 ::title::
 
 ## 听声辨位
-
-::subtitle::
-
-从玩家经验回到系统拆解：我们到底听到了什么？
 
 ---
 layout: header-body
@@ -925,51 +921,6 @@ Question 05
     <h4>混音可读性</h4>
     <p>即使空间化计算正确，被 masking 后玩家仍然可能听不出关键信息。</p>
   </div>
-</div>
-
----
-layout: header-body
----
-
-::backdrop::
-
-LOOP
-
-::eyebrow::
-
-Synthesis
-
-::title::
-
-### 从听感回到系统
-
-::body::
-
-<div class="grid min-h-0 grid-cols-5 gap-3">
-  <div class="border-l hairline pl-3">
-    <span class="step-index">01</span>
-    <h4>Propagation Path</h4>
-  </div>
-  <div class="border-l hairline pl-3">
-    <span class="step-index">02</span>
-    <h4>Parameter Mapping</h4>
-  </div>
-  <div class="border-l hairline pl-3">
-    <span class="step-index">03</span>
-    <h4>Spatializer / HRTF</h4>
-  </div>
-  <div class="border-l hairline pl-3">
-    <span class="step-index">04</span>
-    <h4>Event Priority / Mix</h4>
-  </div>
-  <div class="border-l hairline pl-3">
-    <span class="step-index">05</span>
-    <h4>Player Judgement</h4>
-  </div>
-</div>
-
-<div class="quote-accent mt-6">
-  <p>真实传播很复杂；游戏把它抽象成可计算、可调试、可混音的线索。玩家听到的不是算法名称，而是一组能支持空间判断的声音变化。</p>
 </div>
 
 ---
