@@ -658,33 +658,46 @@ layout: header-body
 
 ::backdrop::
 
-STEAM
+HRTF
 
 ::eyebrow::
 
-Tool Role
+Tool Landscape
 
 ::title::
 
-### Steam Audio HRTF
+### Spatial Audio 工具生态
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div class="min-h-0 min-w-0">
-    <span class="step-index">GAME / AUDIO EVENT</span>
-    <h4>Source Direction + Direct Sound</h4>
-    <p>输入来自游戏和音频系统已有的位置、方向、距离和直达声参数。</p>
+  <div v-click class="min-h-0 min-w-0">
+    <span class="step-index">PLATFORM RENDERER</span>
+    <h4>System Endpoint</h4>
+    <p>平台接收 audio objects / spatial bed，并在最终设备端完成耳机或扬声器空间化。</p>
+    <ul>
+      <li><a href="https://learn.microsoft.com/en-us/windows/win32/coreaudio/spatial-sound" target="_blank" rel="noreferrer">Microsoft Spatial Sound</a></li>
+      <li><a href="https://www.playstation.com/en-us/support/hardware/3d-audio-ps5/" target="_blank" rel="noreferrer">PS5 3D Audio</a></li>
+    </ul>
   </div>
-  <div class="active-panel min-h-0 p-4">
-    <span class="step-index">SPATIALIZER</span>
-    <h4>Steam Audio Spatializer</h4>
-    <p>在这里作为 HRTF / binaural rendering 工具案例，不展开 propagation、reflection 或 pathing。</p>
+  <div v-click class="min-h-0 min-w-0 border-l hairline pl-4">
+    <span class="step-index">GENERAL SPATIAL AUDIO SDK</span>
+    <h4>Engine / Middleware Toolkit</h4>
+    <p>开发者在 Unity、Unreal、FMOD 或 Wwise 中直接控制 HRTF、Ambisonics 与环境声学。</p>
+    <ul>
+      <li><a href="https://valvesoftware.github.io/steam-audio/" target="_blank" rel="noreferrer">Steam Audio</a></li>
+      <li><a href="https://developers.meta.com/horizon/documentation/unreal/meta-xr-audio-sdk-unreal/" target="_blank" rel="noreferrer">Meta XR Audio SDK</a></li>
+      <li><a href="https://resonance-audio.github.io/resonance-audio/" target="_blank" rel="noreferrer">Resonance Audio</a></li>
+    </ul>
   </div>
-  <div class="min-h-0 min-w-0 border-l hairline pl-4">
-    <span class="step-index">OUTPUT</span>
-    <h4>Headphones / L-R Signal</h4>
-    <p>输出适合耳机播放的 binaural signal；custom HRTF / SOFA support 可作为扩展点。</p>
+  <div v-click class="min-h-0 min-w-0 border-l hairline pl-4">
+    <span class="step-index">PREMIUM / PERSONALIZED SPATIALIZER</span>
+    <h4>Quality + Personalization</h4>
+    <p>同样可接入 Wwise / UE / Unity，卖点更集中在外化感、个性化 HRTF 与商业项目调音。</p>
+    <ul>
+      <li><a href="https://embody.co/pages/game-development?currency=SGD" target="_blank" rel="noreferrer">Embody Immerse</a></li>
+      <li><a href="https://atmoky.com/products/true-spatial/" target="_blank" rel="noreferrer">atmoky trueSpatial</a></li>
+    </ul>
   </div>
 </div>
 
