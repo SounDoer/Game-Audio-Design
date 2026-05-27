@@ -718,32 +718,15 @@ Locating with Sound
 ## 听声辨位
 
 ---
-layout: header-body
+layout: fullscreen-media
+image: audio-spatialization/di11_map004_icon.png
+backgroundSize: contain
+alt: 听声辨位案例示意图
 ---
 
-::backdrop::
-
-CASE
-
-::eyebrow::
-
-Case Setup
-
-::title::
-
-### 案例：听声辨位
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-[1.2fr_0.8fr] gap-5">
-  <div class="figure-frame flex min-h-0 flex-col items-center justify-center gap-3 p-6 text-center">
-    <span class="badge">Placeholder Image</span>
-    <h4>User will prepare case setup image</h4>
-    <p>图片用于说明玩家位置、声源位置、阻挡关系、室内外关系和楼层关系。</p>
-  </div>
-  <div class="callout self-center">
-    <span class="callout-title">本节分析对象</span>
-    <p>玩家不是在识别插件或算法，而是在综合方向、距离、遮挡、环境、材质和双耳线索判断声音来源。</p>
+<div class="relative h-full w-full">
+  <div class="callout absolute bottom-6 left-6 max-w-[32rem]">
+    <span class="callout-title">玩家想听到什么？</span>
   </div>
 </div>
 
@@ -753,7 +736,7 @@ layout: header-body
 
 ::backdrop::
 
-WHERE
+DISTANCE
 
 ::eyebrow::
 
@@ -761,29 +744,10 @@ Question 01
 
 ::title::
 
-### 如何判断声源的方位和距离？
+### 如何判断声音的距离？
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>Direction</h4>
-    <ul>
-      <li v-click>左右声像</li>
-      <li v-click>双耳线索 / HRTF</li>
-      <li v-click>玩家转头或视角变化带来的对比</li>
-    </ul>
-  </div>
-  <div class="min-h-0 border-l hairline pl-5">
-    <h4>Distance</h4>
-    <ul>
-      <li v-click>音量衰减</li>
-      <li v-click>高频损失</li>
-      <li v-click>直达声 / 环境声比例</li>
-      <li v-click>早期反射与视觉上下文</li>
-    </ul>
-  </div>
-</div>
 
 ---
 layout: header-body
@@ -799,24 +763,10 @@ Question 02
 
 ::title::
 
-### 如何判断声源是否和我有阻挡？
+### 如何判断声音是否受到阻挡？
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[0.9fr_1.1fr] gap-5">
-  <div class="quote-accent self-center">
-    <p>“听起来被挡住”通常不是单一参数，而是直达声、频谱、路径和环境线索共同改变。</p>
-  </div>
-  <div class="min-h-0 min-w-0">
-    <ul>
-      <li v-click>Occlusion：直达声变弱</li>
-      <li v-click>LPF / EQ：高频损失和材质过滤</li>
-      <li v-click>Diffraction：绕过边缘或门洞的间接路径</li>
-      <li v-click>Transmission：穿过墙体或障碍物后的过滤与衰减</li>
-      <li v-click>Parameter Mapping：把路径检测结果变成可听变化</li>
-    </ul>
-  </div>
-</div>
 
 ---
 layout: header-body
@@ -824,7 +774,7 @@ layout: header-body
 
 ::backdrop::
 
-ROOM
+SPACE
 
 ::eyebrow::
 
@@ -836,23 +786,6 @@ Question 03
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div v-click class="min-h-0 min-w-0">
-    <span class="step-index">REFLECTION</span>
-    <h4>反射密度</h4>
-    <p>墙面和空间尺度改变早期反射的数量、方向和到达时间。</p>
-  </div>
-  <div v-click class="active-panel min-h-0 p-4">
-    <span class="step-index">REVERB</span>
-    <h4>混响尾巴</h4>
-    <p>尾巴长度和包围感帮助判断空间边界，但不能只用“大 / 小”解释。</p>
-  </div>
-  <div v-click class="min-h-0 min-w-0 border-l hairline pl-4">
-    <span class="step-index">CONTEXT</span>
-    <h4>Room Tone</h4>
-    <p>环境底噪、材质声和室内外声场差异也会参与判断。</p>
-  </div>
-</div>
 
 ---
 layout: header-body
@@ -860,7 +793,7 @@ layout: header-body
 
 ::backdrop::
 
-UP / DN
+UP & DOWN
 
 ::eyebrow::
 
@@ -872,20 +805,6 @@ Question 04
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1fr_1fr] gap-5">
-  <div class="callout">
-    <span class="callout-title">HRTF elevation cues</span>
-    <p>耳廓滤波和双耳线索可以提供上下方向判断，但它通常不是唯一答案。</p>
-  </div>
-  <div class="min-h-0 min-w-0">
-    <ul>
-      <li v-click>楼板 / 天花板遮挡导致过滤和衰减</li>
-      <li v-click>材质质感改变脚步、碰撞和移动声音</li>
-      <li v-click>内容线索帮助玩家判断“声音类型”和“空间关系”</li>
-      <li v-click>视觉地图和关卡结构会补充听觉判断</li>
-    </ul>
-  </div>
-</div>
 
 ---
 layout: header-body
@@ -893,7 +812,7 @@ layout: header-body
 
 ::backdrop::
 
-MIX
+MISC
 
 ::eyebrow::
 
@@ -901,27 +820,29 @@ Question 05
 
 ::title::
 
-### 还有哪些额外要考虑的点？
+### 其他层面的考虑因素
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-4">
-  <div class="min-h-0 min-w-0">
-    <span class="step-index">EVENT</span>
-    <h4>触发逻辑</h4>
-    <p>声音何时触发、从哪里触发、是否持续更新，会直接影响空间判断。</p>
-  </div>
-  <div class="active-panel min-h-0 p-4">
-    <span class="step-index">PRIORITY</span>
-    <h4>优先级</h4>
-    <p>同屏多个声音同时存在时，系统要决定哪些声音保留、降低或停止。</p>
-  </div>
-  <div class="min-h-0 min-w-0 border-l hairline pl-4">
-    <span class="step-index">MIX</span>
-    <h4>混音可读性</h4>
-    <p>即使空间化计算正确，被 masking 后玩家仍然可能听不出关键信息。</p>
-  </div>
-</div>
+
+<!-- 音频触发优先级 / 混音 -->
+
+---
+layout: statement
+---
+
+::backdrop::
+
+SPATIALIZATION
+
+::title::
+
+### 音频空间化
+### 是创造数字声学空间的底层框架。
+
+::subtitle::
+
+Audio spatialization is the fundamental framework for designing digital acoustic spaces.
 
 ---
 layout: end
