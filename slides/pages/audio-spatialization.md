@@ -45,26 +45,6 @@ Sound Propagation
 layout: header-body
 ---
 
-::eyebrow::
-
-Listening in Game
-
-::title::
-
-### 游戏中的听声辨位
-
-::body::
-
-<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
-  <video class="h-full w-full object-contain" src="/audio-spatialization/R6%20Siege%20X%20Audio%20Overhaul.mp4" controls preload="metadata"></video>
-</div>
-
-<!-- https://www.youtube.com/watch?v=f7IQ-EcZPmw -->
-
----
-layout: header-body
----
-
 ::backdrop::
 
 REAL
@@ -718,6 +698,30 @@ Locating with Sound
 
 ## 听声辨位
 
+::subtitle::
+
+设计决策
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Listening in Game
+
+::title::
+
+### 游戏中的听声辨位
+
+::body::
+
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/audio-spatialization/R6%20Siege%20X%20Audio%20Overhaul.mp4" controls preload="metadata"></video>
+</div>
+
+<!-- https://www.youtube.com/watch?v=f7IQ-EcZPmw -->
+
 ---
 layout: fullscreen-media
 image: audio-spatialization/di11_map004_icon.png
@@ -783,7 +787,7 @@ Question 03
 
 ::title::
 
-### 如何判断声源在室内还是室外？
+### 如何判断声音在室内还是室外？
 
 ::body::
 
@@ -802,7 +806,7 @@ Question 04
 
 ::title::
 
-### 如何判断声源是在楼上还是楼下？
+### 如何判断声音在楼上还是楼下？
 
 ::body::
 
