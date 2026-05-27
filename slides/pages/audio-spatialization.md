@@ -329,6 +329,24 @@ Wwise
 ::body::
 
 <div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
+  <video class="h-full w-full object-contain" src="/audio-spatialization/UE_Duck_Demo_FIN.mp4" controls preload="metadata"></video>
+</div>
+
+---
+layout: header-body
+---
+
+::eyebrow::
+
+Wwise
+
+::title::
+
+### Wwise Spatial Audio Demo
+
+::body::
+
+<div class="figure-frame flex h-full min-h-0 items-center justify-center overflow-hidden">
   <video class="h-full w-full object-contain" src="/audio-spatialization/SOP_Spatial_Audio_Voice_Demo_FIN.mp4" controls preload="metadata"></video>
 </div>
 
