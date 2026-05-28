@@ -21,7 +21,7 @@ jobs:
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/gad_deploy
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/gad_deploy
           chmod 600 ~/.ssh/gad_deploy
 
       - name: Deploy to VPS
