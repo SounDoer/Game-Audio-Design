@@ -25,6 +25,6 @@ jobs:
       - name: Deploy to VPS
         run: |
           rsync -az --delete \
-            -e "ssh -o StrictHostKeyChecking=no" \
+            -e "ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
             build/ \
             gad-deploy@${{ secrets.VPS_HOST }}:/var/www/gad/
