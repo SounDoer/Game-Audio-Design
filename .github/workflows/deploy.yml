@@ -18,13 +18,15 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/gad_deploy
+          chmod 600 ~/.ssh/gad_deploy
 
       - name: Deploy to VPS
         run: |
           rsync -az --delete \
-            -e "ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
+            -e "ssh -i ~/.ssh/gad_deploy -o StrictHostKeyChecking=no" \
             build/ \
             gad-deploy@${{ secrets.VPS_HOST }}:/var/www/gad/
