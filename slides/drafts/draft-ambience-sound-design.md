@@ -5,7 +5,7 @@
 - Stem: `ambience-sound-design`
 - Slide 文件: `slides/pages/ambience-sound-design.md`
 - 资源文件夹: `slides/public/ambience-sound-design/`
-- 当前阶段: A
+- 当前阶段: B（进行中 — Part 1 完成，Part 2 停在 section 页）
 
 ## 仓库状态
 
@@ -117,17 +117,25 @@
 
 ## Page Plan
 
-Stage B 尚未开始。
-
 | # | Purpose | Visible title | Key text | Media | Layout intent | Speaker notes | Status |
 |---|---------|---------------|----------|-------|---------------|---------------|--------|
-| 1 | 建立专题身份和主题范围 | 环境声设计 / Ambience Sound Design | 从一个项目案例展开环境声设计的完整链路 | none | cover | 开场说明本课以实际项目为线索，从资产制作到场景系统到设计理念 | TBD |
+| 1 | 建立专题身份和主题范围 | 环境声设计 / Ambience Sound Design | 从一个项目案例展开环境声设计的完整链路 | none | cover | 开场说明本课以实际项目为线索，从资产制作到场景系统到设计理念 | confirmed |
+| 2 | 进入 Part 1：以营地篝火为切入口讲解资产制作基础 | 篝火的声音 | Random、Loop & Blend | none | section | 篝火是后面自然场景的一部分，先拆局部再拉全场景 | confirmed |
+| 3 | 建立篝火场景的第一印象 | TBD | TBD | 营地篝火截图 | fullscreen-media | 用项目中的实际篝火画面先让观众建立感性认知 | confirmed |
+| 4 | 讲解 loop 的制作特点 | 无缝循环的声音片段 | TBD（左侧三层行式结构：Loop / Random / Blend，当前高亮 Loop；右侧固定图片区） | loop 层资产截图 | header-body（左文右图） | TBD | confirmed |
+| 5 | 讲解 random 的制作特点 | 间歇触发的随机片段 | TBD（同模板，当前高亮 Random） | random 层资产截图 | header-body（左文右图） | TBD | confirmed |
+| 6 | 讲解 blend 纵向：素材层叠加 | 纵向层叠：多层的混合 | TBD（同模板，当前高亮 Blend 纵向） | blend 纵向资产截图 | header-body（左文右图） | TBD | confirmed |
+| 7 | 讲解 blend 横向：状态/时间过渡 | 横向过渡：状态的渐变 | TBD（同模板，当前高亮 Blend 横向） | blend 横向资产截图 | header-body（左文右图） | TBD | confirmed |
 
 ## Media Assets
 
 | Need | Existing asset | Placeholder | Status |
 |------|----------------|-------------|--------|
-| 营地篝火截图或视频 |  | 用户后续准备 | missing |
+| 营地篝火全屏截图 |  | 用户后续准备（第 3 页 fullscreen-media） | missing |
+| loop 层资产截图或音频 |  | 用户后续准备（第 4 页） | missing |
+| random 层资产截图或音频 |  | 用户后续准备（第 5 页） | missing |
+| blend 纵向资产截图 |  | 用户后续准备（第 6 页） | missing |
+| blend 横向资产截图 |  | 用户后续准备（第 7 页） | missing |
 | 自然场景项目截图 |  | 用户后续准备 | missing |
 | Reaper session 截图 |  | 用户后续准备 | missing |
 | 试听音频 |  | 用户后续准备 | missing |
