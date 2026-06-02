@@ -10,7 +10,7 @@ AMBIENCE
 
 ::eyebrow::
 
-Sound Design
+Ambience Sound Design
 
 ::title::
 
@@ -18,7 +18,7 @@ Sound Design
 
 ::subtitle::
 
-Ambience Sound Design
+从资产制作、场景系统到设计理念
 
 ::info::
 
@@ -30,11 +30,11 @@ layout: section
 
 ::backdrop::
 
-PART 01
+CAMPFIRE
 
 ::eyebrow::
 
-Foundations
+01
 
 ::title::
 
@@ -42,7 +42,7 @@ Foundations
 
 ::subtitle::
 
-Random、Loop & Blend
+基于对象的资产制作方式
 
 ---
 layout: header-body
@@ -64,16 +64,27 @@ Approach
 
 <div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
   <div class="min-h-0 min-w-0">
-    <h4>三种基础形态</h4>
-    <ul class="mb-0">
-      <li v-click>篝火声音由三个基础形态组成：Loop / Blend / Random</li>
-      <li v-click>我们先做 Loop（持续燃烧底噪），无缝循环</li>
-      <li v-click>然后做 Random（噼啪爆裂声），随机触发</li>
-      <li v-click>最后 Blend 纵向多层混合 + 横向状态过渡</li>
-    </ul>
+    <div v-click>
+      <span class="step-index">LAYER</span>
+      <h4>声音层次</h4>
+      <ul class="mb-0">
+        <li>Burn：持续的、相对稳定的燃烧底噪</li>
+        <li>Sizzle：偶尔出现的火苗跳窜声</li>
+        <li>Crack：偶尔出现的木材爆裂声</li>
+      </ul>
+    </div>
+    <div v-click class="mt-4">
+      <span class="step-index">STATE</span>
+      <h4>物理状态</h4>
+      <ul class="mb-0">
+        <li>Ignition：点燃</li>
+        <li>Burning：持续燃烧</li>
+        <li>Extinguish：熄灭</li>
+      </ul>
+    </div>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Campfire Screenshot</span>
+    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/ue-campfire.png" alt="">
   </div>
 </div>
 
@@ -277,7 +288,7 @@ PART 02
 
 ::eyebrow::
 
-Case Study
+02
 
 ::title::
 
@@ -864,7 +875,7 @@ PART 03
 
 ::eyebrow::
 
-Principles
+03
 
 ::title::
 
@@ -964,20 +975,15 @@ FREQUENCY
 -->
 
 ---
-layout: statement
+layout: end
 ---
 
 ::backdrop::
 
 FIN
 
-::title::
+::default::
 
-### &nbsp;
+Thanks & Questions?
 
-::subtitle::
-
-
-<!--
-结尾页，用户后续填入
--->
+xichen@soundoer.com
