@@ -68,7 +68,7 @@ Approach
       <span class="step-index">LAYER</span>
       <h4>声音层次</h4>
       <ul class="mb-0">
-        <li>Burn：持续的、相对稳定的燃烧底噪</li>
+        <li>Burn：相对稳定的持续燃烧底噪</li>
         <li>Sizzle：偶尔出现的火苗跳窜声</li>
         <li>Crack：偶尔出现的木材爆裂声</li>
       </ul>
@@ -88,11 +88,6 @@ Approach
   </div>
 </div>
 
-
-<!--
-篝火是我们后面竹林场景里也会用到的资产，先拿小例子说清楚三个基础形态，后面直接复用思路
--->
-
 ---
 layout: header-body
 ---
@@ -111,29 +106,22 @@ Loop
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
+<div class="flex h-full min-h-0 flex-col gap-5">
+  <div class="shrink-0">
     <div class="mb-4 flex gap-3">
       <span class="badge" style="background:var(--color-accent);color:var(--color-surface);">Loop</span>
       <span class="badge" style="opacity:0.35;">Random</span>
       <span class="badge" style="opacity:0.35;">Blend</span>
     </div>
-    <h4>Loop 是篝火的「背景骨架」</h4>
     <ul class="mb-0">
-      <li v-click>持续的柴火燃烧底噪，构成声音的底层</li>
-      <li v-click>为什么用 Loop：不用一直录制，节省资源，性能可控</li>
-      <li v-click>怎么无缝循环：首尾波形对齐，平滑衔接</li>
+      <li v-click>为什么要做成无缝循环 ？</li>
+      <li v-click>怎么制作无缝循环的资产？</li>
     </ul>
   </div>
-  <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Loop Asset</span>
+  <div class="mt-auto">
+    <CampfireSoundDiagram layer="loop" />
   </div>
 </div>
-
-
-<!--
-后面竹林场景的风也是 Loop 思路，只不过更长、更复杂而已
--->
 
 ---
 layout: header-body
@@ -153,30 +141,22 @@ Random
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
+<div class="flex h-full min-h-0 flex-col gap-5">
+  <div class="shrink-0">
     <div class="mb-4 flex gap-3">
       <span class="badge" style="opacity:0.35;">Loop</span>
       <span class="badge" style="background:var(--color-accent);color:var(--color-surface);">Random</span>
       <span class="badge" style="opacity:0.35;">Blend</span>
     </div>
-    <h4>Random 是篝火的「细节层」</h4>
     <ul class="mb-0">
-      <li v-click>间歇的噼啪爆裂声，模拟真实燃烧的不规律感</li>
-      <li v-click>为什么用 Random：打破循环感，给声音注入生命力</li>
-      <li v-click>怎么实现：单次触发 + 随机间隔（Wwise Event 随机触发）</li>
-      <li v-click>和 Loop 的关系：Loop 做底，Random 做点缀，互不干扰</li>
+      <li v-click>间歇的 Sizzle 和 Crack 两种声音，模拟真实燃烧的不规律感</li>
+      <li v-click>有限的随机资产 + 无限的随机控制</li>
     </ul>
   </div>
-  <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Random Asset</span>
+  <div class="mt-auto">
+    <CampfireSoundDiagram layer="random" />
   </div>
 </div>
-
-
-<!--
-竹林场景里的鸟叫、虫鸣也是 Random 思路，随机位置、随机时间触发
--->
 
 ---
 layout: header-body
@@ -188,37 +168,30 @@ BLEND
 
 ::eyebrow::
 
-Blend — Vertical
+Blend
 
 ::title::
 
-### 纵向层叠：多层的混合
+### 层次之间的声音叠加
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
+<div class="flex h-full min-h-0 flex-col gap-5">
+  <div class="shrink-0">
     <div class="mb-4 flex gap-3">
       <span class="badge" style="opacity:0.35;">Loop</span>
       <span class="badge" style="opacity:0.35;">Random</span>
       <span class="badge" style="background:var(--color-accent);color:var(--color-surface);">Blend</span>
     </div>
-    <h4>同时播放多个素材层，按比例叠加混合</h4>
     <ul class="mb-0">
-      <li v-click>篝火例子：小火层 + 旺火层 + 残焰层，同时播放，通过音量比例控制整体强度</li>
-      <li v-click>好处：同一个 RTPC 可以同时控制多层，不需要切换素材</li>
-      <li v-click>应用：竹林场景的风也有多个强度层（微风 / 中风 / 强风），纵向叠加</li>
+      <li v-click>各个层次声音属性的不同，可以实现篝火不同强度下的声音表现</li>
+      <li v-click>声音属性可以由动态参数来驱动，与其他视听表现一致</li>
     </ul>
   </div>
-  <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Blend Vertical Asset</span>
+  <div class="mt-auto">
+    <CampfireSoundDiagram layer="blend" />
   </div>
 </div>
-
-
-<!--
-纵向Blend是资产复用利器——录一套素材，做多个强度层，成本低效果好
--->
 
 ---
 layout: header-body
@@ -234,28 +207,25 @@ Blend — Horizontal
 
 ::title::
 
-### 横向过渡：状态的渐变
+### 状态之间的声音过渡
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>不同时段/状态之间的交叉渐变过渡</h4>
+<div class="flex h-full min-h-0 flex-col gap-5">
+  <div class="shrink-0">
+    <div class="mb-4 flex gap-3">
+      <span class="badge" style="opacity:0.35;">Loop</span>
+      <span class="badge" style="opacity:0.35;">Random</span>
+      <span class="badge" style="background:var(--color-accent);color:var(--color-surface);">Blend</span>
+    </div>
     <ul class="mb-0">
-      <li v-click>篝火例子：从旺火 → 残焰 → 熄灭，通过 RTPC 或时间线驱动层与层之间的权重渐变</li>
-      <li v-click>关键点：素材本身不需要重新制作，通过参数控制过渡，成本低</li>
-      <li v-click>应用：竹林场景也有 ToD 横向过渡（清晨鸟鸣 → 夜间虫鸣）</li>
+      <li v-click>除了用动态参数驱动声音变化之外，还可以用素材交叉渐变的方式来实现状态之间的过渡</li>
     </ul>
   </div>
-  <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Blend Horizontal Asset</span>
+  <div class="mt-auto">
+    <CampfireSoundDiagram layer="blend-horizontal" />
   </div>
 </div>
-
-
-<!--
-横向 Blend 是动态系统的雏形——Part 2 里会展开讲 ToD 和 Weather 系统，基础就在这里
--->
 
 ---
 layout: statement
@@ -267,7 +237,7 @@ RECAP
 
 ::title::
 
-### 循环、随机和叠加
+### 循环、随机和混合
 
 ::subtitle::
 
