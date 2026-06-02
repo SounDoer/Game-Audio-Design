@@ -1,7 +1,9 @@
 ---
 layout: cover
+slug: ambience-sound-design
 deckListTitle: 环境声设计
 description: 环境声设计的完整链路：从资产制作到场景系统到设计理念，以实际开放世界自然场景项目为案例展开。
+slidesOrder: 8
 ---
 
 ::backdrop::
@@ -243,11 +245,6 @@ RECAP
 
 Loop, Random & Blend
 
-
-<!--
-Part 1 小结：篝火教会我们的三个基础形态——Loop 做底、Random 做点缀、Blend 做变化。接下来我们把它们放到更大的场景里。
--->
-
 ---
 layout: section
 ---
@@ -262,33 +259,21 @@ PART 02
 
 ::title::
 
-## 竹林的声音
+## 竹林的声景
 
 ::subtitle::
 
-从素材制作到资产整合
-
-
-<!--
-Part 2 以竹林自然场景项目展开完整的环境声设计链路；承接 Part 1 的局部资产制作，拉远到全场景视角
--->
+一个完整场景的环境声设计
 
 ---
 layout: fullscreen-media
-image: ambience-sound-design/bamboo-forest-placeholder.jpg
+image: ambience-sound-design/scene-forest.png
 backgroundSize: cover
 ---
 
 <div class="relative h-full w-full">
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[34rem]">
-    <p class="caption">这就是我们接下来要分析的项目案例；先从整体画面建立感性认知。</p>
-  </div>
+  <span class="badge absolute left-6 top-6">Arknights: Endfield</span>
 </div>
-
-
-<!--
-这就是我们接下来要分析的项目案例；先从整体画面建立感性认知
--->
 
 ---
 layout: header-body
@@ -296,40 +281,29 @@ layout: header-body
 
 ::backdrop::
 
-CONTEXT
+DESIGN
 
 ::eyebrow::
 
-Pre-Design
+Design Document
 
 ::title::
 
-### 设计前需要什么？
+### 设计文档
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-5">
-  <div v-click class="min-h-0 min-w-0">
-    <span class="step-index">01</span>
-    <h4>世界观</h4>
-    <p>场景在哪个世界？现在是什么时间？天气怎么样？</p>
-  </div>
-  <div v-click class="min-h-0 border-l hairline pl-4">
-    <span class="step-index">02</span>
-    <h4>地图动线</h4>
-    <p>玩家会走哪条路？哪些是必经之路？哪些是角落？</p>
-  </div>
-  <div v-click class="min-h-0 border-l hairline pl-4">
-    <span class="step-index">03</span>
-    <h4>POI 清单</h4>
-    <p>地图上有哪些兴趣点？瀑布、洞穴、露营地、竹林深处……</p>
-  </div>
-</div>
+<v-clicks>
 
+- 世界观
+- 美术 & 声音设计风格
+- 故事情节
+- 叙事动线
+- POI (Point of Interest)
+- 各个 POI 的具体情况
+- ……
 
-<!--
-环境声不是凭空想象的，先搞清楚这些基础信息，后面的设计才不瞎。
--->
+</v-clicks>
 
 ---
 layout: header-body
@@ -345,119 +319,84 @@ Breakdown
 
 ::title::
 
-### 这个场景里有哪些声音？
+### 场景中的声音元素
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-3 gap-5">
-  <div v-click class="min-h-0 min-w-0">
-    <div class="metric">植</div>
-    <div class="metric-label">Vegetation</div>
-    <p>竹叶沙沙、竹子晃动、草叶摩擦</p>
+<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
+  <div class="grid grid-cols-2 gap-4">
+    <div v-click class="rounded-lg border border-[var(--color-border)] p-4">
+      <h4>空气流动</h4>
+      <ul class="mt-2 space-y-1">
+        <li>空间底噪</li>
+        <li>风</li>
+      </ul>
+    </div>
+    <div v-click class="rounded-lg border border-[var(--color-border)] p-4">
+      <h4>植被</h4>
+      <ul class="mt-2 space-y-1">
+        <li>竹子</li>
+        <li>草</li>
+      </ul>
+    </div>
+    <div v-click class="rounded-lg border border-[var(--color-border)] p-4">
+      <h4>生物</h4>
+      <ul class="mt-2 space-y-1">
+        <li>鸟</li>
+        <li>虫</li>
+      </ul>
+    </div>
+    <div v-click class="rounded-lg border border-[var(--color-border)] p-4">
+      <h4>其他</h4>
+      <ul class="mt-2 space-y-1">
+        <li>溪流湖泊</li>
+        <li>远处不可名状的生物</li>
+      </ul>
+    </div>
   </div>
-  <div v-click class="min-h-0 border-l hairline pl-4">
-    <div class="metric">生</div>
-    <div class="metric-label">Wildlife</div>
-    <p>鸟叫、虫鸣、风吹过竹林惊飞的鸟</p>
-  </div>
-  <div v-click class="min-h-0 border-l hairline pl-4">
-    <div class="metric">他</div>
-    <div class="metric-label">Other</div>
-    <p>脚步声（玩家的）、远处的风声、河流的声音</p>
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/scene-forest.png" alt="竹林场景">
   </div>
 </div>
-
-
-<!--
-先列出来，后面才好决定哪些是2D背景，哪些是3D定位。
--->
 
 ---
 layout: header-body
 ---
 
-::backdrop::
-
-STRUCTURE
-
 ::eyebrow::
 
-2D / 3D
+Classification
 
 ::title::
 
-### 如何组织这些声音？
-
-::body::
-
-<div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div v-click class="min-h-0 min-w-0">
-    <div class="metric">2D</div>
-    <div class="metric-label">Bed</div>
-    <p>不参与空间定位，全屏都有。全场景的背景氛围层，为整个关卡提供一致的声音底色。</p>
-  </div>
-  <div v-click class="min-h-0 border-l hairline pl-4">
-    <div class="metric">3D</div>
-    <div class="metric-label">Emitter</div>
-    <p>具体位置的声音，跟着镜头远近走。可定位的环境事件，提供空间感和方向感。</p>
-  </div>
-</div>
-
-<div class="callout mt-4">
-  <span class="callout-title">为什么要分？</span>
-  <p>性能、空间感层次、设计可控性——把不需要空间化的声音从 3D 管线里解放出来。</p>
-</div>
-
-
-<!--
-分层，先把底铺好，再往上加细节。
--->
-
----
-layout: header-body
----
-
-::backdrop::
-
-COMPARE
-
-::eyebrow::
-
-2D vs 3D
-
-::title::
-
-### 2D Bed 与 3D Emitter
+### 声音资产的类型
 
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
   <div class="min-h-0 min-w-0 bg-[var(--color-surface)] p-5">
     <span class="badge">2D Bed</span>
-    <h4 class="mt-3">背景氛围层</h4>
-    <ul>
-      <li v-click>竹叶沙沙</li>
-      <li v-click>远处虫鸣</li>
-      <li v-click>背景风</li>
-      <li v-click>环境底噪</li>
+    <h4 class="mt-3">背景氛围</h4>
+    <p class="mt-2">通常是 Stereo 或 Quad 制式，声像较宽，表现场景整体的基础氛围。</p>
+    <ul class="mt-4">
+      <li v-click>风</li>
+      <li v-click>植被</li>
+      <li v-click>群鸟</li>
+      <li v-click>群虫</li>
     </ul>
   </div>
   <div class="min-h-0 min-w-0 bg-[var(--color-surface)] p-5">
-    <span class="badge" style="background:var(--color-accent);color:var(--color-surface);">3D Emitter</span>
-    <h4 class="mt-3">空间定位层</h4>
-    <ul>
-      <li v-click>近处瀑布</li>
+    <span class="badge">3D Emitter</span>
+    <h4 class="mt-3">空间定位</h4>
+    <p class="mt-2">通常是 Mono 或 Stereo，需要配合 Attenuation 和 Reverb 效果，表现场景中有方位的声音元素。</p>
+    <ul class="mt-4">
+      <li v-click>河流与瀑布</li>
+      <li v-click>特定位置的风</li>
       <li v-click>特定位置的鸟叫</li>
-      <li v-click>随机走动的脚步声</li>
-      <li v-click>玩家靠近的虫鸣惊飞</li>
+      <li v-click>玩家靠近后触发的鸟飞虫鸣</li>
     </ul>
   </div>
 </div>
-
-
-<!--
-看看，具体哪些是背景，哪些是有位置的。
--->
 
 ---
 layout: fullscreen-media
