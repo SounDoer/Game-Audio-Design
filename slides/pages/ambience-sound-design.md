@@ -460,7 +460,7 @@ Point Emitter
     </ul>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Point Emitter</span>
+    <EmitterDiagram type="point" />
   </div>
 </div>
 
@@ -496,7 +496,7 @@ Line Emitter
     </ul>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Line Emitter</span>
+    <EmitterDiagram type="line" />
   </div>
 </div>
 
@@ -533,7 +533,7 @@ Volume Emitter
     </ul>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Volume Emitter</span>
+    <EmitterDiagram type="volume" />
   </div>
 </div>
 
@@ -569,7 +569,7 @@ Scatter Emitter
     </ul>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Scatter Emitter</span>
+    <EmitterDiagram type="scatter" />
   </div>
 </div>
 
