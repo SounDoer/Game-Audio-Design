@@ -5,12 +5,12 @@
 - Stem: `ambience-sound-design`
 - Slide 文件: `slides/pages/ambience-sound-design.md`
 - 资源文件夹: `slides/public/ambience-sound-design/`
-- 当前阶段: B（进行中 — Part 1 完成，Part 2 完成占位，Part 3 进行中）
+- 当前阶段: C（已创建 slides/pages/ambience-sound-design.md，32 pages，npm run check 通过）
 
 ## 仓库状态
 
-- `slides/pages/ambience-sound-design.md`: missing
-- `slides/public/ambience-sound-design/`: missing
+- `slides/pages/ambience-sound-design.md`: exists (32 pages, C phase)
+- `slides/public/ambience-sound-design/`: exists (placeholder images pending)
 - 已有来源文档:
   - `slides/drafts/legacy/ambience-sound-design.md`: legacy reference only; do not edit
   - 其他参考: none
