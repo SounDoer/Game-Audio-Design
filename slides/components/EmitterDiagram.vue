@@ -1,7 +1,11 @@
 <template>
   <div class="relative w-full h-full flex items-center justify-center">
-    <svg viewBox="0 0 300 200" class="w-full h-full max-h-[200px]">
+    <svg viewBox="0 0 300 200" class="w-full h-full">
       <defs>
+        <radialGradient id="pointGradient" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0"/>
+        </radialGradient>
         <linearGradient id="fadeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0.3"/>
           <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0"/>
@@ -16,51 +20,71 @@
       </defs>
       
       <g v-if="type === 'point'">
-        <circle cx="150" cy="100" r="80" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <circle cx="150" cy="100" r="60" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <circle cx="150" cy="100" r="40" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <circle cx="150" cy="100" r="20" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
-        <circle cx="150" cy="100" r="6" fill="var(--color-accent)" filter="url(#glow)"/>
-        <text x="150" y="170" text-anchor="middle" fill="var(--color-text)" font-size="12">衰减范围</text>
+        <circle cx="150" cy="95" r="90" fill="url(#pointGradient)"/>
+        <circle cx="150" cy="95" r="90" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="8,8" opacity="0.4"/>
+        <circle cx="150" cy="95" r="70" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="6,6" opacity="0.5"/>
+        <circle cx="150" cy="95" r="50" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+        <circle cx="150" cy="95" r="30" fill="none" stroke="var(--color-accent)" stroke-width="2" opacity="0.8"/>
+        <circle cx="150" cy="95" r="8" fill="var(--color-accent)" filter="url(#glow)"/>
+        <text x="150" y="195" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">衰减范围</text>
       </g>
       
       <g v-else-if="type === 'line'">
-        <line x1="50" y1="100" x2="250" y2="100" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round"/>
-        <ellipse cx="50" cy="100" rx="6" ry="6" fill="var(--color-accent)" filter="url(#glow)"/>
-        <ellipse cx="250" cy="100" rx="6" ry="6" fill="var(--color-accent)" filter="url(#glow)"/>
-        <path d="M 50 60 Q 150 50 250 60" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <path d="M 50 80 Q 150 75 250 80" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <path d="M 50 120 Q 150 125 250 120" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <path d="M 50 140 Q 150 150 250 140" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <text x="150" y="170" text-anchor="middle" fill="var(--color-text)" font-size="12">沿线传播</text>
+        <polyline points="40,150 100,150 160,50 260,50" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="40" cy="150" r="4" fill="var(--color-accent)" filter="url(#glow)"/>
+        <circle cx="260" cy="50" r="4" fill="var(--color-accent)" filter="url(#glow)"/>
+        
+        <circle cx="200" cy="120" r="6" fill="#666666"/>
+        <text x="200" y="150" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">Listener</text>
+        
+        <line x1="200" y1="120" x2="140" y2="84" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+        
+        <circle cx="140" cy="84" r="5" fill="var(--color-accent)" filter="url(#glow)"/>
+        <text x="50" y="75" fill="var(--color-accent)" font-size="6" font-weight="700">Emitter</text>
       </g>
       
       <g v-else-if="type === 'volume'">
-        <rect x="70" y="40" width="160" height="120" fill="url(#fadeGradient)" stroke="var(--color-accent)" stroke-width="2"/>
-        <rect x="70" y="40" width="160" height="120" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-dasharray="4" opacity="0.5"/>
-        <circle cx="150" cy="100" r="4" fill="var(--color-accent)" filter="url(#glow)"/>
-        <path d="M 30 100 L 70 100" stroke="var(--color-text-muted)" stroke-width="1" stroke-dasharray="4" marker-end="url(#arrow)"/>
-        <path d="M 270 100 L 230 100" stroke="var(--color-text-muted)" stroke-width="1" stroke-dasharray="4" marker-end="url(#arrow)"/>
-        <text x="30" y="95" text-anchor="middle" fill="var(--color-text-muted)" font-size="10">外部</text>
-        <text x="270" y="95" text-anchor="middle" fill="var(--color-text-muted)" font-size="10">内部</text>
-        <text x="150" y="175" text-anchor="middle" fill="var(--color-text)" font-size="12">边界区域</text>
+        <rect x="20" y="-10" width="260" height="170" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="8,8" opacity="0.5"/>
+        <rect x="45" y="7" width="210" height="136" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="6,6" opacity="0.6"/>
+        <rect x="70" y="25" width="160" height="100" fill="var(--color-accent)" fill-opacity="0.15" stroke="var(--color-accent)" stroke-width="2"/>
+        
+        <circle cx="150" cy="125" r="5" fill="var(--color-accent)" filter="url(#glow)"/>
+        <text x="150" y="110" text-anchor="middle" fill="var(--color-accent)" font-size="6" font-weight="700">Emitter</text>
+        
+        <circle cx="150" cy="190" r="5" fill="#666666"/>
+        <text x="150" y="215" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">Listener</text>
+        
+        <line x1="150" y1="130" x2="150" y2="190" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
       </g>
       
       <g v-else-if="type === 'scatter'">
-        <rect x="50" y="30" width="200" height="140" fill="none" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="4"/>
-        <circle v-for="(point, index) in scatterPoints" :key="index" 
-                :cx="point.x" :cy="point.y" :r="point.r" 
-                :fill="point.active ? 'var(--color-accent)' : 'var(--color-text-muted)'"
-                :opacity="point.active ? 1 : 0.4"
-                filter="url(#glow)"/>
-        <text x="150" y="175" text-anchor="middle" fill="var(--color-text)" font-size="12">随机触发</text>
+        <polygon points="30,150 230,150 230,50 30,50" fill="var(--color-accent)" fill-opacity="0.05" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+        <polygon points="30,50 70,20 270,20 230,50" fill="var(--color-accent)" fill-opacity="0.08" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+        <polygon points="230,50 270,20 270,120 230,150" fill="var(--color-accent)" fill-opacity="0.1" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+        
+        <circle cx="80" cy="100" r="4" fill="var(--color-accent)" filter="url(#glow)"/>
+        <circle cx="160" cy="80" r="3" fill="var(--color-accent)" opacity="0.7" filter="url(#glow)"/>
+        <circle cx="120" cy="120" r="5" fill="var(--color-accent)" filter="url(#glow)"/>
+        <circle cx="200" cy="90" r="3" fill="var(--color-accent)" opacity="0.6" filter="url(#glow)"/>
+        <circle cx="60" cy="70" r="4" fill="var(--color-accent)" opacity="0.8" filter="url(#glow)"/>
+        <circle cx="180" cy="110" r="3" fill="var(--color-accent)" opacity="0.5" filter="url(#glow)"/>
+        <circle cx="100" cy="60" r="4" fill="var(--color-accent)" opacity="0.7" filter="url(#glow)"/>
+        <circle cx="140" cy="95" r="3" fill="var(--color-accent)" opacity="0.6" filter="url(#glow)"/>
       </g>
       
-      <defs>
-        <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="var(--color-text-muted)"/>
-        </marker>
-      </defs>
+      <g v-else-if="type === 'spatialized-bed'">
+        <path d="M 250 30 L 250 170 L 80 170 L 80 130" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+        <path d="M 80 70 L 80 30 L 250 30" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+        
+        <circle cx="80" cy="100" r="5" fill="var(--color-accent)" filter="url(#glow)"/>
+        
+        <path d="M 80 70 Q 40 100 80 130" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="8,8" opacity="0.4"/>
+        <path d="M 80 60 Q 20 100 80 140" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="6,6" opacity="0.5"/>
+        <path d="M 80 50 Q 0 100 80 150" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+        <path d="M 80 40 Q -20 100 80 160" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>
+        
+        <text x="165" y="105" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">Room Tone</text>
+      </g>
     </svg>
   </div>
 </template>
@@ -72,7 +96,7 @@ const props = defineProps({
   type: {
     type: String,
     required: true,
-    validator: (value) => ['point', 'line', 'volume', 'scatter'].includes(value)
+    validator: (value) => ['point', 'line', 'volume', 'scatter', 'spatialized-bed'].includes(value)
   }
 })
 

@@ -464,11 +464,6 @@ Point Emitter
   </div>
 </div>
 
-
-<!--
-这个就钉在那不动，靠近了就响，走远了就小。
--->
-
 ---
 layout: header-body
 ---
@@ -605,7 +600,7 @@ Spatialized Bed
     </ul>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <span class="badge">Spatialized Bed</span>
+    <EmitterDiagram type="spatialized-bed" />
   </div>
 </div>
 
