@@ -579,23 +579,18 @@ Wind
 
 ::title::
 
-### Wind System
+### 动态风系统
 
 ::body::
 
 <div class="flex h-full min-h-0 flex-col gap-4">
   <div class="figure-frame flex min-h-0 flex-1 items-center justify-center">
-    <span class="badge">Wind System</span>
+    <video src="/ambience-sound-design/DynamicWind_Demo_FIN.mp4" controls class="h-full w-full object-contain" />
   </div>
-  <div class="shrink-0">
-    <p>竹林中风的声音动态——风如何影响声音表现。</p>
+  <div class="shrink-0 text-right">
+    <a href="https://gad.soundoer.com/listener-centered-dynamic-wind-audio-design/" target="_blank" class="text-primary hover:underline">基于听者的动态风声设计</a>
   </div>
 </div>
-
-
-<!--
-竹林中的风如何影响声音表现
--->
 
 ---
 layout: header-body
@@ -611,7 +606,7 @@ Weather
 
 ::title::
 
-### Weather System
+### 天气系统
 
 ::body::
 
@@ -623,11 +618,6 @@ Weather
     <p>晴天 / 阴天 / 雨天 / 风暴的声景差异。</p>
   </div>
 </div>
-
-
-<!--
-不同天气下的竹林声景变化
--->
 
 ---
 layout: header-body
@@ -643,7 +633,7 @@ Time of Day
 
 ::title::
 
-### Time of Day System
+### TOD 时间系统
 
 ::body::
 
@@ -655,11 +645,6 @@ Time of Day
     <p>清晨鸟鸣 → 正午蝉噪 → 黄昏虫鸣 → 夜间静谧</p>
   </div>
 </div>
-
-
-<!--
-竹林在不同时段的声景切换
--->
 
 ---
 layout: header-body
@@ -702,21 +687,19 @@ Player-Driven
   </div>
 </div>
 
-
-<!--
-用竹林案例具体演示：玩家走进一片草丛，虫子停声了；走远之后，虫子重新开始叫。
--->
-
 ---
-layout: fullscreen-media
-image: ambience-sound-design/sop-video-placeholder.jpg
-backgroundSize: cover
+layout: custom
 ---
 
-<div class="relative h-full w-full">
-  <span class="badge absolute left-6 top-6" style="background:var(--color-accent);color:var(--color-surface);">Video</span>
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[34rem]">
-    <p class="caption">环境声设计 SOP——完整的环境声设计实战案例。</p>
+<div class="relative h-full w-full overflow-hidden">
+  <video
+    class="absolute inset-0 m-auto h-full w-full object-cover"
+    src="/ambience-sound-design/SYNCED_Haven_AMB_Showcase.mp4"
+    playsinline
+    controls
+  />
+  <div class="relative z-1 h-full w-full pointer-events-none">
+    <span class="badge absolute left-6 top-6 pointer-events-auto" style="background:var(--color-accent);color:var(--color-surface);">SYNCED AMB SHOWCASE</span>
   </div>
 </div>
 
