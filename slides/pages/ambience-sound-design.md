@@ -285,7 +285,7 @@ Design Document
 
 <div class="grid h-full min-h-0 grid-cols-[1.5fr_0.5fr] gap-5">
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/ae-scene-01.png" alt="竹林场景">
+    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/ae-scene-01.jpg" alt="竹林场景">
   </div>
   <div class="min-h-0 min-w-0">
     <v-clicks>
@@ -352,7 +352,7 @@ Breakdown
     </div>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/ae-scene-01.png" alt="竹林场景">
+    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/ae-scene-01.jpg" alt="竹林场景">
   </div>
 </div>
 
