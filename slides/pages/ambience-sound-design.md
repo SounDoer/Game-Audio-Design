@@ -665,7 +665,7 @@ Player-Driven
 ::body::
 
 <div class="grid h-full min-h-0 grid-cols-2 gap-5">
-  <div class="min-h-0 min-w-0">
+  <div v-click class="min-h-0 min-w-0">
     <span class="step-index">TRIGGER</span>
     <h4>靠近 / 远离</h4>
     <p>昆虫停止鸣叫或飞走、鸟群惊飞、鱼跳出水面、小动物逃窜声</p>
@@ -703,35 +703,21 @@ layout: custom
   </div>
 </div>
 
-
-<!--
-用户准备，展示完整的环境声设计 SOP 实战案例
--->
-
 ---
 layout: section
 ---
 
 ::backdrop::
 
-PART 03
+CONSIDERATION
 
 ::eyebrow::
 
-03
+05
 
 ::title::
 
-## 环境声的其他考量
-
-::subtitle::
-
-环境声不只是背景
-
-
-<!--
-Part 3 从案例抽离出通用设计考量：真实性、叙事、混音等
--->
+## 其他考量
 
 ---
 layout: statement
@@ -743,16 +729,11 @@ AUTHENTIC
 
 ::title::
 
-### Recreate, Don't Simulate
+### 再创造，而非模拟
 
 ::subtitle::
 
-游戏环境声不需要 1:1 还原现实，recreate 而非 simulate
-
-
-<!--
-用竹林案例对照——哪些声音是真实的但游戏里没有？哪些是游戏里有但现实中不常听到的？
--->
+环境声设计不是还原现实，Recreate 而非 Simulate
 
 ---
 layout: statement
@@ -768,12 +749,7 @@ NARRATIVE
 
 ::subtitle::
 
-环境声承载情感温度，同一场景在不同时间、天气、叙事节点下声景不同
-
-
-<!--
-结合竹林案例——竹林在叙事主线和支线任务里，声景是否有差异？
--->
+环境声是整体声音设计的基底，是故事情节展开的舞台
 
 ---
 layout: statement
@@ -785,37 +761,11 @@ MIXING
 
 ::title::
 
-### 环境声不是孤岛
+### 环境声与其他声音模块之间的关系
 
 ::subtitle::
 
-环境声 vs 语音、脚步、枪声、UI——当其他声音响起时，懂得退让
-
-
-<!--
-举竹林场景的例子——战斗时环境声怎么处理？播片时呢？
--->
-
----
-layout: statement
----
-
-::backdrop::
-
-FREQUENCY
-
-::title::
-
-### 频段管理与混音
-
-::subtitle::
-
-环境声容易在低频和中频堆积，策略：sidechain / ducking / 静态混音层级
-
-
-<!--
-拿竹林频谱举例——哪些频段给了环境声，哪些让给了语音和特效？
--->
+频段管理与混音策略，适时突出适时避让
 
 ---
 layout: end
