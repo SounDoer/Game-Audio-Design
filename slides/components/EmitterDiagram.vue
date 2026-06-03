@@ -26,7 +26,7 @@
         <circle cx="150" cy="95" r="50" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
         <circle cx="150" cy="95" r="30" fill="none" stroke="var(--color-accent)" stroke-width="2" opacity="0.8"/>
         <circle cx="150" cy="95" r="8" fill="var(--color-accent)" filter="url(#glow)"/>
-        <text x="150" y="195" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">衰减范围</text>
+        <text x="150" y="195" text-anchor="middle" fill="#666666" font-size="4" font-weight="700">衰减范围</text>
       </g>
       
       <g v-else-if="type === 'line'">
@@ -35,12 +35,12 @@
         <circle cx="260" cy="50" r="4" fill="var(--color-accent)" filter="url(#glow)"/>
         
         <circle cx="200" cy="120" r="6" fill="#666666"/>
-        <text x="200" y="150" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">Listener</text>
+        <text x="200" y="150" text-anchor="middle" fill="#666666" font-size="4" font-weight="700">Listener</text>
         
         <line x1="200" y1="120" x2="140" y2="84" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
         
         <circle cx="140" cy="84" r="5" fill="var(--color-accent)" filter="url(#glow)"/>
-        <text x="50" y="75" fill="var(--color-accent)" font-size="6" font-weight="700">Emitter</text>
+        <text x="60" y="75" fill="var(--color-accent)" font-size="4" font-weight="700">Emitter</text>
       </g>
       
       <g v-else-if="type === 'volume'">
@@ -49,10 +49,10 @@
         <rect x="70" y="25" width="160" height="100" fill="var(--color-accent)" fill-opacity="0.15" stroke="var(--color-accent)" stroke-width="2"/>
         
         <circle cx="150" cy="125" r="5" fill="var(--color-accent)" filter="url(#glow)"/>
-        <text x="150" y="110" text-anchor="middle" fill="var(--color-accent)" font-size="6" font-weight="700">Emitter</text>
+        <text x="150" y="110" text-anchor="middle" fill="var(--color-accent)" font-size="4" font-weight="700">Emitter</text>
         
         <circle cx="150" cy="190" r="5" fill="#666666"/>
-        <text x="150" y="215" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">Listener</text>
+        <text x="195" y="195" text-anchor="middle" fill="#666666" font-size="4" font-weight="700">Listener</text>
         
         <line x1="150" y1="130" x2="150" y2="190" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
       </g>
@@ -83,7 +83,7 @@
         <path d="M 80 50 Q 0 100 80 150" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
         <path d="M 80 40 Q -20 100 80 160" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>
         
-        <text x="165" y="105" text-anchor="middle" fill="#666666" font-size="6" font-weight="700">Room Tone</text>
+        <text x="165" y="105" text-anchor="middle" fill="#666666" font-size="4" font-weight="700">Room Tone</text>
       </g>
     </svg>
   </div>

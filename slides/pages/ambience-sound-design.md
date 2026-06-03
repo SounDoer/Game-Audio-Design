@@ -251,7 +251,7 @@ layout: section
 
 ::backdrop::
 
-PART 02
+DESIGN
 
 ::eyebrow::
 
@@ -259,21 +259,11 @@ PART 02
 
 ::title::
 
-## 竹林的声景
+## "看图说话"
 
 ::subtitle::
 
 一个完整场景的环境声设计
-
----
-layout: fullscreen-media
-image: ambience-sound-design/scene-forest.png
-backgroundSize: cover
----
-
-<div class="relative h-full w-full">
-  <span class="badge absolute left-6 top-6">Arknights: Endfield</span>
-</div>
 
 ---
 layout: header-body
@@ -293,7 +283,12 @@ Design Document
 
 ::body::
 
-<v-clicks>
+<div class="grid h-full min-h-0 grid-cols-[1.5fr_0.5fr] gap-5">
+  <div class="figure-frame flex min-h-0 items-center justify-center">
+    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/ae-scene-01.png" alt="竹林场景">
+  </div>
+  <div class="min-h-0 min-w-0">
+    <v-clicks>
 
 - 世界观
 - 美术 & 声音设计风格
@@ -304,6 +299,8 @@ Design Document
 - ……
 
 </v-clicks>
+  </div>
+</div>
 
 ---
 layout: header-body
@@ -355,7 +352,7 @@ Breakdown
     </div>
   </div>
   <div class="figure-frame flex min-h-0 items-center justify-center">
-    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/scene-forest.png" alt="竹林场景">
+    <img class="max-h-full max-w-full object-contain" src="/ambience-sound-design/ae-scene-01.png" alt="竹林场景">
   </div>
 </div>
 
@@ -399,39 +396,44 @@ Classification
 </div>
 
 ---
-layout: fullscreen-media
-image: ambience-sound-design/reaper-session-placeholder.jpg
-backgroundSize: cover
+layout: section
 ---
 
-<div class="relative h-full w-full">
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[34rem]">
-    <p class="caption">在 Reaper 里制作——展示我们要做的竹林环境声的 Reaper session 全貌。</p>
-  </div>
-</div>
+::backdrop::
 
+DAW
 
-<!--
-展示我们要做的竹林环境声的 Reaper session 全貌
--->
+::eyebrow::
+
+03
+
+::title::
+
+## 制作声音资产
+
+::subtitle::
+
+DAW Reaper 演示
 
 ---
-layout: fullscreen-media
-image: ambience-sound-design/reaper-video-placeholder.jpg
-backgroundSize: cover
+layout: section
 ---
 
-<div class="relative h-full w-full">
-  <span class="badge absolute left-6 top-6" style="background:var(--color-accent);color:var(--color-surface);">Video</span>
-  <div class="caption-plate absolute bottom-8 left-6 max-w-[34rem]">
-    <p class="caption">Reaper 实操演示——现场一步步展示素材整理、编辑、导出等流程。</p>
-  </div>
-</div>
+::backdrop::
 
+MIDDLEWARE
 
-<!--
-现场一步步展示素材整理、编辑、导出等流程
--->
+::eyebrow::
+
+04
+
+::title::
+
+## 整合声音资产
+
+::subtitle::
+
+中间件和引擎中的实现
 
 ---
 layout: header-body
@@ -451,16 +453,11 @@ Point Emitter
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>固定位置的单点 3D 声源</h4>
-    <ul class="mb-0">
-      <li v-click>这个就钉在那不动，靠近了就响，走远了就小</li>
-      <li v-click>例子：特定位置的瀑布、特定位置的鸟窝、特定位置的脚步声起点</li>
-    </ul>
-  </div>
+<div class="grid h-full min-h-0 grid-cols-[1.3fr_0.7fr] gap-5">
   <div class="figure-frame flex min-h-0 items-center justify-center">
     <EmitterDiagram type="point" />
+  </div>
+  <div class="min-h-0 min-w-0">
   </div>
 </div>
 
@@ -482,23 +479,13 @@ Line Emitter
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>沿路径分布的连续声源</h4>
-    <ul class="mb-0">
-      <li v-click>沿着路走，一路都有，声音跟着位置渐变</li>
-      <li v-click>例子：河流、小路、围墙旁边的虫鸣</li>
-    </ul>
-  </div>
+<div class="grid h-full min-h-0 grid-cols-[1.3fr_0.7fr] gap-5">
   <div class="figure-frame flex min-h-0 items-center justify-center">
     <EmitterDiagram type="line" />
   </div>
+  <div class="min-h-0 min-w-0">
+  </div>
 </div>
-
-
-<!--
-沿着路走，一路都有，声音跟着位置渐变。
--->
 
 ---
 layout: header-body
@@ -518,24 +505,13 @@ Volume Emitter
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>区域内的体积声源</h4>
-    <ul class="mb-0">
-      <li v-click>这个范围，有边界，一进去就沉浸进去</li>
-      <li v-click>进去就有，出来就没（渐变过渡）</li>
-      <li v-click>例子：森林区、洞穴区、竹林区</li>
-    </ul>
-  </div>
+<div class="grid h-full min-h-0 grid-cols-[1.3fr_0.7fr] gap-5">
   <div class="figure-frame flex min-h-0 items-center justify-center">
     <EmitterDiagram type="volume" />
   </div>
+  <div class="min-h-0 min-w-0">
+  </div>
 </div>
-
-
-<!--
-这个范围，有边界，一进去就沉浸进去。
--->
 
 ---
 layout: header-body
@@ -555,23 +531,13 @@ Scatter Emitter
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>在区域内随机 scatter 的触发点</h4>
-    <ul class="mb-0">
-      <li v-click>让这片区域有生命力，不是死循环</li>
-      <li v-click>例子：随机位置的虫鸣、随机位置的鸟叫、随机的风吹草叶声</li>
-    </ul>
-  </div>
+<div class="grid h-full min-h-0 grid-cols-[1.3fr_0.7fr] gap-5">
   <div class="figure-frame flex min-h-0 items-center justify-center">
     <EmitterDiagram type="scatter" />
   </div>
+  <div class="min-h-0 min-w-0">
+  </div>
 </div>
-
-
-<!--
-让这片区域有生命力，不是死循环。
--->
 
 ---
 layout: header-body
@@ -591,23 +557,13 @@ Spatialized Bed
 
 ::body::
 
-<div class="grid h-full min-h-0 grid-cols-[1.1fr_0.9fr] gap-5">
-  <div class="min-h-0 min-w-0">
-    <h4>在 2D 背景层上叠加 3D 位置信息</h4>
-    <ul class="mb-0">
-      <li v-click>2D 的底也能有空间感，不闷</li>
-      <li v-click>风有方向、风有远近、不同方向的风不同声、不同高度的风不同声</li>
-    </ul>
-  </div>
+<div class="grid h-full min-h-0 grid-cols-[1.3fr_0.7fr] gap-5">
   <div class="figure-frame flex min-h-0 items-center justify-center">
     <EmitterDiagram type="spatialized-bed" />
   </div>
+  <div class="min-h-0 min-w-0">
+  </div>
 </div>
-
-
-<!--
-2D的底也能有空间感，不闷。
--->
 
 ---
 layout: header-body
