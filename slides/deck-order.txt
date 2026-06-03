@@ -2,7 +2,6 @@ what-is-game-audio-design
 how-to-listen-sound
 dev-workflow
 dev-tool
-campfire-sound
 soundbank-generation
 audio-spatialization
 ambience-sound-design
