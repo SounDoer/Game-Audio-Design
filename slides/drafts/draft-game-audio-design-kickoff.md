@@ -5,7 +5,7 @@
 - Stem: `game-audio-design-kickoff`
 - Slide 文件: `slides/pages/game-audio-design-kickoff.md`
 - 资源文件夹: `slides/public/game-audio-design-kickoff/`
-- 当前阶段: A ✅ → 就绪，等待进入 B
+- 当前阶段: B ✅ → 就绪，等待进入 C
 
 ## 仓库状态
 
@@ -66,18 +66,18 @@
 | 11 | 章分隔 | 决策：工程选型与审美定位 | STRATEGY | — | `section` | — | confirmed |
 | 12 | 教音频设计师根据三个核心因素推导工具链选型 | 工具链和技术选型 | 3 个因素：① 游戏是什么类型？② 目标平台是什么？③ 团队规模和能力？；最后用 `callout` 收束一句核心原则 | — | `header-body`，单栏 `<v-clicks>` + 底部 `callout` 总结 | — | confirmed |
 | 13 | 工程向：评估项目所需资源 | 资源评估：人力、财力与时间 | 三栏：① 人力（几个 Sound Designer？要不要 Technical Audio Designer？外包？）；② 财力（内存/CPU/Streaming 预算、音频资源总量预估）；③ 时间（Concept / Preproduction / Production 各阶段交付什么？） | — | `header-body`，三栏 `grid-cols-3`，逐栏 `v-click` | — | confirmed |
-| 14 | 审美向：用一段话概括项目的音频愿景 | Audio Design Pitch | TBD — 用户将提供案例 | — | `statement` | — | confirmed |
-| 15 | Design Pillar 是 Pitch 的重要组成部分 | Design Pillar | TBD — 用户将提供案例 | — | `statement` | — | confirmed |
+| 14 | 审美向：用一段话概括项目的音频愿景 | Audio Design Pitch | `<!-- TODO(user): Audio Design Pitch 案例陈述 -->` | — | `statement` | — | placeholder |
+| 15 | Design Pillar 是 Pitch 的重要组成部分 | Design Pillar | `<!-- TODO(user): Design Pillar 案例陈述 -->` | — | `statement` | — | placeholder |
 | 16 | 章分隔 | 验证：Demo 与垂直切片 | PROTOTYPE | — | `section` | — | confirmed |
 | 17 | 在正式铺量前对技术风险点打样验证 | 技术功能验证与 Demo | 中间件与引擎管线能否跑通？关键系统技术 Demo（脚步/枪声/动态音乐）？性能压力测试？空间音频在目标平台是否正常？第三方插件 / SDK 兼容性？内部工作流与管线测试？ | — | `header-body`，`<v-clicks>` 列表 | — | confirmed |
-| 18 | 用一个可玩切片验证整体音频功能与表现 | 垂直切片 | TBD — 用户将提供示例 | — | `statement` | — | confirmed |
+| 18 | 用一个可玩切片验证整体音频功能与表现 | 垂直切片 | `<!-- TODO(user): 垂直切片示例陈述 -->` | — | `statement` | — | placeholder |
 | 19 | 章分隔 | 规范：命名、工作流与信号流程 | CONVENTIONS | — | `section` | — | confirmed |
 | 20 | 命名的基本重要性和通用原则 | 命名规范 | 搬运 naming-convention.md 中「重要性」与「通用原则」两页内容合并：命名是人与人/人与机/机与机之间最频繁的接口，命名规范是系统工程最基础最核心的部分之一；通用原则包括命名风格（PascalCase / camelCase / snake_case / Upper_Snake_Case）、语义字段、缩写约定、避免空格特殊符号等 | — | `header-body`，`<v-clicks>` 列表 | — | confirmed |
 | 21 | 三个层面的命名规范 | 命名规范的三个层面 | 三栏：① 项目层面（地图/角色/物件的中英文对照与开发代码名）；② 资产层面（字段体系，举例枪声/Foley/语音）；③ 工程结构层面（目录结构、中间件嵌套、总线结构，与资产命名的关联） | — | `header-body`，三栏 `grid-cols-3`，逐栏 `v-click` | 具体示例待用户确认 | confirmed |
 | 22 | 定义从 DAW 到引擎的标准工作流 | DAW → 中间件 → 引擎 | 三个环节：① DAW 侧（源文件管理、导出规范）；② 中间件侧（导入、Event 结构、参数配置）；③ 引擎侧（集成方式、运行时验证） | 用户将提供示例图 | `header-body`，三栏或图文组合 | — | confirmed |
 | 23 | 了解完整的信号链路，快速定位问题出在哪个环节 | 信号流程：从 WAV 到听音设备 | 信号链路：WAV 资产 → Conversion（中间件导入转换）→ Actor-Mixer → Audio Bus → Audio Device → 终端听音设备；意义：理解信号流程是为了在出问题时能快速定位到具体环节，而不是靠猜测排查 | — | `header-body`，`<v-clicks>` 列表，可配信号链路示意图 | — | confirmed |
-| 24 | 资产响度规范 | 资产响度规范 | TBD | — | TBD | — | needs-user |
-| 25 | 混音切片参考 | 混音切片参考 | TBD | — | TBD | — | needs-user |
+| 24 | 资产响度规范 | 资产响度规范 | `<!-- TODO(user): 资产响度规范内容 -->` | — | `header-body` | — | placeholder |
+| 25 | 混音切片参考 | 混音切片参考 | `<!-- TODO(user): 混音切片参考内容 -->` | — | `header-body` | — | placeholder |
 | 26 | Deck 结束页 | Thanks & 联系方式 | — | — | `end` | — | confirmed |
 
 ## Media Assets
