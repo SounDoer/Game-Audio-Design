@@ -17,3 +17,4 @@ ai-in-game-audio
 ai-in-game-audio-design-2026
 game-audio-mixing
 game-audio-debug
+game-audio-design-kickoff
