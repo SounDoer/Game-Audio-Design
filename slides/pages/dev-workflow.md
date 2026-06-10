@@ -109,12 +109,6 @@ layout: header-body
 
 ::body::
 
-<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
-
-<img src="/the-core-audio-data.svg" alt="The Core Audio Data" style="width: 100%; height: auto;">
-
-</div>
-
 <!--
 - 在做出好听的声音之外，还有考虑其他的问题
 - 既有艺术创作方面的制作能力，还有技术思维方面的实现能力。
@@ -128,12 +122,6 @@ layout: header-body
 迭代式开发流程
 
 ::body::
-
-<div class="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center [&_img]:max-h-[min(78vh,100%)] [&_img]:max-w-full [&_img]:object-contain">
-
-<img src="/design-workflow.svg" alt="Design Flow" style="width: 100%; height: auto;">
-
-</div>
 
 <!--
 - 游戏音频设计工作流，包含前期设计、功能开发、资源制作、数据整合与测试优化等环节的迭代式开发流程
