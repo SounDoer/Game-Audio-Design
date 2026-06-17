@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VO Line SSOT · 数据核心图</title>
+<style>
+  :root {
+    --bg-0: #070b14;
+    --bg-1: #0e1629;
+    --panel: #111d36cc;
+    --card: #162748;
+    --line: #2c4576;
+    --text: #eaf1ff;
+    --muted: #95a8d6;
+    --accent: #76bcff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    color: var(--text);
+    background: radial-gradient(900px 500px at 0% -10%, #1e316055 0%, transparent 60%),
+                radial-gradient(900px 500px at 100% -20%, #40255a40 0%, transparent 60%),
+                linear-gradient(180deg, var(--bg-0), var(--bg-1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .stage {
+    width: min(1200px, 100%);
+    border: 1px solid #263d69;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #0f1a32e8 0%, #0b1427ea 100%);
+    box-shadow: 0 24px 60px #03071080;
+    padding: 26px 24px 20px;
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .title h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .title p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .canvas {
+    position: relative;
+    min-height: min(78vh, 760px);
+    border: 1px dashed #2f4875;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #0d1730 0%, #0a1328 100%);
+    padding: 18px;
+  }
+
+  .db {
+    position: relative;
+    width: min(760px, 76%);
+    margin: 0 auto;
+    border: 1px solid #355288;
+    border-radius: 16px;
+    background: #101b34;
+    padding: 14px;
+    z-index: 2;
+  }
+
+  .db-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .db-title {
+    font-size: 15px;
+    color: #cfe3ff;
+    letter-spacing: 0.3px;
+  }
+
+  .db-badge {
+    font-size: 11px;
+    color: #c8ddff;
+    border: 1px solid #4e73b3;
+    border-radius: 999px;
+    padding: 3px 10px;
+    background: #1b2f57;
+  }
+
+  .line-row {
+    border: 1px solid #314f84;
+    border-radius: 12px;
+    background: var(--card);
+    padding: 10px;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .line-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .field {
+    border: 1px solid #3b5c96;
+    border-radius: 8px;
+    background: #132243;
+    padding: 7px 8px;
+  }
+
+  .field .k {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.7px;
+    color: #8fb2e7;
+    text-transform: uppercase;
+  }
+
+  .field .v {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #dce9ff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .clue {
+    position: absolute;
+    width: 170px;
+    border: 1px solid #3a5b95;
+    border-radius: 11px;
+    background: var(--panel);
+    padding: 10px;
+    z-index: 3;
+    cursor: pointer;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+
+  .clue strong {
+    display: block;
+    font-size: 14px;
+    color: #d8e7ff;
+  }
+
+  .clue span {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: #95abd8;
+  }
+
+  .clue:hover,
+  .clue.active {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
+  .c-upstream { left: 6%; top: 14%; }
+  .c-roles    { right: 6%; top: 14%; }
+  .c-triggers { right: 6%; bottom: 14%; }
+  .c-status   { left: 6%; bottom: 14%; }
+  .c-cross    { left: 50%; bottom: 5%; transform: translateX(-50%); }
+
+  .link {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #486ba9, transparent);
+    transform-origin: left center;
+    pointer-events: none;
+    z-index: 1;
+    transition: background .2s ease;
+  }
+
+  .link.active {
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .note {
+    margin-top: 10px;
+    text-align: center;
+    min-height: 40px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .subtle {
+    margin-top: 8px;
+    text-align: center;
+    color: #7f93c2;
+    font-size: 11px;
+  }
+
+  @media (max-width: 980px) {
+    .db { width: 100%; }
+    .line-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .canvas { min-height: auto; }
+    .clue,
+    .c-upstream,
+    .c-roles,
+    .c-triggers,
+    .c-status,
+    .c-cross {
+      position: static;
+      width: 100%;
+      transform: none;
+      margin-top: 8px;
+    }
+    .link { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .line-row { grid-template-columns: 1fr; }
+    .stage { border-radius: 16px; padding: 16px; }
+  }
+</style>
+</head>
+<body>
+  <main class="stage">
+    <header class="title">
+      <h1>VO Line as SSOT Database</h1>
+      <p>先看到数据本体，再展开周边线索</p>
+    </header>
+
+    <section class="canvas" id="canvas">
+      <section class="db" id="db">
+        <div class="db-header">
+          <div class="db-title">VO Lines · SSOT Database</div>
+          <div class="db-badge">N rows</div>
+        </div>
+
+        <article class="line-row">
+          <div class="field"><span class="k">Character</span><span class="v">Hero_A</span></div>
+          <div class="field"><span class="k">Text</span><span class="v">"Need backup!"</span></div>
+          <div class="field"><span class="k">Shared Slot</span><span class="v">Low_Health</span></div>
+          <div class="field"><span class="k">VO Perspective</span><span class="v">VO_1P_Critical</span></div>
+        </article>
+
+        <article class="line-row">
+          <div class="field"><span class="k">Character</span><span class="v">Hero_A</span></div>
+          <div class="field"><span class="k">Text</span><span class="v">"I'm down."</span></div>
+          <div class="field"><span class="k">Shared Slot</span><span class="v">Death</span></div>
+          <div class="field"><span class="k">VO Perspective</span><span class="v">VO_3P</span></div>
+        </article>
+
+        <article class="line-row">
+          <div class="field"><span class="k">Character</span><span class="v">Hero_B</span></div>
+          <div class="field"><span class="k">Text</span><span class="v">"Using medkit."</span></div>
+          <div class="field"><span class="k">Shared Slot</span><span class="v">Use_Medkit</span></div>
+          <div class="field"><span class="k">VO Perspective</span><span class="v">VO_1P</span></div>
+        </article>
+
+        <article class="line-row">
+          <div class="field"><span class="k">Character</span><span class="v">Hero_C</span></div>
+          <div class="field"><span class="k">Text</span><span class="v">"Contact left!"</span></div>
+          <div class="field"><span class="k">Shared Slot</span><span class="v">Combat_Callout</span></div>
+          <div class="field"><span class="k">VO Perspective</span><span class="v">VO_3P</span></div>
+        </article>
+      </section>
+
+      <button class="clue c-upstream active" data-key="upstream" type="button">
+        <strong>上游制作链</strong><span>Localization / Casting / Recording / Post</span>
+      </button>
+      <button class="clue c-roles" data-key="roles" type="button">
+        <strong>协作角色</strong><span>Designer · Writer · Audio · Programmer</span>
+      </button>
+      <button class="clue c-triggers" data-key="triggers" type="button">
+        <strong>触发模块</strong><span>Combat · AI · UI · Inventory · Skill</span>
+      </button>
+      <button class="clue c-status" data-key="status" type="button">
+        <strong>生命周期</strong><span>Empty → TTS → Record → Process → Integrate</span>
+      </button>
+      <button class="clue c-cross" data-key="cross" type="button">
+        <strong>跨资产关联</strong><span>Subtitle / UI · Face / LipSync</span>
+      </button>
+
+      <div class="link" id="l-upstream"></div>
+      <div class="link" id="l-roles"></div>
+      <div class="link" id="l-triggers"></div>
+      <div class="link" id="l-status"></div>
+      <div class="link" id="l-cross"></div>
+    </section>
+
+    <p class="note" id="note">所有 VO Line 行共同构成 SSOT 数据库；其它线索都从该核心发散。</p>
+    <p class="subtle">这是一页“讲解型索引图”，细节由口述展开。</p>
+  </main>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const db = document.getElementById("db");
+    const clues = canvas.querySelectorAll(".clue");
+    const note = document.getElementById("note");
+
+    const noteMap = {
+      upstream: "从同一份 VO Line 数据出发，上游产线负责把文本与角色意图变成可用语音资产。",
+      roles: "不同角色围绕同一条 VO Line 协作，避免口径漂移与资产孤岛。",
+      triggers: "运行时各系统按自己的逻辑触发 VO，但消费的是同一份 SSOT 数据。",
+      status: "每条 VO Line 都有可追踪状态，使制作、集成、验收形成闭环。",
+      cross: "字幕、UI、口型等系统引用 VO Line 结果，不反向污染核心数据结构。"
+    };
+
+    function drawLink(clue, line) {
+      if (window.innerWidth <= 980) {
+        line.style.display = "none";
+        return;
+      }
+      const box = canvas.getBoundingClientRect();
+      const d = db.getBoundingClientRect();
+      const c = clue.getBoundingClientRect();
+
+      const x1 = d.left - box.left + d.width / 2;
+      const y1 = d.top - box.top + d.height / 2;
+      const x2 = c.left - box.left + c.width / 2;
+      const y2 = c.top - box.top + c.height / 2;
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const len = Math.hypot(dx, dy);
+      const deg = Math.atan2(dy, dx) * 180 / Math.PI;
+
+      line.style.display = "block";
+      line.style.left = x1 + "px";
+      line.style.top = y1 + "px";
+      line.style.width = len + "px";
+      line.style.transform = "rotate(" + deg + "deg)";
+    }
+
+    function drawAllLinks() {
+      clues.forEach((clue) => {
+        drawLink(clue, document.getElementById("l-" + clue.dataset.key));
+      });
+    }
+
+    function setActive(key) {
+      clues.forEach((clue) => {
+        const on = clue.dataset.key === key;
+        clue.classList.toggle("active", on);
+        document.getElementById("l-" + clue.dataset.key).classList.toggle("active", on);
+      });
+      note.textContent = noteMap[key] || "";
+    }
+
+    clues.forEach((clue) => {
+      clue.addEventListener("click", () => setActive(clue.dataset.key));
+    });
+
+    window.addEventListener("resize", drawAllLinks);
+    window.addEventListener("load", () => {
+      drawAllLinks();
+      setActive("upstream");
+    });
+  </script>
+</body>
+</html>
